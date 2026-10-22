@@ -3,7 +3,7 @@
 // brand, product name, pack size, price and a link. The result is written to products.json,
 // which the app reads. Stores that can't be read keep the typical products built into the app.
 //
-// Usage: node scripts/update-products.mjs [--only=Frisco,Auchan] [--limit=10]
+// Usage: node scripts/update-products.mjs [--only=Frisco,'Wolt Market'] [--limit=10]
 import fs from 'node:fs';
 
 const args = Object.fromEntries(process.argv.slice(2).map(a => a.replace(/^--/, '').split('=')));
@@ -204,11 +204,6 @@ async function getJson(url, opts = {}) {
   if (!r.ok) throw new Error(r.status + ' ' + url);
   return r.json();
 }
-async function getText(url) {
-  const r = await fetch(url, { headers: { 'User-Agent': UA, 'Accept': 'text/html', 'Accept-Language': 'pl-PL,pl;q=0.9' } });
-  if (!r.ok) throw new Error(r.status + ' ' + url);
-  return r.text();
-}
 
 /* ---------- Stores ---------- */
 const STORES = {
@@ -232,33 +227,6 @@ const STORES = {
       await sleep(400);
     }
     return { source: 'frisco.pl', items };
-  },
-  async Auchan(keys) {
-    const items = {};
-    let fails = 0;
-    for (const k of keys) {
-      // Auchan sometimes answers scripts with a bot check page. Give up for today after a few in a row.
-      if (fails >= 4) { console.log('  Auchan is blocking requests, stopping'); break; }
-      const query = plQuery(k);
-      try {
-        let page = await getText('https://zakupy.auchan.pl/search?q=' + encodeURIComponent(query.q)).catch(e => e.message);
-        if (!page.includes('__INITIAL_STATE__')) { await sleep(10000); page = await getText('https://zakupy.auchan.pl/search?q=' + encodeURIComponent(query.q)).catch(e => e.message); }
-        if (!page.includes('__INITIAL_STATE__')) fails++; else fails = 0;
-        const m = page.match(/window\.__INITIAL_STATE__\s*=\s*(\{[\s\S]*?\})\s*;?\s*<\/script>/);
-        if (!m) throw new Error('no state');
-        const state = JSON.parse(m[1].replace(/\bundefined\b/g, 'null'));
-        const ents = (state.data && state.data.products && state.data.products.productEntities) || findKey(state, 'productEntities') || {};
-        const cands = Object.values(ents).filter(p => p && p.available !== false && p.name).map(p => ({
-          brand: p.brand || '', name: p.name.replace(new RegExp('\\s*' + escapeRe(p.brand || '#none#') + '\\s*', 'i'), ' ').trim(),
-          ...(sizeOf(p.name) || {}), price: p.price && p.price.current ? +p.price.current.amount : null, currency: 'PLN',
-          url: 'https://zakupy.auchan.pl/products/' + slug(p.name) + '/' + p.retailerProductId
-        }));
-        const best = pick(cands, query, ING[k]);
-        if (best) items[k] = best;
-      } catch (e) { console.log('  Auchan', k, e.message); }
-      await sleep(3000);
-    }
-    return { source: 'zakupy.auchan.pl', items };
   },
   async 'Wolt Market'(keys) {
     // Wolt has no public search, so read every category of one Wolt Market (Warsaw centre) once.
@@ -288,21 +256,15 @@ const STORES = {
     return { source: 'wolt.com', items };
   }
 };
-const COUNTRY = { Frisco: 'PL', Auchan: 'PL', 'Wolt Market': 'PL' };
+const COUNTRY = { Frisco: 'PL', 'Wolt Market': 'PL' };
 
 function titleCase(s) { return s.toLowerCase().replace(/(^|[\s-])(\p{L})/gu, (m, a, b) => a + b.toUpperCase()); }
-function escapeRe(s) { return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
-function slug(s) { return fold(s).replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, ''); }
-function findKey(o, key, depth = 0) {
-  if (!o || typeof o !== 'object' || depth > 6) return null;
-  if (key in o) return o[key];
-  for (const v of Object.values(o)) { const r = findKey(v, key, depth + 1); if (r) return r; }
-  return null;
-}
 
 /* ---------- Run ---------- */
 const prev = fs.existsSync('products.json') ? JSON.parse(fs.readFileSync('products.json', 'utf8')) : { stores: {} };
 const out = { version: 1, updated: TODAY, note: 'Written by scripts/update-products.mjs. Products are matched by search, so check the label in the store.', stores: prev.stores || {} };
+// Drop stores that are no longer checked.
+for (const st of Object.keys(out.stores)) if (!STORES[st]) delete out.stores[st];
 const keys = Object.keys(ING).slice(0, LIMIT);
 for (const [store, fn] of Object.entries(STORES)) {
   if (ONLY && !ONLY.includes(store)) continue;

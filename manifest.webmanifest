@@ -1,7 +1,7 @@
 {
   "name": "Posiłki",
   "short_name": "Posiłki",
-  "description": "Meal suggestions, meal prep and shopping lists for stores in Poland and Iceland.",
+  "description": "Meal suggestions, meal prep and shopping lists for stores in Poland.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
