@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Posiłki</title>
-<meta name="description" content="Meal suggestions, meal prep and shopping lists for stores in Poland and Iceland.">
+<meta name="description" content="Meal suggestions, meal prep and shopping lists for stores in Poland.">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="icon" type="image/png" href="icon-192.png">
@@ -312,21 +312,18 @@ p{margin:0}
 <script>
 (function(){
 'use strict';
-var APP_VERSION='0.5.0';
-var DATA_VERSION=4;
+var APP_VERSION='0.6.0';
+var DATA_VERSION=5;
 var KEY='posilki';
 
 /* ---------- Countries and stores ---------- */
 var COUNTRIES={
-  // Only stores with a food catalogue online, so their products can be checked.
-  PL:{name:'Poland',flag:'🇵🇱',locale:'pl',stores:['Auchan','Carrefour','Frisco','Wolt Market']},
-  IS:{name:'Iceland',flag:'🇮🇸',locale:'is',stores:['Krónan']}
+  // Only stores whose products the daily job can read. Iceland returns when an Icelandic store can be read.
+  PL:{name:'Poland',flag:'🇵🇱',locale:'pl',stores:['Frisco','Wolt Market']}
 };
-var COUNTRY_ORDER=['PL','IS'];
+var COUNTRY_ORDER=['PL'];
 var STORE_STYLE={
-  'Auchan':['#D52B1E','#FFFFFF'],'Carrefour':['#1E5BC6','#FFFFFF'],
-  'Frisco':['#F28C28','#2A1400'],'Wolt Market':['#00A3E0','#002433'],
-  'Krónan':['#E94E1B','#FFFFFF']
+  'Frisco':['#F28C28','#2A1400'],'Wolt Market':['#00A3E0','#002433']
 };
 
 var AISLES=[
@@ -439,11 +436,7 @@ var PROD={
     olej:'|Rapeseed oil',oliwa:'Filippo Berio|Extra virgin olive oil'
   }
 };
-var STORE_PROD={
-  'Carrefour':{mleko:'Carrefour Classic',jogurt:'Carrefour Classic',ryz:'Carrefour Classic',makaron:'Carrefour Classic',pomidory_puszka:'Carrefour Classic',
-    tunczyk:'Carrefour Classic',olej:'Carrefour Classic',platki:'Carrefour Classic',maliny:'Carrefour Classic'},
-  'Auchan':{mleko:'Auchan',jogurt:'Auchan',ryz:'Auchan',makaron:'Auchan',pomidory_puszka:'Auchan',tunczyk:'Auchan',olej:'Auchan',platki:'Auchan',maliny:'Auchan'}
-};
+var STORE_PROD={};
 function product(k,store){
   var li=liveItem(k,store);
   if(li) return {brand:li.brand||'',name:li.name,label:li.brand&&li.name.toLowerCase().indexOf(li.brand.toLowerCase())<0?li.brand+' '+li.name:li.name,live:li};
@@ -686,7 +679,7 @@ function defaults(){
     theme:'system',
     targets:{mode:'same',same:defTarget(),days:DAYS.map(defTarget)},
     library:{favorites:[],recipes:[],collections:[],weeks:[],lists:[],history:[]},
-    shopping:{view:'meal',entries:[]},
+    shopping:{view:'meal',lang:'orig',entries:[]},
     prep:{weekStart:null,days:null},
     lastBackup:null,
     createdAt:Date.now()
@@ -726,6 +719,17 @@ var MIGRATIONS={
       s.profile.store=MOVED.to;
     }
     s.v=4; return s;
+  },
+  4:function(s){
+    // Auchan, Carrefour and Krónan were removed (their products can't be read), and Iceland with Krónan.
+    if(isObj(s.profile)&&s.profile.country){
+      var from=s.profile.store;
+      var gone=!COUNTRIES[s.profile.country];
+      if(gone) s.profile.country='PL';
+      if(storesFor(s.profile.country).indexOf(s.profile.store)<0){ s.profile.store=storesFor(s.profile.country)[0]; if(from) MOVED={from:from,to:s.profile.store,country:gone}; }
+    }
+    if(isObj(s.shopping)&&s.shopping.lang!=='en') s.shopping.lang='orig';
+    s.v=5; return s;
   }
 };
 var MOVED=null;
@@ -1168,10 +1172,13 @@ function aggregate(){
   return map;
 }
 function itemRow(key,g,checked,act,extra){
-  // Branded product at the default store in bold; the plain ingredient name underneath.
-  var pr=product(key,S.profile.store), sub=pr.brand?ingName(key)+(ingSub(key)?', '+ingSub(key):''):ingSub(key);
+  // Store labels: the product as labelled in the store in bold, the plain ingredient name underneath.
+  // English: the English ingredient name in bold, the store label underneath so it can still be found on the shelf.
+  var pr=product(key,S.profile.store), en=ING[key].en, top, sub;
+  if(S.shopping.lang==='en'){ top=en; sub=pr.brand||pr.live?pr.label:''; }
+  else { top=pr.label; sub=pr.brand||pr.live?ingName(key)+(ingSub(key)?', '+ingSub(key):''):ingSub(key); }
   return '<li class="item'+(checked?' done':'')+'"><button class="itemmain" data-a="'+act+'" data-k="'+key+'"'+(extra||'')+' aria-pressed="'+checked+'"><span class="box">'+svg('check',16)+'</span>'+
-    '<span class="nm"><b>'+esc(pr.label)+'</b>'+(sub?'<small>'+esc(sub)+'</small>':'')+'</span>'+
+    '<span class="nm"><b>'+esc(top)+'</b>'+(sub?'<small>'+esc(sub)+'</small>':'')+'</span>'+
     '<span class="need">need '+needText(key,g)+'<small>'+packText(key,g)+'</small></span></button></li>';
 }
 function shoppingView(){
@@ -1192,12 +1199,13 @@ function shoppingView(){
       var keys=Object.keys(agg).filter(function(k){return ING[k].a===a[0];});
       if(!keys.length) return '';
       keys.sort(function(x,y){return (agg[x].done===agg[x].n?1:0)-(agg[y].done===agg[y].n?1:0);});
-      return '<section class="shopgroup"><h3><span>'+(country()==='PL'?a[1]+' <small>'+a[2]+'</small>':a[2])+'</span></h3><ul class="items">'+
+      return '<section class="shopgroup"><h3><span>'+(country()==='PL'&&S.shopping.lang!=='en'?a[1]+' <small>'+a[2]+'</small>':a[2])+'</span></h3><ul class="items">'+
         keys.map(function(k){var r=agg[k];return itemRow(k,r.g,r.done===r.n,'shopTogAll');}).join('')+'</ul></section>';
     }).join('');
   }
   var total=0,done=0; E.forEach(function(e){e.items.forEach(function(i){total++; if(i.checked) done++;});});
   return '<div class="seg" role="group" aria-label="View"><button data-a="shopView" data-v="meal" aria-pressed="'+(view==='meal')+'">By meal</button><button data-a="shopView" data-v="all" aria-pressed="'+(view==='all')+'">All ingredients</button></div>'+
+    '<div class="seg" role="group" aria-label="Label language" style="margin-top:8px"><button data-a="shopLang" data-v="orig" aria-pressed="'+(S.shopping.lang!=='en')+'">Store labels</button><button data-a="shopLang" data-v="en" aria-pressed="'+(S.shopping.lang==='en')+'">English</button></div>'+
     '<p class="small muted" style="margin-top:10px">'+done+' of '+total+' checked. Check off anything you buy or already have. '+(liveStore(S.profile.store)?'Products, pack sizes and prices are from '+esc(S.profile.store)+'’s online shop.':'Products are typical examples for '+esc(S.profile.store)+', with typical pack sizes.')+'</p>'+
     body+
     '<div class="btnrow" style="margin-top:22px"><button class="btn sm" data-a="saveListAsk">Save list to Library</button><button class="btn sm" data-a="clearChecked"'+(done?'':' disabled')+'>Remove checked</button><button class="btn sm danger" data-a="clearListAsk">Clear list</button></div>';
@@ -1384,8 +1392,9 @@ function mealPage(p){
       '<div style="margin-top:6px">'+ing.map(function(x,i){
         var it=ING[x[0]], k=Math.round(4*(it.p+it.c)*x[1]/100+9*it.f*x[1]/100);
         var pr=product(x[0],p.store);
-        return '<div class="ingrow"><span class="grow"><b>'+esc(ingName(x[0]))+'</b>'+(pr.brand?'<small>'+esc(pr.label)+'</small>':'')+(ingSub(x[0])?'<small>'+esc(ingSub(x[0]))+'</small>':'')+'</span>'+
-          '<span class="gin"><input type="number" inputmode="decimal" min="0" step="5" data-gi="'+i+'" value="'+x[1]+'" aria-label="Grams of '+esc(ingName(x[0]))+'"><span>'+it.u+'</span></span>'+
+        // English name first; the product as it's labelled in the store underneath.
+        return '<div class="ingrow"><span class="grow"><b>'+esc(it.en)+'</b><small>'+esc(pr.brand||pr.live?pr.label:ingName(x[0]))+'</small></span>'+
+          '<span class="gin"><input type="number" inputmode="decimal" min="0" step="5" data-gi="'+i+'" value="'+x[1]+'" aria-label="Grams of '+esc(it.en)+'"><span>'+it.u+'</span></span>'+
           '<span class="ikcal" id="ik-'+i+'">'+k+' kcal</span></div>';
       }).join('')+'</div>'+
       '<div class="btnrow" id="mEditRow"'+(ed?'':' style="display:none"')+'><button class="btn sm primary" data-a="saveVersion">'+(m.custom?'Save changes':'Save my version')+'</button><button class="btn sm" data-a="resetGrams">Reset amounts</button></div>'+
@@ -1626,6 +1635,7 @@ var H={
   deleteWeek:function(el){ S.library.weeks=S.library.weeks.filter(function(x){return x.id!==el.dataset.id;}); refresh(); },
 
   shopView:function(el){ S.shopping.view=el.dataset.v; save(); renderView(); },
+  shopLang:function(el){ S.shopping.lang=el.dataset.v; save(); renderView(); },
   shopTog:function(el){ var e=S.shopping.entries.filter(function(x){return x.id===el.dataset.e;})[0]; if(!e) return; var it=e.items.filter(function(x){return x.key===el.dataset.k;})[0]; if(it) it.checked=!it.checked; refresh(); },
   shopTogAll:function(el){ var k=el.dataset.k, all=true; S.shopping.entries.forEach(function(e){e.items.forEach(function(i){if(i.key===k&&!i.checked) all=false;});});
     S.shopping.entries.forEach(function(e){e.items.forEach(function(i){if(i.key===k) i.checked=!all;});}); refresh(); },
@@ -1712,7 +1722,7 @@ function start(){
   render();
   if(S.onboarded) save();
   openFromHash();
-  if(MOVED&&S.onboarded) toast(MOVED.from+' was removed because it has no products online. Your store is now '+MOVED.to+'.');
+  if(MOVED&&S.onboarded) toast(MOVED.country?'Iceland isn’t available for now because no Icelandic store’s products can be checked online. The app is set to Poland and '+MOVED.to+'.':MOVED.from+' was removed because its products can’t be checked online. Your store is now '+MOVED.to+'.');
 }
 load();
 loadCachedCatalog();
