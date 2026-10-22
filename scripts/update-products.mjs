@@ -230,16 +230,15 @@ const STORES = {
   },
   async Auchan(keys) {
     const items = {};
+    let fails = 0;
     for (const k of keys) {
+      // Auchan sometimes answers scripts with a bot check page. Give up for today after a few in a row.
+      if (fails >= 4) { console.log('  Auchan is blocking requests, stopping'); break; }
       const query = plQuery(k);
       try {
-        let page = '';
-        for (let t = 0; t < 3; t++) {
-          page = await getText('https://zakupy.auchan.pl/search?q=' + encodeURIComponent(query.q)).catch(e => e.message);
-          if (page.includes('__INITIAL_STATE__')) break;
-          console.log('  Auchan', k, 'retry', t + 1, String(page).slice(0, 80).replace(/\s+/g, ' '));
-          await sleep(15000 * (t + 1));
-        }
+        let page = await getText('https://zakupy.auchan.pl/search?q=' + encodeURIComponent(query.q)).catch(e => e.message);
+        if (!page.includes('__INITIAL_STATE__')) { await sleep(10000); page = await getText('https://zakupy.auchan.pl/search?q=' + encodeURIComponent(query.q)).catch(e => e.message); }
+        if (!page.includes('__INITIAL_STATE__')) fails++; else fails = 0;
         const m = page.match(/window\.__INITIAL_STATE__\s*=\s*(\{[\s\S]*?\})\s*;?\s*<\/script>/);
         if (!m) throw new Error('no state');
         const state = JSON.parse(m[1].replace(/\bundefined\b/g, 'null'));

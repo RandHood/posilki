@@ -611,7 +611,8 @@ function fetchProducts(){
     return changed;
   });
 }
-function liveStore(store){ var s=LIVE.stores[store]; return s&&isObj(s.items)&&Object.keys(s.items).length?s:null; }
+// A store counts as checked only when most ingredients were matched; a handful of matches would mix real and typical products.
+function liveStore(store){ var s=LIVE.stores[store]; return s&&isObj(s.items)&&Object.keys(s.items).length>=40?s:null; }
 function liveItem(k,store){ var s=liveStore(store); return s&&isObj(s.items[k])&&s.items[k].name?s.items[k]:null; }
 function money(v,cur){ return cur==='PLN'?v.toFixed(2).replace('.',',')+' zł':cur==='ISK'?Math.round(v)+' kr':v.toFixed(2)+' '+(cur||''); }
 function liveNote(store){
