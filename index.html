@@ -286,6 +286,16 @@ p{margin:0}
 #toast{position:fixed;left:50%;bottom:calc(84px + env(safe-area-inset-bottom,0px));transform:translate(-50%,12px);background:var(--ink);color:var(--ground);padding:10px 16px;border-radius:12px;font-size:14px;max-width:calc(100% - 36px);text-align:center;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;z-index:60}
 #toast.show{opacity:1;transform:translate(-50%,0)}
 @media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+.linkbtn svg{vertical-align:-4px;margin-right:4px}
+.blockhead .linkbtn{display:inline-flex;align-items:center;text-decoration:none;color:var(--beet);font-weight:600;padding:6px 0}
+.blockhead .linkbtn svg{margin-right:6px}
+.catshead{display:flex;justify-content:space-between;align-items:center;margin-top:10px;min-height:36px;font-size:13px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.catshead .linkbtn{padding:4px 0;font-size:14px;text-transform:none;letter-spacing:0;font-weight:400}
+.chips.cats .chip{gap:6px}
+.rcount{margin-top:12px;font-size:13px;color:var(--muted)}
+.pills{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.pill{display:inline-flex;align-items:center;min-height:26px;padding:0 10px;border-radius:99px;background:var(--tint);font-size:13px;font-weight:600;line-height:1}
+.storedd .flag,.ddlist .flag{font-size:22px;line-height:1;width:26px;text-align:center;flex:0 0 auto}
 </style>
 </head>
 <body>
@@ -302,7 +312,7 @@ p{margin:0}
 <script>
 (function(){
 'use strict';
-var APP_VERSION='0.3.0';
+var APP_VERSION='0.4.0';
 var DATA_VERSION=3;
 var KEY='posilki';
 
@@ -554,6 +564,38 @@ var MEALS=[
   steps:['Boil the eggs for 9 minutes, then cool them in cold water.','Peel, halve and serve with the sliced tomato.']}
 ];
 var MB={}; MEALS.forEach(function(m){MB[m.id]=m;});
+// meat, fish, animal (vegetarian but not vegan); anything missing is plant-based.
+var DIET={piers:'meat',indyk_mielone:'meat',indyk_filet:'meat',wolowina:'meat',szynka:'meat',losos:'fish',dorsz:'fish',tunczyk:'fish',
+  jajka:'animal',twarog:'animal',skyr:'animal',jogurt:'animal',serek:'animal',feta:'animal',mleko:'animal',kefir:'animal',maslo:'animal'};
+
+/* ---------- Meal catalog (meals.json) ----------
+   The full catalog lives in meals.json so new meals can be added without touching this file.
+   The meals above are the offline fallback. A copy of the last catalog is kept on the phone. */
+var CAT_KEY='posilki-catalog', CATALOG={loaded:false,updated:null,count:MEALS.length};
+function applyCatalog(d){
+  if(!d||!isObj(d.ingredients)||!Array.isArray(d.meals)) return false;
+  Object.keys(d.ingredients).forEach(function(k){
+    var r=d.ingredients[k];
+    ING[k]={key:k,pl:r.pl,en:r.en,a:r.aisle,u:r.unit,p:r.p,f:r.f,c:r.c,pack:r.pack,packLabel:r.packLabel,piece:r.piece,col:r.color,shape:r.shape};
+    if(r.diet) DIET[k]=r.diet;
+    if(isObj(r.products)) Object.keys(r.products).forEach(function(cc){ if(PROD[cc]&&r.products[cc]) PROD[cc][k]=r.products[cc]; });
+  });
+  var list=d.meals.filter(function(m){ return m&&m.id&&Array.isArray(m.ing)&&Array.isArray(m.types)&&m.ing.every(function(x){return ING[x[0]];}); });
+  if(!list.length) return false;
+  MEALS=list; MB={}; MEALS.forEach(function(m){MB[m.id]=m;}); catCache={};
+  CATALOG={loaded:true,updated:d.updated||null,count:MEALS.length};
+  return true;
+}
+function loadCachedCatalog(){ try{ var raw=localStorage.getItem(CAT_KEY); if(raw) applyCatalog(JSON.parse(raw)); }catch(e){} }
+// Resolves true when the catalog changed.
+function fetchCatalog(){
+  return fetch('meals.json',{cache:'no-cache'}).then(function(r){ if(!r.ok) throw new Error('catalog'); return r.json(); }).then(function(d){
+    var changed=!CATALOG.loaded||d.updated!==CATALOG.updated||(d.meals||[]).length!==CATALOG.count;
+    if(!applyCatalog(d)) return false;
+    try{ localStorage.setItem(CAT_KEY,JSON.stringify(d)); }catch(e){}
+    return changed;
+  });
+}
 var DAYS=['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
 var DAYS_SHORT=['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
 var SLOTS=['breakfast','lunch','snack','dinner','snack'];
@@ -811,6 +853,30 @@ function themeSeg(){
 }
 
 /* ---------- Planner ---------- */
+/* ---------- Categories ----------
+   Some come from the numbers (protein, calories, carbs, time, ingredients), the rest from the catalog's tags. */
+var CATS=[['protein','High protein'],['light','Low calorie'],['lowcarb','Low carb'],['sweet','Sweet'],['quick','Quick'],['vegetarian','Vegetarian'],['vegan','Vegan'],
+  ['fish','Fish & seafood'],['soup','Soups'],['nocook','No cooking'],['mealprep','Meal prep'],['polish','Polish classics'],['icelandic','Icelandic'],['spicy','Spicy']];
+var CAT_LABEL={}; CATS.forEach(function(c){CAT_LABEL[c[0]]=c[1];});
+var catCache={};
+function mealCats(m){
+  var key=m.id+'|'+m.ing.map(function(x){return x[0]+x[1];}).join(',');
+  if(catCache[key]) return catCache[key];
+  var x=mealMacros(m), snack=m.types.every(function(t){return t==='snack';}), out={};
+  if(x.p>=(snack?15:25)&&x.p*4>=x.kcal*0.3) out.protein=1;
+  if(x.kcal<=(snack?200:400)) out.light=1;
+  if(x.c<=(snack?10:20)) out.lowcarb=1;
+  if(m.mins<=15) out.quick=1;
+  var d=m.ing.map(function(i){return DIET[i[0]]||'';});
+  if(d.indexOf('meat')<0&&d.indexOf('fish')<0){ out.vegetarian=1; if(d.indexOf('animal')<0) out.vegan=1; }
+  if(d.indexOf('fish')>-1) out.fish=1;
+  var base=m.custom?(MB[m.base]||m):m;
+  (base.tags||m.tags||[]).forEach(function(t){ if(CAT_LABEL[t]) out[t]=1; });
+  var arr=CATS.map(function(c){return c[0];}).filter(function(c){return out[c];});
+  catCache[key]=arr; return arr;
+}
+function hasCats(m,want){ if(!want.length) return true; var c=mealCats(m); return want.every(function(w){return c.indexOf(w)>-1;}); }
+
 function poolFor(t){ return allMeals().filter(function(m){return m.types.indexOf(t)>-1;}); }
 function dayTotals(items){ return sumMacros(items.map(function(it){var m=getMeal(it.id);return m?mealMacros(m,it.serv):{p:0,f:0,c:0};})); }
 function fit(items,T){
@@ -852,20 +918,53 @@ function newWeek(){
 }
 function ensurePrep(){
   var P=S.prep, ok=P&&P.weekStart===mondayIso()&&Array.isArray(P.days)&&P.days.length===7;
-  if(ok) P.days=P.days.map(function(d){return (d||[]).filter(function(it){return getMeal(it.id);});});
+  // Drop meals that no longer exist, but only once the full catalog is here, so nothing planned is lost offline.
+  if(ok&&CATALOG.loaded) P.days=P.days.map(function(d){return (d||[]).filter(function(it){return getMeal(it.id);});});
   if(!ok) newWeek();
 }
 function dayDate(i){ var d=parseIso(S.prep.weekStart); d.setDate(d.getDate()+i); return d; }
 function currentSlot(){ var h=new Date().getHours(); return h<10?'breakfast':h<14?'lunch':h<17?'snack':h<21?'dinner':'snack'; }
+function startOfToday(){ var d=new Date(); d.setHours(0,0,0,0); return d.getTime(); }
+// Calories left for this slot: what's left of today's target after meals marked as cooked today,
+// split across this slot and the ones still to come.
+function slotBudget(slot){
+  var T=dayTarget(todayIdx()), t0=startOfToday();
+  var cooked=S.library.history.filter(function(h){return h.date>=t0;}).map(function(h){return getMeal(h.mealId);}).filter(Boolean);
+  if(!cooked.length) return {kcal:T.kcal*SLOT_SHARE[slot],p:T.p*SLOT_SHARE[slot],T:T,eaten:null};
+  var eaten=sumMacros(cooked.map(function(m){return mealMacros(m);}));
+  var order=['breakfast','lunch','snack','dinner'], from=order.indexOf(slot), share=0;
+  order.forEach(function(s,i){ if(i>=from) share+=SLOT_SHARE[s]; });
+  var f=SLOT_SHARE[slot]/(share||1);
+  return {kcal:Math.max(80,(T.kcal-eaten.kcal)*f),p:Math.max(0,(T.p-eaten.p)*f),T:T,eaten:eaten};
+}
+// Scores every meal for the slot, then picks from the best ones with a daily random seed,
+// so the list changes from day to day and on every shuffle.
 function suggestions(slot,n){
-  var T=dayTarget(todayIdx()), budget=T.kcal*SLOT_SHARE[slot];
-  var seed=rng(isoDate()+slot);
-  return poolFor(slot).map(function(m){var x=mealMacros(m); return {m:m,score:Math.abs(x.kcal-budget)-x.p*3-(isFav(m.id)?80:0)+seed()*60};})
-    .sort(function(a,b){return a.score-b.score;}).slice(0,n).map(function(r){return r.m;});
+  var B=slotBudget(slot), now=Date.now(), seed=rng(isoDate()+slot+'#'+UI.shuffle);
+  var recent={}, aff={};
+  S.library.history.forEach(function(h){ if(now-h.date<7*864e5) recent[h.mealId]=1; });
+  (S.prep.days&&S.prep.days[todayIdx()]||[]).forEach(function(it){ recent[it.id]=1; });
+  S.library.favorites.concat(S.library.history.map(function(h){return h.mealId;})).forEach(function(id){
+    var m=getMeal(id); if(m) mealCats(m).forEach(function(c){ aff[c]=(aff[c]||0)+1; });
+  });
+  var scored=poolFor(slot).filter(function(m){return !m.custom||isFav(m.id);}).map(function(m){
+    var x=mealMacros(m), sc=Math.abs(x.kcal-B.kcal)/Math.max(1,B.kcal)*300;
+    sc-=Math.min(x.p,B.p*1.3)*2.5;
+    if(recent[m.id]) sc+=160;
+    if(isFav(m.id)) sc-=50;
+    var mc=mealCats(m);
+    mc.forEach(function(c){ sc-=Math.min(aff[c]||0,4)*6; });
+    // Dishes from the other country still show up, just less often.
+    if(mc.indexOf(country()==='PL'?'icelandic':'polish')>-1) sc+=60;
+    return {m:m,score:sc+seed()*140};
+  }).sort(function(a,b){return a.score-b.score;});
+  var pick=[], pool=scored.slice(0,Math.max(n*4,12));
+  while(pick.length<n&&pool.length){ var i=Math.floor(Math.pow(seed(),1.6)*pool.length); pick.push(pool.splice(i,1)[0].m); }
+  return pick;
 }
 
 /* ---------- UI state ---------- */
-var UI={tab:'home',ob:{step:1,name:'',country:null},stack:[],pendingImport:null,filter:'all',q:'',sheet:null,prepDay:todayIdx(),panel:false,storeOpen:false};
+var UI={tab:'home',ob:{step:1,name:'',country:null},stack:[],pendingImport:null,filter:'all',cats:[],q:'',limit:40,sheet:null,prepDay:todayIdx(),panel:false,storeOpen:false,countryOpen:false,shuffle:0,sugSlot:null};
 var TABS=[['home','Home'],['meals','Meals'],['prep','Prep'],['shopping','Shopping']];
 
 /* ---------- Onboarding ---------- */
@@ -943,13 +1042,14 @@ function renderView(){
   if(UI.tab==='prep') showPrepDay(UI.prepDay,false);
 }
 function homeView(){
-  var ti=todayIdx(), T=dayTarget(ti), items=S.prep.days[ti], tot=dayTotals(items), slot=currentSlot();
-  var sug=suggestions(slot,4);
+  var ti=todayIdx(), T=dayTarget(ti), items=S.prep.days[ti], tot=dayTotals(items), slot=UI.sugSlot||currentSlot();
+  var sug=suggestions(slot,4), B=slotBudget(slot);
   var favs=S.library.favorites.map(getMeal).filter(Boolean).slice(0,4);
   return '<p class="greet">'+greeting()+', '+esc(S.profile.name)+'.</p>'+
     (backupDue()?'<div class="notice"><div><h3>Time for a backup</h3><p class="small muted" style="margin-top:4px">'+(S.lastBackup?'Your last backup was on '+fmtDate(S.lastBackup)+'.':'You haven’t saved a backup yet.')+' Save one to iCloud Drive so you can restore on a new phone.</p></div><button class="btn sm primary" data-a="export">Export backup</button></div>':'')+
-    '<section class="hblock"><div class="blockhead"><h2>Suggested for '+SLOT_LABEL[slot].toLowerCase()+'</h2></div>'+
-      '<p class="small muted" style="margin-top:4px">Picks that fit about '+nf(T.kcal*SLOT_SHARE[slot])+' kcal of your '+nf(T.kcal)+' kcal day.</p>'+
+    '<section class="hblock"><div class="blockhead"><h2>Suggested for '+SLOT_LABEL[slot].toLowerCase()+'</h2><button class="linkbtn" data-a="shuffle">'+svg('swap',18)+'<span>Shuffle</span></button></div>'+
+      '<div class="chips" style="margin-top:10px" role="group" aria-label="Meal">'+['breakfast','lunch','snack','dinner'].map(function(t){return '<button class="chip" data-a="sugSlot" data-slot="'+t+'" aria-pressed="'+(slot===t)+'">'+SLOT_LABEL[t]+'</button>';}).join('')+'</div>'+
+      '<p class="small muted" style="margin-top:6px">'+(B.eaten?'You’ve had '+nf(B.eaten.kcal)+' kcal today, so these fit about '+nf(B.kcal)+' kcal.':'Picks that fit about '+nf(B.kcal)+' kcal of your '+nf(T.kcal)+' kcal day.')+' They change every day and learn from your favorites and what you cook.</p>'+
       '<div class="grid">'+sug.map(mealCard).join('')+'</div></section>'+
     '<section class="hblock"><div class="blockhead"><h2>Today’s plan</h2><button class="linkbtn" data-a="tab" data-tab="prep">Open Prep</button></div>'+
       '<p class="pcal" style="margin-top:6px"><b>'+nf(tot.kcal)+'</b> of '+nf(T.kcal)+' kcal planned</p>'+
@@ -962,22 +1062,25 @@ function mealMatches(m){
   var q=UI.q.trim().toLowerCase(), f=UI.filter;
   if(f==='favs'&&!isFav(m.id)) return false;
   if(f==='mine'&&!m.custom) return false;
-  if(f==='protein'&&mealMacros(m).p<30) return false;
-  if(f==='light'&&mealMacros(m).kcal>=450) return false;
   if(TYPES.indexOf(f)>-1&&m.types.indexOf(f)<0) return false;
+  if(!hasCats(m,UI.cats)) return false;
   if(!q) return true;
   var hay=(m.name+' '+(m.pl||'')+' '+m.ing.map(function(x){var i=ING[x[0]];return i?i.pl+' '+i.en:'';}).join(' ')).toLowerCase();
   return hay.indexOf(q)>-1;
 }
 function mealResults(){
   var arr=allMeals().filter(mealMatches);
-  if(!arr.length) return '<p class="empty">'+(UI.filter==='favs'?'No favorites yet. Tap the heart on any meal page to save it here.':UI.filter==='mine'?'No recipes of your own yet. Open any meal, change the grams and tap Save my version.':'No meals match. Try another word, like chicken or kurczak.')+'</p>';
-  return '<div class="grid">'+arr.map(mealCard).join('')+'</div>';
+  if(!arr.length) return '<p class="empty">'+(UI.filter==='favs'&&!UI.cats.length?'No favorites yet. Tap the heart on any meal page to save it here.':UI.filter==='mine'&&!UI.cats.length?'No recipes of your own yet. Open any meal, change the grams and tap Save my version.':UI.cats.length?'No meals have all of those categories. Try removing one.':'No meals match. Try another word, like chicken or kurczak.')+'</p>';
+  var shown=arr.slice(0,UI.limit);
+  return '<p class="rcount">'+arr.length+(arr.length===1?' meal':' meals')+'</p><div class="grid">'+shown.map(mealCard).join('')+'</div>'+
+    (arr.length>shown.length?'<button class="btn block" data-a="moreMeals" style="margin-top:14px">Show more ('+(arr.length-shown.length)+' left)</button>':'');
 }
 function mealsView(){
-  var F=[['all','All'],['breakfast','Breakfast'],['lunch','Lunch'],['dinner','Dinner'],['snack','Snacks'],['protein','30 g+ protein'],['light','Under 450 kcal'],['favs','Favorites'],['mine','My recipes']];
+  var F=[['all','All'],['breakfast','Breakfast'],['lunch','Lunch'],['dinner','Dinner'],['snack','Snacks'],['favs','Favorites'],['mine','My recipes']];
   return '<input id="mealSearch" class="field" type="search" placeholder="Search meals or ingredients" aria-label="Search meals" value="'+esc(UI.q)+'">'+
-    '<div class="chips" style="margin-top:12px" role="group" aria-label="Filter">'+F.map(function(f){return '<button class="chip" data-a="filter" data-f="'+f[0]+'" aria-pressed="'+(UI.filter===f[0])+'">'+f[1]+'</button>';}).join('')+'</div>'+
+    '<div class="chips" style="margin-top:12px" role="group" aria-label="Meal type">'+F.map(function(f){return '<button class="chip" data-a="filter" data-f="'+f[0]+'" aria-pressed="'+(UI.filter===f[0])+'">'+f[1]+'</button>';}).join('')+'</div>'+
+    '<div class="catshead"><span>Categories</span>'+(UI.cats.length?'<button class="linkbtn" data-a="clearCats">Clear</button>':'')+'</div>'+
+    '<div class="chips cats" role="group" aria-label="Categories">'+CATS.map(function(c){var on=UI.cats.indexOf(c[0])>-1;return '<button class="chip" data-a="cat" data-c="'+c[0]+'" aria-pressed="'+on+'">'+(on?svg('check',16):'')+c[1]+'</button>';}).join('')+'</div>'+
     '<div id="mealResults">'+mealResults()+'</div>';
 }
 function prepView(){
@@ -1130,12 +1233,26 @@ function targetBlock(key,t){
     '<label>Fat (g)<input class="field" type="number" inputmode="numeric" min="0" max="300" data-t="'+key+'" data-f="f" value="'+t.f+'"></label>'+
     '<label>Carbs (g)<input class="field" type="number" inputmode="numeric" min="0" max="800" data-t="'+key+'" data-f="c" value="'+t.c+'"></label></div>';
 }
+function countryDropdown(cc){
+  var c=COUNTRIES[cc]||{flag:'',name:'Choose a country'};
+  return '<button class="storedd" id="countryBtn" data-a="countryToggle" aria-expanded="'+UI.countryOpen+'" aria-controls="countryDd"><span class="flag" aria-hidden="true">'+c.flag+'</span><span class="grow"><span>'+esc(c.name)+'</span></span><span class="chev">'+svg('chev',18)+'</span></button>'+
+    '<div class="ddwrap'+(UI.countryOpen?' open':'')+'" id="countryDd"><div><div class="ddlist" role="radiogroup" aria-label="Country">'+COUNTRY_ORDER.map(function(k){
+      var x=COUNTRIES[k], on=k===cc;
+      return '<button role="radio" data-a="setCountry" data-cc="'+k+'" aria-checked="'+on+'"'+(UI.countryOpen?'':' tabindex="-1"')+'><span class="flag" aria-hidden="true">'+x.flag+'</span><span class="grow">'+esc(x.name)+'</span>'+(on?'<span class="check">'+svg('check',18)+'</span>':'')+'</button>';
+    }).join('')+'</div></div></div>';
+}
+function setCountryOpen(open){
+  UI.countryOpen=open;
+  var b=$('countryBtn'), w=$('countryDd'); if(!b||!w) return;
+  b.setAttribute('aria-expanded',String(open)); w.classList.toggle('open',open);
+  w.querySelectorAll('button').forEach(function(x){ if(open) x.removeAttribute('tabindex'); else x.setAttribute('tabindex','-1'); });
+}
 function settingsPage(){
   var cc=S.profile.country, ti=todayIdx();
   return pageHead('Settings')+
   '<section class="section"><h2>Profile</h2>'+
     '<label class="lbl" for="setName">Name</label><input id="setName" class="field" autocomplete="given-name" value="'+esc(S.profile.name)+'">'+
-    '<span class="lbl">Country</span><div class="seg" role="group" aria-label="Country">'+COUNTRY_ORDER.map(function(k){var c=COUNTRIES[k];return '<button data-a="setCountry" data-cc="'+k+'" aria-pressed="'+(cc===k)+'"><span aria-hidden="true">'+c.flag+'</span> '+c.name+'</button>';}).join('')+'</div>'+
+    '<span class="lbl">Country</span>'+countryDropdown(cc)+
     '<span class="lbl">Default store</span><button class="storebtn" data-a="pickStore" data-scope="default">'+badge(S.profile.store)+'<span class="grow">'+esc(S.profile.store)+'</span><span class="chev">'+svg('chev',20)+'</span></button>'+
     '<p class="note">Used everywhere in the app. Changing the store on a meal page only changes that page.</p></section>'+
   '<section class="section"><h2>Appearance</h2>'+themeSeg()+'</section>'+
@@ -1149,7 +1266,7 @@ function settingsPage(){
     '<p class="muted">'+(S.lastBackup?'Last backup: '+fmtDate(S.lastBackup)+'.':'No backup saved yet.')+'</p>'+
     '<p class="note">Export saves one file with everything in the app. In the share sheet, choose Save to Files, then iCloud Drive. To restore, import that file on any phone.</p>'+
     '<div class="btnrow"><button class="btn primary" data-a="export">Export backup</button><button class="btn" data-a="import">Import backup</button></div></section>'+
-  '<section class="section"><h2>About</h2><p class="muted">Posiłki '+APP_VERSION+'. Ingredient values are typical supermarket products for now; store-specific products are coming in a later update. Your data is stored on this phone, so open the app from its Home Screen icon.</p></section>';
+  '<section class="section"><h2>About</h2><p class="muted">Posiłki '+APP_VERSION+'. '+MEALS.length+' meals in the catalog'+(CATALOG.updated?', updated '+fmtDate(parseIso(CATALOG.updated).getTime()):'')+'. Ingredient values are typical supermarket products for now; store-specific products are coming in a later update. Your data is stored on this phone, so open the app from its Home Screen icon.</p></section>';
 }
 var LIB=[
   ['favorites','Favorites','Meals you’ve hearted.'],
@@ -1216,6 +1333,7 @@ function mealPage(p){
     '<div class="mhead"><h1>'+esc(m.name)+'</h1>'+(mealSub(m)?'<p class="pl">'+esc(mealSub(m))+'</p>':'')+'</div>'+
     '<p class="mdesc">'+esc(m.desc)+'</p>'+
     '<p class="mmeta">'+m.types.map(function(t){return SLOT_LABEL[t];}).join(', ')+', about '+m.mins+' min. Suggested portion: 1 serving, about <span id="mGrams">'+nf(x.g)+'</span> g.</p>'+
+    '<div class="pills" id="mCats">'+catPills(m,ing)+'</div>'+
     '<div id="mMacros">'+macroTable(x)+'</div>'+
     '<button class="btn primary block" data-a="mealToList" style="margin-top:10px">Add ingredients to shopping list</button>'+
     '<div class="btngrid"><button class="btn sm" data-a="addToPlanAsk">Add to plan</button><button class="btn sm" data-a="collectionAsk">Add to collection</button><button class="btn sm" data-a="cooked">Mark as cooked</button><button class="btn sm" data-a="shareMeal"'+(m.custom?' disabled':'')+'>Share</button></div>'+
@@ -1238,12 +1356,14 @@ function mealPage(p){
       '<a class="video" href="'+yt+'" target="_blank" rel="noopener noreferrer"><span class="vthumb">'+mealImage(m)+'<span class="play"><i>'+svg('play',18,true)+'</i></span></span><span><b>Watch it made on YouTube</b><small>Opens English recipe videos for '+esc((m.custom?(MB[m.base]||m).name:m.name).toLowerCase())+'</small></span></a>'+
     '</section>';
 }
+function catPills(m,ing){ return mealCats({id:m.id,types:m.types,mins:m.mins,tags:m.tags,custom:m.custom,base:m.base,ing:ing}).map(function(c){return '<span class="pill">'+esc(CAT_LABEL[c])+'</span>';}).join(''); }
 function updateMealNumbers(){
   var p=top(); if(!p||p.type!=='meal') return;
   var ing=pageIng(p), x=macrosOf(ing), ed=edited(p);
   $('mMacros').innerHTML=macroTable(x); $('mGrams').textContent=nf(x.g);
   ing.forEach(function(r,i){var it=ING[r[0]], el=$('ik-'+i); if(el) el.textContent=Math.round(4*(it.p+it.c)*r[1]/100+9*it.f*r[1]/100)+' kcal';});
   $('mEditRow').style.display=ed?'':'none'; $('mEditNote').style.display=ed?'none':'';
+  var mc=$('mCats'); if(mc) mc.innerHTML=catPills(getMeal(p.id),ing);
 }
 
 /* ---------- Sheets ---------- */
@@ -1362,6 +1482,8 @@ function mergeArrays(cur,inc){
 var toastTimer;
 function toast(msg){ var t=$('toast'); t.textContent=msg; t.classList.add('show'); clearTimeout(toastTimer); toastTimer=setTimeout(function(){t.classList.remove('show');},2600); }
 /* ---------- Actions ---------- */
+// Redraws while keeping a horizontally scrolled row where it was.
+function keepX(fn,sel){ var el=document.querySelector(sel), x=el?el.scrollLeft:0; fn(); var n=document.querySelector(sel); if(n) n.scrollLeft=x; }
 function refresh(){ save(); renderTabs(); renderView(); if(UI.stack.length){ top().keepScroll=true; renderOverlay(); } }
 var H={
   obNext:function(){ if(UI.ob.step===1&&!UI.ob.name.trim()) return; UI.ob.step++; renderOnboarding(); },
@@ -1384,13 +1506,15 @@ var H={
   },
   prepDay:function(el){ showPrepDay(+el.dataset.d,true); },
   openLibrary:function(){ pushPage({type:'library'}); },
-  openSettings:function(){ pushPage({type:'settings'}); },
+  openSettings:function(){ UI.countryOpen=false; pushPage({type:'settings'}); },
   openLib:function(el){ pushPage({type:'lib',sec:el.dataset.sec}); },
   openCollection:function(el){ pushPage({type:'lib',sec:'collections',cid:el.dataset.id}); },
   back:popPage,
   setTheme:function(el){ S.theme=el.dataset.theme; save(); applyTheme(); if(UI.panel) openPanel(); if(UI.stack.length){top().keepScroll=true;renderOverlay();} },
+  countryToggle:function(){ setCountryOpen(!UI.countryOpen); },
   setCountry:function(el){
-    var cc=el.dataset.cc; if(cc===S.profile.country) return;
+    var cc=el.dataset.cc; if(cc===S.profile.country){ setCountryOpen(false); return; }
+    UI.countryOpen=false;
     S.profile.country=cc; if(storesFor(cc).indexOf(S.profile.store)<0) S.profile.store=storesFor(cc)[0];
     save(); top().keepScroll=true; renderOverlay(); renderView(); toast('Default store set to '+S.profile.store+'. You can change it below.');
   },
@@ -1407,7 +1531,12 @@ var H={
   },
   copyMonday:function(){ var m=S.targets.days[0]; S.targets.days=DAYS.map(function(){return clone(m);}); save(); top().keepScroll=true; renderOverlay(); toast('Monday copied to every day'); },
 
-  filter:function(el){ UI.filter=el.dataset.f; renderView(); },
+  filter:function(el){ UI.filter=el.dataset.f; UI.limit=40; renderView(); },
+  cat:function(el){ var c=el.dataset.c, i=UI.cats.indexOf(c); if(i>-1) UI.cats.splice(i,1); else UI.cats.push(c); UI.limit=40; keepX(renderView,'.chips.cats'); },
+  clearCats:function(){ UI.cats=[]; UI.limit=40; renderView(); },
+  moreMeals:function(){ UI.limit+=40; $('mealResults').innerHTML=mealResults(); },
+  shuffle:function(){ UI.shuffle++; renderView(); },
+  sugSlot:function(el){ UI.sugSlot=el.dataset.slot; UI.shuffle=0; renderView(); },
   openMeal:function(el){ closeSheet(); openMealPage(el.dataset.id); },
   fav:function(el){ var id=el.dataset.id, i=S.library.favorites.indexOf(id); if(i>-1) S.library.favorites.splice(i,1); else S.library.favorites.push(id); refresh(); toast(i>-1?'Removed from favorites':'Saved to favorites'); },
   toggleRecipe:function(){ var p=top(); p.open=!p.open; p.keepScroll=true; renderOverlay(); },
@@ -1506,7 +1635,7 @@ document.addEventListener('input',function(e){
   var t=e.target; if(!t) return;
   if(t.id==='obName'){ UI.ob.name=t.value; var b=$('onboard').querySelector('[data-a="obNext"]'); if(b) b.disabled=!t.value.trim(); return; }
   if(t.id==='setName'){ var v=t.value.trim(); if(v){ S.profile.name=v; saveSoon(); renderTop(); } return; }
-  if(t.id==='mealSearch'){ UI.q=t.value; $('mealResults').innerHTML=mealResults(); return; }
+  if(t.id==='mealSearch'){ UI.q=t.value; UI.limit=40; $('mealResults').innerHTML=mealResults(); return; }
   if(t.dataset&&t.dataset.gi!=null){ var p=top(), n=parseFloat(t.value); p.grams[+t.dataset.gi]=isNaN(n)||n<0?0:n; updateMealNumbers(); return; }
   if(t.dataset&&t.dataset.t){
     var key=t.dataset.t, obj=key==='same'?S.targets.same:S.targets.days[+key.slice(1)], n2=parseInt(t.value,10);
@@ -1537,10 +1666,24 @@ function openFromHash(){
 window.addEventListener('hashchange',openFromHash);
 
 /* ---------- Start ---------- */
+var started=false;
+function start(){
+  if(started) return; started=true;
+  render();
+  if(S.onboarded) save();
+  openFromHash();
+}
 load();
-render();
-if(S.onboarded) save();
-openFromHash();
+loadCachedCatalog();
+if(CATALOG.loaded){
+  start();
+  // Pick up new meals in the background; only redraw if nothing is open on top.
+  fetchCatalog().then(function(changed){ if(changed&&!UI.stack.length&&!UI.sheet&&!UI.panel&&S.onboarded) renderView(); }).catch(function(){});
+} else {
+  // First run: wait briefly for the full catalog, then start with whatever is there.
+  fetchCatalog().then(start,start);
+  setTimeout(start,4000);
+}
 try{ if(navigator.storage&&navigator.storage.persist) navigator.storage.persist(); }catch(e){}
 if('serviceWorker' in navigator&&location.protocol==='https:'){
   window.addEventListener('load',function(){ navigator.serviceWorker.register('sw.js').catch(function(){}); });
