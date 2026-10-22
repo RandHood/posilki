@@ -12,15 +12,18 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="Posiłki">
-<meta name="theme-color" content="#EDF0EA">
+<meta name="theme-color" content="#F1F3EE">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
   color-scheme:light;
-  --ground:#EDF0EA; --surface:#FAFBF8; --ink:#17231C; --muted:#586A5D; --line:#D2D9CF; --tint:#E1E7DD;
+  --ground:#F1F3EE; --surface:#FFFFFF; --ink:#17231C; --muted:#586A5D; --line:#DDE3D9; --tint:#E6EBE2;
   --beet:#A3174B; --on-beet:#FFFFFF; --dill:#3D6B33; --scrim:rgba(10,16,12,.5);
+  --beet-soft:#F6E3EA; --dill-soft:#E2EEDD; --warn:#B4541A; --warn-soft:#FBEADF;
+  --m-p:#3D6B9C; --m-f:#C89212;
+  --shadow:0 1px 2px rgba(23,35,28,.05),0 6px 18px rgba(23,35,28,.06); --float:0 12px 36px rgba(23,35,28,.2);
   --f-head:"Bricolage Grotesque","Avenir Next",system-ui,sans-serif;
   --f-body:"Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
   box-sizing:border-box;
@@ -31,12 +34,16 @@
     color-scheme:dark;
     --ground:#0F1411; --surface:#19211C; --ink:#E7EDE5; --muted:#9AA89D; --line:#2A352E; --tint:#222D26;
     --beet:#E4608A; --on-beet:#2A0A17; --dill:#8FC882; --scrim:rgba(0,0,0,.6);
+    --beet-soft:#3A1724; --dill-soft:#1F3320; --warn:#F0A06A; --warn-soft:#3A2414;
+    --m-p:#7FA8D6; --m-f:#E0B54A; --shadow:none; --float:0 12px 36px rgba(0,0,0,.5);
   }
 }
 :root[data-theme="dark"]{
   color-scheme:dark;
   --ground:#0F1411; --surface:#19211C; --ink:#E7EDE5; --muted:#9AA89D; --line:#2A352E; --tint:#222D26;
   --beet:#E4608A; --on-beet:#2A0A17; --dill:#8FC882; --scrim:rgba(0,0,0,.6);
+    --beet-soft:#3A1724; --dill-soft:#1F3320; --warn:#F0A06A; --warn-soft:#3A2414;
+    --m-p:#7FA8D6; --m-f:#E0B54A; --shadow:none; --float:0 12px 36px rgba(0,0,0,.5);
 }
 html{scroll-padding-top:env(safe-area-inset-top,0px)}
 *{box-sizing:border-box}
@@ -303,6 +310,81 @@ p{margin:0}
 .pills{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
 .pill{display:inline-flex;align-items:center;min-height:26px;padding:0 10px;border-radius:99px;background:var(--tint);font-size:13px;font-weight:600;line-height:1}
 .storedd .flag,.ddlist .flag{font-size:22px;line-height:1;width:26px;text-align:center;flex:0 0 auto}
+/* 0.7 refresh: white cards on a lighter ground, soft secondary buttons, floating tab bar */
+h1{font-size:30px}
+h1 .eyebrow{display:block;font:600 13px/1.2 var(--f-body);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.top{margin:6px 0 18px}
+.avatar{box-shadow:0 0 0 3px var(--surface),0 0 0 4px var(--line)}
+.btn{border-radius:14px;border-color:transparent;background:var(--tint)}
+.btn.primary{box-shadow:0 4px 12px rgba(163,23,75,.22)}
+.btn.danger{background:var(--beet-soft);border-color:transparent;color:var(--beet)}
+.field{border-radius:14px;box-shadow:var(--shadow)}
+input[type=search].field{padding-left:44px;background:var(--surface) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' fill='none' stroke='%23586A5D' stroke-width='2' stroke-linecap='round' viewBox='0 0 24 24'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='m20 20-3.5-3.5'/%3E%3C/svg%3E") no-repeat 14px 50%}
+.chip{background:var(--surface);font-weight:500}
+.chip[aria-pressed="true"]{background:var(--beet);border-color:var(--beet);color:var(--on-beet)}
+.chips.cats .chip[aria-pressed="true"]{background:var(--dill-soft);border-color:transparent;color:var(--dill)}
+.seg{border-radius:16px}
+.seg button[aria-pressed="true"]{border-radius:12px;box-shadow:var(--shadow),0 0 0 1px var(--line)}
+.mcard{background:var(--surface);border-radius:18px;padding:8px 8px 12px;box-shadow:var(--shadow)}
+.mcard .mimg{border-radius:12px}
+.mcard b,.mcard span{padding:0 4px}
+.hblock{border-top:0;padding:20px 0 4px}
+.greet{font-size:24px;margin-bottom:6px}
+.today-card{margin-top:18px;padding:16px 16px 6px;background:var(--surface);border-radius:20px;box-shadow:var(--shadow)}
+.bar{height:10px}
+.bar.over i{background:var(--warn)}
+.pcal.over b{color:var(--warn)}
+.overpill{display:inline-block;margin-left:8px;padding:2px 8px;border-radius:99px;background:var(--warn-soft);color:var(--warn);font-size:12px;font-weight:600;vertical-align:2px}
+.slotlbl{text-transform:uppercase;letter-spacing:.06em;font-size:11px;font-weight:600}
+#tabs{left:12px;right:12px;bottom:calc(10px + env(safe-area-inset-bottom,0px));padding:6px;border:1px solid var(--line);border-radius:24px;box-shadow:0 8px 28px rgba(23,35,28,.14);background:color-mix(in srgb,var(--surface) 88%,transparent);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px)}
+#tabs button{border-radius:18px;min-height:54px}
+#tabs button[aria-current="page"]{background:var(--beet-soft)}
+.badge{top:4px}
+/* Macros: four tiles, each with a colour dot */
+.macros{border-collapse:separate;border-spacing:6px 0;margin:14px -6px 8px;width:calc(100% + 12px)}
+.macros th{border:0;padding:10px 4px 0;background:var(--surface);border-radius:14px 14px 0 0;font-size:12px}
+.macros td{background:var(--surface);border-radius:0 0 14px 14px;padding:4px 4px 10px;font-size:21px}
+.macros th::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:5px;vertical-align:1px;background:var(--beet)}
+.macros th:nth-child(2)::before{background:var(--m-p)}
+.macros th:nth-child(3)::before{background:var(--m-f)}
+.macros th:nth-child(4)::before{background:var(--dill)}
+.section{margin-top:12px;padding:18px 16px;border-top:0;background:var(--surface);border-radius:20px;box-shadow:var(--shadow)}
+#overlay .section:first-of-type{padding-top:18px}
+.gin input{border-color:transparent;border-radius:12px;background:var(--ground)}
+.storeline .storebtn{border-color:transparent;border-radius:99px;background:var(--ground)}
+.back,.pagehead .iconbtn{border:0;box-shadow:0 2px 10px rgba(23,35,28,.16)}
+/* Prep */
+.pstrip{gap:6px}
+.pstrip button{border:0;border-radius:14px;background:var(--surface);box-shadow:var(--shadow)}
+.pstrip button.today{box-shadow:inset 0 0 0 2px var(--beet)}
+.pstrip button[aria-selected="true"]{background:var(--beet);color:var(--on-beet)}
+.pstrip button[aria-selected="true"] b{color:var(--on-beet)}
+.pday{border:0;border-radius:24px;box-shadow:var(--shadow)}
+.pitem{border-bottom-style:solid}
+.serv button{border:0;background:var(--tint)}
+/* Shopping: view switch and label language on one row, one card per meal */
+.shopbar{display:flex;gap:8px;align-items:stretch}
+.shopbar .seg{flex:1;min-width:0}
+.shopbar .seg button{font-size:14px;padding:4px 2px}
+.langdd{flex:0 0 auto}
+.langdd .storedd{width:auto;height:100%;margin:0;padding:4px 10px 4px 14px;border:0;border-radius:16px;background:var(--tint)}
+.langdd .ddwrap{left:auto;width:250px}
+.shopgroup{margin-top:14px;padding:14px 16px 4px;background:var(--surface);border-radius:20px;box-shadow:var(--shadow)}
+.shopgroup > h3 small{padding:3px 9px;border-radius:99px;background:var(--tint);font-size:12px;font-weight:600;white-space:nowrap}
+.item{border-bottom-style:solid}
+.box{border-radius:50%;border-color:color-mix(in srgb,var(--muted) 45%,transparent)}
+.need{font-weight:600}
+/* Dropdown layers */
+.ddwrap{border-radius:16px;box-shadow:var(--float)}
+.ddlist button[aria-checked="true"]{background:var(--beet-soft)}
+/* Side panel: profile card, then store, Library and Settings as matching rows */
+.panel{background:var(--ground);border-radius:28px 0 0 28px}
+.me{padding:16px;border:0;border-radius:20px;background:var(--surface);box-shadow:var(--shadow)}
+.prow{margin-top:10px;padding:0 14px;border:0;border-radius:16px;background:var(--surface);box-shadow:var(--shadow)}
+.storedd.prow{gap:14px;min-height:56px;padding:6px 14px}
+.storedd.prow .sb{width:24px;height:24px;border-radius:7px;font-size:13px}
+.panel .ddwrap{top:calc(100% + 6px)}
+.pthemes{padding:16px 0 4px;border:0}
 </style>
 </head>
 <body>
@@ -319,7 +401,7 @@ p{margin:0}
 <script>
 (function(){
 'use strict';
-var APP_VERSION='0.6.1';
+var APP_VERSION='0.15.0';
 var DATA_VERSION=5;
 var KEY='posilki';
 
@@ -673,7 +755,7 @@ var I={
   x:'<path d="M6 6l12 12M18 6L6 18"/>',
   check:'<path d="M5 12.5l4.5 4.5L19 7.5"/>',
   chev:'<path d="M9 6l6 6-6 6"/>',
-  back:'<path d="M15 6l-6 6 6 6"/>',
+  back:'<path d="M19 12H5M11 6l-6 6 6 6"/>',
   heart:'<path d="M12 20s-7-4.4-9-9a5 5 0 0 1 9-3 5 5 0 0 1 9 3c-2 4.6-9 9-9 9z"/>',
   swap:'<path d="M4 8h13l-3-3M20 16H7l3 3"/>',
   plus:'<path d="M12 5v14M5 12h14"/>',
@@ -1065,7 +1147,8 @@ function render(){
 }
 function renderTop(){
   var title={home:'Home',meals:'Meals',prep:'Prep',shopping:'Shopping'}[UI.tab];
-  $('top').innerHTML='<div class="top"><h1>'+title+'</h1><button class="avatar" data-a="openPanel" aria-label="Open menu">'+esc(initial(S.profile.name))+'</button></div>';
+  var day=new Date().toLocaleDateString('en-GB',{weekday:'long',day:'numeric',month:'short'});
+  $('top').innerHTML='<div class="top"><h1><small class="eyebrow">'+day+'</small>'+title+'</h1><button class="avatar" data-a="openPanel" aria-label="Open menu">'+esc(initial(S.profile.name))+'</button></div>';
 }
 function openShopCount(){ var n=0; S.shopping.entries.forEach(function(e){e.items.forEach(function(i){if(!i.checked)n++;});}); return n; }
 function renderTabs(){
@@ -1098,6 +1181,8 @@ function renderView(){
   v.innerHTML=html;
   if(UI.tab==='prep') showPrepDay(UI.prepDay,false);
 }
+// A small orange pill when a day is planned past its calorie target.
+function overPill(kcal,target){ return kcal>target?'<span class="overpill">'+nf(kcal-target)+' over</span>':''; }
 function homeView(){
   var ti=todayIdx(), T=dayTarget(ti), items=S.prep.days[ti], tot=dayTotals(items), slot=UI.sugSlot||currentSlot();
   var sug=suggestions(slot,4), B=slotBudget(slot);
@@ -1108,9 +1193,9 @@ function homeView(){
       '<div class="chips" style="margin-top:10px" role="group" aria-label="Meal">'+['breakfast','lunch','snack','dinner'].map(function(t){return '<button class="chip" data-a="sugSlot" data-slot="'+t+'" aria-pressed="'+(slot===t)+'">'+SLOT_LABEL[t]+'</button>';}).join('')+'</div>'+
       '<p class="small muted" style="margin-top:6px">'+(B.eaten?'You’ve had '+nf(B.eaten.kcal)+' kcal today, so these fit about '+nf(B.kcal)+' kcal.':'Picks that fit about '+nf(B.kcal)+' kcal of your '+nf(T.kcal)+' kcal day.')+' They change every day and learn from your favorites and what you cook.</p>'+
       '<div class="grid">'+sug.map(mealCard).join('')+'</div></section>'+
-    '<section class="hblock"><div class="blockhead"><h2>Today’s plan</h2><button class="linkbtn" data-a="tab" data-tab="prep">Open Prep</button></div>'+
-      '<p class="pcal" style="margin-top:6px"><b>'+nf(tot.kcal)+'</b> of '+nf(T.kcal)+' kcal planned</p>'+
-      '<div class="bar"><i style="width:'+Math.min(100,tot.kcal/T.kcal*100)+'%"></i></div>'+
+    '<section class="hblock today-card"><div class="blockhead"><h2>Today’s plan</h2><button class="linkbtn" data-a="tab" data-tab="prep">Open Prep</button></div>'+
+      '<p class="pcal'+(tot.kcal>T.kcal?' over':'')+'" style="margin-top:6px"><b>'+nf(tot.kcal)+'</b> of '+nf(T.kcal)+' kcal planned'+overPill(tot.kcal,T.kcal)+'</p>'+
+      '<div class="bar'+(tot.kcal>T.kcal?' over':'')+'"><i style="width:'+Math.min(100,tot.kcal/T.kcal*100)+'%"></i></div>'+
       '<p class="mline" style="margin-top:6px">Protein '+tot.p+' of '+T.p+' g, fat '+tot.f+' of '+T.f+' g, carbs '+tot.c+' of '+T.c+' g</p>'+
       '<div style="margin-top:6px">'+(items.length?items.map(function(it){var m=getMeal(it.id);return mealRow(m,SLOT_LABEL[it.slot]+(it.serv!==1?', '+it.serv+' portions':''),it.serv);}).join(''):'<p class="empty">Nothing planned today. Add meals from Prep or any meal page.</p>')+'</div></section>'+
     (favs.length?'<section class="hblock"><h2>Your favorites</h2><div class="grid">'+favs.map(mealCard).join('')+'</div></section>':'');
@@ -1148,7 +1233,7 @@ function prepView(){
   var days=S.prep.days.map(function(items,i){
     var T=dayTarget(i), tot=dayTotals(items);
     return '<section class="pday'+(i===ti?' today':'')+'" role="tabpanel" aria-label="'+DAYS[i]+'"><div class="pdhead"><h2>'+DAYS[i]+'</h2><span>'+fmtShort(dayDate(i))+'</span></div>'+
-      '<p class="pcal"><b>'+nf(tot.kcal)+'</b> of '+nf(T.kcal)+' kcal</p>'+
+      '<p class="pcal'+(tot.kcal>T.kcal?' over':'')+'"><b>'+nf(tot.kcal)+'</b> of '+nf(T.kcal)+' kcal'+overPill(tot.kcal,T.kcal)+'</p>'+
       '<p class="mline">Protein '+tot.p+' g, fat '+tot.f+' g, carbs '+tot.c+' g</p>'+
       '<div style="margin-top:4px">'+items.map(function(it,j){
         var m=getMeal(it.id), x=mealMacros(m,it.serv);
@@ -1190,10 +1275,10 @@ function itemRow(key,g,checked,act,extra){
     '<span class="nm"><b>'+esc(top)+'</b></span>'+
     '<span class="need">need '+needText(key,g)+'<small>'+packText(key,g)+'</small></span></button></li>';
 }
-var LANGS=[['orig','Store language','Labels as written in the store'],['en','English','Labels translated to English']];
+var LANGS=[['orig','Original','Labels as written in the store'],['en','English','Labels translated to English']];
 function langDropdown(){
   var cur=S.shopping.lang==='en'?LANGS[1]:LANGS[0];
-  return '<div class="dd" style="margin-top:8px"><button class="storedd" id="langBtn" data-a="langToggle" aria-expanded="'+UI.langOpen+'" aria-controls="langDd"><span class="grow"><small>Labels</small><span>'+cur[1]+'</span></span><span class="chev">'+svg('chev',18)+'</span></button>'+
+  return '<div class="dd langdd"><button class="storedd" id="langBtn" data-a="langToggle" aria-expanded="'+UI.langOpen+'" aria-controls="langDd" aria-label="Labels: '+cur[1]+'"><span class="grow"><small>Labels</small><span>'+cur[1]+'</span></span><span class="chev">'+svg('chev',18)+'</span></button>'+
     '<div class="ddwrap'+(UI.langOpen?' open':'')+'" id="langDd"><div><div class="ddlist" role="radiogroup" aria-label="Label language">'+LANGS.map(function(l){
       var on=l===cur;
       return '<button role="radio" data-a="shopLang" data-v="'+l[0]+'" aria-checked="'+on+'"'+(UI.langOpen?'':' tabindex="-1"')+'><span class="grow">'+l[1]+'<small class="muted" style="display:block;font-weight:400">'+l[2]+'</small></span>'+(on?'<span class="check">'+svg('check',18)+'</span>':'')+'</button>';
@@ -1234,8 +1319,8 @@ function shoppingView(){
     }).join('');
   }
   var total=0,done=0; E.forEach(function(e){e.items.forEach(function(i){total++; if(i.checked) done++;});});
-  return '<div class="seg" role="group" aria-label="View"><button data-a="shopView" data-v="meal" aria-pressed="'+(view==='meal')+'">By meal</button><button data-a="shopView" data-v="all" aria-pressed="'+(view==='all')+'">All ingredients</button></div>'+
-    langDropdown()+
+  return '<div class="shopbar"><div class="seg" role="group" aria-label="View"><button data-a="shopView" data-v="meal" aria-pressed="'+(view==='meal')+'">By meal</button><button data-a="shopView" data-v="all" aria-pressed="'+(view==='all')+'">All ingredients</button></div>'+
+    langDropdown()+'</div>'+
     '<p class="small muted" style="margin-top:10px">'+done+' of '+total+' checked. Check off anything you buy or already have. '+(liveStore(S.profile.store)?'Products, pack sizes and prices are from '+esc(S.profile.store)+'’s online shop.':'Products are typical examples for '+esc(S.profile.store)+', with typical pack sizes.')+'</p>'+
     body+
     '<div class="btnrow" style="margin-top:22px"><button class="btn sm" data-a="saveListAsk">Save list to Library</button><button class="btn sm" data-a="clearChecked"'+(done?'':' disabled')+'>Remove checked</button><button class="btn sm danger" data-a="clearListAsk">Clear list</button></div>';
@@ -1246,12 +1331,12 @@ function panelHtml(){
   var c=COUNTRIES[S.profile.country]||{name:'',flag:''}, cur=S.profile.store;
   return '<div class="scrim" data-a="closePanel"></div><aside class="panel" aria-label="Menu">'+
     '<div class="me"><div style="display:flex;justify-content:space-between;align-items:flex-start"><span class="avatar lg" aria-hidden="true">'+esc(initial(S.profile.name))+'</span><button class="iconbtn" data-a="closePanel" aria-label="Close menu">'+svg('x')+'</button></div>'+
-      '<h2>'+esc(S.profile.name)+'</h2><div class="line"><span aria-hidden="true">'+c.flag+'</span>'+esc(c.name)+'</div>'+
-      '<div class="dd"><button class="storedd" id="storeBtn" data-a="panelStoreToggle" aria-expanded="'+UI.storeOpen+'" aria-controls="storeDd">'+badge(cur)+'<span class="grow"><small>Default store</small><span>'+esc(cur||'')+'</span></span><span class="chev">'+svg('chev',18)+'</span></button>'+
+      '<h2>'+esc(S.profile.name)+'</h2><div class="line"><span aria-hidden="true">'+c.flag+'</span>'+esc(c.name)+'</div></div>'+
+      '<div class="dd"><button class="storedd prow" id="storeBtn" data-a="panelStoreToggle" aria-expanded="'+UI.storeOpen+'" aria-controls="storeDd">'+badge(cur)+'<span class="grow"><small>Default store</small><span>'+esc(cur||'')+'</span></span><span class="chev">'+svg('chev',18)+'</span></button>'+
       '<div class="ddwrap'+(UI.storeOpen?' open':'')+'" id="storeDd"><div><div class="ddlist" role="radiogroup" aria-label="Default store">'+storesFor(S.profile.country).map(function(st){
         var on=st===cur;
         return '<button role="radio" data-a="panelStorePick" data-store="'+esc(st)+'" aria-checked="'+on+'"'+(UI.storeOpen?'':' tabindex="-1"')+'>'+badge(st)+'<span class="grow">'+esc(st)+'</span>'+(on?'<span class="check">'+svg('check',18)+'</span>':'')+'</button>';
-      }).join('')+'</div></div></div></div></div>'+
+      }).join('')+'</div></div></div></div>'+
     '<button class="prow" data-a="openLibrary">'+svg('library')+'<span class="grow">Library</span><span class="chev">'+svg('chev',20)+'</span></button>'+
     '<div class="pthemes"><p>Appearance</p>'+themeSeg()+'</div>'+
     '<button class="prow" data-a="openSettings">'+svg('gear')+'<span class="grow">Settings</span><span class="chev">'+svg('chev',20)+'</span></button>'+
