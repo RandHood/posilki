@@ -1,7 +1,7 @@
 // Posiłki service worker. Bump VERSION with every release.
-const VERSION = '0.3.0';
+const VERSION = '0.4.0';
 const CACHE = 'posilki-' + VERSION;
-const CORE = ['./', './index.html', './manifest.webmanifest', './icon-192.png', './icon-512.png', './apple-touch-icon.png'];
+const CORE = ['./', './index.html', './meals.json', './manifest.webmanifest', './icon-192.png', './icon-512.png', './apple-touch-icon.png'];
 
 self.addEventListener('install', (e) => {
   e.waitUntil(caches.open(CACHE).then((c) => c.addAll(CORE)).then(() => self.skipWaiting()));
@@ -26,6 +26,16 @@ self.addEventListener('fetch', (e) => {
       fetch(req)
         .then((res) => { const copy = res.clone(); caches.open(CACHE).then((c) => c.put('./index.html', copy)); return res; })
         .catch(() => caches.match('./index.html'))
+    );
+    return;
+  }
+
+  // Data files (the meal catalog): network first so new meals arrive on the next open; cached copy offline.
+  if (url.origin === self.location.origin && url.pathname.endsWith('.json')) {
+    e.respondWith(
+      fetch(req)
+        .then((res) => { if (res.ok) { const copy = res.clone(); caches.open(CACHE).then((c) => c.put(req, copy)); } return res; })
+        .catch(() => caches.match(req, { ignoreSearch: true }))
     );
     return;
   }
