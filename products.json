@@ -44,13 +44,13 @@
      "url": "https://www.frisco.pl/pid,106605/stn,product"
     },
     "czosnek": {
-     "brand": "Hotz",
-     "name": "Czosnek (koncentrat)",
-     "size": 80,
+     "brand": "Frisco Fresh",
+     "name": "Czosnek biały 1 główka Polski",
+     "size": 30,
      "unit": "g",
-     "price": 7.89,
+     "price": 2.99,
      "currency": "PLN",
-     "url": "https://www.frisco.pl/pid,125179/stn,product"
+     "url": "https://www.frisco.pl/pid,4073/stn,product"
     },
     "brokul": {
      "brand": "Frisco Fresh",
@@ -197,13 +197,13 @@
      "url": "https://www.frisco.pl/pid,8546/stn,product"
     },
     "indyk_filet": {
-     "brand": "Indykpol",
-     "name": "Paluszki z fileta z piersi indyka",
-     "size": 300,
+     "brand": "Limeko",
+     "name": "Filet z piersi indyka mrożony BIO",
+     "size": 400,
      "unit": "g",
-     "price": 21.99,
+     "price": 65.99,
      "currency": "PLN",
-     "url": "https://www.frisco.pl/pid,148296/stn,product"
+     "url": "https://www.frisco.pl/pid,151942/stn,product"
     },
     "wolowina": {
      "brand": "Frisco Fresh",
@@ -420,13 +420,13 @@
      "url": "https://www.frisco.pl/pid,40046/stn,product"
     },
     "tunczyk": {
-     "brand": "Lisner",
-     "name": "Tuńczyk - stek z kroplą sosu własnego",
+     "brand": "Pan Do Mar",
+     "name": "Tuńczyk bonito w sosie własnym",
      "size": 120,
      "unit": "g",
-     "price": 9.29,
+     "price": 15.89,
      "currency": "PLN",
-     "url": "https://www.frisco.pl/pid,148633/stn,product"
+     "url": "https://www.frisco.pl/pid,82191/stn,product"
     },
     "pomidory_puszka": {
      "brand": "Happy Frucht",
@@ -573,13 +573,13 @@
      "url": "https://www.frisco.pl/pid,33881/stn,product"
     },
     "krewetki": {
-     "brand": "Frosta",
-     "name": "Krewetki z ryżem w stylu orientalnym mrożone",
+     "brand": "My Food",
+     "name": "Krewetki koktajlowe 200/300 mrożone",
      "size": 400,
      "unit": "g",
-     "price": 13.49,
+     "price": 37.99,
      "currency": "PLN",
-     "url": "https://www.frisco.pl/pid,131942/stn,product"
+     "url": "https://www.frisco.pl/pid,87157/stn,product"
     },
     "quinoa": {
      "brand": "Big Nature",
@@ -735,13 +735,13 @@
      "url": "https://www.frisco.pl/pid,92877/stn,product"
     },
     "sezam": {
-     "brand": "Grzybki",
-     "name": "Bajgiel z sezamem i siemieniem lnianym",
-     "size": 80,
+     "brand": "Kresto",
+     "name": "Sezam",
+     "size": 200,
      "unit": "g",
-     "price": 4.15,
+     "price": 7.19,
      "currency": "PLN",
-     "url": "https://www.frisco.pl/pid,144645/stn,product"
+     "url": "https://www.frisco.pl/pid,98741/stn,product"
     },
     "slonecznik": {
      "brand": "Bakalland",
@@ -807,13 +807,13 @@
      "url": "https://www.frisco.pl/pid,104065/stn,product"
     },
     "batat": {
-     "brand": "House Of Asia",
-     "name": "Makaron z batatów (bezglutenowy)",
-     "size": 200,
+     "brand": "Frisco Fresh",
+     "name": "Ziemniaki bataty słodkie 2-5 szt (800g-1200g)",
+     "size": 1000,
      "unit": "g",
-     "price": 11.19,
+     "price": 11.59,
      "currency": "PLN",
-     "url": "https://www.frisco.pl/pid,153164/stn,product"
+     "url": "https://www.frisco.pl/pid,6502/stn,product"
     },
     "pieczarki": {
      "brand": "Frisco Fresh",
@@ -853,12 +853,12 @@
     },
     "gruszka": {
      "brand": "Frisco Fresh",
-     "name": "Gruszka chińska - Nashi",
-     "size": 225,
+     "name": "Gruszka Lukasówka 3-4 szt. (800g-1200g)",
+     "size": 1000,
      "unit": "g",
-     "price": 8.09,
+     "price": 8.69,
      "currency": "PLN",
-     "url": "https://www.frisco.pl/pid,38337/stn,product"
+     "url": "https://www.frisco.pl/pid,39672/stn,product"
     },
     "pomarancza": {
      "brand": "Frisco Fresh",
@@ -1175,15 +1175,6 @@
      "currency": "PLN",
      "url": "https://www.frisco.pl/pid,145799/stn,product"
     },
-    "pesto": {
-     "brand": "Sacla",
-     "name": "Makaron tagliatelle z pesto bazyliowym",
-     "size": 80,
-     "unit": "g",
-     "price": 11.69,
-     "currency": "PLN",
-     "url": "https://www.frisco.pl/pid,153315/stn,product"
-    },
     "pasta_curry": {
      "brand": "Kanokwan",
      "name": "Pasta curry czerwona bezglutenowa",
@@ -1284,10 +1275,8 @@
     },
     "czosnek": {
      "brand": "",
-     "name": "Smak Marynowany czosnek z ziołami, 190 g",
-     "size": 190,
-     "unit": "g",
-     "price": 6.79,
+     "name": "Czosnek młody 1 sztuka",
+     "price": 3.69,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -1363,10 +1352,10 @@
     },
     "jablko": {
      "brand": "",
-     "name": "Carrefour Ocet jabłkowy 6%, 225 ml",
-     "size": 225,
-     "unit": "ml",
-     "price": 5.99,
+     "name": "Sante Smalczyk jabłko z cebulką, 175 g",
+     "size": 175,
+     "unit": "g",
+     "price": 9.99,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -1386,21 +1375,10 @@
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
-    "piers": {
-     "brand": "",
-     "name": "Tarczyński Parówki premium z fileta z kurczaka (2 x 90 g), 180 g",
-     "size": 90,
-     "unit": "g",
-     "price": 10.39,
-     "currency": "PLN",
-     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
-    },
     "losos": {
      "brand": "",
-     "name": "Żel do włosów, 250 ml",
-     "size": 250,
-     "unit": "ml",
-     "price": 7.99,
+     "name": "Dynia ozdobna 1szt losowa",
+     "price": 4.99,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -1494,10 +1472,10 @@
     },
     "ryz": {
      "brand": "",
-     "name": "House of Asia Ryż do sushi, 500 g",
-     "size": 500,
+     "name": "Cenos Płatki ryżowe błyskawiczne 400 g",
+     "size": 400,
      "unit": "g",
-     "price": 11.99,
+     "price": 6.19,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -1681,30 +1659,12 @@
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
-    "krewetki": {
-     "brand": "",
-     "name": "MyFood Krewetki z masełkiem czosnkowym, 250 g",
-     "size": 250,
-     "unit": "g",
-     "price": 29.99,
-     "currency": "PLN",
-     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
-    },
     "kuskus": {
      "brand": "",
      "name": "Mc Kasza Kuskus, 250 G",
      "size": 250,
      "unit": "g",
      "price": 4.99,
-     "currency": "PLN",
-     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
-    },
-    "jaglana": {
-     "brand": "",
-     "name": "Sante Paprykarz z kaszą jaglaną, 180 g",
-     "size": 180,
-     "unit": "g",
-     "price": 8.99,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -1746,19 +1706,10 @@
     },
     "kakao": {
      "brand": "",
-     "name": "Ciastka z kremem kakaowo-orzechowym, 150 g",
-     "size": 150,
+     "name": "Wawel Wafle kakaowe bez dodatku cukru, 110 g",
+     "size": 110,
      "unit": "g",
-     "price": 6.99,
-     "currency": "PLN",
-     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
-    },
-    "czekolada": {
-     "brand": "",
-     "name": "Carrefour Skórka Pomarańczowa kandyzowana w gorzkiej czekoladzie, 80 g",
-     "size": 80,
-     "unit": "g",
-     "price": 6.99,
+     "price": 8.99,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -1791,19 +1742,19 @@
     },
     "sezam": {
      "brand": "",
-     "name": "Melvit Crisper Pieczywo chrupkie orkiszowe ze słonecznikiem sezamem siemieniem, 100 g",
-     "size": 100,
+     "name": "Sante Sezam, 300 g",
+     "size": 300,
      "unit": "g",
-     "price": 4.99,
+     "price": 12.99,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
     "slonecznik": {
      "brand": "",
-     "name": "Bułka pszenno-żytnia ze słonecznikiem, 90 g",
-     "size": 90,
+     "name": "Mc Słonecznik łuskany 180 g",
+     "size": 180,
      "unit": "g",
-     "price": 2.99,
+     "price": 6.99,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -1863,10 +1814,10 @@
     },
     "pieczarki": {
      "brand": "",
-     "name": "Dr. Oetker Guseppe Pizza z szynką i pieczarkami, 425 g",
-     "size": 425,
+     "name": "Kuchnia Krokiety Kuchnia z pieczarkami i serem, 350 g",
+     "size": 350,
      "unit": "g",
-     "price": 14.99,
+     "price": 21.99,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -1879,10 +1830,10 @@
     },
     "borowki": {
      "brand": "",
-     "name": "Wyborowa Wódka, 200 ml",
-     "size": 200,
-     "unit": "ml",
-     "price": 27.99,
+     "name": "Borówka 250 g",
+     "size": 250,
+     "unit": "g",
+     "price": 22.99,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -1954,19 +1905,17 @@
     },
     "imbir": {
      "brand": "",
-     "name": "House of Asia Imbir różowy, 190 g",
-     "size": 190,
+     "name": "BioLife Imbir kandyzowany bio, 100 g",
+     "size": 100,
      "unit": "g",
-     "price": 11.99,
+     "price": 9.99,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
     "koperek": {
      "brand": "",
-     "name": "Kopernik Wafel teatralny w czekoladzie, 40 g",
-     "size": 40,
-     "unit": "g",
-     "price": 2.99,
+     "name": "Koperek pęczek",
+     "price": 4.59,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -1974,15 +1923,6 @@
      "brand": "",
      "name": "Natka pietruszki pęczek",
      "price": 4.59,
-     "currency": "PLN",
-     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
-    },
-    "jagniecina": {
-     "brand": "",
-     "name": "Rafi Karma z jagnięciną, 300 g",
-     "size": 300,
-     "unit": "g",
-     "price": 6.49,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -2010,15 +1950,6 @@
      "size": 300,
      "unit": "g",
      "price": 16.99,
-     "currency": "PLN",
-     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
-    },
-    "ysa": {
-     "brand": "",
-     "name": "Sante Skarby Ziemi Ostropest plamisty odtłuszczony drobno mielony, 150 g",
-     "size": 150,
-     "unit": "g",
-     "price": 8.69,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -2067,15 +1998,6 @@
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
-    "ricotta": {
-     "brand": "",
-     "name": "Ravioli Bio z twarogiem serem ricotta i emmentaler oraz bazylią 250g",
-     "size": 250,
-     "unit": "g",
-     "price": 12.99,
-     "currency": "PLN",
-     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
-    },
     "halloumi": {
      "brand": "",
      "name": "Dairy Crafters Ser halloumi, 180 g",
@@ -2100,15 +2022,6 @@
      "size": 1000,
      "unit": "ml",
      "price": 15.99,
-     "currency": "PLN",
-     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
-    },
-    "mleczko_kokosowe": {
-     "brand": "",
-     "name": "Ziaja Kokosowa terapia skóry i zmysłów Mleczko pod prysznic, 500 ml",
-     "size": 500,
-     "unit": "ml",
-     "price": 10.99,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
