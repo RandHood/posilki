@@ -60,7 +60,7 @@ p{margin:0}
 .muted{color:var(--muted)}
 .small{font-size:14px}
 .num{font-variant-numeric:tabular-nums}
-.wrap{max-width:560px;margin:0 auto;padding:14px 18px 110px}
+.wrap{max-width:560px;margin:0 auto;padding:22px 18px 104px}
 .hidden{display:none!important}
 
 /* Buttons and fields */
@@ -242,7 +242,7 @@ p{margin:0}
 #overlay{position:fixed;inset:0;z-index:40;background:var(--ground);overflow:auto;padding-top:env(safe-area-inset-top,0px);display:none;-webkit-overflow-scrolling:touch}
 #overlay.open{display:block}
 /* Page header stays pinned while the page scrolls, so Back is always in reach. */
-.pagehead{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:6px;margin:0 -4px 10px;padding:8px 4px;pointer-events:none}
+.pagehead{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:6px;margin:0 -4px 10px;padding:14px 4px 8px;pointer-events:none}
 .pagehead > *{pointer-events:auto}
 .back{display:grid;place-items:center;width:44px;height:44px;padding:0;border-radius:50%;border:1px solid var(--line);background:var(--surface);color:var(--ink);box-shadow:0 2px 8px rgba(0,0,0,.12)}
 .pagehead .iconbtn{background:var(--surface);border:1px solid var(--line);box-shadow:0 2px 8px rgba(0,0,0,.12)}
@@ -342,7 +342,7 @@ input[type=search].field{padding-left:44px;background:var(--surface) url("data:i
 .pcal.over b{color:var(--warn)}
 .overpill{display:inline-block;margin-left:8px;padding:2px 8px;border-radius:99px;background:var(--warn-soft);color:var(--warn);font-size:12px;font-weight:600;vertical-align:2px}
 .slotlbl{text-transform:uppercase;letter-spacing:.06em;font-size:11px;font-weight:600}
-#tabs{left:12px;right:12px;bottom:calc(10px + env(safe-area-inset-bottom,0px));padding:6px;border:1px solid var(--line);border-radius:24px;box-shadow:0 8px 28px rgba(23,35,28,.14);background:color-mix(in srgb,var(--surface) 88%,transparent);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px)}
+#tabs{left:12px;right:12px;bottom:max(6px,calc(env(safe-area-inset-bottom,0px) - 12px));padding:6px;border:1px solid var(--line);border-radius:24px;box-shadow:0 8px 28px rgba(23,35,28,.14);background:color-mix(in srgb,var(--surface) 88%,transparent);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px)}
 #tabs button{border-radius:18px;min-height:54px}
 #tabs button[aria-current="page"]{background:var(--beet-soft)}
 .badge{top:4px}
@@ -383,6 +383,56 @@ input[type=search].field{padding-left:44px;background:var(--surface) url("data:i
 .storedd.prow .sb{width:24px;height:24px;border-radius:7px;font-size:13px}
 .panel .ddwrap{top:calc(100% + 6px)}
 .pthemes{padding:16px 0 4px;border:0}
+/* Page transitions: new pages slide in from the right, Back slides them out again */
+#overlay.pg-in{animation:pgIn .34s cubic-bezier(.32,.72,0,1);box-shadow:-12px 0 32px rgba(0,0,0,.12)}
+#overlay.pg-back{animation:pgBack .3s cubic-bezier(.32,.72,0,1)}
+@keyframes pgIn{from{transform:translateX(100%)}}
+@keyframes pgBack{from{transform:translateX(-22%);opacity:.7}}
+.pgghost{position:fixed;inset:0;overflow:hidden;background:var(--ground);padding-top:env(safe-area-inset-top,0px);pointer-events:none}
+.pgghost.under{z-index:39;animation:pgUnder .34s cubic-bezier(.32,.72,0,1) forwards}
+.pgghost.out{z-index:42;animation:pgOut .3s cubic-bezier(.32,.72,0,1) forwards;box-shadow:-12px 0 32px rgba(0,0,0,.12)}
+@keyframes pgUnder{to{transform:translateX(-22%);opacity:.7}}
+@keyframes pgOut{to{transform:translateX(100%)}}
+/* Recipes */
+.req{margin-left:6px;padding:1px 7px;border-radius:99px;background:var(--beet-soft);color:var(--beet);font-size:11px;font-weight:600;vertical-align:1px}
+.field.area{display:block;min-height:48px;padding:12px 14px;line-height:1.4;resize:none;overflow:hidden}
+.rlist{display:grid;margin-top:6px}
+.ritem{display:flex;align-items:center;gap:12px;min-height:60px;padding:8px 0;border-bottom:1px solid var(--line)}
+.ritem:last-child{border-bottom:0}
+.ritem .grow{flex:1;min-width:0}
+.ritem b{display:block;font-weight:600;line-height:1.25}
+.ritem small{display:block;color:var(--muted);font-size:13px;font-variant-numeric:tabular-nums}
+.edot{flex:0 0 44px;width:44px;height:44px;border-radius:14px;background:var(--tint);display:grid;place-items:center;font-size:24px;line-height:1}
+.ritem.on .edot{background:var(--dill-soft)}
+.ctr{display:inline-flex;align-items:center;gap:2px;flex:0 0 auto;padding:3px;border-radius:99px;background:var(--tint)}
+.ctr button{width:34px;height:34px;padding:0;border:0;border-radius:50%;background:var(--surface);display:grid;place-items:center;color:var(--ink);box-shadow:var(--shadow)}
+.ctr button:disabled{opacity:.35;box-shadow:none;background:transparent;cursor:default}
+.ctr b{min-width:26px;text-align:center;font:700 16px var(--f-head)}
+.rsteps,.vsteps{list-style:none;margin:10px 0 0;padding:0;display:grid;gap:10px}
+.rsteps li,.vsteps li{display:flex;align-items:flex-start;gap:10px}
+.rsteps .field{flex:1;min-width:0}
+.snum{flex:0 0 28px;width:28px;height:28px;margin-top:10px;border-radius:50%;background:var(--beet-soft);color:var(--beet);display:grid;place-items:center;font:700 14px var(--f-head)}
+.vsteps .snum{margin-top:0}
+.vsteps p{max-width:60ch;padding-top:3px}
+.rsteps .iconbtn{margin-top:6px}
+.addstep{display:inline-flex;align-items:center;color:var(--beet);font-weight:600;text-decoration:none}
+.savebar{position:sticky;bottom:0;z-index:5;margin:18px -18px -40px;padding:14px 18px calc(16px + env(safe-area-inset-bottom,0px));background:linear-gradient(to bottom,transparent,var(--ground) 28%)}
+.savebar .note{text-align:center}
+.catgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.catcard{display:flex;flex-direction:column;gap:2px;padding:8px 8px 12px;border:0;border-radius:18px;background:var(--surface);box-shadow:var(--shadow);text-align:left}
+.catcard b{padding:6px 4px 0;font:600 15px/1.25 var(--f-head)}
+.catcard small{padding:0 4px;color:var(--muted);font-size:13px}
+.catpic{position:relative;display:block;height:92px;border-radius:12px;background:var(--tile);overflow:hidden}
+.catpic i{position:absolute;font-style:normal;line-height:1}
+.catpic i:nth-child(1){left:12%;top:30%;font-size:34px;transform:rotate(-12deg)}
+.catpic i:nth-child(2){left:38%;top:16%;font-size:46px}
+.catpic i:nth-child(3){right:10%;top:36%;font-size:32px;transform:rotate(10deg)}
+.pill.own{background:var(--beet-soft);color:var(--beet)}
+.btn.watch{gap:8px;text-decoration:none}
+.btn.watch span{font-size:20px;line-height:1}
+.libnew{margin:0 0 6px}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .catpic{background:color-mix(in srgb,var(--tile) 16%,var(--surface))}}
+:root[data-theme="dark"] .catpic{background:color-mix(in srgb,var(--tile) 16%,var(--surface))}
 </style>
 </head>
 <body>
@@ -985,7 +1035,7 @@ function applyTheme(){
   var root=document.documentElement;
   if(S.theme==='light'||S.theme==='dark') root.setAttribute('data-theme',S.theme); else root.removeAttribute('data-theme');
   var meta=document.querySelector('meta[name="theme-color"]');
-  if(meta) meta.setAttribute('content',isDark()?'#0F1411':'#EDF0EA');
+  if(meta) meta.setAttribute('content',isDark()?'#0F1411':'#F1F3EE');
 }
 function themeSeg(){
   return '<div class="seg" role="group" aria-label="Appearance">'+[['system','System'],['light','Light'],['dark','Dark']].map(function(o){
@@ -1105,7 +1155,7 @@ function suggestions(slot,n){
 
 /* ---------- UI state ---------- */
 var UI={tab:'home',ob:{step:1,name:'',country:null},stack:[],pendingImport:null,filter:'all',cats:[],q:'',limit:40,sheet:null,prepDay:todayIdx(),panel:false,storeOpen:false,countryOpen:false,langOpen:false,shuffle:0,sugSlot:null};
-var TABS=[['home','Home'],['meals','Meals'],['prep','Prep'],['shopping','Shopping']];
+var TABS=[['home','Home'],['meals','Meals'],['library','Library'],['prep','Prep'],['shopping','Shopping']];
 
 /* ---------- Onboarding ---------- */
 function renderOnboarding(){
@@ -1145,7 +1195,7 @@ function render(){
   if(UI.stack.length) renderOverlay();
 }
 function renderTop(){
-  var title={home:'Home',meals:'Meals',prep:'Prep',shopping:'Shopping'}[UI.tab];
+  var title={home:'Home',meals:'Meals',library:'Library',prep:'Prep',shopping:'Shopping'}[UI.tab];
   var day=new Date().toLocaleDateString('en-GB',{weekday:'long',day:'numeric',month:'short'});
   $('top').innerHTML='<div class="top"><h1><small class="eyebrow">'+day+'</small>'+title+'</h1><button class="avatar" data-a="openPanel" aria-label="Open menu">'+esc(initial(S.profile.name))+'</button></div>';
 }
@@ -1176,6 +1226,7 @@ function renderView(){
   var v=$('view'), html='';
   if(UI.tab==='home') html=homeView();
   else if(UI.tab==='meals') html=mealsView();
+  else if(UI.tab==='library') html=libraryView();
   else if(UI.tab==='prep') html=prepView();
   else html=shoppingView();
   v.innerHTML=html;
@@ -1218,7 +1269,7 @@ function mealResults(){
     (arr.length>shown.length?'<button class="btn block" data-a="moreMeals" style="margin-top:14px">Show more ('+(arr.length-shown.length)+' left)</button>':'');
 }
 function mealsView(){
-  var F=[['all','All'],['breakfast','Breakfast'],['lunch','Lunch'],['dinner','Dinner'],['snack','Snacks'],['favs','Favorites'],['mine','My recipes']];
+  var F=[['all','All'],['breakfast','Breakfast'],['lunch','Lunch'],['dinner','Dinner'],['snack','Snacks'],['favs','Favorites'],['mine','Recipes']];
   return '<input id="mealSearch" class="field" type="search" placeholder="Search meals or ingredients" aria-label="Search meals" value="'+esc(UI.q)+'">'+
     '<div class="chips" style="margin-top:12px" role="group" aria-label="Meal type">'+F.map(function(f){return '<button class="chip" data-a="filter" data-f="'+f[0]+'" aria-pressed="'+(UI.filter===f[0])+'">'+f[1]+'</button>';}).join('')+'</div>'+
     '<div class="catshead"><span>Categories</span>'+(UI.cats.length?'<button class="linkbtn" data-a="clearCats">Clear</button>':'')+'</div>'+
@@ -1337,7 +1388,6 @@ function panelHtml(){
         var on=st===cur;
         return '<button role="radio" data-a="panelStorePick" data-store="'+esc(st)+'" aria-checked="'+on+'"'+(UI.storeOpen?'':' tabindex="-1"')+'>'+badge(st)+'<span class="grow">'+esc(st)+'</span>'+(on?'<span class="check">'+svg('check',18)+'</span>':'')+'</button>';
       }).join('')+'</div></div></div></div>'+
-    '<button class="prow" data-a="openLibrary">'+svg('library')+'<span class="grow">Library</span><span class="chev">'+svg('chev',20)+'</span></button>'+
     '<div class="pthemes"><p>Appearance</p>'+themeSeg()+'</div>'+
     '<button class="prow" data-a="openSettings">'+svg('gear')+'<span class="grow">Settings</span><span class="chev">'+svg('chev',20)+'</span></button>'+
     '<div class="pfoot">Posiłki '+APP_VERSION+'</div></aside>';
@@ -1367,9 +1417,24 @@ function setStoreOpen(open){
 }
 
 /* ---------- Full-screen pages (a stack, so Back returns to the previous page) ---------- */
-function pushPage(p){ closePanel(); UI.stack.push(p); document.body.classList.add('noscroll'); renderOverlay(); $('overlay').scrollTop=0; }
+function motionOK(){ try{ return !window.matchMedia('(prefers-reduced-motion: reduce)').matches; }catch(e){ return true; } }
+// A still copy of the page on screen, so it can slide away while the next one is drawn.
+function pageGhost(cls){
+  var o=$('overlay'), g=document.createElement('div'); g.className='pgghost '+cls; g.setAttribute('aria-hidden','true');
+  g.innerHTML=o.innerHTML; if(g.firstElementChild) g.firstElementChild.style.marginTop=(-o.scrollTop)+'px';
+  document.body.appendChild(g); setTimeout(function(){ g.remove(); },420);
+}
+function animatePage(cls){ var o=$('overlay'); o.classList.remove('pg-in','pg-back'); void o.offsetWidth; o.classList.add(cls); setTimeout(function(){ o.classList.remove(cls); },420); }
+function pushPage(p){
+  closePanel(); var anim=motionOK(), shown=UI.stack.length&&$('overlay').classList.contains('open');
+  if(anim&&shown) pageGhost('under');
+  UI.stack.push(p); document.body.classList.add('noscroll'); renderOverlay(); $('overlay').scrollTop=0;
+  if(anim) animatePage('pg-in');
+}
 function popPage(){
+  if(motionOK()&&$('overlay').classList.contains('open')) pageGhost('out');
   UI.stack.pop();
+  if(UI.stack.length&&motionOK()) animatePage('pg-back');
   if(!UI.stack.length){ $('overlay').classList.remove('open'); $('overlay').innerHTML=''; document.body.classList.remove('noscroll'); if(location.hash) history.replaceState(null,'',location.pathname+location.search); render(); }
   else renderOverlay();
 }
@@ -1382,11 +1447,13 @@ function renderOverlay(){
   var p=top(); if(!p) return;
   var o=$('overlay'), y=o.scrollTop, html='';
   if(p.type==='settings') html=settingsPage();
-  else if(p.type==='library') html=libraryPage();
   else if(p.type==='lib') html=libSection(p);
   else if(p.type==='meal') html=mealPage(p);
+  else if(p.type==='recipeEdit') html=recipeEditPage(p);
+  else if(p.type==='ingPick') html=ingPickPage(p);
   o.innerHTML='<div class="wrap" style="padding-bottom:calc(40px + env(safe-area-inset-bottom,0px))">'+html+'</div>';
   o.classList.add('open');
+  o.querySelectorAll('textarea.area').forEach(autosize);
   if(p.keepScroll){ o.scrollTop=y; p.keepScroll=false; }
 }
 function targetBlock(key,t){
@@ -1433,14 +1500,14 @@ function settingsPage(){
 }
 var LIB=[
   ['favorites','Favorites','Meals you’ve hearted.'],
-  ['recipes','My recipes','Your edited versions of meals.'],
+  ['recipes','Recipes','Meals you created and your versions of meals.'],
   ['collections','Collections','Groups you name yourself, like “Quick dinners”.'],
   ['weeks','Saved weeks','Meal-prep weeks you can reuse.'],
   ['lists','Saved shopping lists','Lists you can shop from again.'],
   ['history','History','Meals you marked as cooked.']
 ];
-function libraryPage(){
-  return pageHead('Library')+LIB.map(function(r){
+function libraryView(){
+  return LIB.map(function(r){
     return '<button class="librow" data-a="openLib" data-sec="'+r[0]+'"><span class="grow"><h3>'+r[1]+'</h3><span class="small muted">'+r[2]+'</span></span><span class="count">'+S.library[r[0]].length+'</span><span class="chev">'+svg('chev',20)+'</span></button>';
   }).join('');
 }
@@ -1450,7 +1517,7 @@ function libSection(p){
     var f=L.favorites.map(getMeal).filter(Boolean);
     body=f.length?f.map(function(m){return mealRow(m);}).join(''):'<p class="empty">No favorites yet. Tap Save to favorites on any meal page.</p>';
   } else if(sec==='recipes'){
-    body=L.recipes.length?L.recipes.map(function(m){return mealRow(m,'Based on '+esc((MB[m.base]||{}).name||'a meal'));}).join(''):'<p class="empty">No recipes yet. Open any meal, change the grams of its ingredients and tap Save my version.</p>';
+    body='<button class="btn primary block libnew" data-a="newRecipe">'+svg('plus',18)+'New recipe</button>'+(L.recipes.length?L.recipes.map(function(m){return mealRow(m,m.own?'Your recipe':'Based on '+esc((MB[m.base]||{}).name||'a meal'));}).join(''):'<p class="empty">No recipes yet. Tap New recipe to write your own, or open any meal, change the grams and tap Save my version.</p>');
   } else if(sec==='collections'){
     if(p.cid){
       var col=L.collections.filter(function(c){return c.id===p.cid;})[0];
@@ -1481,6 +1548,115 @@ function libSection(p){
 }
 
 /* ---------- Meal page ---------- */
+/* ---------- Your own recipes: create, view and edit ---------- */
+var ING_EMOJI={pomidor:'🍅',ogorek:'🥒',papryka:'🫑',cebula:'🧅',czosnek:'🧄',brokul:'🥦',szpinak:'🥬',marchew:'🥕',ziemniaki:'🥔',kapusta:'🥬',
+  cukinia:'🥒',dynia:'🎃',rzodkiewki:'🌱',salata:'🥗',rukola:'🌿',banan:'🍌',jablko:'🍎',cytryna:'🍋',szczypiorek:'🌿',
+  piers:'🍗',indyk_mielone:'🥩',indyk_filet:'🦃',wolowina:'🥩',losos:'🐟',dorsz:'🐟',szynka:'🥓',
+  jajka:'🥚',twarog:'🧀',skyr:'🥛',jogurt:'🥛',serek:'🧀',feta:'🧀',mleko:'🥛',kefir:'🥛',maslo:'🧈',chleb:'🍞',tortilla:'🫓',
+  platki:'🥣',ryz:'🍚',gryczana:'🌾',jeczmienna:'🌾',makaron:'🍝',soczewica:'🫘',maka:'🌾',wloskie:'🌰',migdaly:'🌰',pestki:'🎃',
+  tunczyk:'🐟',pomidory_puszka:'🥫',fasola:'🫘',hummus:'🫘',soja:'🍶',maliny:'🍓',warzywa_mr:'🥦',fasolka:'🫛',olej:'🌼',oliwa:'🫒',
+  ciecierzyca:'🫘',fasola_biala:'🫘',kukurydza:'🌽',groszek:'🫛',szpinak_mr:'🥬',owoce_lesne:'🫐',mango:'🥭',pierogi:'🥟',krewetki:'🦐',
+  quinoa:'🌾',kuskus:'🌾',bulgur:'🌾',ryz_brazowy:'🍚',jaglana:'🌾',makaron_ryzowy:'🍜',spaghetti:'🍝',gnocchi:'🥔',bulka_tarta:'🍞',odzywka:'🥤',
+  maslo_orzechowe:'🥜',miod:'🍯',kakao:'🍫',czekolada:'🍫',daktyle:'🌴',rodzynki:'🍇',chia:'🌱',sezam:'🌱',slonecznik:'🌻',nerkowce:'🥜',orzeszki:'🥜',
+  wafle:'🍘',grahamka:'🥯',pita:'🫓',tost:'🍞',flatkaka:'🫓',batat:'🍠',pieczarki:'🍄',awokado:'🥑',borowki:'🫐',truskawki:'🍓',gruszka:'🍐',
+  pomarancza:'🍊',kiwi:'🥝',burak:'🫜',cebula_czerwona:'🧅',por:'🥬',seler:'🥬',kalafior:'🥦',baklazan:'🍆',jarmuz:'🥬',pomidorki:'🍅',limonka:'🍋‍🟩',
+  imbir:'🫚',koperek:'🌿',pietruszka:'🌿',schab:'🥩',poledwiczka:'🥩',wolowina_mielona:'🥩',udka:'🍗',jagniecina:'🍖',kielbasa:'🌭',losos_wedz:'🐟',
+  makrela:'🐟',sledz:'🐟',ysa:'🐟',bleikja:'🐟',tofu:'🧊',twarog_chudy:'🧀',jogurt_grecki:'🥛',mozzarella:'🧀',parmezan:'🧀',ser_zolty:'🧀',
+  serek_smietankowy:'🧀',ricotta:'🧀',halloumi:'🧀',smietana:'🥛',napoj_sojowy:'🥛',mleczko_kokosowe:'🥥',passata:'🥫',koncentrat:'🥫',
+  kapusta_kiszona:'🥬',ogorki_kiszone:'🥒',oliwki:'🫒',pesto:'🌿',pasta_curry:'🌶️',ryba_puszka:'🐟'};
+// Anything not listed above falls back to its aisle's emoji.
+var AISLE_EMOJI={produce:'🥬',meat:'🥩',dairy:'🧀',bread:'🍞',dry:'🌾',cans:'🥫',frozen:'❄️',fats:'🫒'};
+// Each aisle's picture: a tinted tile with three of its foods.
+var AISLE_ART={produce:['#DDEFD3','🥕','🍅','🥦'],meat:['#F6DCD6','🥩','🍗','🐟'],dairy:['#E2EAF5','🧀','🥛','🥚'],bread:['#F4E4C9','🫓','🍞','🥐'],
+  dry:['#EFE5CF','🍚','🍝','🌰'],cans:['#F4DDD0','🫘','🥫','🍶'],frozen:['#D8ECF2','🍓','❄️','🫛'],fats:['#EBEFD0','🧈','🫒','🫗']};
+function ingEmoji(k){ return ING_EMOJI[k]||AISLE_EMOJI[(ING[k]||{}).a]||'🍽️'; }
+// One tap of + adds one piece where the food comes in pieces, otherwise a usual kitchen amount.
+var STEP_G={pietruszka:10,koperek:10,imbir:10,parmezan:20,pesto:20,miod:10,kakao:10,czekolada:20,chia:10,sezam:10,slonecznik:10,nerkowce:15,orzeszki:15,rodzynki:15,daktyle:20,maslo_orzechowe:15,odzywka:30,bulka_tarta:20,oliwki:30,koncentrat:15,pasta_curry:15,smietana:30,serek_smietankowy:30,
+  quinoa:50,kuskus:50,bulgur:50,ryz_brazowy:50,jaglana:50,makaron_ryzowy:50,spaghetti:50,czosnek:5,maslo:10,wloskie:15,migdaly:15,pestki:10,feta:50,szczypiorek:5,hummus:30,soja:10,olej:10,oliwa:10,platki:50,ryz:50,gryczana:50,jeczmienna:50,makaron:50,soczewica:50,maka:50};
+function ingStep(k){ var x=ING[k]; return x.piece||STEP_G[k]||100; }
+function stepText(k){ var x=ING[k]; return x.piece?'1 piece ≈ '+x.piece+' '+x.u:'Each + adds '+ingStep(k)+' '+x.u; }
+function amountText(k,n){ var x=ING[k]; return n+' × '+ingStep(k)+' '+x.u+' = '+nf(n*ingStep(k))+' '+x.u; }
+function newDraft(){ return {name:'',desc:'',cnt:{},order:[],steps:[''],video:''}; }
+function draftFrom(m){
+  var d={id:m.id,name:m.name,desc:m.desc||'',cnt:{},order:[],steps:(m.steps&&m.steps.length?m.steps.slice():['']),video:m.video||''};
+  m.ing.forEach(function(x){ d.cnt[x[0]]=Math.max(1,Math.round(x[1]/ingStep(x[0]))); d.order.push(x[0]); });
+  return d;
+}
+function draftItems(d){ return d.order.filter(function(k){return d.cnt[k]>0&&ING[k];}); }
+function videoUrl(v){ v=(v||'').trim(); if(!v) return ''; if(!/^https?:\/\//i.test(v)) v='https://'+v; return /^https?:\/\/[^\s/]+\.[^\s]+/i.test(v)?v:''; }
+function counter(k,n){
+  return '<span class="ctr"><button data-a="rCnt" data-k="'+k+'" data-d="-1" aria-label="Remove one '+esc(ING[k].en)+'"'+(n>0?'':' disabled')+'>'+svg('minus',18)+'</button>'+
+    '<b class="num" aria-live="polite">'+n+'</b><button data-a="rCnt" data-k="'+k+'" data-d="1" aria-label="Add one '+esc(ING[k].en)+'">'+svg('plus',18)+'</button></span>';
+}
+function emojiDot(k){ return '<span class="edot" aria-hidden="true">'+ingEmoji(k)+'</span>'; }
+function recipeEditPage(p){
+  var d=p.draft, items=draftItems(d);
+  return pageHead(d.id?'Edit recipe':'New recipe')+
+    '<section class="section"><label class="lbl" for="rName" style="margin-top:0">Name <span class="req">Required</span></label>'+
+      '<input id="rName" class="field" autocomplete="off" placeholder="For example Chicken pesto pasta" value="'+esc(d.name)+'">'+
+      '<label class="lbl" for="rDesc">Description</label>'+
+      '<textarea id="rDesc" class="field area" rows="2" placeholder="A line or two about the meal">'+esc(d.desc)+'</textarea></section>'+
+    '<section class="section"><div class="blockhead"><h2>Ingredients</h2>'+(items.length?'<span class="small muted">'+items.length+(items.length===1?' item':' items')+'</span>':'')+'</div>'+
+      (items.length?'<div class="rlist">'+items.map(function(k){
+        return '<div class="ritem">'+emojiDot(k)+'<span class="grow"><b>'+esc(cap(ING[k].en))+'</b><small>'+amountText(k,d.cnt[k])+'</small></span>'+counter(k,d.cnt[k])+'</div>';
+      }).join('')+'</div>':'<p class="note" style="margin-top:4px">Search or browse by category to add what goes in.</p>')+
+      '<button class="btn block" data-a="addIng" style="margin-top:12px">'+svg('plus',18)+'Add ingredients</button></section>'+
+    '<section class="section"><h2>Instructions</h2><ol class="rsteps">'+d.steps.map(function(s,i){
+        return '<li><span class="snum" aria-hidden="true">'+(i+1)+'</span><textarea class="field area" rows="1" data-step="'+i+'" aria-label="Step '+(i+1)+'" placeholder="'+(i===0?'For example: Boil the pasta for 10 minutes':'Next step')+'">'+esc(s)+'</textarea>'+
+          '<button class="iconbtn sm" data-a="delStep" data-i="'+i+'" aria-label="Remove step '+(i+1)+'">'+svg('x',18)+'</button></li>';
+      }).join('')+'</ol><button class="linkbtn addstep" data-a="addStep">'+svg('plus',18)+'Add step</button>'+
+      '<p class="note">Press return at the end of a step to start the next one.</p></section>'+
+    '<section class="section"><h2>Video</h2><label class="lbl" for="rVideo" style="margin-top:6px">Link to a video of this meal</label>'+
+      '<input id="rVideo" class="field" type="url" inputmode="url" autocomplete="off" placeholder="Paste a YouTube, TikTok or Instagram link" value="'+esc(d.video)+'"></section>'+
+    '<p class="note" style="margin-top:12px">Anything you leave empty stays hidden on the recipe.</p>'+
+    '<div class="savebar"><button class="btn primary block" data-a="saveRecipe" id="rSave"'+(d.name.trim()?'':' disabled')+'>Save</button>'+
+      '<p class="note" id="rSaveNote"'+(d.name.trim()?' style="display:none"':'')+'>Give the recipe a name to save it.</p></div>';
+}
+function ingResults(p){
+  var d=p.draft, q=(p.q||'').trim().toLowerCase();
+  function rows(keys){ return keys.length?'<div class="rlist">'+keys.map(function(k){
+    var n=d.cnt[k]||0;
+    return '<div class="ritem'+(n?' on':'')+'">'+emojiDot(k)+'<span class="grow"><b>'+esc(cap(ING[k].en))+'</b><small>'+(n?amountText(k,n):stepText(k))+'</small></span>'+counter(k,n)+'</div>';
+  }).join('')+'</div>':'<p class="empty">Nothing matches “'+esc(p.q)+'”. Try another word, like rice or chicken.</p>'; }
+  if(q) return rows(Object.keys(ING).filter(function(k){var x=ING[k];return (x.en+' '+x.pl).toLowerCase().indexOf(q)>-1;}));
+  if(p.cat) return rows(Object.keys(ING).filter(function(k){return ING[k].a===p.cat;}));
+  return '<div class="catgrid">'+AISLES.map(function(a){
+    var art=AISLE_ART[a[0]], n=Object.keys(ING).filter(function(k){return ING[k].a===a[0];}).length;
+    var picked=Object.keys(d.cnt).filter(function(k){return d.cnt[k]>0&&ING[k]&&ING[k].a===a[0];}).length;
+    return '<button class="catcard" data-a="ingCat" data-cat="'+a[0]+'"><span class="catpic" style="--tile:'+art[0]+'" aria-hidden="true"><i>'+art[1]+'</i><i>'+art[2]+'</i><i>'+art[3]+'</i></span>'+
+      '<b>'+esc(a[2])+'</b><small>'+n+' items'+(picked?' · '+picked+' added':'')+'</small></button>';
+  }).join('')+'</div>';
+}
+function doneLabel(d){ var n=draftItems(d).length; return n?'Done · '+n+(n===1?' ingredient':' ingredients'):'Done'; }
+function ingPickPage(p){
+  var a=p.cat?AISLES.filter(function(x){return x[0]===p.cat;})[0]:null;
+  return pageHead(a?esc(a[2]):'Add ingredients')+
+    '<input id="ingSearch" class="field" type="search" placeholder="Search all ingredients" aria-label="Search ingredients" value="'+esc(p.q||'')+'">'+
+    '<div id="ingResults" style="margin-top:14px">'+ingResults(p)+'</div>'+
+    '<div class="savebar"><button class="btn primary block" data-a="ingDone" id="ingDone">'+doneLabel(p.draft)+'</button></div>';
+}
+function refreshPick(){ var p=top(); $('ingResults').innerHTML=ingResults(p); $('ingDone').textContent=doneLabel(p.draft); }
+function ownRecipePage(p,m){
+  var ing=pageIng(p), x=macrosOf(ing), fav=isFav(m.id), url=videoUrl(m.video), steps=(m.steps||[]).filter(function(s){return s.trim();});
+  return pageHead('','<button class="iconbtn" data-a="fav" data-id="'+m.id+'" aria-pressed="'+fav+'" aria-label="'+(fav?'Remove from favorites':'Save to favorites')+'">'+svg('heart',24,fav)+'</button>')+
+    mealImage(m)+
+    '<div class="mhead"><span class="pill own">Your recipe</span><h1 style="margin-top:8px">'+esc(m.name)+'</h1></div>'+
+    (m.desc&&m.desc.trim()?'<p class="mdesc">'+esc(m.desc)+'</p>':'')+
+    (ing.length?'<div id="mMacros">'+macroTable(x)+'</div><p class="mmeta" style="margin-top:0">For the whole recipe, about '+nf(x.g)+' g.</p>'+
+      '<button class="btn primary block" data-a="mealToList" style="margin-top:10px">Add ingredients to shopping list</button>':'')+
+    '<div class="btngrid"><button class="btn sm" data-a="addToPlanAsk">Add to plan</button><button class="btn sm" data-a="collectionAsk">Add to collection</button><button class="btn sm" data-a="cooked">Mark as cooked</button></div>'+
+    (ing.length?'<section class="section" style="margin-top:18px"><h2>Ingredients</h2>'+
+      '<div class="storeline"><span class="small muted">Products from</span><button class="storebtn" data-a="pickStore" data-scope="meal">'+badge(p.store)+'<span>'+esc(p.store)+'</span><span class="chev">'+svg('chev',18)+'</span></button></div>'+
+      '<div class="rlist">'+ing.map(function(r){
+        return '<div class="ritem">'+emojiDot(r[0])+'<span class="grow"><b>'+esc(itemLabel(r[0],p.store,'en'))+'</b><small>'+nf(r[1])+' '+ING[r[0]].u+'</small></span></div>';
+      }).join('')+'</div></section>':'')+
+    (steps.length?'<section class="section"><h2>Instructions</h2><ol class="vsteps">'+steps.map(function(s,i){return '<li><span class="snum" aria-hidden="true">'+(i+1)+'</span><p>'+esc(s)+'</p></li>';}).join('')+'</ol></section>':'')+
+    (url?'<section class="section"><h2>Video</h2><a class="btn block watch" href="'+esc(url)+'" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">🎬</span>Watch</a></section>':'')+
+    '<div class="savebar"><button class="btn block" data-a="editRecipe" data-id="'+m.id+'">Edit recipe</button></div>';
+}
+function cap(s){ return s.charAt(0).toUpperCase()+s.slice(1); }
+function autosize(t){ t.style.height='auto'; t.style.height=t.scrollHeight+'px'; }
+function focusStep(i){ setTimeout(function(){ var t=document.querySelector('textarea[data-step="'+i+'"]'); if(t) t.focus(); },30); }
 function openMealPage(id){
   var m=getMeal(id); if(!m){ toast('That meal isn’t available on this phone.'); return; }
   pushPage({type:'meal',id:id,store:S.profile.store,grams:m.ing.map(function(x){return x[1];}),open:false});
@@ -1489,6 +1665,7 @@ function pageIng(p){ var m=getMeal(p.id); return m.ing.map(function(x,i){return 
 function edited(p){ var m=getMeal(p.id); return m.ing.some(function(x,i){return x[1]!==p.grams[i];}); }
 function mealPage(p){
   var m=getMeal(p.id); if(!m) return pageHead('')+'<p class="empty">This meal was deleted.</p>';
+  if(m.own) return ownRecipePage(p,m);
   var ing=pageIng(p), x=macrosOf(ing), fav=isFav(m.id), ed=edited(p);
   var yt='https://www.youtube.com/results?search_query='+encodeURIComponent((m.custom?(MB[m.base]||m).name:m.name)+' recipe');
   return pageHead('','<button class="iconbtn" data-a="fav" data-id="'+m.id+'" aria-pressed="'+fav+'" aria-label="'+(fav?'Remove from favorites':'Save to favorites')+'">'+svg('heart',24,fav)+'</button>')+
@@ -1667,7 +1844,6 @@ var H={
     requestAnimationFrame(function(){ setStoreOpen(false); });
   },
   prepDay:function(el){ showPrepDay(+el.dataset.d,true); },
-  openLibrary:function(){ pushPage({type:'library'}); },
   openSettings:function(){ UI.countryOpen=false; pushPage({type:'settings'}); },
   openLib:function(el){ pushPage({type:'lib',sec:el.dataset.sec}); },
   openCollection:function(el){ pushPage({type:'lib',sec:'collections',cid:el.dataset.id}); },
@@ -1708,7 +1884,7 @@ var H={
     if(m.custom){ m.ing=ing; save(); p.grams=ing.map(function(x){return x[1];}); p.keepScroll=true; renderOverlay(); renderView(); toast('Recipe saved'); return; }
     var r=clone(m); r.id='r'+uid(); r.custom=true; r.base=m.id; r.name=m.name+' (my version)'; r.pl=m.pl; r.ing=ing; r.created=Date.now();
     S.library.recipes.push(r); save(); UI.stack[UI.stack.length-1]={type:'meal',id:r.id,store:p.store,grams:ing.map(function(x){return x[1];}),open:p.open};
-    renderOverlay(); renderView(); toast('Saved to My recipes');
+    renderOverlay(); renderView(); toast('Saved to Recipes');
   },
   mealToList:function(){ var p=top(), m=getMeal(p.id); addEntry(m,pageIng(p),1,null); refresh(); toast(m.name+' added to your shopping list'); },
   addToPlanAsk:openPlanSheet,
@@ -1787,6 +1963,38 @@ var H={
     S.shopping.entries=mergeArrays(S.shopping.entries,d.shopping.entries);
     save(); UI.pendingImport=null; closeSheet(); render(); toast('Backup merged');
   },
+  newRecipe:function(){ pushPage({type:'recipeEdit',draft:newDraft()}); },
+  editRecipe:function(el){ var m=getMeal(el.dataset.id); if(m) pushPage({type:'recipeEdit',draft:draftFrom(m)}); },
+  addIng:function(){ pushPage({type:'ingPick',draft:top().draft,q:''}); },
+  ingCat:function(el){ pushPage({type:'ingPick',draft:top().draft,cat:el.dataset.cat,q:''}); },
+  ingDone:function(){
+    // Go straight back to the recipe, however many category pages are open.
+    while(UI.stack.length>1&&UI.stack[UI.stack.length-2].type!=='recipeEdit') UI.stack.splice(UI.stack.length-2,1);
+    popPage();
+  },
+  rCnt:function(el){
+    var p=top(), d=p.draft, k=el.dataset.k, n=Math.max(0,Math.min(99,(d.cnt[k]||0)+(+el.dataset.d)));
+    d.cnt[k]=n; if(n&&d.order.indexOf(k)<0) d.order.push(k);
+    if(p.type==='ingPick') refreshPick(); else { p.keepScroll=true; renderOverlay(); }
+  },
+  addStep:function(){ var p=top(); p.draft.steps.push(''); p.keepScroll=true; renderOverlay(); focusStep(p.draft.steps.length-1); },
+  delStep:function(el){ var p=top(), s=p.draft.steps; s.splice(+el.dataset.i,1); if(!s.length) s.push(''); p.keepScroll=true; renderOverlay(); },
+  saveRecipe:function(){
+    var p=top(), d=p.draft, name=d.name.trim(); if(!name) return;
+    var ing=draftItems(d).map(function(k){return [k,d.cnt[k]*ingStep(k)];});
+    var fields={name:name,desc:d.desc.trim(),ing:ing,steps:d.steps.map(function(s){return s.trim();}).filter(Boolean),video:d.video.trim()};
+    if(d.id){
+      var m=getMeal(d.id); Object.keys(fields).forEach(function(f){m[f]=fields[f];}); save();
+      var below=UI.stack[UI.stack.length-2]; if(below&&below.type==='meal'&&below.id===m.id) below.grams=ing.map(function(x){return x[1];});
+      popPage(); renderView(); toast('Recipe saved');
+    } else {
+      var r={id:'r'+uid(),custom:true,own:true,pl:'',types:[],mins:0,tags:[],style:'plate',created:Date.now()};
+      Object.keys(fields).forEach(function(f){r[f]=fields[f];});
+      S.library.recipes.push(r); save();
+      UI.stack[UI.stack.length-1]={type:'meal',id:r.id,store:S.profile.store,grams:ing.map(function(x){return x[1];}),open:true};
+      renderOverlay(); $('overlay').scrollTop=0; renderView(); toast('Saved to Recipes');
+    }
+  },
   closeSheet:closeSheet
 };
 
@@ -1801,6 +2009,11 @@ document.addEventListener('input',function(e){
   var t=e.target; if(!t) return;
   if(t.id==='obName'){ UI.ob.name=t.value; var b=$('onboard').querySelector('[data-a="obNext"]'); if(b) b.disabled=!t.value.trim(); return; }
   if(t.id==='setName'){ var v=t.value.trim(); if(v){ S.profile.name=v; saveSoon(); renderTop(); } return; }
+  if(t.id==='rName'){ top().draft.name=t.value; var ok=!!t.value.trim(); $('rSave').disabled=!ok; $('rSaveNote').style.display=ok?'none':''; return; }
+  if(t.id==='rDesc'){ top().draft.desc=t.value; autosize(t); return; }
+  if(t.id==='rVideo'){ top().draft.video=t.value; return; }
+  if(t.dataset&&t.dataset.step!=null){ top().draft.steps[+t.dataset.step]=t.value; autosize(t); return; }
+  if(t.id==='ingSearch'){ top().q=t.value; $('ingResults').innerHTML=ingResults(top()); return; }
   if(t.id==='mealSearch'){ UI.q=t.value; UI.limit=40; $('mealResults').innerHTML=mealResults(); return; }
   if(t.dataset&&t.dataset.gi!=null){ var p=top(), n=parseFloat(t.value); p.grams[+t.dataset.gi]=isNaN(n)||n<0?0:n; updateMealNumbers(); return; }
   if(t.dataset&&t.dataset.t){
@@ -1818,6 +2031,10 @@ document.addEventListener('scroll',function(e){
 document.addEventListener('change',function(e){ if(e.target&&e.target.dataset&&e.target.dataset.t){ renderView(); } });
 document.addEventListener('keydown',function(e){
   if(e.key==='Enter'&&e.target&&e.target.id==='obName'){ H.obNext(); return; }
+  if(e.key==='Enter'&&!e.shiftKey&&e.target&&e.target.dataset&&e.target.dataset.step!=null){
+    // Return ends the step and starts a new one under it.
+    e.preventDefault(); var p=top(), i=+e.target.dataset.step; p.draft.steps.splice(i+1,0,''); p.keepScroll=true; renderOverlay(); focusStep(i+1); return;
+  }
   if(e.key==='Enter'&&e.target&&e.target.id==='nameInput'&&UI.sheet&&UI.sheet.type==='name'){ H.nameSave(); return; }
   if(e.key!=='Escape') return;
   if($('sheetRoot').innerHTML) closeSheet(); else if(UI.panel) closePanel(); else if(UI.stack.length) popPage();
