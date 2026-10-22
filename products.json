@@ -1,0 +1,1630 @@
+{
+ "version": 1,
+ "updated": "2026-10-22",
+ "note": "Written by scripts/update-products.mjs. Products are matched by search, so check the label in the store.",
+ "stores": {
+  "Frisco": {
+   "checked": "2026-10-22",
+   "source": "frisco.pl",
+   "items": {
+    "pomidor": {
+     "brand": "Frisco Fresh",
+     "name": "Pomidory Cherry",
+     "size": 250,
+     "unit": "g",
+     "price": 6.99,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,3610/stn,product"
+    },
+    "ogorek": {
+     "brand": "Frisco Organic",
+     "name": "Ogórek długi BIO",
+     "size": 300,
+     "unit": "g",
+     "price": 6.99,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,81929/stn,product"
+    },
+    "papryka": {
+     "brand": "Frisco Organic",
+     "name": "Papryka czerwona BIO",
+     "size": 400,
+     "unit": "g",
+     "price": 14.99,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,143768/stn,product"
+    },
+    "cebula": {
+     "brand": "Frisco Organic",
+     "name": "Cebula BIO",
+     "size": 1000,
+     "unit": "g",
+     "price": 7.99,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,144079/stn,product"
+    },
+    "czosnek": {
+     "brand": "Knorr",
+     "name": "Czosnek - przyprawa w mini kostkach (10 szt.)",
+     "size": 35,
+     "unit": "g",
+     "price": 5.39,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,10414/stn,product"
+    },
+    "brokul": {
+     "brand": "Frisco Fresh",
+     "name": "Brokuł",
+     "size": 500,
+     "unit": "g",
+     "price": 5.99,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,4042/stn,product"
+    },
+    "szpinak": {
+     "brand": "Fit&easy",
+     "name": "Szpinak Baby BIO",
+     "size": 150,
+     "unit": "g",
+     "price": 7.49,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,103735/stn,product"
+    },
+    "marchew": {
+     "brand": "Frisco Organic",
+     "name": "Marchew świeża BIO",
+     "size": 1000,
+     "unit": "g",
+     "price": 10.99,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,11878/stn,product"
+    },
+    "ziemniaki": {
+     "brand": "Frisco Organic",
+     "name": "Ziemniaki BIO",
+     "size": 2000,
+     "unit": "g",
+     "price": 24.79,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,43663/stn,product"
+    },
+    "kapusta": {
+     "brand": "Frisco Organic",
+     "name": "Kapusta biała BIO",
+     "size": 1000,
+     "unit": "g",
+     "price": 9.09,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,144624/stn,product"
+    },
+    "cukinia": {
+     "brand": "Frisco Organic",
+     "name": "Cukinia BIO",
+     "size": 500,
+     "unit": "g",
+     "price": 9.79,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,143766/stn,product"
+    },
+    "dynia": {
+     "brand": "Frisco Fresh",
+     "name": "Dynia Hokkaido",
+     "size": 800,
+     "unit": "g",
+     "price": 5.29,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,39135/stn,product"
+    },
+    "rzodkiewki": {
+     "brand": "Almette",
+     "name": "Serek twarogowy z rzodkiewkami",
+     "size": 150,
+     "unit": "g",
+     "price": 6.59,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,111581/stn,product"
+    },
+    "salata": {
+     "brand": "Fit&easy",
+     "name": "Mix sałat Party",
+     "size": 150,
+     "unit": "g",
+     "price": 6.89,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,139773/stn,product"
+    },
+    "rukola": {
+     "brand": "Mioorto",
+     "name": "Rukola",
+     "size": 100,
+     "unit": "g",
+     "price": 4.99,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,47699/stn,product"
+    },
+    "banan": {
+     "brand": "Frisco Fresh",
+     "name": "Banan MNIAM",
+     "size": 1000,
+     "unit": "g",
+     "price": 7.99,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,143402/stn,product"
+    },
+    "jablko": {
+     "brand": "Bracia Zawadzcy",
+     "name": "Jabłka prażone",
+     "size": 790,
+     "unit": "g",
+     "price": 10.79,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,115029/stn,product"
+    },
+    "cytryna": {
+     "brand": "Frisco Organic",
+     "name": "Cytryna BIO",
+     "size": 500,
+     "unit": "g",
+     "price": 11.99,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,143751/stn,product"
+    },
+    "szczypiorek": {
+     "brand": "Frisco Fresh",
+     "name": "Szczypiorek - pęczek",
+     "size": 25,
+     "unit": "g",
+     "price": 2.49,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,2999/stn,product"
+    },
+    "piers": {
+     "brand": "Frisco Fresh",
+     "name": "Filet z piersi z kurczaka (400g-600g)",
+     "size": 500,
+     "unit": "g",
+     "price": 14.99,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,132948/stn,product"
+    },
+    "indyk_mielone": {
+     "brand": "Indykpol",
+     "name": "Mięso mielone na kotlety z indyka",
+     "size": 500,
+     "unit": "g",
+     "price": 12.99,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,8546/stn,product"
+    },
+    "indyk_filet": {
+     "brand": "Limeko",
+     "name": "Filet z piersi indyka mrożony BIO",
+     "size": 400,
+     "unit": "g",
+     "price": 65.99,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,151942/stn,product"
+    },
+    "wolowina": {
+     "brand": "Frisco Fresh",
+     "name": "Rostbef wołowy stek standaryzowany 2x250g",
+     "size": 500,
+     "unit": "g",
+     "price": 49.99,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,9004/stn,product"
+    },
+    "losos": {
+     "brand": "Better Fish",
+     "name": "Łosoś Atlantycki bez skóry mrożony BIO (2x100 g)",
+     "size": 200,
+     "unit": "g",
+     "price": 63.49,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,132205/stn,product"
+    },
+    "dorsz": {
+     "brand": "My Food",
+     "name": "Dorsz altantycki polędwiczki b s mrożony",
+     "size": 450,
+     "unit": "g",
+     "price": 47.49,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,87171/stn,product"
+    },
+    "szynka": {
+     "brand": "Sokołów",
+     "name": "Szynka z piersi indyka -plastry",
+     "size": 120,
+     "unit": "g",
+     "price": 8.99,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,40161/stn,product"
+    },
+    "jajka": {
+     "brand": "Wybiegane Kury",
+     "name": "Jaja ekologiczne - 10 szt. BIO",
+     "price": 16.29,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,104379/stn,product"
+    },
+    "twarog": {
+     "brand": "Polmlek",
+     "name": "Twaróg półtłusty",
+     "size": 250,
+     "unit": "g",
+     "price": 4.29,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,125913/stn,product"
+    },
+    "skyr": {
+     "brand": "Piątnica",
+     "name": "Skyr Jogurt typu islandzkiego naturalny",
+     "size": 150,
+     "unit": "g",
+     "price": 3.29,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,106963/stn,product"
+    },
+    "jogurt": {
+     "brand": "Kanka",
+     "name": "Jogurt naturalny",
+     "size": 400,
+     "unit": "g",
+     "price": 2.99,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,142614/stn,product"
+    },
+    "serek": {
+     "brand": "Kanka",
+     "name": "Serek Wiejski",
+     "size": 200,
+     "unit": "g",
+     "price": 2.59,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,144123/stn,product"
+    },
+    "feta": {
+     "brand": "Hotos",
+     "name": "Ser Feta D.O.P.",
+     "size": 200,
+     "unit": "g",
+     "price": 17.29,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,110259/stn,product"
+    },
+    "mleko": {
+     "brand": "Łaciate",
+     "name": "Mleko UHT 2%",
+     "size": 1000,
+     "unit": "ml",
+     "price": 3.79,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,3267/stn,product"
+    },
+    "kefir": {
+     "brand": "Osm Łowicz",
+     "name": "Kefir Łowicki",
+     "size": 400,
+     "unit": "g",
+     "price": 2.99,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,129541/stn,product"
+    },
+    "maslo": {
+     "brand": "Osm Łowicz",
+     "name": "Masło extra",
+     "size": 200,
+     "unit": "g",
+     "price": 8.79,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,125853/stn,product"
+    },
+    "chleb": {
+     "brand": "Biopiekarnia",
+     "name": "Chleb żytni razowy BIO",
+     "size": 350,
+     "unit": "g",
+     "price": 11.29,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,148101/stn,product"
+    },
+    "tortilla": {
+     "brand": "Tortilove",
+     "name": "Tortilla pełnoziarnista - 25 cm (4 szt.)",
+     "size": 240,
+     "unit": "g",
+     "price": 4.29,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,142192/stn,product"
+    },
+    "platki": {
+     "brand": "Melvit",
+     "name": "Płatki owsiane górskie",
+     "size": 500,
+     "unit": "g",
+     "price": 4.79,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,134932/stn,product"
+    },
+    "ryz": {
+     "brand": "Kupiec",
+     "name": "Ryż biały",
+     "size": 1000,
+     "unit": "g",
+     "price": 8.39,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,802/stn,product"
+    },
+    "gryczana": {
+     "brand": "Kupiec",
+     "name": "Kasza gryczana prażona",
+     "size": 400,
+     "unit": "g",
+     "price": 8.39,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,792/stn,product"
+    },
+    "jeczmienna": {
+     "brand": "Kupiec",
+     "name": "Kasza jęczmienna pęczak",
+     "size": 400,
+     "unit": "g",
+     "price": 3.79,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,11569/stn,product"
+    },
+    "makaron": {
+     "brand": "Granoro",
+     "name": "Makaron pełnoziarnisty spaghetti BIO",
+     "size": 500,
+     "unit": "g",
+     "price": 8.29,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,81939/stn,product"
+    },
+    "soczewica": {
+     "brand": "Melvit",
+     "name": "Soczewica czerwona",
+     "size": 400,
+     "unit": "g",
+     "price": 7.69,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,80199/stn,product"
+    },
+    "maka": {
+     "brand": "Bio Planet",
+     "name": "Mąka pszenna razowa (typ 2000) BIO",
+     "size": 1000,
+     "unit": "g",
+     "price": 11.59,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,7474/stn,product"
+    },
+    "wloskie": {
+     "brand": "Activia",
+     "name": "Jogurt naturalny orzech włoski i owies z błonnikiem i probiotykami",
+     "size": 165,
+     "unit": "g",
+     "price": 4.19,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,156686/stn,product"
+    },
+    "migdaly": {
+     "brand": "Kresto",
+     "name": "Migdały",
+     "size": 100,
+     "unit": "g",
+     "price": 10.59,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,5476/stn,product"
+    },
+    "pestki": {
+     "brand": "Kresto",
+     "name": "Pestki dyni",
+     "size": 100,
+     "unit": "g",
+     "price": 7.99,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,40046/stn,product"
+    },
+    "tunczyk": {
+     "brand": "Pan Do Mar",
+     "name": "Tuńczyk bonito w sosie własnym",
+     "size": 120,
+     "unit": "g",
+     "price": 15.89,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,82191/stn,product"
+    },
+    "pomidory_puszka": {
+     "brand": "Cirio",
+     "name": "Pomidory krojone",
+     "size": 400,
+     "unit": "g",
+     "price": 5.49,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,11973/stn,product"
+    },
+    "fasola": {
+     "brand": "Bonduelle",
+     "name": "Czerwona fasola",
+     "size": 310,
+     "unit": "g",
+     "price": 6.49,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,152489/stn,product"
+    },
+    "hummus": {
+     "brand": "Lavica Food",
+     "name": "Hummus tradycyjny",
+     "size": 200,
+     "unit": "g",
+     "price": 9.99,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,143862/stn,product"
+    },
+    "soja": {
+     "brand": "Kikkoman",
+     "name": "Sos sojowy",
+     "size": 150,
+     "unit": "ml",
+     "price": 14.99,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,6498/stn,product"
+    },
+    "maliny": {
+     "brand": "2be Bio",
+     "name": "Maliny mrożone BIO",
+     "size": 300,
+     "unit": "g",
+     "price": 26.39,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,132204/stn,product"
+    },
+    "warzywa_mr": {
+     "brand": "Hortex",
+     "name": "Warzywa na patelnię mrożone",
+     "size": 450,
+     "unit": "g",
+     "price": 7.99,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,599/stn,product"
+    },
+    "fasolka": {
+     "brand": "Oerlemans",
+     "name": "Fasolka zielona szparagowa mrożona",
+     "size": 450,
+     "unit": "g",
+     "price": 6.39,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,46055/stn,product"
+    },
+    "olej": {
+     "brand": "Niezbędny",
+     "name": "Olej rzepakowy",
+     "size": 1000,
+     "unit": "ml",
+     "price": 10.69,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,149824/stn,product"
+    },
+    "oliwa": {
+     "brand": "Borges",
+     "name": "Oliwa z oliwek extra virgin",
+     "size": 500,
+     "unit": "ml",
+     "price": 27.99,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,106333/stn,product"
+    },
+    "ciecierzyca": {
+     "brand": "Alce Nero",
+     "name": "Ciecierzyca w zalewie BIO",
+     "size": 300,
+     "unit": "g",
+     "price": 11.69,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,7147/stn,product"
+    },
+    "fasola_biala": {
+     "brand": "Bonduelle",
+     "name": "Biała fasola",
+     "size": 310,
+     "unit": "g",
+     "price": 8.09,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,152490/stn,product"
+    },
+    "kukurydza": {
+     "brand": "Rolnik",
+     "name": "Kukurydza mini kolby",
+     "size": 300,
+     "unit": "g",
+     "price": 10.69,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,816/stn,product"
+    },
+    "groszek": {
+     "brand": "Hortex",
+     "name": "Groszek zielony mrożony",
+     "size": 450,
+     "unit": "g",
+     "price": 7.99,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,1480/stn,product"
+    },
+    "szpinak_mr": {
+     "brand": "Hortex",
+     "name": "Szpinak liście mrożony",
+     "size": 450,
+     "unit": "g",
+     "price": 5.55,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,5694/stn,product"
+    },
+    "owoce_lesne": {
+     "brand": "Hortex",
+     "name": "Mieszanka owocowa mrożona",
+     "size": 450,
+     "unit": "g",
+     "price": 15.59,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,5297/stn,product"
+    },
+    "mango": {
+     "brand": "Nestea",
+     "name": "Napój herbaciany o smaku mango-ananas",
+     "size": 500,
+     "unit": "ml",
+     "price": 5.09,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,156439/stn,product"
+    },
+    "pierogi": {
+     "brand": "Proste Historie",
+     "name": "Pierogi ruskie",
+     "size": 450,
+     "unit": "g",
+     "price": 9.49,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,33881/stn,product"
+    },
+    "krewetki": {
+     "brand": "My Food",
+     "name": "Krewetki koktajlowe 200/300 mrożone",
+     "size": 400,
+     "unit": "g",
+     "price": 37.99,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,87157/stn,product"
+    },
+    "quinoa": {
+     "brand": "Bio Planet",
+     "name": "Quinoa trójkolorowa (Komosa ryżowa) BIO",
+     "size": 250,
+     "unit": "g",
+     "price": 11.69,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,41586/stn,product"
+    },
+    "kuskus": {
+     "brand": "Melvit",
+     "name": "Kuskus perłowy",
+     "size": 400,
+     "unit": "g",
+     "price": 6.29,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,145384/stn,product"
+    },
+    "bulgur": {
+     "brand": "Melvit",
+     "name": "Kasza bulgur (4x100g)",
+     "size": 400,
+     "unit": "g",
+     "price": 5.59,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,108295/stn,product"
+    },
+    "ryz_brazowy": {
+     "brand": "Britta",
+     "name": "Ryż brązowy (4x100g)",
+     "size": 400,
+     "unit": "g",
+     "price": 5.99,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,14523/stn,product"
+    },
+    "jaglana": {
+     "brand": "Melvit",
+     "name": "Kasza jaglana",
+     "size": 400,
+     "unit": "g",
+     "price": 4.89,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,80211/stn,product"
+    },
+    "makaron_ryzowy": {
+     "brand": "House Of Asia",
+     "name": "Makaron ryżowy (5 mm) bezglutenowy",
+     "size": 200,
+     "unit": "g",
+     "price": 7.39,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,145424/stn,product"
+    },
+    "spaghetti": {
+     "brand": "Barilla",
+     "name": "Makaron spaghetti",
+     "size": 500,
+     "unit": "g",
+     "price": 6.29,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,4/stn,product"
+    },
+    "gnocchi": {
+     "brand": "Melissa",
+     "name": "Primo Gusto Gnocchi (włoskie kopytka)",
+     "size": 500,
+     "unit": "g",
+     "price": 8.09,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,144057/stn,product"
+    },
+    "bulka_tarta": {
+     "brand": "Bio Planet",
+     "name": "Bio raj Bułka tarta razowa BIO",
+     "size": 500,
+     "unit": "g",
+     "price": 14.99,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,126207/stn,product"
+    },
+    "odzywka": {
+     "brand": "Trec",
+     "name": "WHEY 100 Odżywka białkowa WPC o sm. waniliowym",
+     "size": 700,
+     "unit": "g",
+     "price": 89.99,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,153999/stn,product"
+    },
+    "maslo_orzechowe": {
+     "brand": "Deseo",
+     "name": "Masło z orzechów arachidowych (100% orzechów arachidowych)",
+     "size": 200,
+     "unit": "g",
+     "price": 23.99,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,152309/stn,product"
+    },
+    "miod": {
+     "brand": "Pszczelarz Kozacki",
+     "name": "Miód lipowy",
+     "size": 400,
+     "unit": "g",
+     "price": 16.99,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,10344/stn,product"
+    },
+    "kakao": {
+     "brand": "Decomorreno",
+     "name": "Kakao (extra ciemne)",
+     "size": 150,
+     "unit": "g",
+     "price": 12.79,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,291/stn,product"
+    },
+    "czekolada": {
+     "brand": "Wedel",
+     "name": "JEDYNA Czekolada deserowa",
+     "size": 100,
+     "unit": "g",
+     "price": 7.99,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,40938/stn,product"
+    },
+    "daktyle": {
+     "brand": "Big Nature",
+     "name": "Daktyle suszone",
+     "size": 250,
+     "unit": "g",
+     "price": 6.99,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,115763/stn,product"
+    },
+    "rodzynki": {
+     "brand": "Bakalland",
+     "name": "Rodzynki luksusowe",
+     "size": 100,
+     "unit": "g",
+     "price": 5.89,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,8032/stn,product"
+    },
+    "chia": {
+     "brand": "St. Dalfour",
+     "name": "Superfruits Konfitura morelowa z nasionami chia",
+     "size": 170,
+     "unit": "g",
+     "price": 14.99,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,155815/stn,product"
+    },
+    "sezam": {
+     "brand": "Beskidzkie",
+     "name": "Paluchy z sezamem",
+     "size": 100,
+     "unit": "g",
+     "price": 2.69,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,104017/stn,product"
+    },
+    "slonecznik": {
+     "brand": "Wawrzyniec",
+     "name": "Hummus z pestkami dyni i słonecznika",
+     "size": 180,
+     "unit": "g",
+     "price": 7.99,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,117963/stn,product"
+    },
+    "nerkowce": {
+     "brand": "Kresto",
+     "name": "Orzechy nerkowca",
+     "size": 100,
+     "unit": "g",
+     "price": 11.89,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,40045/stn,product"
+    },
+    "orzeszki": {
+     "brand": "Yopro",
+     "name": "Jogurt o smaku banan-krem z orzeszków ziemnych",
+     "size": 160,
+     "unit": "g",
+     "price": 4.79,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,147975/stn,product"
+    },
+    "wafle": {
+     "brand": "Sonko",
+     "name": "Wafle ryżowe naturalne (bezglutenowe)",
+     "size": 130,
+     "unit": "g",
+     "price": 4.59,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,6213/stn,product"
+    },
+    "grahamka": {
+     "brand": "Putka",
+     "name": "Bułka Grahamka",
+     "size": 65,
+     "unit": "g",
+     "price": 1.19,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,81485/stn,product"
+    },
+    "pita": {
+     "brand": "Dan Cake",
+     "name": "Pita 4 szt.",
+     "size": 330,
+     "unit": "g",
+     "price": 9.69,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,148771/stn,product"
+    },
+    "tost": {
+     "brand": "Dan Cake",
+     "name": "Chleb tostowy pełnoziarnisty",
+     "size": 500,
+     "unit": "g",
+     "price": 7.29,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,104065/stn,product"
+    },
+    "batat": {
+     "brand": "Bonduelle",
+     "name": "Pieczone bataty mrożone",
+     "size": 1000,
+     "unit": "g",
+     "price": 28.19,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,155481/stn,product"
+    },
+    "pieczarki": {
+     "brand": "Frisco Fresh",
+     "name": "Pieczarki białe - opakowanie",
+     "size": 500,
+     "unit": "g",
+     "price": 6.79,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,3433/stn,product"
+    },
+    "awokado": {
+     "brand": "Frisco Organic",
+     "name": "Awokado świeże BIO 5 szt.",
+     "size": 650,
+     "unit": "g",
+     "price": 29.99,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,146347/stn,product"
+    },
+    "borowki": {
+     "brand": "Frisco Fresh",
+     "name": "Borówka amerykańska",
+     "size": 125,
+     "unit": "g",
+     "price": 10.99,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,12037/stn,product"
+    },
+    "truskawki": {
+     "brand": "Frisco Fresh",
+     "name": "Truskawki",
+     "size": 500,
+     "unit": "g",
+     "price": 19.99,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,3415/stn,product"
+    },
+    "gruszka": {
+     "brand": "Bracia Zawadzcy",
+     "name": "Gruszki w occie",
+     "size": 500,
+     "unit": "g",
+     "price": 10.89,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,120463/stn,product"
+    },
+    "pomarancza": {
+     "brand": "Frisco Organic",
+     "name": "Pomarańcze BIO",
+     "size": 1000,
+     "unit": "g",
+     "price": 24.09,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,145322/stn,product"
+    },
+    "kiwi": {
+     "brand": "Frisco Fresh",
+     "name": "Kiwi sztuka",
+     "size": 80,
+     "unit": "g",
+     "price": 1.79,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,147225/stn,product"
+    },
+    "burak": {
+     "brand": "Eko Wital",
+     "name": "Buraki gotowane BIO",
+     "size": 500,
+     "unit": "g",
+     "price": 5.49,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,144354/stn,product"
+    },
+    "cebula_czerwona": {
+     "brand": "Hotz",
+     "name": "Konfitura z czerwonej cebuli",
+     "size": 156,
+     "unit": "g",
+     "price": 6.69,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,125187/stn,product"
+    },
+    "por": {
+     "brand": "Frisco Fresh",
+     "name": "Por",
+     "size": 250,
+     "unit": "g",
+     "price": 3.49,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,10989/stn,product"
+    },
+    "seler": {
+     "brand": "Frisco Fresh",
+     "name": "Seler naciowy",
+     "size": 300,
+     "unit": "g",
+     "price": 5.79,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,3137/stn,product"
+    },
+    "kalafior": {
+     "brand": "Frisco Fresh",
+     "name": "Kalafior",
+     "size": 600,
+     "unit": "g",
+     "price": 6.99,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,4085/stn,product"
+    },
+    "baklazan": {
+     "brand": "Frisco Organic",
+     "name": "Bakłażan BIO (320g-480g)",
+     "size": 400,
+     "unit": "g",
+     "price": 11.39,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,71346/stn,product"
+    },
+    "jarmuz": {
+     "brand": "Frisco Fresh",
+     "name": "Jarmuż pęczek",
+     "size": 250,
+     "unit": "g",
+     "price": 6.99,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,87183/stn,product"
+    },
+    "pomidorki": {
+     "brand": "Frisco Organic",
+     "name": "Pomidory MIX BIO",
+     "size": 250,
+     "unit": "g",
+     "price": 15.89,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,43607/stn,product"
+    },
+    "limonka": {
+     "brand": "Frisco Organic",
+     "name": "Limonki BIO",
+     "size": 250,
+     "unit": "g",
+     "price": 9.99,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,95343/stn,product"
+    },
+    "imbir": {
+     "brand": "Prymat",
+     "name": "Imbir mielony",
+     "size": 15,
+     "unit": "g",
+     "price": 1.69,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,9869/stn,product"
+    },
+    "koperek": {
+     "brand": "Frisco Fresh",
+     "name": "Koperek - pęczek",
+     "size": 25,
+     "unit": "g",
+     "price": 2.49,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,3865/stn,product"
+    },
+    "pietruszka": {
+     "brand": "Winiary",
+     "name": "Pomysł na... Soczyste żeberka z cebulą i natką pietruszki + WORECZEK DO PIECZENIA",
+     "size": 28,
+     "unit": "g",
+     "price": 6.89,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,109453/stn,product"
+    },
+    "schab": {
+     "brand": "Frisco Fresh",
+     "name": "Schab wieprzowy bez kości",
+     "size": 630,
+     "unit": "g",
+     "price": 20.99,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,3380/stn,product"
+    },
+    "poledwiczka": {
+     "brand": "Dolina Dobra",
+     "name": "Polędwiczka wieprzowa (400g-600g)",
+     "size": 500,
+     "unit": "g",
+     "price": 29.99,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,122721/stn,product"
+    },
+    "wolowina_mielona": {
+     "brand": "Sokołów",
+     "name": "Wołowina po tatarsku",
+     "size": 200,
+     "unit": "g",
+     "price": 13.29,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,9160/stn,product"
+    },
+    "jagniecina": {
+     "brand": "Comfy",
+     "name": "Appetit Przysmak dla psów - filet jagnięcy",
+     "size": 100,
+     "unit": "g",
+     "price": 11.19,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,136130/stn,product"
+    },
+    "kielbasa": {
+     "brand": "Dolina Dobra",
+     "name": "Śląska kiełbasa 100% z polskiej szynki",
+     "size": 375,
+     "unit": "g",
+     "price": 15.99,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,144191/stn,product"
+    },
+    "losos_wedz": {
+     "brand": "Suempol",
+     "name": "Łosoś Norweski wędzony BIO",
+     "size": 100,
+     "unit": "g",
+     "price": 21.99,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,95039/stn,product"
+    },
+    "sledz": {
+     "brand": "Lisner",
+     "name": "Filety śledziowe w sosie koperkowym",
+     "size": 280,
+     "unit": "g",
+     "price": 11.69,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,1816/stn,product"
+    },
+    "bleikja": {
+     "brand": "Łuków",
+     "name": "Goleń wołowa bez kości (640g-960g)",
+     "size": 800,
+     "unit": "g",
+     "price": 51.49,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,141024/stn,product"
+    },
+    "tofu": {
+     "brand": "Lunter",
+     "name": "Tofu naturalne",
+     "size": 180,
+     "unit": "g",
+     "price": 6.19,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,124035/stn,product"
+    },
+    "twarog_chudy": {
+     "brand": "Kanka",
+     "name": "Twaróg chudy",
+     "size": 250,
+     "unit": "g",
+     "price": 4.29,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,142602/stn,product"
+    },
+    "jogurt_grecki": {
+     "brand": "Osm Łowicz",
+     "name": "Jogurt grecki 10%",
+     "size": 400,
+     "unit": "g",
+     "price": 3.69,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,140815/stn,product"
+    },
+    "mozzarella": {
+     "brand": "Formagia",
+     "name": "Ser mozzarella light (kulka)",
+     "size": 125,
+     "unit": "g",
+     "price": 4.09,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,95939/stn,product"
+    },
+    "parmezan": {
+     "brand": "Cirio",
+     "name": "Sos pomidorowy PARMA (z parmezanem)",
+     "size": 340,
+     "unit": "g",
+     "price": 6.99,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,150716/stn,product"
+    },
+    "ser_zolty": {
+     "brand": "Old Amsterdam",
+     "name": "Ser Gouda (plastry)",
+     "size": 150,
+     "unit": "g",
+     "price": 21.29,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,15303/stn,product"
+    },
+    "serek_smietankowy": {
+     "brand": "Kraft",
+     "name": "PHILADELPHIA Serek śmietankowy light",
+     "size": 125,
+     "unit": "g",
+     "price": 7.39,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,7548/stn,product"
+    },
+    "ricotta": {
+     "brand": "Galbani",
+     "name": "Ser Ricotta",
+     "size": 250,
+     "unit": "g",
+     "price": 5.89,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,4798/stn,product"
+    },
+    "halloumi": {
+     "brand": "Papouis",
+     "name": "Ser Halloumi",
+     "size": 225,
+     "unit": "g",
+     "price": 15.89,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,142754/stn,product"
+    },
+    "smietana": {
+     "brand": "Piątnica",
+     "name": "Śmietana 12%",
+     "size": 200,
+     "unit": "g",
+     "price": 3.19,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,3171/stn,product"
+    },
+    "napoj_sojowy": {
+     "brand": "Alpro",
+     "name": "Napój sojowy bez cukru",
+     "size": 1000,
+     "unit": "ml",
+     "price": 9.49,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,2530/stn,product"
+    },
+    "mleczko_kokosowe": {
+     "brand": "House Of Asia",
+     "name": "Mleczko kokosowe (tł. 5-7%)",
+     "size": 400,
+     "unit": "ml",
+     "price": 6.29,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,15754/stn,product"
+    },
+    "passata": {
+     "brand": "Dawtona",
+     "name": "Passata pikantna z chili",
+     "size": 500,
+     "unit": "g",
+     "price": 6.29,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,149356/stn,product"
+    },
+    "koncentrat": {
+     "brand": "Rolnik",
+     "name": "Koncentrat pomidorowy 30%",
+     "size": 190,
+     "unit": "ml",
+     "price": 3.89,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,96847/stn,product"
+    },
+    "kapusta_kiszona": {
+     "brand": "Stan",
+     "name": "Kapusta kiszona",
+     "size": 500,
+     "unit": "g",
+     "price": 3.59,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,124241/stn,product"
+    },
+    "ogorki_kiszone": {
+     "brand": "Charsznickie",
+     "name": "Ogórki kiszone BIO",
+     "size": 500,
+     "unit": "g",
+     "price": 11.19,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,125163/stn,product"
+    },
+    "oliwki": {
+     "brand": "La Pedriza",
+     "name": "Oliwki zielone bez pestki",
+     "size": 150,
+     "unit": "g",
+     "price": 8.69,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,145799/stn,product"
+    },
+    "pesto": {
+     "brand": "Sacla",
+     "name": "Pesto bazyliowo-pistacjowe",
+     "size": 190,
+     "unit": "g",
+     "price": 17.39,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,152995/stn,product"
+    },
+    "pasta_curry": {
+     "brand": "Kanokwan",
+     "name": "Pasta curry czerwona bezglutenowa",
+     "size": 50,
+     "unit": "g",
+     "price": 5.79,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,41429/stn,product"
+    },
+    "ryba_puszka": {
+     "brand": "Duniafood",
+     "name": "Sardynki w oleju słonecznikowym",
+     "size": 125,
+     "unit": "g",
+     "price": 6.99,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,111519/stn,product"
+    }
+   }
+  },
+  "Auchan": {
+   "checked": "2026-10-22",
+   "source": "zakupy.auchan.pl",
+   "items": {
+    "pomidor": {
+     "brand": "Mutti",
+     "name": "Pomidory całe 400 g",
+     "size": 400,
+     "unit": "g",
+     "price": 6.58,
+     "currency": "PLN",
+     "url": "https://zakupy.auchan.pl/products/pomidory-cale-mutti-400-g/00372894"
+    },
+    "ogorek": {
+     "brand": "Warzywa Auchan",
+     "name": "Ogórek długi 1 sztuka",
+     "price": 4.75,
+     "currency": "PLN",
+     "url": "https://zakupy.auchan.pl/products/ogorek-dlugi-warzywa-auchan-1-sztuka/00306053"
+    },
+    "papryka": {
+     "brand": "Kamis",
+     "name": "Papryka ostra 37 g",
+     "size": 37,
+     "unit": "g",
+     "price": 9.24,
+     "currency": "PLN",
+     "url": "https://zakupy.auchan.pl/products/papryka-ostra-kamis-37-g/00689704"
+    },
+    "cebula": {
+     "brand": "Warzywa Auchan",
+     "name": "Cebula 1 kg",
+     "size": 1000,
+     "unit": "g",
+     "price": 2.98,
+     "currency": "PLN",
+     "url": "https://zakupy.auchan.pl/products/cebula-warzywa-auchan-1-kg/00297778"
+    }
+   }
+  },
+  "Wolt Market": {
+   "checked": "2026-10-22",
+   "source": "wolt.com",
+   "items": {
+    "ogorek": {
+     "brand": "",
+     "name": "VIGO Kombucha BIO Ogórek + Kolendra, 330 ml",
+     "size": 330,
+     "unit": "ml",
+     "price": 10.99,
+     "currency": "PLN",
+     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
+    },
+    "ziemniaki": {
+     "brand": "",
+     "name": "Janex Mąka ziemniaczana, 500 g",
+     "size": 500,
+     "unit": "g",
+     "price": 5.99,
+     "currency": "PLN",
+     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
+    },
+    "dynia": {
+     "brand": "",
+     "name": "Dynia z cukierkami 69g",
+     "size": 69,
+     "unit": "g",
+     "price": 14.99,
+     "currency": "PLN",
+     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
+    },
+    "salata": {
+     "brand": "",
+     "name": "Sałatka wysokobiałkowa w stylu orientalnym z kurczakiem 280g Joyfood",
+     "size": 280,
+     "unit": "g",
+     "price": 22.99,
+     "currency": "PLN",
+     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
+    },
+    "cytryna": {
+     "brand": "",
+     "name": "Gellwe Kwasek cytrynowy, 20 g",
+     "size": 20,
+     "unit": "g",
+     "price": 1.99,
+     "currency": "PLN",
+     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
+    },
+    "losos": {
+     "brand": "",
+     "name": "Olej z orzechów włoskich, 250 ml",
+     "size": 250,
+     "unit": "ml",
+     "price": 21.59,
+     "currency": "PLN",
+     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
+    },
+    "serek": {
+     "brand": "",
+     "name": "Piątnica Serek wiejski wysokobiałkowy, 200 g",
+     "size": 200,
+     "unit": "g",
+     "price": 4.99,
+     "currency": "PLN",
+     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
+    },
+    "mleko": {
+     "brand": "",
+     "name": "nimm2 Śmiejżelki Mlekoduszki Żelki owocowe wzbogacone witaminami, 90 g",
+     "size": 90,
+     "unit": "g",
+     "price": 6.99,
+     "currency": "PLN",
+     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
+    },
+    "maslo": {
+     "brand": "",
+     "name": "Goferki waflove maślane, 70 g",
+     "size": 70,
+     "unit": "g",
+     "price": 3.99,
+     "currency": "PLN",
+     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
+    },
+    "ryz": {
+     "brand": "",
+     "name": "Get it Fit Ninja Ryż + kurczak + sos curry, 420 g",
+     "size": 420,
+     "unit": "g",
+     "price": 25.49,
+     "currency": "PLN",
+     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
+    },
+    "maka": {
+     "brand": "",
+     "name": "Basia Mąka poznańska typ 500, 1 kg",
+     "size": 1000,
+     "unit": "g",
+     "price": 7.99,
+     "currency": "PLN",
+     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
+    },
+    "wloskie": {
+     "brand": "",
+     "name": "True Dates daktyle w maśle orzechowym, 100 g",
+     "size": 100,
+     "unit": "g",
+     "price": 12.99,
+     "currency": "PLN",
+     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
+    },
+    "migdaly": {
+     "brand": "",
+     "name": "Dobra kaloria Mini batoniki energia, magnez bez cukru migdałowe, 102 g",
+     "size": 102,
+     "unit": "g",
+     "price": 16.99,
+     "currency": "PLN",
+     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
+    },
+    "oliwa": {
+     "brand": "",
+     "name": "Grossini sesam i oliwa z oliwek, 125 G",
+     "size": 125,
+     "unit": "g",
+     "price": 7.99,
+     "currency": "PLN",
+     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
+    },
+    "owoce_lesne": {
+     "brand": "",
+     "name": "nimm2 Śmiejżelki Mlekoduszki Żelki owocowe wzbogacone witaminami, 90 g",
+     "size": 90,
+     "unit": "g",
+     "price": 6.99,
+     "currency": "PLN",
+     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
+    },
+    "mango": {
+     "brand": "",
+     "name": "MK Mango plastry w lekkim syropie, 425 g",
+     "size": 425,
+     "unit": "g",
+     "price": 9.99,
+     "currency": "PLN",
+     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
+    },
+    "bulgur": {
+     "brand": "",
+     "name": "Danie kurczak w sosie śródziemnomorskim z kasza bulgur 400g",
+     "size": 400,
+     "unit": "g",
+     "price": 25.49,
+     "currency": "PLN",
+     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
+    },
+    "ryz_brazowy": {
+     "brand": "",
+     "name": "Get it Fit Ninja Ryż + kurczak + sos curry, 420 g",
+     "size": 420,
+     "unit": "g",
+     "price": 25.49,
+     "currency": "PLN",
+     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
+    },
+    "jaglana": {
+     "brand": "",
+     "name": "Danie kurczak w sosie śródziemnomorskim z kasza bulgur 400g",
+     "size": 400,
+     "unit": "g",
+     "price": 25.49,
+     "currency": "PLN",
+     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
+    },
+    "maslo_orzechowe": {
+     "brand": "",
+     "name": "True Dates daktyle w maśle orzechowym, 100 g",
+     "size": 100,
+     "unit": "g",
+     "price": 12.99,
+     "currency": "PLN",
+     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
+    },
+    "kakao": {
+     "brand": "",
+     "name": "Super Krówka Wegańskie krówki kakaowe, 150 g",
+     "size": 150,
+     "unit": "g",
+     "price": 16.29,
+     "currency": "PLN",
+     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
+    },
+    "czekolada": {
+     "brand": "",
+     "name": "Lion Lody karmelowe sosem karmelowym w mlecznej czekoladzie, 100 ml",
+     "size": 100,
+     "unit": "ml",
+     "price": 8.99,
+     "currency": "PLN",
+     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
+    },
+    "daktyle": {
+     "brand": "",
+     "name": "Super Krówka Krówki słodzone agawą & daktylem bez dodatku cukru, BIO, vegan, 150 g",
+     "size": 150,
+     "unit": "g",
+     "price": 16.99,
+     "currency": "PLN",
+     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
+    },
+    "nerkowce": {
+     "brand": "",
+     "name": "True Dates daktyle w maśle orzechowym, 100 g",
+     "size": 100,
+     "unit": "g",
+     "price": 12.99,
+     "currency": "PLN",
+     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
+    },
+    "orzeszki": {
+     "brand": "",
+     "name": "Go on protein krem z orzeszkami ziemnymi prażonymi, 180 g",
+     "size": 180,
+     "unit": "g",
+     "price": 17.99,
+     "currency": "PLN",
+     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
+    },
+    "tost": {
+     "brand": "",
+     "name": "Polskie Młyny Mąka Szymanowska Chlebowa pszenna typ 750, 1 kg",
+     "size": 1000,
+     "unit": "g",
+     "price": 5.99,
+     "currency": "PLN",
+     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
+    },
+    "batat": {
+     "brand": "",
+     "name": "Herbata Herbapol 20tor lekki brzuch",
+     "price": 7.49,
+     "currency": "PLN",
+     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
+    },
+    "borowki": {
+     "brand": "",
+     "name": "Grycan Lody borówkowe, 500 ml",
+     "size": 500,
+     "unit": "ml",
+     "price": 19.99,
+     "currency": "PLN",
+     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
+    },
+    "truskawki": {
+     "brand": "",
+     "name": "Grycan Sorbet z truskawek, 500 ml",
+     "size": 500,
+     "unit": "ml",
+     "price": 21.49,
+     "currency": "PLN",
+     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
+    },
+    "pomarancza": {
+     "brand": "",
+     "name": "Dobra Kaloria Kulki kakao & nuta pomarańczy, 65 g",
+     "size": 65,
+     "unit": "g",
+     "price": 9.99,
+     "currency": "PLN",
+     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
+    },
+    "limonka": {
+     "brand": "",
+     "name": "Dobra Kaloria Kulki kakao & nuta limonki, 65 g",
+     "size": 65,
+     "unit": "g",
+     "price": 9.99,
+     "currency": "PLN",
+     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
+    },
+    "serek_smietankowy": {
+     "brand": "",
+     "name": "Almette wysokobiałkowy Puszysty serek twarogowy lekki naturalny 150 g",
+     "size": 150,
+     "unit": "g",
+     "price": 8.99,
+     "currency": "PLN",
+     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
+    },
+    "smietana": {
+     "brand": "",
+     "name": "Zielona Budka Lodowa kanapka ze śmietanką, 160 ml",
+     "size": 160,
+     "unit": "ml",
+     "price": 5.99,
+     "currency": "PLN",
+     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
+    },
+    "koncentrat": {
+     "brand": "",
+     "name": "Activlab Isoactive Koncentrat napoju izotonicznego o smaku mrożonej herbaty z trawą cytrynową, 31.5 g",
+     "size": 31.5,
+     "unit": "g",
+     "price": 2.19,
+     "currency": "PLN",
+     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
+    },
+    "oliwki": {
+     "brand": "",
+     "name": "Palmiers przekąska z czarnymi oliwkami 100g",
+     "size": 100,
+     "unit": "g",
+     "price": 10.49,
+     "currency": "PLN",
+     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
+    },
+    "pasta_curry": {
+     "brand": "",
+     "name": "Milka Lody orzechowe z sosem z czekoladą mleczną i pastą z orzechów laskowych, 90 ml",
+     "size": 90,
+     "unit": "ml",
+     "price": 9.99,
+     "currency": "PLN",
+     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
+    }
+   }
+  }
+ }
+}
