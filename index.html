@@ -453,6 +453,15 @@ input[type=search].field{padding-left:44px;background:var(--surface) url("data:i
 .addrecipe{margin-top:10px}
 .pill.shared{background:var(--dill-soft);color:var(--dill)}
 .libbtns{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0 0 6px}
+#view .libbtns{margin-bottom:14px}
+.mcard{position:relative}
+.mtag{position:absolute;top:14px;left:14px;padding:2px 8px;border-radius:99px;background:var(--beet-soft);color:var(--beet);font:600 11px/1.5 var(--f-body);font-style:normal}
+.delbtn{margin-top:18px}
+/* Headers stay put while the page scrolls */
+body::before{content:'';position:fixed;top:0;left:0;right:0;height:env(safe-area-inset-top,0px);background:var(--ground);z-index:16}
+#top{position:sticky;top:env(safe-area-inset-top,0px);z-index:15;background:var(--ground);margin:-22px -18px 0;padding:22px 18px 1px}
+#top .top{margin-bottom:12px}
+.pagehead{background:var(--ground);margin:0 -18px 10px;padding:14px 14px 8px}
 .libbtns .btn{gap:6px}
 .btngrid .btn svg{margin-right:6px}
 .copied{padding:14px 16px;border-radius:16px;border:1.5px solid var(--dill);background:var(--dill-soft);margin-bottom:8px}
@@ -489,7 +498,7 @@ input[type=search].field{padding-left:44px;background:var(--surface) url("data:i
 <script>
 (function(){
 'use strict';
-var APP_VERSION='0.17.0';
+var APP_VERSION='0.17.1';
 var DATA_VERSION=5;
 var KEY='posilki';
 
@@ -1266,7 +1275,7 @@ function mealRow(m,extra,serv){
 }
 function mealCard(m){
   var x=mealMacros(m);
-  return '<button class="mcard" data-a="openMeal" data-id="'+m.id+'">'+mealImage(m)+'<b>'+esc(mealTitle(m))+'</b><span>'+nf(x.kcal)+' kcal, '+x.p+' g protein</span></button>';
+  return '<button class="mcard" data-a="openMeal" data-id="'+m.id+'">'+mealImage(m)+(m.custom?'<i class="mtag">Your recipe</i>':'')+'<b>'+esc(mealTitle(m))+'</b><span>'+nf(x.kcal)+' kcal, '+x.p+' g protein</span></button>';
 }
 function renderView(){
   var v=$('view'), html='';
@@ -1308,15 +1317,17 @@ function mealMatches(m){
   return hay.indexOf(q)>-1;
 }
 function mealResults(){
-  var arr=allMeals().filter(mealMatches);
-  if(!arr.length) return '<p class="empty">'+(UI.filter==='favs'&&!UI.cats.length?'No favorites yet. Tap the heart on any meal page to save it here.':UI.filter==='mine'&&!UI.cats.length?'No recipes of your own yet. Open any meal, change the grams and tap Save my version.':UI.cats.length?'No meals have all of those categories. Try removing one.':'No meals match. Try another word, like chicken or kurczak.')+'</p>';
+  // Your own recipes come first, newest on top, then the catalog.
+  var arr=S.library.recipes.slice().reverse().concat(MEALS).filter(mealMatches);
+  if(!arr.length) return '<p class="empty">'+(UI.filter==='favs'&&!UI.cats.length?'No favorites yet. Tap the heart on any meal page to save it here.':UI.filter==='mine'&&!UI.cats.length?'No recipes yet. Tap New recipe to write your own, or open any meal and tap Add as recipe.':UI.cats.length?'No meals have all of those categories. Try removing one.':'No meals match. Try another word, like chicken or kurczak.')+'</p>';
   var shown=arr.slice(0,UI.limit);
   return '<p class="rcount">'+arr.length+(arr.length===1?' meal':' meals')+'</p><div class="grid">'+shown.map(mealCard).join('')+'</div>'+
     (arr.length>shown.length?'<button class="btn block" data-a="moreMeals" style="margin-top:14px">Show more ('+(arr.length-shown.length)+' left)</button>':'');
 }
 function mealsView(){
   var F=[['all','All'],['breakfast','Breakfast'],['lunch','Lunch'],['dinner','Dinner'],['snack','Snacks'],['favs','Favorites'],['mine','Recipes']];
-  return '<input id="mealSearch" class="field" type="search" placeholder="Search meals or ingredients" aria-label="Search meals" value="'+esc(UI.q)+'">'+
+  return '<div class="libbtns"><button class="btn primary" data-a="newRecipe">'+svg('plus',18)+'New recipe</button><button class="btn" data-a="pasteRecipe">Paste recipe</button></div>'+
+    '<input id="mealSearch" class="field" type="search" placeholder="Search meals or ingredients" aria-label="Search meals" value="'+esc(UI.q)+'">'+
     '<div class="chips" style="margin-top:12px" role="group" aria-label="Meal type">'+F.map(function(f){return '<button class="chip" data-a="filter" data-f="'+f[0]+'" aria-pressed="'+(UI.filter===f[0])+'">'+f[1]+'</button>';}).join('')+'</div>'+
     '<div class="catshead"><span>Categories</span>'+(UI.cats.length?'<button class="linkbtn" data-a="clearCats">Clear</button>':'')+'</div>'+
     '<div class="chips cats" role="group" aria-label="Categories">'+CATS.map(function(c){var on=UI.cats.indexOf(c[0])>-1;return '<button class="chip" data-a="cat" data-c="'+c[0]+'" aria-pressed="'+on+'">'+(on?svg('check',16):'')+c[1]+'</button>';}).join('')+'</div>'+
@@ -1605,7 +1616,7 @@ function libSection(p){
       if(!col) return pageHead('Collection')+'<p class="empty">This collection was deleted.</p>';
       var ms=col.ids.map(getMeal).filter(Boolean);
       return pageHead(esc(col.name))+(ms.length?ms.map(function(m){return mealRow(m);}).join(''):'<p class="empty">No meals in this collection yet. Use Add to collection on any meal page.</p>')+
-        '<div class="btnrow"><button class="btn sm danger" data-a="deleteCollection" data-id="'+col.id+'">Delete collection</button></div>';
+        '<div class="btnrow"><button class="btn sm danger" data-a="deleteCollectionAsk" data-id="'+col.id+'">Delete collection</button></div>';
     }
     var c=sortList('collections',L.collections,function(x){return x.name;},function(){return 0;});
     body='<button class="btn primary block libnew" data-a="newCollectionAsk">'+svg('plus',18)+'New collection</button>'+
@@ -1678,6 +1689,7 @@ function recipeEditPage(p){
     '<section class="section"><h2>Video</h2><label class="lbl" for="rVideo" style="margin-top:6px">Link to a video of this meal</label>'+
       '<input id="rVideo" class="field" type="url" inputmode="url" autocomplete="off" placeholder="Paste a YouTube, TikTok or Instagram link" value="'+esc(d.video)+'"></section>'+
     '<p class="note" style="margin-top:12px">Anything you leave empty stays hidden on the recipe.</p>'+
+    (d.id?'<button class="btn block danger delbtn" data-a="deleteRecipeAsk" data-id="'+d.id+'">Delete recipe</button>':'')+
     '<div class="savebar"><button class="btn primary block" data-a="saveRecipe" id="rSave"'+(d.name.trim()?'':' disabled')+'>Save</button>'+
       '<p class="note" id="rSaveNote"'+(d.name.trim()?' style="display:none"':'')+'>Give the recipe a name to save it.</p></div>';
 }
@@ -1863,8 +1875,28 @@ function openCollectionSheet(){
       return '<button class="storebtn" data-a="toggleInCollection" data-id="'+c.id+'" aria-pressed="'+on+'"><span class="grow">'+esc(c.name)+'</span>'+(on?'<span class="check">'+svg('check',20)+'</span>':'')+'</button>';}).join('')+'</div>':'<p class="muted">No collections yet. Create your first one below.</p>')+
     '<div class="addrow" style="display:flex;gap:8px;margin-top:14px"><input id="nameInput" class="field" placeholder="New collection, e.g. Quick dinners" aria-label="New collection name"><button class="btn" data-a="newCollectionFromMeal">Create</button></div>');
 }
-function confirmSheet(title,text,action,label){
-  UI.sheet={type:'confirm',action:action};
+function deleteRecipe(id){
+  var L=S.library;
+  L.recipes=L.recipes.filter(function(m){return m.id!==id;});
+  L.favorites=L.favorites.filter(function(x){return x!==id;});
+  L.collections.forEach(function(c){ c.ids=c.ids.filter(function(x){return x!==id;}); });
+  S.prep.days=S.prep.days.map(function(d){return d.filter(function(it){return it.id!==id;});});
+  save(); leavePages(function(p){return p.type==='recipeEdit'||(p.type==='meal'&&p.id===id);}); toast('Recipe deleted');
+}
+function deleteCollection(id){
+  S.library.collections=S.library.collections.filter(function(c){return c.id!==id;});
+  save(); leavePages(function(p){return p.type==='lib'&&p.cid===id;}); toast('Collection deleted');
+}
+// Drops the pages that showed something now deleted and slides back to what's left.
+function leavePages(gone){
+  var keep=UI.stack.filter(function(p){return !gone(p);});
+  if(keep.length===UI.stack.length){ refresh(); return; }
+  UI.stack=keep.concat([UI.stack[UI.stack.length-1]]);
+  if(keep.length) top().keepScroll=false;
+  popPage(); renderView();
+}
+function confirmSheet(title,text,action,label,id){
+  UI.sheet={type:'confirm',action:action,id:id};
   openSheet(sheetHead(title)+'<p>'+text+'</p><div class="btnrow"><button class="btn danger" data-a="confirmYes">'+label+'</button><button class="btn" data-a="closeSheet">Cancel</button></div>');
 }
 
@@ -2043,7 +2075,8 @@ var H={
   deleteList:function(el){ S.library.lists=S.library.lists.filter(function(x){return x.id!==el.dataset.id;}); refresh(); },
 
   newCollectionAsk:function(){ openNameSheet('New collection','e.g. Quick dinners','newCollection',''); },
-  deleteCollection:function(el){ S.library.collections=S.library.collections.filter(function(x){return x.id!==el.dataset.id;}); save(); popPage(); },
+  deleteCollectionAsk:function(el){ var c=S.library.collections.filter(function(x){return x.id===el.dataset.id;})[0]; if(c) confirmSheet('Delete “'+esc(c.name)+'”?','The meals and recipes in it stay where they are. Only the collection goes.','deleteCollection','Delete collection',c.id); },
+  deleteRecipeAsk:function(el){ var m=getMeal(el.dataset.id); if(m) confirmSheet('Delete “'+esc(m.name)+'”?','It will be removed from Recipes, your favorites, collections and plan. This can’t be undone.','deleteRecipe','Delete recipe',m.id); },
   nameSave:function(){
     var v=($('nameInput').value||'').trim(); if(!v) return; var a=UI.sheet.action;
     if(a==='saveWeek'){ S.library.weeks.push({id:uid(),name:v,created:Date.now(),days:clone(S.prep.days)}); toast('Week saved to Library'); }
@@ -2052,7 +2085,9 @@ var H={
     closeSheet(); refresh();
   },
   confirmYes:function(){
-    var a=UI.sheet.action; closeSheet();
+    var a=UI.sheet.action, id=UI.sheet.id; closeSheet();
+    if(a==='deleteRecipe') return deleteRecipe(id);
+    if(a==='deleteCollection') return deleteCollection(id);
     if(a==='newWeek'){ newWeek(); refresh(); toast('New week planned'); }
     else if(a==='clearList'){ S.shopping.entries=[]; refresh(); toast('Shopping list cleared'); }
   },
