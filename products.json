@@ -1981,6 +1981,1143 @@
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     }
    }
+  },
+  "Krónan": {
+   "checked": "2026-10-22",
+   "source": "kronan.is",
+   "items": {
+    "pomidor": {
+     "brand": "",
+     "name": "tómatar",
+     "size": 950,
+     "unit": "g",
+     "price": 1044,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/100054051"
+    },
+    "ogorek": {
+     "brand": "",
+     "name": "Agúrkur",
+     "price": 276,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/100092615"
+    },
+    "papryka": {
+     "brand": "",
+     "name": "paprika rauð",
+     "size": 195,
+     "unit": "g",
+     "price": 179,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/100253122"
+    },
+    "cebula": {
+     "brand": "",
+     "name": "Grön Balance laukur",
+     "size": 750,
+     "unit": "g",
+     "price": 329,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/100092616"
+    },
+    "czosnek": {
+     "brand": "",
+     "name": "Grön Balance hvítlaukur",
+     "size": 80,
+     "unit": "g",
+     "price": 219,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/100233384"
+    },
+    "brokul": {
+     "brand": "",
+     "name": "spergilkál",
+     "size": 300,
+     "unit": "g",
+     "price": 330,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/100129471"
+    },
+    "szpinak": {
+     "brand": "",
+     "name": "Ódýrt spínat",
+     "size": 200,
+     "unit": "g",
+     "price": 399,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/100224172"
+    },
+    "marchew": {
+     "brand": "",
+     "name": "Grön Balance gulrætur",
+     "size": 1000,
+     "unit": "g",
+     "price": 799,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/100204793"
+    },
+    "ziemniaki": {
+     "brand": "",
+     "name": "Ódýrt kartöflur 2kg",
+     "size": 2000,
+     "unit": "g",
+     "price": 699,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/100266598"
+    },
+    "kapusta": {
+     "brand": "",
+     "name": "Hvítkál Íslenskt",
+     "size": 1000,
+     "unit": "g",
+     "price": 549,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/100172480"
+    },
+    "cukinia": {
+     "brand": "",
+     "name": "kúrbítur",
+     "size": 350,
+     "unit": "g",
+     "price": 217,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/100253056"
+    },
+    "dynia": {
+     "brand": "",
+     "name": "Hokkaido grasker",
+     "price": 598,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/100260148"
+    },
+    "rzodkiewki": {
+     "brand": "",
+     "name": "Radísur í poka",
+     "size": 125,
+     "unit": "g",
+     "price": 136,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/01000695"
+    },
+    "salata": {
+     "brand": "",
+     "name": "Lambhaga salatblanda",
+     "size": 100,
+     "unit": "g",
+     "price": 526,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/100266443"
+    },
+    "rukola": {
+     "brand": "",
+     "name": "Klettasalat Naturmed",
+     "size": 75,
+     "unit": "g",
+     "price": 329,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/100247270"
+    },
+    "banan": {
+     "brand": "",
+     "name": "Bananar",
+     "size": 195,
+     "unit": "g",
+     "price": 66,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/100253786"
+    },
+    "jablko": {
+     "brand": "",
+     "name": "Epli bloss",
+     "price": 599,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/100274210"
+    },
+    "cytryna": {
+     "brand": "",
+     "name": "sítrónur",
+     "size": 170,
+     "unit": "g",
+     "price": 98,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/100253498"
+    },
+    "szczypiorek": {
+     "brand": "",
+     "name": "Náttúra graslaukur ferskur",
+     "size": 30,
+     "unit": "g",
+     "price": 368,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/100128646"
+    },
+    "piers": {
+     "brand": "",
+     "name": "Ódýrt kjúklingabringur",
+     "size": 850,
+     "unit": "g",
+     "price": 2354,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/100244878"
+    },
+    "indyk_mielone": {
+     "brand": "",
+     "name": "Ísfugl kalkúnahakk",
+     "size": 600,
+     "unit": "g",
+     "price": 999,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/100215845"
+    },
+    "indyk_filet": {
+     "brand": "",
+     "name": "Gourmet Quality kalkúnabringa án skinns",
+     "size": 1370,
+     "unit": "g",
+     "price": 3835,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/100260264"
+    },
+    "wolowina": {
+     "brand": "",
+     "name": "Sælkerabúðin nautalundir rio",
+     "size": 520,
+     "unit": "g",
+     "price": 7795,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/100270191"
+    },
+    "losos": {
+     "brand": "",
+     "name": "Landlax laxabitar með roði",
+     "size": 530,
+     "unit": "g",
+     "price": 2083,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/100260652"
+    },
+    "dorsz": {
+     "brand": "",
+     "name": "Hnýfill þorskflök",
+     "size": 750,
+     "unit": "g",
+     "price": 2999,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/100267175"
+    },
+    "szynka": {
+     "brand": "",
+     "name": "Kjarnafæði skinka",
+     "size": 95,
+     "unit": "g",
+     "price": 364,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/100222057"
+    },
+    "jajka": {
+     "brand": "",
+     "name": "Grænegg stór egg frelsi 6stk",
+     "size": 405,
+     "unit": "g",
+     "price": 495,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/100265916"
+    },
+    "skyr": {
+     "brand": "",
+     "name": "KEA skyr hreint 200gr",
+     "size": 200,
+     "unit": "g",
+     "price": 250,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/02500190"
+    },
+    "jogurt": {
+     "brand": "",
+     "name": "Arna ab jógúrt hreint laktósaf",
+     "size": 500,
+     "unit": "g",
+     "price": 496,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/100221219"
+    },
+    "serek": {
+     "brand": "",
+     "name": "MS kotasæla 200gr",
+     "size": 200,
+     "unit": "g",
+     "price": 402,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/02400011"
+    },
+    "feta": {
+     "brand": "",
+     "name": "Gestus salatostur",
+     "size": 200,
+     "unit": "g",
+     "price": 699,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/100249843"
+    },
+    "mleko": {
+     "brand": "",
+     "name": "MS léttmjólk",
+     "size": 1000,
+     "unit": "ml",
+     "price": 238,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/02500211"
+    },
+    "kefir": {
+     "brand": "",
+     "name": "MS ab mjólk",
+     "size": 1000,
+     "unit": "ml",
+     "price": 534,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/02500059"
+    },
+    "maslo": {
+     "brand": "",
+     "name": "MS smjör 250gr",
+     "size": 250,
+     "unit": "g",
+     "price": 478,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/02400002"
+    },
+    "chleb": {
+     "brand": "",
+     "name": "HP Rúgbrauð",
+     "size": 400,
+     "unit": "g",
+     "price": 399,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/02200672"
+    },
+    "tortilla": {
+     "brand": "",
+     "name": "Mission tortilla vefjur stórar grilled",
+     "size": 370,
+     "unit": "g",
+     "price": 469,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/100244095"
+    },
+    "platki": {
+     "brand": "",
+     "name": "Melvit hafragrjón",
+     "size": 400,
+     "unit": "g",
+     "price": 239,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/100267652"
+    },
+    "ryz": {
+     "brand": "",
+     "name": "Grön Balance hrísgrjón jasmin",
+     "size": 1000,
+     "unit": "g",
+     "price": 607,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/100217308"
+    },
+    "gryczana": {
+     "brand": "",
+     "name": "Urtekram bókhveiti",
+     "size": 500,
+     "unit": "g",
+     "price": 699,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/100237119"
+    },
+    "jeczmienna": {
+     "brand": "",
+     "name": "Móðir jörð bankabygg",
+     "size": 1000,
+     "unit": "g",
+     "price": 768,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/05600285"
+    },
+    "makaron": {
+     "brand": "",
+     "name": "Grön Balance heilhveiti fusilli",
+     "size": 500,
+     "unit": "g",
+     "price": 293,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/100201672"
+    },
+    "soczewica": {
+     "brand": "",
+     "name": "Grön Balance linsubaunir rauðar",
+     "size": 400,
+     "unit": "g",
+     "price": 343,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/100256181"
+    },
+    "maka": {
+     "brand": "",
+     "name": "Móðir jörð heilhveiti",
+     "size": 1000,
+     "unit": "g",
+     "price": 999,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/100253246"
+    },
+    "wloskie": {
+     "brand": "",
+     "name": "Til hamingju valhnetukjarnar",
+     "size": 90,
+     "unit": "g",
+     "price": 215,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/100245415"
+    },
+    "migdaly": {
+     "brand": "",
+     "name": "Til hamingju möndlur í hýði",
+     "size": 100,
+     "unit": "g",
+     "price": 245,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/02000346"
+    },
+    "pestki": {
+     "brand": "",
+     "name": "H-berg ristuð graskersfræ",
+     "size": 100,
+     "unit": "g",
+     "price": 140,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/100271519"
+    },
+    "tunczyk": {
+     "brand": "",
+     "name": "Rio Mare túnfiskur í vatni",
+     "size": 160,
+     "unit": "g",
+     "price": 599,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/100263407"
+    },
+    "pomidory_puszka": {
+     "brand": "",
+     "name": "Biona tómatar hakkaðir",
+     "size": 400,
+     "unit": "g",
+     "price": 299,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/100142356"
+    },
+    "fasola": {
+     "brand": "",
+     "name": "Biona rauðar nýrnabaunir",
+     "size": 400,
+     "unit": "g",
+     "price": 299,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/100142347"
+    },
+    "hummus": {
+     "brand": "",
+     "name": "Mezete hummus classic",
+     "size": 200,
+     "unit": "g",
+     "price": 449,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/100273208"
+    },
+    "soja": {
+     "brand": "",
+     "name": "Kikkoman sojasósa",
+     "size": 150,
+     "unit": "ml",
+     "price": 468,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/03701064"
+    },
+    "maliny": {
+     "brand": "",
+     "name": "Ódýrt hindber frosin 500g",
+     "size": 500,
+     "unit": "g",
+     "price": 900,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/100266151"
+    },
+    "warzywa_mr": {
+     "brand": "",
+     "name": "Gestus Wok blanda",
+     "size": 500,
+     "unit": "g",
+     "price": 399,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/100259079"
+    },
+    "fasolka": {
+     "brand": "",
+     "name": "First Price Haricots verts",
+     "size": 700,
+     "unit": "g",
+     "price": 299,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/100252398"
+    },
+    "olej": {
+     "brand": "",
+     "name": "First Price repjuolía",
+     "size": 1000,
+     "unit": "ml",
+     "price": 411,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/100179735"
+    },
+    "oliwa": {
+     "brand": "",
+     "name": "Monini ólífuolía extra virgin 500ml",
+     "size": 500,
+     "unit": "ml",
+     "price": 999,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/100267326"
+    },
+    "ciecierzyca": {
+     "brand": "",
+     "name": "Biona kjúklingabaunir",
+     "size": 400,
+     "unit": "g",
+     "price": 299,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/100142341"
+    },
+    "kukurydza": {
+     "brand": "",
+     "name": "Gestus maískorn",
+     "size": 340,
+     "unit": "g",
+     "price": 229,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/100225481"
+    },
+    "groszek": {
+     "brand": "",
+     "name": "Ora grænar baunir",
+     "size": 420,
+     "unit": "g",
+     "price": 256,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/05100174"
+    },
+    "owoce_lesne": {
+     "brand": "",
+     "name": "Ódýrt berjablanda frosin 1kg",
+     "size": 1000,
+     "unit": "g",
+     "price": 780,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/100265371"
+    },
+    "mango": {
+     "brand": "",
+     "name": "Ódýrt mangó frosið 1kg",
+     "size": 1000,
+     "unit": "g",
+     "price": 560,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/100265372"
+    },
+    "krewetki": {
+     "brand": "",
+     "name": "Meleyri rækjur stórar",
+     "size": 500,
+     "unit": "g",
+     "price": 1298,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/100215492"
+    },
+    "quinoa": {
+     "brand": "",
+     "name": "Grön Balance kínóa",
+     "size": 400,
+     "unit": "g",
+     "price": 449,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/100256180"
+    },
+    "kuskus": {
+     "brand": "",
+     "name": "Grön Balance kúskús",
+     "size": 400,
+     "unit": "g",
+     "price": 323,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/100256183"
+    },
+    "bulgur": {
+     "brand": "",
+     "name": "Grön Balance bulgur lífrænn",
+     "size": 400,
+     "unit": "g",
+     "price": 253,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/100262650"
+    },
+    "jaglana": {
+     "brand": "",
+     "name": "MUNA hirsi",
+     "size": 500,
+     "unit": "g",
+     "price": 345,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/100218226"
+    },
+    "makaron_ryzowy": {
+     "brand": "",
+     "name": "Thai Choice hrísgrjónanúðlur",
+     "size": 500,
+     "unit": "g",
+     "price": 466,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/03400322"
+    },
+    "spaghetti": {
+     "brand": "",
+     "name": "Rummo spaghetti",
+     "size": 500,
+     "unit": "g",
+     "price": 475,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/100243655"
+    },
+    "gnocchi": {
+     "brand": "",
+     "name": "Rana gnocchi",
+     "size": 500,
+     "unit": "g",
+     "price": 490,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/100239459"
+    },
+    "bulka_tarta": {
+     "brand": "",
+     "name": "Schar brauðraspur",
+     "size": 300,
+     "unit": "g",
+     "price": 598,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/100251515"
+    },
+    "maslo_orzechowe": {
+     "brand": "",
+     "name": "Good good hnetusmjör fínt",
+     "size": 350,
+     "unit": "g",
+     "price": 510,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/100261138"
+    },
+    "miod": {
+     "brand": "",
+     "name": "First Price hunang",
+     "size": 425,
+     "unit": "g",
+     "price": 399,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/100179736"
+    },
+    "kakao": {
+     "brand": "",
+     "name": "Cadbury kakó",
+     "size": 125,
+     "unit": "g",
+     "price": 499,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/100263423"
+    },
+    "czekolada": {
+     "brand": "",
+     "name": "Cachet súkkulaði 70%",
+     "size": 100,
+     "unit": "g",
+     "price": 299,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/100259070"
+    },
+    "daktyle": {
+     "brand": "",
+     "name": "Til hamingju döðlur",
+     "size": 250,
+     "unit": "g",
+     "price": 215,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/04700406"
+    },
+    "rodzynki": {
+     "brand": "",
+     "name": "Sun-Maid 12pk rúsínur",
+     "size": 168,
+     "unit": "g",
+     "price": 420,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/100260523"
+    },
+    "chia": {
+     "brand": "",
+     "name": "Krónu chia fræ",
+     "size": 200,
+     "unit": "g",
+     "price": 289,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/100262531"
+    },
+    "sezam": {
+     "brand": "",
+     "name": "Grön Balance sesamfræ",
+     "size": 250,
+     "unit": "g",
+     "price": 255,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/100201666"
+    },
+    "slonecznik": {
+     "brand": "",
+     "name": "Grön Balance sólblómafræ",
+     "size": 500,
+     "unit": "g",
+     "price": 359,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/100201663"
+    },
+    "nerkowce": {
+     "brand": "",
+     "name": "Til hamingju kasjúhnetur brotnar",
+     "size": 100,
+     "unit": "g",
+     "price": 215,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/100204003"
+    },
+    "orzeszki": {
+     "brand": "",
+     "name": "Nakd hrábar jarðhnetu",
+     "size": 35,
+     "unit": "g",
+     "price": 175,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/100238777"
+    },
+    "wafle": {
+     "brand": "",
+     "name": "Grön Balance hrískökur",
+     "size": 100,
+     "unit": "g",
+     "price": 179,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/100217315"
+    },
+    "pita": {
+     "brand": "",
+     "name": "Hatting pítubrauð gróft",
+     "size": 400,
+     "unit": "g",
+     "price": 329,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/100272059"
+    },
+    "flatkaka": {
+     "brand": "",
+     "name": "HP flatkökur",
+     "size": 180,
+     "unit": "g",
+     "price": 220,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/02207291"
+    },
+    "batat": {
+     "brand": "",
+     "name": "Sætar kartöflur",
+     "size": 300,
+     "unit": "g",
+     "price": 162,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/01000672"
+    },
+    "pieczarki": {
+     "brand": "",
+     "name": "Flúða sveppir í boxi",
+     "size": 250,
+     "unit": "g",
+     "price": 530,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/01000699"
+    },
+    "awokado": {
+     "brand": "",
+     "name": "Avókadó í lausu",
+     "price": 329,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/00900316"
+    },
+    "borowki": {
+     "brand": "",
+     "name": "Bláber 500g",
+     "size": 500,
+     "unit": "g",
+     "price": 1370,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/100225252"
+    },
+    "truskawki": {
+     "brand": "",
+     "name": "BelOrta jarðarber 500g",
+     "size": 500,
+     "unit": "g",
+     "price": 1298,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/100254313"
+    },
+    "gruszka": {
+     "brand": "",
+     "name": "perur conference",
+     "price": 105,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/100253617"
+    },
+    "pomarancza": {
+     "brand": "",
+     "name": "Appelsínur",
+     "size": 245,
+     "unit": "g",
+     "price": 89,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/100253496"
+    },
+    "kiwi": {
+     "brand": "",
+     "name": "kiwi",
+     "size": 90,
+     "unit": "g",
+     "price": 89,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/100253634"
+    },
+    "burak": {
+     "brand": "",
+     "name": "Rauðrófur forsoðnar",
+     "size": 500,
+     "unit": "g",
+     "price": 296,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/100141976"
+    },
+    "cebula_czerwona": {
+     "brand": "",
+     "name": "Rauðlaukur",
+     "size": 160,
+     "unit": "g",
+     "price": 37,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/01000633"
+    },
+    "por": {
+     "brand": "",
+     "name": "Blaðlaukur",
+     "size": 210,
+     "unit": "g",
+     "price": 99,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/01000593"
+    },
+    "seler": {
+     "brand": "",
+     "name": "Sellerí",
+     "size": 350,
+     "unit": "g",
+     "price": 161,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/01000665"
+    },
+    "kalafior": {
+     "brand": "",
+     "name": "Blómkál",
+     "size": 700,
+     "unit": "g",
+     "price": 699,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/01000614"
+    },
+    "baklazan": {
+     "brand": "",
+     "name": "eggaldin",
+     "size": 330,
+     "unit": "g",
+     "price": 345,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/100253422"
+    },
+    "limonka": {
+     "brand": "",
+     "name": "Grön Balance lime",
+     "price": 340,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/100231050"
+    },
+    "imbir": {
+     "brand": "",
+     "name": "Engiferrót",
+     "size": 300,
+     "unit": "g",
+     "price": 285,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/01000604"
+    },
+    "koperek": {
+     "brand": "",
+     "name": "Náttúra dill ferskt",
+     "size": 30,
+     "unit": "g",
+     "price": 368,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/100128648"
+    },
+    "pietruszka": {
+     "brand": "",
+     "name": "Náttúra steinselja fersk",
+     "size": 30,
+     "unit": "g",
+     "price": 368,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/100140289"
+    },
+    "wolowina_mielona": {
+     "brand": "",
+     "name": "SS ungnautahakk",
+     "size": 500,
+     "unit": "g",
+     "price": 1799,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/100198486"
+    },
+    "udka": {
+     "brand": "",
+     "name": "Holta kjúklingalæri úrbeinuð 100%",
+     "size": 750,
+     "unit": "g",
+     "price": 3149,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/100045469"
+    },
+    "jagniecina": {
+     "brand": "",
+     "name": "Kjötborð lambalærissneiðar",
+     "size": 550,
+     "unit": "g",
+     "price": 2694,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/00201406"
+    },
+    "kielbasa": {
+     "brand": "",
+     "name": "Podlaska pylsur",
+     "size": 360,
+     "unit": "g",
+     "price": 889,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/100212729"
+    },
+    "losos_wedz": {
+     "brand": "",
+     "name": "Reykhólar reyktur Lax sneiddur 100gr",
+     "size": 100,
+     "unit": "g",
+     "price": 869,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/100248342"
+    },
+    "sledz": {
+     "brand": "",
+     "name": "Gestus marineruð síld",
+     "size": 275,
+     "unit": "g",
+     "price": 419,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/100263262"
+    },
+    "ysa": {
+     "brand": "",
+     "name": "Hnýfill ýsuflök",
+     "size": 750,
+     "unit": "g",
+     "price": 2549,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/100267169"
+    },
+    "bleikja": {
+     "brand": "",
+     "name": "Fiskverzlun Hafliða premium bleikja",
+     "size": 300,
+     "unit": "g",
+     "price": 2099,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/100268090"
+    },
+    "tofu": {
+     "brand": "",
+     "name": "Yipin tófú jurtakr. lífr.230g",
+     "size": 230,
+     "unit": "g",
+     "price": 779,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/100254039"
+    },
+    "jogurt_grecki": {
+     "brand": "",
+     "name": "Gott í matinn grísk jógúrt",
+     "size": 350,
+     "unit": "g",
+     "price": 527,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/02500276"
+    },
+    "mozzarella": {
+     "brand": "",
+     "name": "Ambrosi mozzarella",
+     "size": 125,
+     "unit": "g",
+     "price": 499,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/100246180"
+    },
+    "parmezan": {
+     "brand": "",
+     "name": "Ambrosi parmigiano reggiano",
+     "size": 150,
+     "unit": "g",
+     "price": 899,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/100237727"
+    },
+    "ser_zolty": {
+     "brand": "",
+     "name": "Daily Dairy gouda young matured í sneiðum",
+     "size": 140,
+     "unit": "g",
+     "price": 639,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/100247881"
+    },
+    "serek_smietankowy": {
+     "brand": "",
+     "name": "Kiri rjómaostur",
+     "size": 150,
+     "unit": "g",
+     "price": 599,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/100269155"
+    },
+    "ricotta": {
+     "brand": "",
+     "name": "Ambrosi ricotta",
+     "size": 250,
+     "unit": "g",
+     "price": 599,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/100253509"
+    },
+    "halloumi": {
+     "brand": "",
+     "name": "Greco Halloumi classic",
+     "size": 200,
+     "unit": "g",
+     "price": 875,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/100259156"
+    },
+    "smietana": {
+     "brand": "",
+     "name": "Arna sýrður rjómi hrærður 10%",
+     "size": 180,
+     "unit": "g",
+     "price": 350,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/100269401"
+    },
+    "mleczko_kokosowe": {
+     "brand": "",
+     "name": "Biona kókosmjólk",
+     "size": 400,
+     "unit": "ml",
+     "price": 498,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/100142360"
+    },
+    "passata": {
+     "brand": "",
+     "name": "Saalga passata kirsuberjatómata",
+     "size": 500,
+     "unit": "g",
+     "price": 649,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/100270693"
+    },
+    "koncentrat": {
+     "brand": "",
+     "name": "Grön Balance tómatpúrra",
+     "size": 200,
+     "unit": "g",
+     "price": 290,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/100243845"
+    },
+    "kapusta_kiszona": {
+     "brand": "",
+     "name": "Súrkál",
+     "size": 500,
+     "unit": "g",
+     "price": 236,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/01000698"
+    },
+    "ogorki_kiszone": {
+     "brand": "",
+     "name": "Súrar Míur dill súrar gúrkur - bátar",
+     "size": 580,
+     "unit": "ml",
+     "price": 1499,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/100273847"
+    },
+    "oliwki": {
+     "brand": "",
+     "name": "Figaro grænar ólífur í sneiðum",
+     "size": 240,
+     "unit": "g",
+     "price": 379,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/100191444"
+    },
+    "pesto": {
+     "brand": "",
+     "name": "Rummo pestó genovese",
+     "size": 190,
+     "unit": "g",
+     "price": 499,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/100263615"
+    },
+    "ryba_puszka": {
+     "brand": "",
+     "name": "Ora sardínur í tómatsósu",
+     "size": 106,
+     "unit": "g",
+     "price": 360,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/05200068"
+    }
+   }
   }
  }
 }
