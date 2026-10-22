@@ -1366,15 +1366,6 @@
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
-    "losos": {
-     "brand": "",
-     "name": "Simpl Pstrąg łososiowy, 100 g",
-     "size": 100,
-     "unit": "g",
-     "price": 15.99,
-     "currency": "PLN",
-     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
-    },
     "jajka": {
      "brand": "",
      "name": "Jaja M, 10 szt.",
@@ -1465,10 +1456,10 @@
     },
     "ryz": {
      "brand": "",
-     "name": "Meal Box Na ostro wieprzowina z ryżem i warzywami, 360 g",
-     "size": 360,
+     "name": "Ryż biały długoziarnisty 4 x 100 g",
+     "size": 100,
      "unit": "g",
-     "price": 23.99,
+     "price": 4.99,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -1753,10 +1744,10 @@
     },
     "orzeszki": {
      "brand": "",
-     "name": "NicNac's Orzeszki ziemne w chrupiącej panierce, 125 g",
-     "size": 125,
+     "name": "Go on protein krem z orzeszkami ziemnymi prażonymi, 180 g",
+     "size": 180,
      "unit": "g",
-     "price": 11.99,
+     "price": 17.99,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
