@@ -441,6 +441,12 @@ input[type=search].field{padding-left:44px;background:var(--surface) url("data:i
 .tval small{width:34px;color:var(--muted);font-size:14px}
 .tval input::-webkit-inner-spin-button,.tval input::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
 .tval input{-moz-appearance:textfield;appearance:textfield}
+/* Library sorting */
+.sortbar{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:14px 0 2px}
+.sortdd .ddwrap{left:auto;width:240px}
+.sortbtn{display:inline-flex;align-items:center;gap:6px;min-height:40px;padding:0 12px;border:0;border-radius:99px;background:var(--tint);font-size:14px;font-weight:600;color:var(--ink)}
+.addrecipe{margin-top:10px}
+.btngrid > :last-child:nth-child(odd){grid-column:1/-1}
 </style>
 </head>
 <body>
@@ -813,6 +819,7 @@ var I={
   check:'<path d="M5 12.5l4.5 4.5L19 7.5"/>',
   chev:'<path d="M9 6l6 6-6 6"/>',
   back:'<path d="M19 12H5M11 6l-6 6 6 6"/>',
+  sort:'<path d="M8 20V4M4 8l4-4 4 4M16 4v16M12 16l4 4 4-4"/>',
   heart:'<path d="M12 20s-7-4.4-9-9a5 5 0 0 1 9-3 5 5 0 0 1 9 3c-2 4.6-9 9-9 9z"/>',
   swap:'<path d="M4 8h13l-3-3M20 16H7l3 3"/>',
   plus:'<path d="M12 5v14M5 12h14"/>',
@@ -833,6 +840,7 @@ function defaults(){
     theme:'system',
     targets:{mode:'same',same:defTarget(),days:DAYS.map(defTarget)},
     library:{favorites:[],recipes:[],collections:[],weeks:[],lists:[],history:[]},
+    libSort:{favorites:'new',recipes:'new',collections:'new'},
     shopping:{view:'meal',lang:'orig',entries:[]},
     prep:{weekStart:null,days:null},
     lastBackup:null,
@@ -1163,7 +1171,7 @@ function suggestions(slot,n){
 
 /* ---------- UI state ---------- */
 var UI={tab:'home',ob:{step:1,name:'',country:null},stack:[],pendingImport:null,filter:'all',cats:[],q:'',limit:40,sheet:null,prepDay:todayIdx(),panel:false,storeOpen:false,countryOpen:false,langOpen:false,shuffle:0,sugSlot:null};
-var TABS=[['home','Home'],['meals','Meals'],['library','Library'],['prep','Prep'],['shopping','Shopping']];
+var TABS=[['home','Home'],['meals','Meals'],['prep','Prep'],['library','Library'],['shopping','Shopping']];
 
 /* ---------- Onboarding ---------- */
 function renderOnboarding(){
@@ -1306,7 +1314,6 @@ function prepView(){
   }).join('');
   return '<p class="muted">Week of '+fmtShort(dayDate(0))+'. Swipe sideways or tap a day. Each day is planned around its own target from Settings.</p>'+
     '<div class="btngrid"><button class="btn primary" data-a="weekToList">Add week to shopping list</button><button class="btn" data-a="newWeekAsk">Plan a new week</button></div>'+
-    '<div class="btnrow" style="margin-top:8px"><button class="linkbtn" data-a="saveWeekAsk">Save this week to Library</button></div>'+
     strip+'<div class="pweek" id="pweek">'+days+'</div>';
 }
 // Scrolls the week row to day i and marks it in the day strip.
@@ -1354,6 +1361,7 @@ function closeDropdowns(except){
   if(UI.storeOpen&&except!=='storeDd') setStoreOpen(false);
   if(UI.countryOpen&&except!=='countryDd') setCountryOpen(false);
   if(UI.langOpen&&except!=='langDd') setLangOpen(false);
+  if(UI.sortOpen&&except!=='sortDd') setSortOpen(false);
 }
 function shoppingView(){
   var E=S.shopping.entries;
@@ -1382,7 +1390,7 @@ function shoppingView(){
     langDropdown()+'</div>'+
     '<p class="small muted" style="margin-top:10px">'+done+' of '+total+' checked. Check off anything you buy or already have. '+(liveStore(S.profile.store)?'Products, pack sizes and prices are from '+esc(S.profile.store)+'’s online shop.':'Products are typical examples for '+esc(S.profile.store)+', with typical pack sizes.')+'</p>'+
     body+
-    '<div class="btnrow" style="margin-top:22px"><button class="btn sm" data-a="saveListAsk">Save list to Library</button><button class="btn sm" data-a="clearChecked"'+(done?'':' disabled')+'>Remove checked</button><button class="btn sm danger" data-a="clearListAsk">Clear list</button></div>';
+    '<div class="btnrow" style="margin-top:22px"><button class="btn sm" data-a="clearChecked"'+(done?'':' disabled')+'>Remove checked</button><button class="btn sm danger" data-a="clearListAsk">Clear list</button></div>';
 }
 /* ---------- Side panel ---------- */
 var panelTimer;
@@ -1507,13 +1515,39 @@ function settingsPage(){
   '<section class="section"><h2>About</h2><p class="muted">Posiłki '+APP_VERSION+'. '+MEALS.length+' meals in the catalog'+(CATALOG.updated?', updated '+fmtDate(parseIso(CATALOG.updated).getTime()):'')+'. '+(LIVE.updated?'Store products were last checked '+fmtDate(parseIso(LIVE.updated).getTime())+'. ':'')+'Your data is stored on this phone, so open the app from its Home Screen icon.</p></section>';
 }
 var LIB=[
-  ['favorites','Favorites','Meals you’ve hearted.'],
-  ['recipes','Recipes','Meals you created and your versions of meals.'],
-  ['collections','Collections','Groups you name yourself, like “Quick dinners”.'],
-  ['weeks','Saved weeks','Meal-prep weeks you can reuse.'],
-  ['lists','Saved shopping lists','Lists you can shop from again.'],
-  ['history','History','Meals you marked as cooked.']
+  ['favorites','Favorites','Meals and recipes you’ve hearted.'],
+  ['recipes','Recipes','Your own recipes. You can edit these.'],
+  ['collections','Collections','Groups you name yourself, like “Quick dinners”.']
 ];
+// Lists keep the order things were added in, so newest first is that order reversed.
+var SORTS=[['new','Newest first'],['old','Oldest first'],['az','A to Z'],['kcalUp','Calories, low to high'],['kcalDown','Calories, high to low']];
+function sortsFor(sec){ return sec==='collections'?SORTS.slice(0,3):SORTS; }
+function sortList(sec,arr,name,kcal){
+  var by=S.libSort[sec]||'new', out=arr.map(function(x,i){return {x:x,i:i};});
+  out.sort(function(a,b){
+    if(by==='old') return a.i-b.i;
+    if(by==='az') return name(a.x).localeCompare(name(b.x),'en',{sensitivity:'base'});
+    if(by==='kcalUp') return kcal(a.x)-kcal(b.x);
+    if(by==='kcalDown') return kcal(b.x)-kcal(a.x);
+    return b.i-a.i;
+  });
+  return out.map(function(o){return o.x;});
+}
+function sortBar(sec,n,noun){
+  var cur=S.libSort[sec]||'new', label=SORTS.filter(function(s){return s[0]===cur;})[0][1];
+  return '<div class="sortbar"><span class="small muted">'+n+' '+noun+(n===1?'':'s')+'</span>'+
+    '<div class="dd sortdd"><button class="sortbtn" id="sortBtn" data-a="sortToggle" aria-expanded="'+UI.sortOpen+'" aria-controls="sortDd" aria-label="Sort: '+label+'">'+svg('sort',18)+'<span>'+label+'</span></button>'+
+    '<div class="ddwrap'+(UI.sortOpen?' open':'')+'" id="sortDd"><div><div class="ddlist" role="radiogroup" aria-label="Sort by">'+sortsFor(sec).map(function(s){
+      var on=s[0]===cur;
+      return '<button role="radio" data-a="sortPick" data-v="'+s[0]+'" aria-checked="'+on+'"'+(UI.sortOpen?'':' tabindex="-1"')+'><span class="grow">'+s[1]+'</span>'+(on?'<span class="check">'+svg('check',18)+'</span>':'')+'</button>';
+    }).join('')+'</div></div></div></div></div>';
+}
+function setSortOpen(open){
+  UI.sortOpen=open;
+  var b=$('sortBtn'), w=$('sortDd'); if(!b||!w) return;
+  b.setAttribute('aria-expanded',String(open)); w.classList.toggle('open',open);
+  w.querySelectorAll('button').forEach(function(x){ if(open) x.removeAttribute('tabindex'); else x.setAttribute('tabindex','-1'); });
+}
 function libraryView(){
   return LIB.map(function(r){
     return '<button class="librow" data-a="openLib" data-sec="'+r[0]+'"><span class="grow"><h3>'+r[1]+'</h3><span class="small muted">'+r[2]+'</span></span><span class="count">'+S.library[r[0]].length+'</span><span class="chev">'+svg('chev',20)+'</span></button>';
@@ -1521,11 +1555,14 @@ function libraryView(){
 }
 function libSection(p){
   var L=S.library, sec=p.sec, title=LIB.filter(function(r){return r[0]===sec;})[0][1], body='';
+  var mName=function(m){return m.name;}, mKcal=function(m){return mealMacros(m).kcal;};
   if(sec==='favorites'){
-    var f=L.favorites.map(getMeal).filter(Boolean);
-    body=f.length?f.map(function(m){return mealRow(m);}).join(''):'<p class="empty">No favorites yet. Tap Save to favorites on any meal page.</p>';
+    var f=sortList('favorites',L.favorites.map(getMeal).filter(Boolean),mName,mKcal);
+    body=f.length?sortBar('favorites',f.length,'favorite')+f.map(function(m){return mealRow(m,m.custom?'Your recipe':'');}).join(''):'<p class="empty">No favorites yet. Tap the heart on any meal or recipe to save it here.</p>';
   } else if(sec==='recipes'){
-    body='<button class="btn primary block libnew" data-a="newRecipe">'+svg('plus',18)+'New recipe</button>'+(L.recipes.length?L.recipes.map(function(m){return mealRow(m,m.own?'Your recipe':'Based on '+esc((MB[m.base]||{}).name||'a meal'));}).join(''):'<p class="empty">No recipes yet. Tap New recipe to write your own, or open any meal, change the grams and tap Save my version.</p>');
+    var r=sortList('recipes',L.recipes,mName,mKcal);
+    body='<button class="btn primary block libnew" data-a="newRecipe">'+svg('plus',18)+'New recipe</button>'+
+      (r.length?sortBar('recipes',r.length,'recipe')+r.map(function(m){return mealRow(m);}).join(''):'<p class="empty">No recipes yet. Tap New recipe to write your own, or open any meal and tap Add as recipe.</p>');
   } else if(sec==='collections'){
     if(p.cid){
       var col=L.collections.filter(function(c){return c.id===p.cid;})[0];
@@ -1534,23 +1571,9 @@ function libSection(p){
       return pageHead(esc(col.name))+(ms.length?ms.map(function(m){return mealRow(m);}).join(''):'<p class="empty">No meals in this collection yet. Use Add to collection on any meal page.</p>')+
         '<div class="btnrow"><button class="btn sm danger" data-a="deleteCollection" data-id="'+col.id+'">Delete collection</button></div>';
     }
-    body='<div class="btnrow" style="margin-top:0"><button class="btn sm primary" data-a="newCollectionAsk">New collection</button></div>'+
-      (L.collections.length?L.collections.map(function(c){return '<button class="librow" data-a="openCollection" data-id="'+c.id+'"><span class="grow"><h3>'+esc(c.name)+'</h3></span><span class="count">'+c.ids.length+'</span><span class="chev">'+svg('chev',20)+'</span></button>';}).join(''):'<p class="empty">No collections yet.</p>');
-  } else if(sec==='weeks'){
-    body=L.weeks.length?L.weeks.map(function(w){
-      var kc=w.days.map(function(d){return dayTotals(d).kcal;}), avg=Math.round(kc.reduce(function(a,b){return a+b;},0)/7);
-      return '<div class="librow" style="display:block"><h3>'+esc(w.name)+'</h3><p class="small muted">Saved '+fmtDate(w.created)+', about '+nf(avg)+' kcal a day</p>'+
-        '<div class="btnrow" style="margin-top:8px"><button class="btn sm primary" data-a="useWeek" data-id="'+w.id+'">Use this week</button><button class="btn sm danger" data-a="deleteWeek" data-id="'+w.id+'">Delete</button></div></div>';
-    }).join(''):'<p class="empty">No saved weeks yet. In Prep, tap Save this week to Library.</p>';
-  } else if(sec==='lists'){
-    body=L.lists.length?L.lists.map(function(l){
-      var n=0; l.entries.forEach(function(e){n+=e.items.length;});
-      return '<div class="librow" style="display:block"><h3>'+esc(l.name)+'</h3><p class="small muted">Saved '+fmtDate(l.created)+', '+l.entries.length+' meals, '+n+' items</p>'+
-        '<div class="btnrow" style="margin-top:8px"><button class="btn sm primary" data-a="useList" data-id="'+l.id+'">Shop from this list</button><button class="btn sm danger" data-a="deleteList" data-id="'+l.id+'">Delete</button></div></div>';
-    }).join(''):'<p class="empty">No saved lists yet. In Shopping, tap Save list to Library.</p>';
-  } else if(sec==='history'){
-    var h=L.history.slice().sort(function(a,b){return b.date-a.date;});
-    body=h.length?h.map(function(e){var m=getMeal(e.mealId); return m?mealRow(m,fmtDate(e.date)):'';}).join(''):'<p class="empty">Nothing here yet. Tap Mark as cooked on a meal page after you make it.</p>';
+    var c=sortList('collections',L.collections,function(x){return x.name;},function(){return 0;});
+    body='<button class="btn primary block libnew" data-a="newCollectionAsk">'+svg('plus',18)+'New collection</button>'+
+      (c.length?sortBar('collections',c.length,'collection')+c.map(function(x){return '<button class="librow" data-a="openCollection" data-id="'+x.id+'"><span class="grow"><h3>'+esc(x.name)+'</h3></span><span class="count">'+x.ids.length+'</span><span class="chev">'+svg('chev',20)+'</span></button>';}).join(''):'<p class="empty">No collections yet.</p>');
   }
   return pageHead(title)+body;
 }
@@ -1583,14 +1606,16 @@ var STEP_G={pietruszka:10,koperek:10,imbir:10,parmezan:20,pesto:20,miod:10,kakao
   quinoa:50,kuskus:50,bulgur:50,ryz_brazowy:50,jaglana:50,makaron_ryzowy:50,spaghetti:50,czosnek:5,maslo:10,wloskie:15,migdaly:15,pestki:10,feta:50,szczypiorek:5,hummus:30,soja:10,olej:10,oliwa:10,platki:50,ryz:50,gryczana:50,jeczmienna:50,makaron:50,soczewica:50,maka:50};
 function ingStep(k){ var x=ING[k]; return x.piece||STEP_G[k]||100; }
 function stepText(k){ var x=ING[k]; return x.piece?'1 piece ≈ '+x.piece+' '+x.u:'Each + adds '+ingStep(k)+' '+x.u; }
-function amountText(k,n){ var x=ING[k]; return n+' × '+ingStep(k)+' '+x.u+' = '+nf(n*ingStep(k))+' '+x.u; }
-function newDraft(){ return {name:'',desc:'',cnt:{},order:[],steps:[''],video:''}; }
+function amountText(k,g){ var x=ING[k]; return x.piece?'≈ '+Math.max(1,Math.round(g/x.piece))+(Math.round(g/x.piece)>1?' pieces':' piece')+', '+nf(g)+' '+x.u:nf(g)+' '+x.u; }
+function newDraft(){ return {name:'',desc:'',g:{},order:[],steps:[''],video:''}; }
 function draftFrom(m){
-  var d={id:m.id,name:m.name,desc:m.desc||'',cnt:{},order:[],steps:(m.steps&&m.steps.length?m.steps.slice():['']),video:m.video||''};
-  m.ing.forEach(function(x){ d.cnt[x[0]]=Math.max(1,Math.round(x[1]/ingStep(x[0]))); d.order.push(x[0]); });
+  var d={id:m.id,name:m.name,desc:m.desc||'',g:{},order:[],steps:(m.steps&&m.steps.length?m.steps.slice():['']),video:m.video||''};
+  m.ing.forEach(function(x){ d.g[x[0]]=x[1]; d.order.push(x[0]); });
   return d;
 }
-function draftItems(d){ return d.order.filter(function(k){return d.cnt[k]>0&&ING[k];}); }
+function draftItems(d){ return d.order.filter(function(k){return d.g[k]>0&&ING[k];}); }
+// Amounts are kept in grams, so a recipe made from a meal keeps its exact amounts; the counter shows them in steps.
+function cntOf(d,k){ var g=d.g[k]||0; return g>0?Math.max(1,Math.round(g/ingStep(k))):0; }
 function videoUrl(v){ v=(v||'').trim(); if(!v) return ''; if(!/^https?:\/\//i.test(v)) v='https://'+v; return /^https?:\/\/[^\s/]+\.[^\s]+/i.test(v)?v:''; }
 function counter(k,n){
   return '<span class="ctr"><button data-a="rCnt" data-k="'+k+'" data-d="-1" aria-label="Remove one '+esc(ING[k].en)+'"'+(n>0?'':' disabled')+'>'+svg('minus',18)+'</button>'+
@@ -1606,7 +1631,7 @@ function recipeEditPage(p){
       '<textarea id="rDesc" class="field area" rows="2" placeholder="A line or two about the meal">'+esc(d.desc)+'</textarea></section>'+
     '<section class="section"><div class="blockhead"><h2>Ingredients</h2>'+(items.length?'<span class="small muted">'+items.length+(items.length===1?' item':' items')+'</span>':'')+'</div>'+
       (items.length?'<div class="rlist">'+items.map(function(k){
-        return '<div class="ritem">'+emojiDot(k)+'<span class="grow"><b>'+esc(cap(ING[k].en))+'</b><small>'+amountText(k,d.cnt[k])+'</small></span>'+counter(k,d.cnt[k])+'</div>';
+        return '<div class="ritem">'+emojiDot(k)+'<span class="grow"><b>'+esc(cap(ING[k].en))+'</b><small>'+amountText(k,d.g[k])+'</small></span>'+counter(k,cntOf(d,k))+'</div>';
       }).join('')+'</div>':'<p class="note" style="margin-top:4px">Search or browse by category to add what goes in.</p>')+
       '<button class="btn block" data-a="addIng" style="margin-top:12px">'+svg('plus',18)+'Add ingredients</button></section>'+
     '<section class="section"><h2>Instructions</h2><ol class="rsteps">'+d.steps.map(function(s,i){
@@ -1623,14 +1648,14 @@ function recipeEditPage(p){
 function ingResults(p){
   var d=p.draft, q=(p.q||'').trim().toLowerCase();
   function rows(keys){ return keys.length?'<div class="rlist">'+keys.map(function(k){
-    var n=d.cnt[k]||0;
-    return '<div class="ritem'+(n?' on':'')+'">'+emojiDot(k)+'<span class="grow"><b>'+esc(cap(ING[k].en))+'</b><small>'+(n?amountText(k,n):stepText(k))+'</small></span>'+counter(k,n)+'</div>';
+    var n=cntOf(d,k);
+    return '<div class="ritem'+(n?' on':'')+'">'+emojiDot(k)+'<span class="grow"><b>'+esc(cap(ING[k].en))+'</b><small>'+(n?amountText(k,d.g[k]):stepText(k))+'</small></span>'+counter(k,n)+'</div>';
   }).join('')+'</div>':'<p class="empty">Nothing matches “'+esc(p.q)+'”. Try another word, like rice or chicken.</p>'; }
   if(q) return rows(Object.keys(ING).filter(function(k){var x=ING[k];return (x.en+' '+x.pl).toLowerCase().indexOf(q)>-1;}));
   if(p.cat) return rows(Object.keys(ING).filter(function(k){return ING[k].a===p.cat;}));
   return '<div class="catgrid">'+AISLES.map(function(a){
     var art=AISLE_ART[a[0]], n=Object.keys(ING).filter(function(k){return ING[k].a===a[0];}).length;
-    var picked=Object.keys(d.cnt).filter(function(k){return d.cnt[k]>0&&ING[k]&&ING[k].a===a[0];}).length;
+    var picked=Object.keys(d.g).filter(function(k){return d.g[k]>0&&ING[k]&&ING[k].a===a[0];}).length;
     return '<button class="catcard" data-a="ingCat" data-cat="'+a[0]+'"><span class="catpic" style="--tile:'+art[0]+'" aria-hidden="true"><i>'+art[1]+'</i><i>'+art[2]+'</i><i>'+art[3]+'</i></span>'+
       '<b>'+esc(a[2])+'</b><small>'+n+' items'+(picked?' · '+picked+' added':'')+'</small></button>';
   }).join('')+'</div>';
@@ -1670,11 +1695,10 @@ function openMealPage(id){
   pushPage({type:'meal',id:id,store:S.profile.store,grams:m.ing.map(function(x){return x[1];}),open:false});
 }
 function pageIng(p){ var m=getMeal(p.id); return m.ing.map(function(x,i){return [x[0],p.grams[i]];}); }
-function edited(p){ var m=getMeal(p.id); return m.ing.some(function(x,i){return x[1]!==p.grams[i];}); }
 function mealPage(p){
   var m=getMeal(p.id); if(!m) return pageHead('')+'<p class="empty">This meal was deleted.</p>';
-  if(m.own) return ownRecipePage(p,m);
-  var ing=pageIng(p), x=macrosOf(ing), fav=isFav(m.id), ed=edited(p);
+  if(m.custom) return ownRecipePage(p,m);
+  var ing=pageIng(p), x=macrosOf(ing), fav=isFav(m.id);
   var yt='https://www.youtube.com/results?search_query='+encodeURIComponent((m.custom?(MB[m.base]||m).name:m.name)+' recipe');
   return pageHead('','<button class="iconbtn" data-a="fav" data-id="'+m.id+'" aria-pressed="'+fav+'" aria-label="'+(fav?'Remove from favorites':'Save to favorites')+'">'+svg('heart',24,fav)+'</button>')+
     mealImage(m)+
@@ -1684,19 +1708,15 @@ function mealPage(p){
     '<div class="pills" id="mCats">'+catPills(m,ing)+'</div>'+
     '<div id="mMacros">'+macroTable(x)+'</div>'+
     '<button class="btn primary block" data-a="mealToList" style="margin-top:10px">Add ingredients to shopping list</button>'+
-    '<div class="btngrid"><button class="btn sm" data-a="addToPlanAsk">Add to plan</button><button class="btn sm" data-a="collectionAsk">Add to collection</button><button class="btn sm" data-a="cooked">Mark as cooked</button><button class="btn sm" data-a="shareMeal"'+(m.custom?' disabled':'')+'>Share</button></div>'+
-    (m.custom?'<p class="note">Your own recipes are stored on this phone, so they can’t be shared by link yet.</p>':'')+
+    '<div class="btngrid"><button class="btn sm" data-a="addToPlanAsk">Add to plan</button><button class="btn sm" data-a="collectionAsk">Add to collection</button><button class="btn sm" data-a="cooked">Mark as cooked</button><button class="btn sm" data-a="shareMeal">Share</button></div>'+
+    '<button class="btn block addrecipe" data-a="addAsRecipe">'+svg('plus',18)+'Add as recipe</button>'+
     '<section class="section" style="margin-top:18px"><h2>Ingredients</h2>'+
       '<div class="storeline"><span class="small muted">Products from</span><button class="storebtn" data-a="pickStore" data-scope="meal">'+badge(p.store)+'<span>'+esc(p.store)+'</span><span class="chev">'+svg('chev',18)+'</span></button></div>'+
       '<p class="note">'+(p.store!==S.profile.store?'Only this page uses '+esc(p.store)+'. Your default store is still '+esc(S.profile.store)+'. ':'')+liveNote(p.store)+'</p>'+
-      '<div style="margin-top:6px">'+ing.map(function(x,i){
-        var it=ING[x[0]], k=Math.round(4*(it.p+it.c)*x[1]/100+9*it.f*x[1]/100);
-        return '<div class="ingrow"><span class="grow"><b>'+esc(itemLabel(x[0],p.store,'en'))+'</b></span>'+
-          '<span class="gin"><input type="number" inputmode="decimal" min="0" step="5" data-gi="'+i+'" value="'+x[1]+'" aria-label="Grams of '+esc(it.en)+'"><span>'+it.u+'</span></span>'+
-          '<span class="ikcal" id="ik-'+i+'">'+k+' kcal</span></div>';
+      '<div class="rlist">'+ing.map(function(r){
+        return '<div class="ritem">'+emojiDot(r[0])+'<span class="grow"><b>'+esc(itemLabel(r[0],p.store,'en'))+'</b><small>'+nf(r[1])+' '+ING[r[0]].u+'</small></span></div>';
       }).join('')+'</div>'+
-      '<div class="btnrow" id="mEditRow"'+(ed?'':' style="display:none"')+'><button class="btn sm primary" data-a="saveVersion">'+(m.custom?'Save changes':'Save my version')+'</button><button class="btn sm" data-a="resetGrams">Reset amounts</button></div>'+
-      '<p class="note" id="mEditNote"'+(ed?' style="display:none"':'')+'>Change any amount to fit your taste. Macros update straight away.</p>'+
+      '<p class="note">Want different amounts? Add it as a recipe and edit it.</p>'+
     '</section>'+
     '<section class="section"><button class="recipebtn" data-a="toggleRecipe" aria-expanded="'+p.open+'"><h2>Recipe</h2><span class="small muted">'+m.steps.length+' steps <span class="chev" style="display:inline-block;vertical-align:middle">'+svg('chev',18)+'</span></span></button>'+
       (p.open?'<ol class="steps">'+m.steps.map(function(s){return '<li>'+esc(s)+'</li>';}).join('')+'</ol>':'')+
@@ -1704,14 +1724,6 @@ function mealPage(p){
     '</section>';
 }
 function catPills(m,ing){ return mealCats({id:m.id,types:m.types,mins:m.mins,tags:m.tags,custom:m.custom,base:m.base,ing:ing}).map(function(c){return '<span class="pill">'+esc(CAT_LABEL[c])+'</span>';}).join(''); }
-function updateMealNumbers(){
-  var p=top(); if(!p||p.type!=='meal') return;
-  var ing=pageIng(p), x=macrosOf(ing), ed=edited(p);
-  $('mMacros').innerHTML=macroTable(x); $('mGrams').textContent=nf(x.g);
-  ing.forEach(function(r,i){var it=ING[r[0]], el=$('ik-'+i); if(el) el.textContent=Math.round(4*(it.p+it.c)*r[1]/100+9*it.f*r[1]/100)+' kcal';});
-  $('mEditRow').style.display=ed?'':'none'; $('mEditNote').style.display=ed?'none':'';
-  var mc=$('mCats'); if(mc) mc.innerHTML=catPills(getMeal(p.id),ing);
-}
 
 /* ---------- Sheets ---------- */
 function openSheet(html,focusSel){
@@ -1886,14 +1898,6 @@ var H={
   openMeal:function(el){ closeSheet(); openMealPage(el.dataset.id); },
   fav:function(el){ var id=el.dataset.id, i=S.library.favorites.indexOf(id); if(i>-1) S.library.favorites.splice(i,1); else S.library.favorites.push(id); refresh(); toast(i>-1?'Removed from favorites':'Saved to favorites'); },
   toggleRecipe:function(){ var p=top(); p.open=!p.open; p.keepScroll=true; renderOverlay(); },
-  resetGrams:function(){ var p=top(), m=getMeal(p.id); p.grams=m.ing.map(function(x){return x[1];}); p.keepScroll=true; renderOverlay(); },
-  saveVersion:function(){
-    var p=top(), m=getMeal(p.id), ing=pageIng(p);
-    if(m.custom){ m.ing=ing; save(); p.grams=ing.map(function(x){return x[1];}); p.keepScroll=true; renderOverlay(); renderView(); toast('Recipe saved'); return; }
-    var r=clone(m); r.id='r'+uid(); r.custom=true; r.base=m.id; r.name=m.name+' (my version)'; r.pl=m.pl; r.ing=ing; r.created=Date.now();
-    S.library.recipes.push(r); save(); UI.stack[UI.stack.length-1]={type:'meal',id:r.id,store:p.store,grams:ing.map(function(x){return x[1];}),open:p.open};
-    renderOverlay(); renderView(); toast('Saved to Recipes');
-  },
   mealToList:function(){ var p=top(), m=getMeal(p.id); addEntry(m,pageIng(p),1,null); refresh(); toast(m.name+' added to your shopping list'); },
   addToPlanAsk:openPlanSheet,
   planDay:function(el){ UI.sheet.day=+el.dataset.d; renderPlanSheet(); },
@@ -1939,7 +1943,7 @@ var H={
     S.shopping.entries.forEach(function(e){e.items.forEach(function(i){if(i.key===k) i.checked=!all;});}); refresh(); },
   removeEntry:function(el){ S.shopping.entries=S.shopping.entries.filter(function(x){return x.id!==el.dataset.e;}); refresh(); },
   clearChecked:function(){ S.shopping.entries.forEach(function(e){e.items=e.items.filter(function(i){return !i.checked;});}); S.shopping.entries=S.shopping.entries.filter(function(e){return e.items.length;}); refresh(); toast('Checked items removed'); },
-  clearListAsk:function(){ confirmSheet('Clear the shopping list?','This removes every item. Save the list to your Library first if you want to reuse it.','clearList','Clear list'); },
+  clearListAsk:function(){ confirmSheet('Clear the shopping list?','This removes every item.','clearList','Clear list'); },
   saveListAsk:function(){ openNameSheet('Save shopping list','e.g. Weekly Frisco shop','saveList','Shopping '+fmtShort(new Date())); },
   useList:function(el){ var l=S.library.lists.filter(function(x){return x.id===el.dataset.id;})[0]; S.shopping.entries=clone(l.entries).map(function(e){e.id=uid(); e.items.forEach(function(i){i.checked=false;}); return e;}); save(); closeAllPages(); UI.tab='shopping'; render(); toast('Shopping from '+l.name); },
   deleteList:function(el){ S.library.lists=S.library.lists.filter(function(x){return x.id!==el.dataset.id;}); refresh(); },
@@ -1971,6 +1975,15 @@ var H={
     S.shopping.entries=mergeArrays(S.shopping.entries,d.shopping.entries);
     save(); UI.pendingImport=null; closeSheet(); render(); toast('Backup merged');
   },
+  addAsRecipe:function(){
+    // A copy of the meal goes into Recipes and opens straight away; Edit recipe changes it from there.
+    var m=getMeal(top().id), r=clone(m); r.id='r'+uid(); r.custom=true; r.base=m.id; r.video=''; r.created=Date.now();
+    S.library.recipes.push(r); save();
+    UI.stack[UI.stack.length-1]={type:'meal',id:r.id,store:top().store,grams:r.ing.map(function(x){return x[1];}),open:true};
+    renderOverlay(); $('overlay').scrollTop=0; if(motionOK()) animatePage('pg-in'); renderView(); toast('Added to Recipes');
+  },
+  sortToggle:function(){ setSortOpen(!UI.sortOpen); },
+  sortPick:function(el){ S.libSort[top().sec]=el.dataset.v; UI.sortOpen=false; save(); top().keepScroll=true; renderOverlay(); },
   newRecipe:function(){ pushPage({type:'recipeEdit',draft:newDraft()}); },
   editRecipe:function(el){ var m=getMeal(el.dataset.id); if(m) pushPage({type:'recipeEdit',draft:draftFrom(m)}); },
   addIng:function(){ pushPage({type:'ingPick',draft:top().draft,q:''}); },
@@ -1981,22 +1994,23 @@ var H={
     popPage();
   },
   rCnt:function(el){
-    var p=top(), d=p.draft, k=el.dataset.k, n=Math.max(0,Math.min(99,(d.cnt[k]||0)+(+el.dataset.d)));
-    d.cnt[k]=n; if(n&&d.order.indexOf(k)<0) d.order.push(k);
+    var p=top(), d=p.draft, k=el.dataset.k, st=ingStep(k), g=d.g[k]||0;
+    g=+el.dataset.d>0?Math.min(99*st,g+st):(g-st<st/2?0:g-st);
+    d.g[k]=g; if(g&&d.order.indexOf(k)<0) d.order.push(k);
     if(p.type==='ingPick') refreshPick(); else { p.keepScroll=true; renderOverlay(); }
   },
   addStep:function(){ var p=top(); p.draft.steps.push(''); p.keepScroll=true; renderOverlay(); focusStep(p.draft.steps.length-1); },
   delStep:function(el){ var p=top(), s=p.draft.steps; s.splice(+el.dataset.i,1); if(!s.length) s.push(''); p.keepScroll=true; renderOverlay(); },
   saveRecipe:function(){
     var p=top(), d=p.draft, name=d.name.trim(); if(!name) return;
-    var ing=draftItems(d).map(function(k){return [k,d.cnt[k]*ingStep(k)];});
+    var ing=draftItems(d).map(function(k){return [k,d.g[k]];});
     var fields={name:name,desc:d.desc.trim(),ing:ing,steps:d.steps.map(function(s){return s.trim();}).filter(Boolean),video:d.video.trim()};
     if(d.id){
       var m=getMeal(d.id); Object.keys(fields).forEach(function(f){m[f]=fields[f];}); save();
       var below=UI.stack[UI.stack.length-2]; if(below&&below.type==='meal'&&below.id===m.id) below.grams=ing.map(function(x){return x[1];});
       popPage(); renderView(); toast('Recipe saved');
     } else {
-      var r={id:'r'+uid(),custom:true,own:true,pl:'',types:[],mins:0,tags:[],style:'plate',created:Date.now()};
+      var r={id:'r'+uid(),custom:true,pl:'',types:[],mins:0,tags:[],style:'plate',created:Date.now()};
       Object.keys(fields).forEach(function(f){r[f]=fields[f];});
       S.library.recipes.push(r); save();
       UI.stack[UI.stack.length-1]={type:'meal',id:r.id,store:S.profile.store,grams:ing.map(function(x){return x[1];}),open:true};
@@ -2023,7 +2037,6 @@ document.addEventListener('input',function(e){
   if(t.dataset&&t.dataset.step!=null){ top().draft.steps[+t.dataset.step]=t.value; autosize(t); return; }
   if(t.id==='ingSearch'){ top().q=t.value; $('ingResults').innerHTML=ingResults(top()); return; }
   if(t.id==='mealSearch'){ UI.q=t.value; UI.limit=40; $('mealResults').innerHTML=mealResults(); return; }
-  if(t.dataset&&t.dataset.gi!=null){ var p=top(), n=parseFloat(t.value); p.grams[+t.dataset.gi]=isNaN(n)||n<0?0:n; updateMealNumbers(); return; }
   if(t.dataset&&t.dataset.t){
     var key=t.dataset.t, obj=key==='same'?S.targets.same:S.targets.days[+key.slice(1)], n2=parseInt(t.value,10);
     n2=isNaN(n2)||n2<0?0:n2;
