@@ -112,10 +112,16 @@ p{margin:0}
 .thumb .mimg{border-radius:10px}
 
 /* Macros */
-.macros{width:100%;border-collapse:collapse;margin:12px 0 6px;text-align:center;font-variant-numeric:tabular-nums}
-.macros th{font-weight:400;font-size:13px;color:var(--muted);padding:6px 4px;border-bottom:1px solid var(--line)}
-.macros td{font:700 22px/1.25 var(--f-head);padding:10px 4px 4px}
-.macros td small{display:block;font:400 12px var(--f-body);color:var(--muted)}
+.macros{display:grid;grid-template-columns:1.5fr repeat(3,1fr);gap:6px;margin:14px 0 8px;text-align:center;font-variant-numeric:tabular-nums}
+.mtile{display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:0;padding:10px 4px;border-radius:14px;background:var(--surface)}
+.mtile span{font-size:12px;color:var(--muted);white-space:nowrap}
+.mtile b{font:700 21px/1.2 var(--f-head);margin-top:2px}
+.mtile small{font-size:12px;color:var(--muted)}
+.mtile.kcal b{font-size:28px}
+.mtile span::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:5px;vertical-align:1px;background:var(--beet)}
+.mtile.p span::before{background:var(--m-p)}
+.mtile.f span::before{background:var(--m-f)}
+.mtile.c span::before{background:var(--dill)}
 .mline{font-size:14px;color:var(--muted);font-variant-numeric:tabular-nums}
 
 /* Lists of meals */
@@ -340,14 +346,6 @@ input[type=search].field{padding-left:44px;background:var(--surface) url("data:i
 #tabs button{border-radius:18px;min-height:54px}
 #tabs button[aria-current="page"]{background:var(--beet-soft)}
 .badge{top:4px}
-/* Macros: four tiles, each with a colour dot */
-.macros{border-collapse:separate;border-spacing:6px 0;margin:14px -6px 8px;width:calc(100% + 12px)}
-.macros th{border:0;padding:10px 4px 0;background:var(--surface);border-radius:14px 14px 0 0;font-size:12px}
-.macros td{background:var(--surface);border-radius:0 0 14px 14px;padding:4px 4px 10px;font-size:21px}
-.macros th::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:5px;vertical-align:1px;background:var(--beet)}
-.macros th:nth-child(2)::before{background:var(--m-p)}
-.macros th:nth-child(3)::before{background:var(--m-f)}
-.macros th:nth-child(4)::before{background:var(--dill)}
 .section{margin-top:12px;padding:18px 16px;border-top:0;background:var(--surface);border-radius:20px;box-shadow:var(--shadow)}
 #overlay .section:first-of-type{padding-top:18px}
 .gin input{border-color:transparent;border-radius:12px;background:var(--ground)}
@@ -401,7 +399,7 @@ input[type=search].field{padding-left:44px;background:var(--surface) url("data:i
 <script>
 (function(){
 'use strict';
-var APP_VERSION='0.15.0';
+var APP_VERSION='0.15.1';
 var DATA_VERSION=5;
 var KEY='posilki';
 
@@ -1159,8 +1157,9 @@ function renderTabs(){
 }
 function greeting(){ var h=new Date().getHours(); return h<5?'Good night':h<12?'Good morning':h<18?'Good afternoon':'Good evening'; }
 function macroTable(x){
-  return '<table class="macros"><tr><th>Calories</th><th>Protein</th><th>Fat</th><th>Carbs</th></tr>'+
-    '<tr><td>'+nf(x.kcal)+'<small>kcal</small></td><td>'+x.p+'<small>g</small></td><td>'+x.f+'<small>g</small></td><td>'+x.c+'<small>g</small></td></tr></table>';
+  // Calories get the wide tile; protein, fat and carbs share three equal ones.
+  function tile(cls,label,val,unit){ return '<div class="mtile '+cls+'"><span>'+label+'</span><b>'+val+'</b><small>'+unit+'</small></div>'; }
+  return '<div class="macros">'+tile('kcal','Calories',nf(x.kcal),'kcal')+tile('p','Protein',x.p,'g')+tile('f','Fat',x.f,'g')+tile('c','Carbs',x.c,'g')+'</div>';
 }
 function macroLine(x){ return nf(x.kcal)+' kcal, protein '+x.p+' g, fat '+x.f+' g, carbs '+x.c+' g'; }
 function mealRow(m,extra,serv){
