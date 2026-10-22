@@ -106,7 +106,7 @@ const PL = {
   chia: { q: 'nasiona chia', must: ['nasion', 'chia'] },
   sezam: { q: 'sezam', must: ['sezam'], not: ['bajgiel', 'pieczyw', 'paluch', 'chałw', 'olej', 'pasta', 'tahini'] },
   slonecznik: { q: 'słonecznik łuskany', must: ['słonecznik'], not: ['olej', 'hummus', 'chleb'] },
-  orzeszki: { q: 'orzeszki ziemne', must: ['orzesz', 'ziemn'] },
+  orzeszki: { q: 'orzeszki ziemne', must: ['orzesz', 'ziemn'], not: ['panier'] },
   nerkowce: { q: 'orzechy nerkowca', must: ['nerkow'] },
   mango: { q: 'mango mrożone', must: ['mango', 'mroż'] },
   owoce_lesne: { q: 'owoce leśne mrożone', must: ['leśn', 'mroż'] },
@@ -144,9 +144,9 @@ const PL = {
   cytryna: { q: 'cytryny', must: ['cytryn'], not: ['sok', 'herbat', 'woda', 'kwasek', 'lemoniad'] },
   mleko: { q: 'mleko 2%', must: ['mleko', '2'], not: ['kokos', 'owsian', 'zagęszcz', 'proszk', 'czekolad', 'bez laktozy', 'żelki', 'kakao'] },
   maslo: { q: 'masło extra', must: ['masło'], not: ['orzech', 'roślin', 'klarow', 'czosnk', 'maślan', 'gofr'] },
-  ryz: { q: 'ryż długoziarnisty', must: ['ryż'], not: ['płatki', 'sushi', 'brązow', 'wafl', 'jaśmin', 'basmati', 'pełnoziarn', 'mąka', 'makaron', 'kurczak', 'danie'] },
+  ryz: { q: 'ryż długoziarnisty', must: ['ryż'], not: ['meal', 'wieprzow', 'z ryżem', 'płatki', 'sushi', 'brązow', 'wafl', 'jaśmin', 'basmati', 'pełnoziarn', 'mąka', 'makaron', 'kurczak', 'danie'] },
   dynia: { q: 'dynia hokkaido', must: ['dyni', 'hokkaido'] },
-  losos: { q: 'łosoś filet', must: ['łoso'], not: ['losow', 'wędz', 'olej', 'pasta'] }
+  losos: { q: 'łosoś filet', must: ['łoso'], not: ['pstrąg', 'losow', 'wędz', 'olej', 'pasta'] }
 };
 // Words that mark a processed product; ruled out unless the search itself uses them.
 const PROCESSED = ['jogurt', 'lody', 'sorbet', 'żelki', 'napój', 'herbat', 'batonik', 'baton', 'krówk', 'kulki', 'konfitur', 'dżem', 'danie', 'przyprawa',
