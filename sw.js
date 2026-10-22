@@ -1,5 +1,5 @@
 // Posiłki service worker. Bump VERSION with every release.
-const VERSION = '0.6.0';
+const VERSION = '0.6.1';
 const CACHE = 'posilki-' + VERSION;
 const CORE = ['./', './index.html', './meals.json', './manifest.webmanifest', './icon-192.png', './icon-512.png', './apple-touch-icon.png'];
 
