@@ -433,7 +433,12 @@ input[type=search].field{padding-left:44px;background:var(--surface) url("data:i
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .catpic{background:color-mix(in srgb,var(--tile) 16%,var(--surface))}}
 :root[data-theme="dark"] .catpic{background:color-mix(in srgb,var(--tile) 16%,var(--surface))}
 /* Daily targets: four matching rows, every number editable */
-.tlist{display:grid;gap:8px}
+.tlist{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.trow{min-width:0}
+.trow.kcal{grid-column:1/-1}
+.trow:not(.kcal){flex-direction:column;align-items:stretch;gap:6px;padding:10px 8px 8px 12px}
+.trow:not(.kcal) .tval input{flex:1;min-width:0;width:auto;text-align:left}
+.trow:not(.kcal) .tval small{width:auto}
 .trow{display:flex;align-items:center;justify-content:space-between;gap:8px;min-height:60px;padding:6px 8px 6px 16px;border-radius:14px;background:var(--tint);font-weight:500;cursor:text}
 .trow.kcal{background:var(--beet-soft)}
 .tval{display:flex;align-items:baseline;gap:6px}
@@ -484,7 +489,7 @@ input[type=search].field{padding-left:44px;background:var(--surface) url("data:i
 <script>
 (function(){
 'use strict';
-var APP_VERSION='0.16.0';
+var APP_VERSION='0.17.0';
 var DATA_VERSION=5;
 var KEY='posilki';
 
@@ -1504,7 +1509,7 @@ function renderOverlay(){
   if(p.keepScroll){ o.scrollTop=y; p.keepScroll=false; }
 }
 function targetBlock(key,t){
-  // Four matching rows. Calories can be typed too; carbs then change to make the numbers add up.
+  // Calories on its own row, then protein, fat and carbs side by side. Typing calories changes carbs so the numbers add up.
   function row(f,label,unit,val,max){
     return '<label class="trow'+(f==='kcal'?' kcal':'')+'"><span>'+label+'</span><span class="tval"><input type="number" inputmode="numeric" min="0" max="'+max+'" data-t="'+key+'" data-f="'+f+'" id="t-'+key+'-'+f+'" value="'+val+'"><small>'+unit+'</small></span></label>';
   }
@@ -1708,7 +1713,7 @@ function ownRecipePage(p,m){
     (m.desc&&m.desc.trim()?'<p class="mdesc">'+esc(m.desc)+'</p>':'')+
     (ing.length?'<div id="mMacros">'+macroTable(x)+'</div><p class="mmeta" style="margin-top:0">For the whole recipe, about '+nf(x.g)+' g.</p>'+
       '<button class="btn primary block" data-a="mealToList" style="margin-top:10px">Add ingredients to shopping list</button>':'')+
-    '<div class="btngrid"><button class="btn sm" data-a="addToPlanAsk">Add to plan</button><button class="btn sm" data-a="collectionAsk">Add to collection</button><button class="btn sm" data-a="cooked">Mark as cooked</button><button class="btn sm" data-a="shareRecipe">'+svg('share',18)+'Share</button></div>'+
+    '<div class="btngrid"><button class="btn sm" data-a="addToPlanAsk">Add to plan</button><button class="btn sm" data-a="collectionAsk">Add to collection</button><button class="btn sm" data-a="shareRecipe">'+svg('share',18)+'Share</button></div>'+
     (ing.length?'<section class="section" style="margin-top:18px"><h2>Ingredients</h2>'+
       '<div class="storeline"><span class="small muted">Products from</span><button class="storebtn" data-a="pickStore" data-scope="meal">'+badge(p.store)+'<span>'+esc(p.store)+'</span><span class="chev">'+svg('chev',18)+'</span></button></div>'+
       '<div class="rlist">'+ing.map(function(r){
@@ -1783,7 +1788,7 @@ function mealPage(p){
     '<div class="pills" id="mCats">'+catPills(m,ing)+'</div>'+
     '<div id="mMacros">'+macroTable(x)+'</div>'+
     '<button class="btn primary block" data-a="mealToList" style="margin-top:10px">Add ingredients to shopping list</button>'+
-    '<div class="btngrid"><button class="btn sm" data-a="addToPlanAsk">Add to plan</button><button class="btn sm" data-a="collectionAsk">Add to collection</button><button class="btn sm" data-a="cooked">Mark as cooked</button><button class="btn sm" data-a="shareMeal">Share</button></div>'+
+    '<div class="btngrid"><button class="btn sm" data-a="addToPlanAsk">Add to plan</button><button class="btn sm" data-a="collectionAsk">Add to collection</button><button class="btn sm" data-a="shareMeal">Share</button></div>'+
     '<button class="btn block addrecipe" data-a="addAsRecipe">'+svg('plus',18)+'Add as recipe</button>'+
     '<section class="section" style="margin-top:18px"><h2>Ingredients</h2>'+
       '<div class="storeline"><span class="small muted">Products from</span><button class="storebtn" data-a="pickStore" data-scope="meal">'+badge(p.store)+'<span>'+esc(p.store)+'</span><span class="chev">'+svg('chev',18)+'</span></button></div>'+
@@ -1999,7 +2004,6 @@ var H={
     if(i>-1) c.ids.splice(i,1); else c.ids.push(id); save(); openCollectionSheet();
   },
   newCollectionFromMeal:function(){ var v=($('nameInput').value||'').trim(); if(!v) return; S.library.collections.push({id:uid(),name:v,ids:[UI.sheet.id]}); save(); openCollectionSheet(); toast('Added to '+v); },
-  cooked:function(){ var m=getMeal(top().id); S.library.history.push({id:uid(),mealId:m.id,date:Date.now()}); save(); toast('Marked as cooked today'); },
   shareMeal:function(){
     var m=getMeal(top().id), url=location.href.split('#')[0]+'#meal-'+m.id;
     if(navigator.share){ navigator.share({title:m.name,text:m.name+' on Posiłki',url:url}).catch(function(){}); return; }
