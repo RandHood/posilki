@@ -98,18 +98,72 @@ const PL = {
   ysa: { q: 'plamiak filet', must: ['plamiak'] },
   bleikja: { q: 'golec filet', must: ['golec'] },
   udka: { q: 'filet z uda kurczaka', must: ['ud', 'kurczak', 'filet'] },
-  jagniecina: { q: 'udziec jagnięcy', must: ['jagni'] }
+  jagniecina: { q: 'udziec jagnięcy', must: ['jagni'], not: ['psów', 'psa', 'kot'] },
+  rzodkiewki: { q: 'rzodkiewka', must: ['rzodkiew'], not: ['serek', 'twaro'] },
+  wloskie: { q: 'orzechy włoskie', must: ['orzech', 'włosk'] },
+  migdaly: { q: 'migdały', must: ['migdał'], not: ['płatki', 'mąka', 'napój', 'mleko'] },
+  pestki: { q: 'pestki dyni', must: ['pestki', 'dyni'] },
+  chia: { q: 'nasiona chia', must: ['nasion', 'chia'] },
+  sezam: { q: 'sezam', must: ['sezam'], not: ['paluch', 'chałw', 'olej', 'pasta', 'tahini'] },
+  slonecznik: { q: 'słonecznik łuskany', must: ['słonecznik'], not: ['olej', 'hummus', 'chleb'] },
+  orzeszki: { q: 'orzeszki ziemne', must: ['orzesz', 'ziemn'] },
+  nerkowce: { q: 'orzechy nerkowca', must: ['nerkow'] },
+  mango: { q: 'mango mrożone', must: ['mango', 'mroż'] },
+  owoce_lesne: { q: 'owoce leśne mrożone', must: ['leśn', 'mroż'] },
+  jablko: { q: 'jabłka', must: ['jabł'], not: ['sok', 'chips', 'mus', 'suszon', 'prażon', 'occie'] },
+  gruszka: { q: 'gruszki', must: ['grusz'], not: ['occie', 'sok', 'mus', 'suszon'] },
+  pomarancza: { q: 'pomarańcze', must: ['pomarańcz'], not: ['sok', 'napój', 'kulki'] },
+  batat: { q: 'bataty', must: ['batat'], not: ['mrożon', 'pieczon', 'frytki', 'chips'] },
+  imbir: { q: 'imbir świeży', must: ['imbir'], not: ['mielon', 'marynow', 'herbat', 'shot', 'syrop'] },
+  pietruszka: { q: 'natka pietruszki', must: ['natk'], not: ['suszon', 'żeberka', 'pomysł'] },
+  cebula_czerwona: { q: 'cebula czerwona', must: ['cebul', 'czerwon'], not: ['konfitur', 'prażon'] },
+  wolowina_mielona: { q: 'wołowina mielona', must: ['wołow', 'mielon'] },
+  bleikja: { q: 'golec filet', must: ['golec'] },
+  parmezan: { q: 'parmezan', must: ['parme'], not: ['sos', 'chips'] },
+  passata: { q: 'passata pomidorowa', must: ['passat'], not: ['chili', 'pikant', 'bazyl'] },
+  pesto: { q: 'pesto bazyliowe', must: ['pesto', 'bazyl'], not: ['pistacj', 'czerwon', 'rosso'] },
+  ryba_puszka: { q: 'sardynki w sosie pomidorowym', must: ['sardyn', 'pomidor'] },
+  pomidorki: { q: 'pomidory koktajlowe', must: ['pomidor', 'cherry|koktajl'] },
+  limonka: { q: 'limonki', must: ['limonk'], not: ['sok', 'kulki', 'lemoniad'] },
+  tost: { q: 'chleb tostowy pełnoziarnisty', must: ['tost'] },
+  pita: { q: 'pita pełnoziarnista', must: ['pita|pitta'] },
+  kakao: { q: 'kakao', must: ['kakao'], not: ['krówk', 'kulki', 'napój', 'baton', 'płatki', 'mleko'] },
+  czekolada: { q: 'czekolada gorzka 70%', must: ['czekolad', 'gorzk'], not: ['lody', 'baton'] },
+  daktyle: { q: 'daktyle suszone', must: ['daktyl'], not: ['krówk', 'baton', 'syrop', 'maśle'] },
+  maslo_orzechowe: { q: 'masło orzechowe', must: ['masło', 'orzech'], not: ['daktyle'] },
+  borowki: { q: 'borówka amerykańska', must: ['borówk'], not: ['lody', 'sorbet', 'dżem', 'jogurt', 'mrożon'] },
+  truskawki: { q: 'truskawki', must: ['truskaw'], not: ['lody', 'sorbet', 'dżem', 'jogurt', 'mrożon', 'napój', 'konfitur'] },
+  kiwi: { q: 'kiwi', not: ['napój', 'sok'] },
+  koncentrat: { q: 'koncentrat pomidorowy 30%', must: ['koncentrat', 'pomidor'] },
+  oliwki: { q: 'oliwki zielone', must: ['oliwki', 'zielon'], not: ['przekąsk', 'pasta'] },
+  pasta_curry: { q: 'pasta curry czerwona', must: ['pasta', 'curry'], not: ['lody'] },
+  smietana: { q: 'śmietana 12%', must: ['śmietan', '12'], not: ['lod', 'kanapk'] },
+  serek_smietankowy: { q: 'serek śmietankowy light', must: ['serek', 'śmietank'] },
+  ziemniaki: { q: 'ziemniaki', must: ['ziemniak'], not: ['frytki', 'chips', 'puree', 'kopytk', 'mąka', 'skrobia', 'placki'] },
+  salata: { q: 'mix sałat', must: ['sałat'], not: ['sałatka', 'danie'] },
+  cytryna: { q: 'cytryny', must: ['cytryn'], not: ['sok', 'herbat', 'woda', 'kwasek', 'lemoniad'] },
+  mleko: { q: 'mleko 2%', must: ['mleko', '2'], not: ['kokos', 'owsian', 'zagęszcz', 'proszk', 'czekolad', 'bez laktozy', 'żelki', 'kakao'] },
+  maslo: { q: 'masło extra', must: ['masło'], not: ['orzech', 'roślin', 'klarow', 'czosnk', 'maślan', 'gofr'] },
+  ryz: { q: 'ryż długoziarnisty', must: ['ryż'], not: ['brązow', 'wafl', 'jaśmin', 'basmati', 'pełnoziarn', 'mąka', 'makaron', 'kurczak', 'danie'] },
+  dynia: { q: 'dynia hokkaido', must: ['dyni', 'hokkaido'] },
+  losos: { q: 'łosoś filet', must: ['łoso'], not: ['wędz', 'olej', 'pasta'] }
 };
+// Words that mark a processed product; ruled out unless the search itself uses them.
+const PROCESSED = ['jogurt', 'lody', 'sorbet', 'żelki', 'napój', 'herbat', 'batonik', 'baton', 'krówk', 'kulki', 'konfitur', 'dżem', 'danie', 'przyprawa',
+  'chips', 'kombucha', 'przysmak', 'dla psów', 'sos ', 'zupa', 'pasta ', 'hummus', 'serek', 'sałatka', 'kanapk', 'syrop', 'shot', 'kostk'];
 function plQuery(k) {
   const o = PL[k] || {};
   const q = o.q || ING[k].pl.replace(/\(.*?\)/g, '').trim();
-  const must = o.must || [q.split(/\s+/)[0]];
-  return { q, must, not: o.not || [] };
+  const must = o.must || q.split(/\s+/).filter(w => w.length > 2 && !/^\d/.test(w)).slice(0, 3);
+  const not = (o.not || []).concat(PROCESSED.filter(w => !fold(q).includes(fold(w).trim())));
+  return { q, must, not };
 }
 
 /* ---------- Matching ---------- */
 const fold = s => String(s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/ł/g, 'l');
-const stem = w => fold(w).slice(0, Math.max(3, Math.min(6, fold(w).length - 1)));
+// Loose word match that tolerates Polish endings: "kurczaka" matches "kurczak".
+const stem = w => { const f = fold(w); return f.length <= 5 ? f : f.slice(0, Math.max(5, f.length - 2)); };
+const has = (name, w) => w.split('|').some(alt => name.includes(stem(alt)));
 function sizeOf(name) {
   const m = fold(name).replace(',', '.').match(/(\d+(?:\.\d+)?)\s*(kg|g|ml|l)\b/);
   if (!m) return null;
@@ -119,16 +173,24 @@ function sizeOf(name) {
 // Picks the best candidate: all "must" words present, no "not" words, then the pack size
 // closest to the app's typical pack, then the shortest (least specific) name.
 function pick(cands, query, ing) {
+  const first = stem(query.must[0].split('|')[0]);
   const ok = cands.filter(c => {
-    const n = fold(c.brand + ' ' + c.name);
-    return query.must.every(w => n.includes(stem(w))) && !query.not.some(w => n.includes(fold(w)));
+    const n = ' ' + fold(c.name) + ' ';
+    return query.must.every(w => has(n, w)) && !query.not.some(w => n.includes(fold(w)));
   });
   if (!ok.length) return null;
   const want = ing.pack || 0;
-  ok.sort((a, b) => {
-    const da = a.size && want ? Math.abs(Math.log(a.size / want)) : 1.5, db = b.size && want ? Math.abs(Math.log(b.size / want)) : 1.5;
-    return da - db || a.name.length - b.name.length;
-  });
+  // Lower is better: pack size close to typical, the main word early in the name,
+  // not organic (usually a premium version), short name, cheaper per kg.
+  const score = c => {
+    const n = fold(c.name);
+    const sz = c.size && want ? Math.abs(Math.log(c.size / want)) : 0.8;
+    const pos = n.indexOf(first); const early = pos < 0 ? 0.6 : Math.min(pos, 30) / 50;
+    const bio = /\b(bio|eko|organic)\b/.test(n + ' ' + fold(c.brand)) ? 0.5 : 0;
+    const per = c.price && c.size ? c.price / c.size * 1000 : 0;
+    return sz + early + bio + n.length / 400 + Math.min(per, 200) / 2000;
+  };
+  ok.sort((a, b) => score(a) - score(b));
   return ok[0];
 }
 
@@ -171,7 +233,13 @@ const STORES = {
     for (const k of keys) {
       const query = plQuery(k);
       try {
-        const page = await getText('https://zakupy.auchan.pl/search?q=' + encodeURIComponent(query.q));
+        let page = '';
+        for (let t = 0; t < 3; t++) {
+          page = await getText('https://zakupy.auchan.pl/search?q=' + encodeURIComponent(query.q)).catch(e => e.message);
+          if (page.includes('__INITIAL_STATE__')) break;
+          console.log('  Auchan', k, 'retry', t + 1, String(page).slice(0, 80).replace(/\s+/g, ' '));
+          await sleep(15000 * (t + 1));
+        }
         const m = page.match(/window\.__INITIAL_STATE__\s*=\s*(\{[\s\S]*?\})\s*;?\s*<\/script>/);
         if (!m) throw new Error('no state');
         const state = JSON.parse(m[1].replace(/\bundefined\b/g, 'null'));
@@ -184,7 +252,7 @@ const STORES = {
         const best = pick(cands, query, ING[k]);
         if (best) items[k] = best;
       } catch (e) { console.log('  Auchan', k, e.message); }
-      await sleep(800);
+      await sleep(3000);
     }
     return { source: 'zakupy.auchan.pl', items };
   },
@@ -192,13 +260,16 @@ const STORES = {
     // Wolt has no public search, so read every category of one Wolt Market (Warsaw centre) once.
     const base = 'https://consumer-api.wolt.com/consumer-api/consumer-assortment/v1/venues/slug/wolt-market-centrum-2/assortment';
     const root = await getJson(base + '?language=pl');
-    const all = [];
-    for (const c of root.categories || []) {
+    const all = [], cats = [];
+    (function walk(list) { (list || []).forEach(c => { if (c.slug) cats.push(c); walk(c.subcategories); }); })(root.categories);
+    console.log('  Wolt categories:', cats.length);
+    const seen = new Set();
+    for (const c of cats) {
       let token = null;
       for (let page = 0; page < 10; page++) {
         try {
           const d = await getJson(base + '/categories/slug/' + c.slug + '?language=pl' + (token ? '&page_token=' + encodeURIComponent(token) : ''));
-          (d.items || []).forEach(x => all.push(x));
+          (d.items || []).forEach(x => { if (!seen.has(x.id)) { seen.add(x.id); all.push(x); } });
           token = d.metadata && d.metadata.next_page_token;
         } catch (e) { console.log('  Wolt', c.slug, e.message); break; }
         await sleep(300);
