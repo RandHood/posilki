@@ -1195,44 +1195,6 @@
     }
    }
   },
-  "Auchan": {
-   "checked": "2026-10-22",
-   "source": "zakupy.auchan.pl",
-   "items": {
-    "pomidor": {
-     "brand": "Mutti",
-     "name": "Pomidory całe 400 g",
-     "size": 400,
-     "unit": "g",
-     "price": 6.58,
-     "currency": "PLN",
-     "url": "https://zakupy.auchan.pl/products/pomidory-cale-mutti-400-g/00372894"
-    },
-    "ogorek": {
-     "brand": "Warzywa Auchan",
-     "name": "Ogórek długi 1 sztuka",
-     "price": 4.75,
-     "currency": "PLN",
-     "url": "https://zakupy.auchan.pl/products/ogorek-dlugi-warzywa-auchan-1-sztuka/00306053"
-    },
-    "papryka": {
-     "brand": "Pewni Dobrego",
-     "name": "Papryka czerwona 2 sztuki",
-     "price": 10.99,
-     "currency": "PLN",
-     "url": "https://zakupy.auchan.pl/products/papryka-czerwona-pewni-dobrego-2-sztuki/00948607"
-    },
-    "cebula": {
-     "brand": "Warzywa Auchan",
-     "name": "Cebula 1 kg",
-     "size": 1000,
-     "unit": "g",
-     "price": 2.98,
-     "currency": "PLN",
-     "url": "https://zakupy.auchan.pl/products/cebula-warzywa-auchan-1-kg/00297778"
-    }
-   }
-  },
   "Wolt Market": {
    "checked": "2026-10-22",
    "source": "wolt.com",
