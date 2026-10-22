@@ -9,12 +9,12 @@
    "items": {
     "pomidor": {
      "brand": "Frisco Fresh",
-     "name": "Pomidory Cherry",
-     "size": 250,
+     "name": "Pomidor daktylowy",
+     "size": 500,
      "unit": "g",
-     "price": 6.99,
+     "price": 12.99,
      "currency": "PLN",
-     "url": "https://www.frisco.pl/pid,3610/stn,product"
+     "url": "https://www.frisco.pl/pid,148287/stn,product"
     },
     "ogorek": {
      "brand": "Frisco Fresh",
