@@ -144,14 +144,14 @@ const PL = {
   cytryna: { q: 'cytryny', must: ['cytryn'], not: ['sok', 'herbat', 'woda', 'kwasek', 'lemoniad'] },
   mleko: { q: 'mleko 2%', must: ['mleko', '2'], not: ['kokos', 'owsian', 'zagęszcz', 'proszk', 'czekolad', 'bez laktozy', 'żelki', 'kakao'] },
   maslo: { q: 'masło extra', must: ['masło'], not: ['orzech', 'roślin', 'klarow', 'czosnk', 'maślan', 'gofr'] },
-  ryz: { q: 'ryż długoziarnisty', must: ['ryż'], not: ['sushi', 'brązow', 'wafl', 'jaśmin', 'basmati', 'pełnoziarn', 'mąka', 'makaron', 'kurczak', 'danie'] },
+  ryz: { q: 'ryż długoziarnisty', must: ['ryż'], not: ['płatki', 'sushi', 'brązow', 'wafl', 'jaśmin', 'basmati', 'pełnoziarn', 'mąka', 'makaron', 'kurczak', 'danie'] },
   dynia: { q: 'dynia hokkaido', must: ['dyni', 'hokkaido'] },
-  losos: { q: 'łosoś filet', must: ['łoso'], not: ['wędz', 'olej', 'pasta'] }
+  losos: { q: 'łosoś filet', must: ['łoso'], not: ['losow', 'wędz', 'olej', 'pasta'] }
 };
 // Words that mark a processed product; ruled out unless the search itself uses them.
 const PROCESSED = ['jogurt', 'lody', 'sorbet', 'żelki', 'napój', 'herbat', 'batonik', 'baton', 'krówk', 'kulki', 'konfitur', 'dżem', 'danie', 'przyprawa',
   'chips', 'kombucha', 'przysmak', 'dla psów', 'sos ', 'zupa', 'pasta ', 'hummus', 'serek', 'sałatka', 'kanapk', 'syrop', 'shot', 'kostk',
-  'ocet', 'parówk', 'ciast', 'bułka', 'pieczywo', 'paprykarz', 'pizza', 'ravioli', 'sok ', 'grissini', 'paluszk', 'wafel'];
+  'ocet', 'parówk', 'ciast', 'bułka', 'pieczywo', 'paprykarz', 'pizza', 'ravioli', 'sok ', 'grissini', 'grossini', 'paluszk', 'wafel', 'wafle ', 'smalczyk', 'krokiet', 'kandyz', 'pierniki'];
 // Never food, whatever the search.
 const NONFOOD = ['żel', 'szampon', 'prysznic', 'balsam', 'mydło', 'krem do', 'karma', 'dla kot', 'dla psa', 'wódka', 'likier', 'dezodorant', 'kosmetyk'];
 function plQuery(k) {
@@ -181,7 +181,7 @@ function pick(cands, query, ing) {
   const first = stem(query.must[0].split('|')[0]);
   const ok = cands.filter(c => {
     const n = words(c.name);
-    return query.must.every(w => has(n, w)) && !query.not.some(w => n.includes(w.endsWith(' ') ? words(w) : words(w).trimEnd()));
+    return query.must.every(w => has(n, w)) && !query.not.some(w => n.includes(w.endsWith(' ') ? words(w.trim()) : words(w).trimEnd()));
   });
   if (!ok.length) return null;
   const want = ing.pack || 0;
