@@ -1350,15 +1350,6 @@
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
-    "jablko": {
-     "brand": "",
-     "name": "Sante Smalczyk jabłko z cebulką, 175 g",
-     "size": 175,
-     "unit": "g",
-     "price": 9.99,
-     "currency": "PLN",
-     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
-    },
     "cytryna": {
      "brand": "",
      "name": "Cytryna 300g",
@@ -1377,8 +1368,10 @@
     },
     "losos": {
      "brand": "",
-     "name": "Dynia ozdobna 1szt losowa",
-     "price": 4.99,
+     "name": "Simpl Pstrąg łososiowy, 100 g",
+     "size": 100,
+     "unit": "g",
+     "price": 15.99,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -1472,10 +1465,10 @@
     },
     "ryz": {
      "brand": "",
-     "name": "Cenos Płatki ryżowe błyskawiczne 400 g",
-     "size": 400,
+     "name": "Meal Box Na ostro wieprzowina z ryżem i warzywami, 360 g",
+     "size": 360,
      "unit": "g",
-     "price": 6.19,
+     "price": 23.99,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -1614,15 +1607,6 @@
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
-    "oliwa": {
-     "brand": "",
-     "name": "Grossini sesam i oliwa z oliwek, 125 G",
-     "size": 125,
-     "unit": "g",
-     "price": 7.99,
-     "currency": "PLN",
-     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
-    },
     "ciecierzyca": {
      "brand": "",
      "name": "Ciecierzyca 500g",
@@ -1706,10 +1690,10 @@
     },
     "kakao": {
      "brand": "",
-     "name": "Wawel Wafle kakaowe bez dodatku cukru, 110 g",
-     "size": 110,
+     "name": "Gellwe Kakao extra ciemne, 80 g",
+     "size": 80,
      "unit": "g",
-     "price": 8.99,
+     "price": 9.99,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -1812,15 +1796,6 @@
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
-    "pieczarki": {
-     "brand": "",
-     "name": "Kuchnia Krokiety Kuchnia z pieczarkami i serem, 350 g",
-     "size": 350,
-     "unit": "g",
-     "price": 21.99,
-     "currency": "PLN",
-     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
-    },
     "awokado": {
      "brand": "",
      "name": "Awokado sztuka",
@@ -1900,15 +1875,6 @@
      "size": 250,
      "unit": "g",
      "price": 8.99,
-     "currency": "PLN",
-     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
-    },
-    "imbir": {
-     "brand": "",
-     "name": "BioLife Imbir kandyzowany bio, 100 g",
-     "size": 100,
-     "unit": "g",
-     "price": 9.99,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -2040,15 +2006,6 @@
      "size": 190,
      "unit": "g",
      "price": 7.49,
-     "currency": "PLN",
-     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
-    },
-    "kapusta_kiszona": {
-     "brand": "",
-     "name": "Eko-wit Sok z kiszonej kapusty, 500 ml",
-     "size": 500,
-     "unit": "ml",
-     "price": 6.49,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
