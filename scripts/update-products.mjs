@@ -151,7 +151,7 @@ const PL = {
 // Words that mark a processed product; ruled out unless the search itself uses them.
 const PROCESSED = ['jogurt', 'lody', 'sorbet', 'żelki', 'napój', 'herbat', 'batonik', 'baton', 'krówk', 'kulki', 'konfitur', 'dżem', 'danie', 'przyprawa',
   'chips', 'kombucha', 'przysmak', 'dla psów', 'sos ', 'zupa', 'pasta ', 'hummus', 'serek', 'sałatka', 'kanapk', 'syrop', 'shot', 'kostk',
-  'ocet', 'parówk', 'ciast', 'bułka', 'pieczywo', 'paprykarz', 'pizza', 'ravioli', 'sok ', 'grissini', 'grossini', 'paluszk', 'wafel', 'wafle ', 'smalczyk', 'krokiet', 'kandyz', 'pierniki'];
+  'ocet', 'parówk', 'ciast', 'bułka', 'pieczywo', 'paprykarz', 'pizza', 'ravioli', 'sok ', 'grissini', 'grossini', 'paluszk', 'wafel', 'wafle ', 'smalczyk', 'krokiet', 'kandyz', 'pierniki', 'krem '];
 // Never food, whatever the search.
 const NONFOOD = ['żel', 'szampon', 'prysznic', 'balsam', 'mydło', 'krem do', 'karma', 'dla kot', 'dla psa', 'wódka', 'likier', 'dezodorant', 'kosmetyk'];
 function plQuery(k) {

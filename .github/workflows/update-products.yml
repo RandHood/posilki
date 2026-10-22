@@ -4,8 +4,8 @@ on:
     - cron: '30 4 * * *'   # every day at 04:30 UTC
   workflow_dispatch:
   push:
-    branches: [claude/project-thread-1pg94g]
-    paths: [scripts/update-products.mjs, .github/workflows/update-products.yml]
+    branches: [main]
+    paths: [scripts/update-products.mjs]
 permissions:
   contents: write
 concurrency: update-products
