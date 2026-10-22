@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Posiłki</title>
-<meta name="description" content="Meal suggestions, meal prep and shopping lists for stores in Poland.">
+<meta name="description" content="Meal suggestions, meal prep and shopping lists for stores in Poland and Iceland.">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="icon" type="image/png" href="icon-192.png">
@@ -399,18 +399,19 @@ input[type=search].field{padding-left:44px;background:var(--surface) url("data:i
 <script>
 (function(){
 'use strict';
-var APP_VERSION='0.15.1';
+var APP_VERSION='0.16.0';
 var DATA_VERSION=5;
 var KEY='posilki';
 
 /* ---------- Countries and stores ---------- */
 var COUNTRIES={
-  // Only stores whose products the daily job can read. Iceland returns when an Icelandic store can be read.
-  PL:{name:'Poland',flag:'🇵🇱',locale:'pl',stores:['Frisco','Wolt Market']}
+  // Only stores whose products the daily job can read.
+  PL:{name:'Poland',flag:'🇵🇱',locale:'pl',stores:['Frisco','Wolt Market']},
+  IS:{name:'Iceland',flag:'🇮🇸',locale:'is',stores:['Krónan']}
 };
-var COUNTRY_ORDER=['PL'];
+var COUNTRY_ORDER=['PL','IS'];
 var STORE_STYLE={
-  'Frisco':['#F28C28','#2A1400'],'Wolt Market':['#00A3E0','#002433']
+  'Frisco':['#F28C28','#2A1400'],'Wolt Market':['#00A3E0','#002433'],'Krónan':['#E94E1B','#FFFFFF']
 };
 
 var AISLES=[
