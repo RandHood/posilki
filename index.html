@@ -22,7 +22,7 @@
   --ground:#F1F3EE; --surface:#FFFFFF; --ink:#17231C; --muted:#586A5D; --line:#DDE3D9; --tint:#E6EBE2;
   --beet:#A3174B; --on-beet:#FFFFFF; --dill:#3D6B33; --scrim:rgba(10,16,12,.5);
   --beet-soft:#F6E3EA; --dill-soft:#E2EEDD; --warn:#B4541A; --warn-soft:#FBEADF;
-  --m-p:#3D6B9C; --m-f:#C89212;
+  --m-p:#3D6B9C; --m-f:#C89212; --warnbg:#FFF6D6; --warnline:#F2C94C; --warnink:#6B4E00;
   --shadow:0 1px 2px rgba(23,35,28,.05),0 6px 18px rgba(23,35,28,.06); --float:0 12px 36px rgba(23,35,28,.2);
   --f-head:"Bricolage Grotesque","Avenir Next",system-ui,sans-serif;
   --f-body:"Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
@@ -35,7 +35,7 @@
     --ground:#0F1411; --surface:#19211C; --ink:#E7EDE5; --muted:#9AA89D; --line:#2A352E; --tint:#222D26;
     --beet:#E4608A; --on-beet:#2A0A17; --dill:#8FC882; --scrim:rgba(0,0,0,.6);
     --beet-soft:#3A1724; --dill-soft:#1F3320; --warn:#F0A06A; --warn-soft:#3A2414;
-    --m-p:#7FA8D6; --m-f:#E0B54A; --shadow:none; --float:0 12px 36px rgba(0,0,0,.5);
+    --m-p:#7FA8D6; --m-f:#E0B54A; --warnbg:#2E2610; --warnline:#8A6D1A; --warnink:#F2D27A; --shadow:none; --float:0 12px 36px rgba(0,0,0,.5);
   }
 }
 :root[data-theme="dark"]{
@@ -43,7 +43,7 @@
   --ground:#0F1411; --surface:#19211C; --ink:#E7EDE5; --muted:#9AA89D; --line:#2A352E; --tint:#222D26;
   --beet:#E4608A; --on-beet:#2A0A17; --dill:#8FC882; --scrim:rgba(0,0,0,.6);
     --beet-soft:#3A1724; --dill-soft:#1F3320; --warn:#F0A06A; --warn-soft:#3A2414;
-    --m-p:#7FA8D6; --m-f:#E0B54A; --shadow:none; --float:0 12px 36px rgba(0,0,0,.5);
+    --m-p:#7FA8D6; --m-f:#E0B54A; --warnbg:#2E2610; --warnline:#8A6D1A; --warnink:#F2D27A; --shadow:none; --float:0 12px 36px rgba(0,0,0,.5);
 }
 html{scroll-padding-top:env(safe-area-inset-top,0px)}
 *{box-sizing:border-box}
@@ -447,6 +447,19 @@ input[type=search].field{padding-left:44px;background:var(--surface) url("data:i
 .sortbtn{display:inline-flex;align-items:center;gap:6px;min-height:40px;padding:0 12px;border:0;border-radius:99px;background:var(--tint);font-size:14px;font-weight:600;color:var(--ink)}
 .addrecipe{margin-top:10px}
 .btngrid > :last-child:nth-child(odd){grid-column:1/-1}
+/* Items the chosen store doesn't sell */
+.shopgroup.warn{background:var(--warnbg);box-shadow:inset 0 0 0 2px var(--warnline)}
+.shopgroup.warn p{color:var(--warnink);margin:2px 0 4px}
+.shopgroup.warn > h3 small{background:var(--warnline);color:var(--warnink)}
+.shopgroup.warn .item{border-color:color-mix(in srgb,var(--warnline) 70%,transparent)}
+#notice{position:fixed;left:12px;right:12px;top:calc(12px + env(safe-area-inset-top,0px));z-index:60;max-width:540px;margin:0 auto;transform:translateY(-140%);transition:transform .35s cubic-bezier(.32,.72,0,1);pointer-events:none}
+#notice.show{transform:none;pointer-events:auto}
+.nbox{display:flex;gap:10px;align-items:flex-start;padding:14px 8px 10px 14px;border-radius:18px;background:var(--warnbg);box-shadow:inset 0 0 0 2px var(--warnline),var(--float);color:var(--warnink)}
+.nbox .grow{flex:1;min-width:0}
+.nbox b{display:block;line-height:1.3;color:var(--ink)}
+.nbox p{margin-top:4px;font-size:14px}
+.nbox .linkbtn{color:var(--warnink);font-weight:600;padding:8px 0 2px}
+.nicon{font-size:20px;line-height:1.3}
 </style>
 </head>
 <body>
@@ -459,6 +472,7 @@ input[type=search].field{padding-left:44px;background:var(--surface) url("data:i
 <div id="panelRoot"></div>
 <div id="sheetRoot"></div>
 <div id="toast" role="status" aria-live="polite"></div>
+<div id="notice" role="alert"></div>
 <input id="importFile" type="file" accept=".json,application/json" class="hidden">
 <script>
 (function(){
@@ -767,6 +781,9 @@ function fetchProducts(){
 // A store counts as checked only when most ingredients were matched; a handful of matches would mix real and typical products.
 function liveStore(store){ var s=LIVE.stores[store]; return s&&isObj(s.items)&&Object.keys(s.items).length>=40?s:null; }
 function liveItem(k,store){ var s=liveStore(store); return s&&isObj(s.items[k])&&s.items[k].name?s.items[k]:null; }
+// Ingredients the store's online shop doesn't carry. Only known for stores we can read.
+function notInStore(k,store){ return !!liveStore(store)&&!liveItem(k,store); }
+function plainName(k,lang){ var n=lang==='en'||country()!=='PL'?ING[k].en:ING[k].pl; return n.charAt(0).toUpperCase()+n.slice(1); }
 function money(v,cur){ return cur==='PLN'?v.toFixed(2).replace('.',',')+' zł':cur==='ISK'?Math.round(v)+' kr':v.toFixed(2)+' '+(cur||''); }
 function liveNote(store){
   var s=liveStore(store);
@@ -1336,7 +1353,7 @@ function aggregate(){
   return map;
 }
 function itemRow(key,g,checked,act,extra){
-  var top=itemLabel(key,S.profile.store,S.shopping.lang);
+  var top=notInStore(key,S.profile.store)?plainName(key,S.shopping.lang):itemLabel(key,S.profile.store,S.shopping.lang);
   return '<li class="item'+(checked?' done':'')+'"><button class="itemmain" data-a="'+act+'" data-k="'+key+'"'+(extra||'')+' aria-pressed="'+checked+'"><span class="box">'+svg('check',16)+'</span>'+
     '<span class="nm"><b>'+esc(top)+'</b></span>'+
     '<span class="need">need '+needText(key,g)+'<small>'+packText(key,g)+'</small></span></button></li>';
@@ -1367,18 +1384,23 @@ function shoppingView(){
   var E=S.shopping.entries;
   if(!E.length) return '<p class="empty">Your shopping list is empty. When you add meals, their ingredients will show up here. Use Add to shopping list on any meal page, or add a day or the whole week from Prep.</p>'+
     '<div class="btnrow"><button class="btn primary" data-a="tab" data-tab="meals">Browse meals</button><button class="btn" data-a="tab" data-tab="prep">Open Prep</button></div>';
-  var view=S.shopping.view, body='';
+  var view=S.shopping.view, body='', store=S.profile.store, agg=aggregate();
+  var missing=Object.keys(agg).filter(function(k){return notInStore(k,store);});
+  var here=function(it){return ING[it.key]&&!notInStore(it.key,store);};
+  if(missing.length) body+='<section class="shopgroup warn"><h3><span><span aria-hidden="true">⚠️ </span>Not sold at '+esc(store)+'</span><small>'+missing.length+(missing.length===1?' item':' items')+'</small></h3>'+
+    '<p class="small">These are on your list by their usual names. Look for them in another shop, or swap them in the recipe.</p>'+
+    '<ul class="items">'+missing.map(function(k){var r=agg[k];return itemRow(k,r.g,r.done===r.n,'shopTogAll');}).join('')+'</ul></section>';
   if(view==='meal'){
-    body=E.map(function(e){
-      var m=getMeal(e.mealId), done=e.items.filter(function(i){return i.checked;}).length;
-      return '<section class="shopgroup"><h3><span>'+esc(e.name)+(e.serv&&e.serv!==1?' <small>'+e.serv+' portions</small>':'')+'</span><span style="display:flex;align-items:center;gap:6px"><small>'+done+' of '+e.items.length+'</small><button class="iconbtn sm" data-a="removeEntry" data-e="'+e.id+'" aria-label="Remove '+esc(e.name)+' from list">'+svg('x',18)+'</button></span></h3>'+
+    body+=E.map(function(e){
+      var its=e.items.filter(here); if(!its.length) return '';
+      var m=getMeal(e.mealId), done=its.filter(function(i){return i.checked;}).length;
+      return '<section class="shopgroup"><h3><span>'+esc(e.name)+(e.serv&&e.serv!==1?' <small>'+e.serv+' portions</small>':'')+'</span><span style="display:flex;align-items:center;gap:6px"><small>'+done+' of '+its.length+'</small><button class="iconbtn sm" data-a="removeEntry" data-e="'+e.id+'" aria-label="Remove '+esc(e.name)+' from list">'+svg('x',18)+'</button></span></h3>'+
         (e.day!=null?'<p class="small muted">'+DAYS[e.day]+'</p>':'')+
-        '<ul class="items">'+e.items.map(function(it){return ING[it.key]?itemRow(it.key,it.g,it.checked,'shopTog',' data-e="'+e.id+'"'):'';}).join('')+'</ul></section>';
+        '<ul class="items">'+its.map(function(it){return itemRow(it.key,it.g,it.checked,'shopTog',' data-e="'+e.id+'"');}).join('')+'</ul></section>';
     }).join('');
   } else {
-    var agg=aggregate();
-    body=AISLES.map(function(a){
-      var keys=Object.keys(agg).filter(function(k){return ING[k].a===a[0];});
+    body+=AISLES.map(function(a){
+      var keys=Object.keys(agg).filter(function(k){return ING[k].a===a[0]&&!notInStore(k,store);});
       if(!keys.length) return '';
       keys.sort(function(x,y){return (agg[x].done===agg[x].n?1:0)-(agg[y].done===agg[y].n?1:0);});
       return '<section class="shopgroup"><h3><span>'+(country()==='PL'&&S.shopping.lang!=='en'?a[1]+' <small>'+a[2]+'</small>':a[2])+'</span></h3><ul class="items">'+
@@ -1839,6 +1861,14 @@ function mergeArrays(cur,inc){
 
 /* ---------- Toast ---------- */
 var toastTimer;
+function showNotice(keys,store){
+  var n=$('notice'), names=keys.map(function(k){return plainName(k,S.shopping.lang);});
+  var list=names.length>1?names.slice(0,-1).join(', ')+' and '+names[names.length-1]:names[0];
+  n.innerHTML='<div class="nbox"><span class="nicon" aria-hidden="true">⚠️</span><div class="grow"><b>Added to your list, but '+keys.length+(keys.length===1?' item isn’t':' items aren’t')+' sold at '+esc(store)+'</b>'+
+    '<p>'+esc(list)+(keys.length===1?' is':' are')+' on your list by '+(keys.length===1?'its usual name':'their usual names')+', so you can pick '+(keys.length===1?'it':'them')+' up somewhere else.</p>'+
+    '<button class="linkbtn" data-a="noticeToList">Open shopping list</button></div><button class="iconbtn sm" data-a="closeNotice" aria-label="Close">'+svg('x',18)+'</button></div>';
+  n.classList.remove('show'); void n.offsetWidth; n.classList.add('show');
+}
 function toast(msg){ var t=$('toast'); t.textContent=msg; t.classList.add('show'); clearTimeout(toastTimer); toastTimer=setTimeout(function(){t.classList.remove('show');},2600); }
 /* ---------- Actions ---------- */
 // Redraws while keeping a horizontally scrolled row where it was.
@@ -1898,7 +1928,14 @@ var H={
   openMeal:function(el){ closeSheet(); openMealPage(el.dataset.id); },
   fav:function(el){ var id=el.dataset.id, i=S.library.favorites.indexOf(id); if(i>-1) S.library.favorites.splice(i,1); else S.library.favorites.push(id); refresh(); toast(i>-1?'Removed from favorites':'Saved to favorites'); },
   toggleRecipe:function(){ var p=top(); p.open=!p.open; p.keepScroll=true; renderOverlay(); },
-  mealToList:function(){ var p=top(), m=getMeal(p.id); addEntry(m,pageIng(p),1,null); refresh(); toast(m.name+' added to your shopping list'); },
+  mealToList:function(){
+    var p=top(), m=getMeal(p.id), ing=pageIng(p), store=S.profile.store;
+    addEntry(m,ing,1,null); refresh();
+    var miss=ing.filter(function(x){return x[1]>0&&notInStore(x[0],store);}).map(function(x){return x[0];});
+    if(miss.length) showNotice(miss,store); else toast(m.name+' added to your shopping list');
+  },
+  closeNotice:function(){ $('notice').classList.remove('show'); },
+  noticeToList:function(){ $('notice').classList.remove('show'); closeAllPages(); UI.tab='shopping'; render(); window.scrollTo(0,0); },
   addToPlanAsk:openPlanSheet,
   planDay:function(el){ UI.sheet.day=+el.dataset.d; renderPlanSheet(); },
   planSlot:function(el){ UI.sheet.slot=el.dataset.slot; renderPlanSheet(); },
