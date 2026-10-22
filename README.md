@@ -7,6 +7,8 @@ Works as a Home Screen app on iPhone.
 
 - `index.html`: the app
 - `meals.json`: the meal catalog (meals, their ingredients, and new ingredients with macros per 100 g and typical products)
+- `products.json`: store products, pack sizes and prices, written every day by a GitHub job
+- `scripts/`: the daily product job and the meals.json check
 - `sw.js`: lets the app open offline and pick up updates
 - `manifest.webmanifest`, `*.png`: app name and Home Screen icons
 
@@ -18,6 +20,10 @@ Works as a Home Screen app on iPhone.
 
 ## Meal catalog
 
-`meals.json` holds every meal. Each meal lists ingredients as `[ingredient key, grams per portion]`, using keys from `index.html` or from the catalog's own `ingredients` section. Calories and macros are worked out by the app, never stored. `tags` add hand-picked categories (`sweet`, `soup`, `nocook`, `mealprep`, `polish`, `icelandic`, `spicy`); high protein, low calorie, low carb, quick, vegetarian, vegan and fish are worked out from the numbers. Bump `updated` when the file changes so phones pick it up.
+`meals.json` holds every meal. Each meal lists ingredients as `[ingredient key, grams per portion]`, using keys from `index.html` or from the catalog's own `ingredients` section. Calories and macros are worked out by the app, never stored. `tags` add hand-picked categories (`sweet`, `soup`, `nocook`, `mealprep`, `polish`, `icelandic`, `spicy`); high protein, low calorie, low carb, quick, vegetarian, vegan and fish are worked out from the numbers. Bump `updated` when the file changes so phones pick it up, and run `node scripts/check-meals.mjs` before committing (GitHub runs it too). New meals are added each week by a scheduled Claude task that looks at trending recipes.
+
+## Stores
+
+Only stores with a food catalogue online are listed: Auchan, Carrefour, Frisco and Wolt Market in Poland, Krónan in Iceland. The `Update store products` workflow runs every morning, searches Frisco, Auchan and Wolt Market for each ingredient, and commits `products.json`. Stores it can't read yet (Carrefour, Krónan) show typical products. If a store returns far fewer matches than the day before, the job keeps the previous day's data for it.
 
 Saved data lives on each phone and is never stored in this repository.

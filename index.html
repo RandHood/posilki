@@ -312,21 +312,21 @@ p{margin:0}
 <script>
 (function(){
 'use strict';
-var APP_VERSION='0.4.0';
-var DATA_VERSION=3;
+var APP_VERSION='0.5.0';
+var DATA_VERSION=4;
 var KEY='posilki';
 
 /* ---------- Countries and stores ---------- */
 var COUNTRIES={
-  PL:{name:'Poland',flag:'🇵🇱',locale:'pl',stores:['Auchan','Biedronka','Carrefour','Frisco','Lidl','Wolt Market','Żabka']},
-  IS:{name:'Iceland',flag:'🇮🇸',locale:'is',stores:['Bónus','Hagkaup','Krónan','Nettó']}
+  // Only stores with a food catalogue online, so their products can be checked.
+  PL:{name:'Poland',flag:'🇵🇱',locale:'pl',stores:['Auchan','Carrefour','Frisco','Wolt Market']},
+  IS:{name:'Iceland',flag:'🇮🇸',locale:'is',stores:['Krónan']}
 };
 var COUNTRY_ORDER=['PL','IS'];
 var STORE_STYLE={
-  'Auchan':['#D52B1E','#FFFFFF'],'Biedronka':['#F2B705','#2A1A00'],'Carrefour':['#1E5BC6','#FFFFFF'],
-  'Frisco':['#F28C28','#2A1400'],'Lidl':['#0B3D91','#FFFFFF'],'Wolt Market':['#00A3E0','#002433'],
-  'Żabka':['#1D7A3A','#FFFFFF'],'Bónus':['#E6007E','#FFFFFF'],'Hagkaup':['#6B2C91','#FFFFFF'],
-  'Krónan':['#E94E1B','#FFFFFF'],'Nettó':['#FFD400','#2A2300']
+  'Auchan':['#D52B1E','#FFFFFF'],'Carrefour':['#1E5BC6','#FFFFFF'],
+  'Frisco':['#F28C28','#2A1400'],'Wolt Market':['#00A3E0','#002433'],
+  'Krónan':['#E94E1B','#FFFFFF']
 };
 
 var AISLES=[
@@ -440,17 +440,13 @@ var PROD={
   }
 };
 var STORE_PROD={
-  'Lidl':{piers:'Rzeźnik Codzienna Dostawa',szynka:'Pikok',twarog:'Pilos',skyr:'Pilos',jogurt:'Pilos',serek:'Pilos',feta:'Eridanous',mleko:'Pilos',kefir:'Pilos',maslo:'Pilos',
-    platki:'Crownfield',ryz:'Golden Sun',makaron:'Combino',maka:'Belbake',wloskie:'Alesto',migdaly:'Alesto',pestki:'Alesto',
-    tunczyk:'Nixe',pomidory_puszka:'Baresa',fasola:'Freshona',soja:'Vitasia',oliwa:'Baresa'},
-  'Biedronka':{szpinak:'Vital Fresh',salata:'Vital Fresh',rukola:'Vital Fresh',piers:'Kraina Mięs',szynka:'Kraina Wędlin',losos:'Marinero|Łosoś atlantycki, filet',dorsz:'Marinero',
-    twarog:'Mleczna Dolina',skyr:'Go Active',jogurt:'Mleczna Dolina',serek:'Mleczna Dolina',mleko:'Mleczna Dolina',kefir:'Mleczna Dolina',maslo:'Mleczna Dolina',
-    tortilla:'Kuchnie Świata',tunczyk:'Marinero',soja:'Kuchnie Świata'},
   'Carrefour':{mleko:'Carrefour Classic',jogurt:'Carrefour Classic',ryz:'Carrefour Classic',makaron:'Carrefour Classic',pomidory_puszka:'Carrefour Classic',
     tunczyk:'Carrefour Classic',olej:'Carrefour Classic',platki:'Carrefour Classic',maliny:'Carrefour Classic'},
   'Auchan':{mleko:'Auchan',jogurt:'Auchan',ryz:'Auchan',makaron:'Auchan',pomidory_puszka:'Auchan',tunczyk:'Auchan',olej:'Auchan',platki:'Auchan',maliny:'Auchan'}
 };
 function product(k,store){
+  var li=liveItem(k,store);
+  if(li) return {brand:li.brand||'',name:li.name,label:li.brand&&li.name.toLowerCase().indexOf(li.brand.toLowerCase())<0?li.brand+' '+li.name:li.name,live:li};
   var x=ING[k], base=(PROD[country()]||{})[k]||('|'+(country()==='PL'?x.pl:x.en)), own=(STORE_PROD[store]||{})[k];
   var b=base.split('|');
   if(own){ var o=own.split('|'); b=[o[0],o.length>1?o[1]:b[1]]; }
@@ -596,6 +592,34 @@ function fetchCatalog(){
     return changed;
   });
 }
+/* ---------- Store products (products.json) ----------
+   A daily GitHub job searches the stores' online shops and writes products.json.
+   Stores or ingredients it has not matched fall back to the typical products above. */
+var LIVE_KEY='posilki-products', LIVE={updated:null,stores:{}};
+function applyProducts(d){
+  if(!d||!isObj(d.stores)) return false;
+  LIVE={updated:d.updated||null,stores:d.stores};
+  return true;
+}
+function loadCachedProducts(){ try{ var raw=localStorage.getItem(LIVE_KEY); if(raw) applyProducts(JSON.parse(raw)); }catch(e){} }
+// Resolves true when the products changed.
+function fetchProducts(){
+  return fetch('products.json',{cache:'no-cache'}).then(function(r){ if(!r.ok) throw new Error('products'); return r.json(); }).then(function(d){
+    var changed=d.updated!==LIVE.updated;
+    if(!applyProducts(d)) return false;
+    try{ localStorage.setItem(LIVE_KEY,JSON.stringify(d)); }catch(e){}
+    return changed;
+  });
+}
+function liveStore(store){ var s=LIVE.stores[store]; return s&&isObj(s.items)&&Object.keys(s.items).length?s:null; }
+function liveItem(k,store){ var s=liveStore(store); return s&&isObj(s.items[k])&&s.items[k].name?s.items[k]:null; }
+function money(v,cur){ return cur==='PLN'?v.toFixed(2).replace('.',',')+' zł':cur==='ISK'?Math.round(v)+' kr':v.toFixed(2)+' '+(cur||''); }
+function liveNote(store){
+  var s=liveStore(store);
+  if(!s) return 'Product names and values are typical examples for '+esc(store)+'. Its online shop can’t be read automatically yet.';
+  return 'Products and prices from '+esc(s.source||store)+', checked '+fmtDate(parseIso(s.checked||LIVE.updated).getTime())+'. They are found by search, so check the label in the store.';
+}
+
 var DAYS=['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
 var DAYS_SHORT=['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
 var SLOTS=['breakfast','lunch','snack','dinner','snack'];
@@ -693,8 +717,17 @@ var MIGRATIONS={
     if(!isObj(s.prep)||!('days' in s.prep)) s.prep={weekStart:null,days:null};
     if(!isObj(s.shopping)||!Array.isArray(s.shopping.entries)) s.shopping={view:'meal',entries:[]};
     s.v=3; return s;
+  },
+  3:function(s){
+    // Stores without a food catalogue online were removed. Move anyone using one to the first store left.
+    if(isObj(s.profile)&&s.profile.store&&s.profile.country&&COUNTRIES[s.profile.country]&&storesFor(s.profile.country).indexOf(s.profile.store)<0){
+      MOVED={from:s.profile.store,to:storesFor(s.profile.country)[0]};
+      s.profile.store=MOVED.to;
+    }
+    s.v=4; return s;
   }
 };
+var MOVED=null;
 function migrate(s){
   if(!isObj(s)) return defaults();
   if(!s.v) s.v=1;
@@ -734,8 +767,14 @@ function mealTitle(m){ return m.name; }
 function mealSub(m){ return country()==='PL'&&m.pl?m.pl:''; }
 function round5(g){ return g<5?Math.round(g*10)/10:Math.round(g/5)*5; }
 function needText(k,g){ var x=ING[k]; var t=round5(g)+' '+x.u; if(x.piece){ var n=Math.max(1,Math.round(g/x.piece)); t+=' (≈ '+n+(n===1?' pc)':' pcs)'); } return t; }
-function packText(k,g){
-  var x=ING[k];
+function packText(k,g,store){
+  var x=ING[k], li=liveItem(k,store||S.profile.store);
+  if(li&&li.size>0&&li.unit===x.u){
+    var m=Math.max(1,Math.ceil(g/li.size-1e-9));
+    var sz=li.size>=1000?(Math.round(li.size/100)/10+' '+(li.unit==='ml'?'l':'kg')).replace('.',','):nf(li.size)+' '+li.unit;
+    return m+' × '+sz+(li.price>0?', '+money(m*li.price,li.currency):'');
+  }
+  if(li&&li.price>0) return money(li.price,li.currency)+' each';
   if(x.pack){ var n=Math.max(1,Math.ceil(g/x.pack-1e-9)); return n+' × '+x.packLabel; }
   if(x.piece){ var k=Math.max(1,Math.ceil(g/x.piece-0.15)); return 'sold loose, buy ≈ '+k+(k===1?' pc':' pcs'); }
   return 'sold loose';
@@ -1158,7 +1197,7 @@ function shoppingView(){
   }
   var total=0,done=0; E.forEach(function(e){e.items.forEach(function(i){total++; if(i.checked) done++;});});
   return '<div class="seg" role="group" aria-label="View"><button data-a="shopView" data-v="meal" aria-pressed="'+(view==='meal')+'">By meal</button><button data-a="shopView" data-v="all" aria-pressed="'+(view==='all')+'">All ingredients</button></div>'+
-    '<p class="small muted" style="margin-top:10px">'+done+' of '+total+' checked. Check off anything you buy or already have. Products are typical examples for '+esc(S.profile.store)+', with typical pack sizes, until real store data is added.</p>'+
+    '<p class="small muted" style="margin-top:10px">'+done+' of '+total+' checked. Check off anything you buy or already have. '+(liveStore(S.profile.store)?'Products, pack sizes and prices are from '+esc(S.profile.store)+'’s online shop.':'Products are typical examples for '+esc(S.profile.store)+', with typical pack sizes.')+'</p>'+
     body+
     '<div class="btnrow" style="margin-top:22px"><button class="btn sm" data-a="saveListAsk">Save list to Library</button><button class="btn sm" data-a="clearChecked"'+(done?'':' disabled')+'>Remove checked</button><button class="btn sm danger" data-a="clearListAsk">Clear list</button></div>';
 }
@@ -1266,7 +1305,7 @@ function settingsPage(){
     '<p class="muted">'+(S.lastBackup?'Last backup: '+fmtDate(S.lastBackup)+'.':'No backup saved yet.')+'</p>'+
     '<p class="note">Export saves one file with everything in the app. In the share sheet, choose Save to Files, then iCloud Drive. To restore, import that file on any phone.</p>'+
     '<div class="btnrow"><button class="btn primary" data-a="export">Export backup</button><button class="btn" data-a="import">Import backup</button></div></section>'+
-  '<section class="section"><h2>About</h2><p class="muted">Posiłki '+APP_VERSION+'. '+MEALS.length+' meals in the catalog'+(CATALOG.updated?', updated '+fmtDate(parseIso(CATALOG.updated).getTime()):'')+'. Ingredient values are typical supermarket products for now; store-specific products are coming in a later update. Your data is stored on this phone, so open the app from its Home Screen icon.</p></section>';
+  '<section class="section"><h2>About</h2><p class="muted">Posiłki '+APP_VERSION+'. '+MEALS.length+' meals in the catalog'+(CATALOG.updated?', updated '+fmtDate(parseIso(CATALOG.updated).getTime()):'')+'. '+(LIVE.updated?'Store products were last checked '+fmtDate(parseIso(LIVE.updated).getTime())+'. ':'')+'Your data is stored on this phone, so open the app from its Home Screen icon.</p></section>';
 }
 var LIB=[
   ['favorites','Favorites','Meals you’ve hearted.'],
@@ -1340,7 +1379,7 @@ function mealPage(p){
     (m.custom?'<p class="note">Your own recipes are stored on this phone, so they can’t be shared by link yet.</p>':'')+
     '<section class="section" style="margin-top:18px"><h2>Ingredients</h2>'+
       '<div class="storeline"><span class="small muted">Products from</span><button class="storebtn" data-a="pickStore" data-scope="meal">'+badge(p.store)+'<span>'+esc(p.store)+'</span><span class="chev">'+svg('chev',18)+'</span></button></div>'+
-      '<p class="note">'+(p.store!==S.profile.store?'Only this page uses '+esc(p.store)+'. Your default store is still '+esc(S.profile.store)+'. ':'')+'Product names and values are typical examples for this store until store-specific products arrive in a later update.</p>'+
+      '<p class="note">'+(p.store!==S.profile.store?'Only this page uses '+esc(p.store)+'. Your default store is still '+esc(S.profile.store)+'. ':'')+liveNote(p.store)+'</p>'+
       '<div style="margin-top:6px">'+ing.map(function(x,i){
         var it=ING[x[0]], k=Math.round(4*(it.p+it.c)*x[1]/100+9*it.f*x[1]/100);
         var pr=product(x[0],p.store);
@@ -1592,7 +1631,7 @@ var H={
   removeEntry:function(el){ S.shopping.entries=S.shopping.entries.filter(function(x){return x.id!==el.dataset.e;}); refresh(); },
   clearChecked:function(){ S.shopping.entries.forEach(function(e){e.items=e.items.filter(function(i){return !i.checked;});}); S.shopping.entries=S.shopping.entries.filter(function(e){return e.items.length;}); refresh(); toast('Checked items removed'); },
   clearListAsk:function(){ confirmSheet('Clear the shopping list?','This removes every item. Save the list to your Library first if you want to reuse it.','clearList','Clear list'); },
-  saveListAsk:function(){ openNameSheet('Save shopping list','e.g. Weekly Lidl shop','saveList','Shopping '+fmtShort(new Date())); },
+  saveListAsk:function(){ openNameSheet('Save shopping list','e.g. Weekly Frisco shop','saveList','Shopping '+fmtShort(new Date())); },
   useList:function(el){ var l=S.library.lists.filter(function(x){return x.id===el.dataset.id;})[0]; S.shopping.entries=clone(l.entries).map(function(e){e.id=uid(); e.items.forEach(function(i){i.checked=false;}); return e;}); save(); closeAllPages(); UI.tab='shopping'; render(); toast('Shopping from '+l.name); },
   deleteList:function(el){ S.library.lists=S.library.lists.filter(function(x){return x.id!==el.dataset.id;}); refresh(); },
 
@@ -1672,9 +1711,12 @@ function start(){
   render();
   if(S.onboarded) save();
   openFromHash();
+  if(MOVED&&S.onboarded) toast(MOVED.from+' was removed because it has no products online. Your store is now '+MOVED.to+'.');
 }
 load();
 loadCachedCatalog();
+loadCachedProducts();
+fetchProducts().then(function(changed){ if(changed&&started&&!UI.stack.length&&!UI.sheet&&!UI.panel&&S.onboarded) renderView(); }).catch(function(){});
 if(CATALOG.loaded){
   start();
   // Pick up new meals in the background; only redraw if nothing is open on top.
