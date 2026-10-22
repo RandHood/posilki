@@ -29,7 +29,7 @@ const PL = {
   ogorek: { q: 'ogórek zielony', must: ['ogor'], not: ['kiszon', 'konserw', 'małosol'] },
   papryka: { q: 'papryka czerwona', not: ['słodka', 'mielon', 'konserw', 'grillow', 'chips'] },
   cebula: { q: 'cebula', not: ['czerwon', 'prażon', 'suszon', 'dymk'] },
-  czosnek: { q: 'czosnek', not: ['granulow', 'suszon', 'niedźwiedz', 'pasta', 'sos'] },
+  czosnek: { q: 'czosnek', not: ['koncentrat', 'granulow', 'suszon', 'niedźwiedz', 'pasta', 'sos'] },
   szpinak: { q: 'szpinak baby', must: ['szpinak'], not: ['mrożon', 'liście mrożon'] },
   marchew: { q: 'marchew', not: ['sok', 'mrożon', 'tart', 'baby'] },
   ziemniaki: { q: 'ziemniaki', not: ['frytki', 'chips', 'puree', 'kopytk'] },
@@ -38,9 +38,9 @@ const PL = {
   banan: { q: 'banany', must: ['banan'], not: ['chips', 'suszon'] },
   jablko: { q: 'jabłka', must: ['jabł'], not: ['sok', 'chips', 'mus', 'suszon'] },
   cytryna: { q: 'cytryny', must: ['cytryn'], not: ['sok', 'herbat', 'woda'] },
-  piers: { q: 'filet z piersi kurczaka', must: ['filet', 'kurczak'], not: ['wędz', 'panier'] },
+  piers: { q: 'filet z piersi kurczaka', must: ['filet', 'kurczak'], not: ['parów', 'wędz', 'panier'] },
   indyk_mielone: { q: 'mięso mielone z indyka', must: ['indyk', 'mielon'] },
-  indyk_filet: { q: 'filet z piersi indyka', must: ['indyk', 'filet'], not: ['wędz', 'plastr'] },
+  indyk_filet: { q: 'filet z piersi indyka', must: ['indyk', 'filet'], not: ['paluszk', 'wędz', 'plastr'] },
   wolowina: { q: 'rostbef wołowy', must: ['rostbef'] },
   losos: { q: 'łosoś filet', must: ['łoso'], not: ['wędz'] },
   dorsz: { q: 'filet z dorsza', must: ['dorsz'], not: ['panier', 'wędz'] },
@@ -78,7 +78,7 @@ const PL = {
   fasola_biala: { q: 'fasola biała konserwowa', must: ['fasol', 'biał'] },
   kukurydza: { q: 'kukurydza konserwowa', must: ['kukurydz'], not: ['popcorn', 'chrupk', 'płatki', 'mąka'] },
   groszek: { q: 'groszek zielony mrożony', must: ['groszek', 'mroż'] },
-  krewetki: { q: 'krewetki mrożone', must: ['krewetk'] },
+  krewetki: { q: 'krewetki mrożone', must: ['krewetk'], not: ['ryż', 'masełk', 'danie'] },
   awokado: { q: 'awokado', not: ['pasta', 'guacamole', 'olej'] },
   pieczarki: { q: 'pieczarki', not: ['marynow', 'krojone mrożon', 'zupa', 'sos'] },
   ser_zolty: { q: 'ser gouda plastry', must: ['gouda'] },
@@ -104,31 +104,31 @@ const PL = {
   migdaly: { q: 'migdały', must: ['migdał'], not: ['płatki', 'mąka', 'napój', 'mleko'] },
   pestki: { q: 'pestki dyni', must: ['pestki', 'dyni'] },
   chia: { q: 'nasiona chia', must: ['nasion', 'chia'] },
-  sezam: { q: 'sezam', must: ['sezam'], not: ['paluch', 'chałw', 'olej', 'pasta', 'tahini'] },
+  sezam: { q: 'sezam', must: ['sezam'], not: ['bajgiel', 'pieczyw', 'paluch', 'chałw', 'olej', 'pasta', 'tahini'] },
   slonecznik: { q: 'słonecznik łuskany', must: ['słonecznik'], not: ['olej', 'hummus', 'chleb'] },
   orzeszki: { q: 'orzeszki ziemne', must: ['orzesz', 'ziemn'] },
   nerkowce: { q: 'orzechy nerkowca', must: ['nerkow'] },
   mango: { q: 'mango mrożone', must: ['mango', 'mroż'] },
   owoce_lesne: { q: 'owoce leśne mrożone', must: ['leśn', 'mroż'] },
   jablko: { q: 'jabłka', must: ['jabł'], not: ['sok', 'chips', 'mus', 'suszon', 'prażon', 'occie'] },
-  gruszka: { q: 'gruszki', must: ['grusz'], not: ['occie', 'sok', 'mus', 'suszon'] },
+  gruszka: { q: 'gruszki', must: ['grusz'], not: ['nashi', 'chińsk', 'occie', 'sok', 'mus', 'suszon'] },
   pomarancza: { q: 'pomarańcze', must: ['pomarańcz'], not: ['sok', 'napój', 'kulki'] },
-  batat: { q: 'bataty', must: ['batat'], not: ['mrożon', 'pieczon', 'frytki', 'chips'] },
-  imbir: { q: 'imbir świeży', must: ['imbir'], not: ['mielon', 'marynow', 'herbat', 'shot', 'syrop'] },
+  batat: { q: 'bataty', must: ['batat'], not: ['makaron', 'mrożon', 'pieczon', 'frytki', 'chips'] },
+  imbir: { q: 'imbir świeży', must: ['imbir'], not: ['różow', 'mielon', 'marynow', 'herbat', 'shot', 'syrop'] },
   pietruszka: { q: 'natka pietruszki', must: ['natk'], not: ['suszon', 'żeberka', 'pomysł'] },
   cebula_czerwona: { q: 'cebula czerwona', must: ['cebul', 'czerwon'], not: ['konfitur', 'prażon'] },
   wolowina_mielona: { q: 'wołowina mielona', must: ['wołow', 'mielon'] },
   bleikja: { q: 'golec filet', must: ['golec'] },
   parmezan: { q: 'parmezan', must: ['parme'], not: ['sos', 'chips'] },
   passata: { q: 'passata pomidorowa', must: ['passat'], not: ['chili', 'pikant', 'bazyl'] },
-  pesto: { q: 'pesto bazyliowe', must: ['pesto', 'bazyl'], not: ['pistacj', 'czerwon', 'rosso'] },
+  pesto: { q: 'pesto bazyliowe', must: ['pesto', 'bazyl'], not: ['makaron', 'pistacj', 'czerwon', 'rosso'] },
   ryba_puszka: { q: 'sardynki w sosie pomidorowym', must: ['sardyn', 'pomidor'] },
   pomidorki: { q: 'pomidory koktajlowe', must: ['pomidor', 'cherry|koktajl'] },
   limonka: { q: 'limonki', must: ['limonk'], not: ['sok', 'kulki', 'lemoniad'] },
   tost: { q: 'chleb tostowy pełnoziarnisty', must: ['tost'] },
   pita: { q: 'pita pełnoziarnista', must: ['pita|pitta'] },
   kakao: { q: 'kakao', must: ['kakao'], not: ['krówk', 'kulki', 'napój', 'baton', 'płatki', 'mleko'] },
-  czekolada: { q: 'czekolada gorzka 70%', must: ['czekolad', 'gorzk'], not: ['lody', 'baton'] },
+  czekolada: { q: 'czekolada gorzka 70%', must: ['czekolad', 'gorzk'], not: ['skórk', 'w czekoladzie', 'lody', 'baton'] },
   daktyle: { q: 'daktyle suszone', must: ['daktyl'], not: ['krówk', 'baton', 'syrop', 'maśle'] },
   maslo_orzechowe: { q: 'masło orzechowe', must: ['masło', 'orzech'], not: ['daktyle'] },
   borowki: { q: 'borówka amerykańska', must: ['borówk'], not: ['lody', 'sorbet', 'dżem', 'jogurt', 'mrożon'] },
@@ -144,26 +144,31 @@ const PL = {
   cytryna: { q: 'cytryny', must: ['cytryn'], not: ['sok', 'herbat', 'woda', 'kwasek', 'lemoniad'] },
   mleko: { q: 'mleko 2%', must: ['mleko', '2'], not: ['kokos', 'owsian', 'zagęszcz', 'proszk', 'czekolad', 'bez laktozy', 'żelki', 'kakao'] },
   maslo: { q: 'masło extra', must: ['masło'], not: ['orzech', 'roślin', 'klarow', 'czosnk', 'maślan', 'gofr'] },
-  ryz: { q: 'ryż długoziarnisty', must: ['ryż'], not: ['brązow', 'wafl', 'jaśmin', 'basmati', 'pełnoziarn', 'mąka', 'makaron', 'kurczak', 'danie'] },
+  ryz: { q: 'ryż długoziarnisty', must: ['ryż'], not: ['sushi', 'brązow', 'wafl', 'jaśmin', 'basmati', 'pełnoziarn', 'mąka', 'makaron', 'kurczak', 'danie'] },
   dynia: { q: 'dynia hokkaido', must: ['dyni', 'hokkaido'] },
   losos: { q: 'łosoś filet', must: ['łoso'], not: ['wędz', 'olej', 'pasta'] }
 };
 // Words that mark a processed product; ruled out unless the search itself uses them.
 const PROCESSED = ['jogurt', 'lody', 'sorbet', 'żelki', 'napój', 'herbat', 'batonik', 'baton', 'krówk', 'kulki', 'konfitur', 'dżem', 'danie', 'przyprawa',
-  'chips', 'kombucha', 'przysmak', 'dla psów', 'sos ', 'zupa', 'pasta ', 'hummus', 'serek', 'sałatka', 'kanapk', 'syrop', 'shot', 'kostk'];
+  'chips', 'kombucha', 'przysmak', 'dla psów', 'sos ', 'zupa', 'pasta ', 'hummus', 'serek', 'sałatka', 'kanapk', 'syrop', 'shot', 'kostk',
+  'ocet', 'parówk', 'ciast', 'bułka', 'pieczywo', 'paprykarz', 'pizza', 'ravioli', 'sok ', 'grissini', 'paluszk', 'wafel'];
+// Never food, whatever the search.
+const NONFOOD = ['żel', 'szampon', 'prysznic', 'balsam', 'mydło', 'krem do', 'karma', 'dla kot', 'dla psa', 'wódka', 'likier', 'dezodorant', 'kosmetyk'];
 function plQuery(k) {
   const o = PL[k] || {};
   const q = o.q || ING[k].pl.replace(/\(.*?\)/g, '').trim();
   const must = o.must || q.split(/\s+/).filter(w => w.length > 2 && !/^\d/.test(w)).slice(0, 3);
-  const not = (o.not || []).concat(PROCESSED.filter(w => !fold(q).includes(fold(w).trim())));
+  const not = (o.not || []).concat(PROCESSED.filter(w => !fold(q).includes(fold(w).trim())), NONFOOD);
   return { q, must, not };
 }
 
 /* ---------- Matching ---------- */
 const fold = s => String(s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/ł/g, 'l');
 // Loose word match that tolerates Polish endings: "kurczaka" matches "kurczak".
-const stem = w => { const f = fold(w); return f.length <= 5 ? f : f.slice(0, Math.max(5, f.length - 2)); };
-const has = (name, w) => w.split('|').some(alt => name.includes(stem(alt)));
+const stem = w => { const f = fold(w); return f.length <= 6 ? f : f.slice(0, Math.max(6, f.length - 2)); };
+// Words must start a word in the name (a "not" word ending in a space must be a whole word), so "łoso" doesn't match "włosów".
+const words = name => ' ' + fold(name).replace(/[^a-z0-9%]+/g, ' ') + ' ';
+const has = (name, w) => w.split('|').some(alt => name.includes(' ' + stem(alt)));
 function sizeOf(name) {
   const m = fold(name).replace(',', '.').match(/(\d+(?:\.\d+)?)\s*(kg|g|ml|l)\b/);
   if (!m) return null;
@@ -175,8 +180,8 @@ function sizeOf(name) {
 function pick(cands, query, ing) {
   const first = stem(query.must[0].split('|')[0]);
   const ok = cands.filter(c => {
-    const n = ' ' + fold(c.name) + ' ';
-    return query.must.every(w => has(n, w)) && !query.not.some(w => n.includes(fold(w)));
+    const n = words(c.name);
+    return query.must.every(w => has(n, w)) && !query.not.some(w => n.includes(w.endsWith(' ') ? words(w) : words(w).trimEnd()));
   });
   if (!ok.length) return null;
   const want = ing.pack || 0;
