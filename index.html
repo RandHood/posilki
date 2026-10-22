@@ -446,6 +446,13 @@ input[type=search].field{padding-left:44px;background:var(--surface) url("data:i
 .sortdd .ddwrap{left:auto;width:240px}
 .sortbtn{display:inline-flex;align-items:center;gap:6px;min-height:40px;padding:0 12px;border:0;border-radius:99px;background:var(--tint);font-size:14px;font-weight:600;color:var(--ink)}
 .addrecipe{margin-top:10px}
+.pill.shared{background:var(--dill-soft);color:var(--dill)}
+.libbtns{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0 0 6px}
+.libbtns .btn{gap:6px}
+.btngrid .btn svg{margin-right:6px}
+.copied{padding:14px 16px;border-radius:16px;border:1.5px solid var(--dill);background:var(--dill-soft);margin-bottom:8px}
+.copied p{margin-top:4px;font-size:15px}
+.savebar .linkbtn{display:block;margin:6px auto 0}
 .btngrid > :last-child:nth-child(odd){grid-column:1/-1}
 /* Items the chosen store doesn't sell */
 .shopgroup.warn{background:var(--warnbg);box-shadow:inset 0 0 0 2px var(--warnline)}
@@ -840,6 +847,7 @@ var I={
   heart:'<path d="M12 20s-7-4.4-9-9a5 5 0 0 1 9-3 5 5 0 0 1 9 3c-2 4.6-9 9-9 9z"/>',
   swap:'<path d="M4 8h13l-3-3M20 16H7l3 3"/>',
   plus:'<path d="M12 5v14M5 12h14"/>',
+  share:'<path d="M12 3v12M8 7l4-4 4 4M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7"/>',
   minus:'<path d="M5 12h14"/>',
   play:'<path d="M9 7l8 5-8 5z"/>'
 };
@@ -1489,6 +1497,7 @@ function renderOverlay(){
   else if(p.type==='meal') html=mealPage(p);
   else if(p.type==='recipeEdit') html=recipeEditPage(p);
   else if(p.type==='ingPick') html=ingPickPage(p);
+  else if(p.type==='shared') html=sharedPage(p);
   o.innerHTML='<div class="wrap" style="padding-bottom:calc(40px + env(safe-area-inset-bottom,0px))">'+html+'</div>';
   o.classList.add('open');
   o.querySelectorAll('textarea.area').forEach(autosize);
@@ -1583,7 +1592,7 @@ function libSection(p){
     body=f.length?sortBar('favorites',f.length,'favorite')+f.map(function(m){return mealRow(m,m.custom?'Your recipe':'');}).join(''):'<p class="empty">No favorites yet. Tap the heart on any meal or recipe to save it here.</p>';
   } else if(sec==='recipes'){
     var r=sortList('recipes',L.recipes,mName,mKcal);
-    body='<button class="btn primary block libnew" data-a="newRecipe">'+svg('plus',18)+'New recipe</button>'+
+    body='<div class="libbtns"><button class="btn primary" data-a="newRecipe">'+svg('plus',18)+'New recipe</button><button class="btn" data-a="pasteRecipe">Paste recipe</button></div>'+
       (r.length?sortBar('recipes',r.length,'recipe')+r.map(function(m){return mealRow(m);}).join(''):'<p class="empty">No recipes yet. Tap New recipe to write your own, or open any meal and tap Add as recipe.</p>');
   } else if(sec==='collections'){
     if(p.cid){
@@ -1699,7 +1708,7 @@ function ownRecipePage(p,m){
     (m.desc&&m.desc.trim()?'<p class="mdesc">'+esc(m.desc)+'</p>':'')+
     (ing.length?'<div id="mMacros">'+macroTable(x)+'</div><p class="mmeta" style="margin-top:0">For the whole recipe, about '+nf(x.g)+' g.</p>'+
       '<button class="btn primary block" data-a="mealToList" style="margin-top:10px">Add ingredients to shopping list</button>':'')+
-    '<div class="btngrid"><button class="btn sm" data-a="addToPlanAsk">Add to plan</button><button class="btn sm" data-a="collectionAsk">Add to collection</button><button class="btn sm" data-a="cooked">Mark as cooked</button></div>'+
+    '<div class="btngrid"><button class="btn sm" data-a="addToPlanAsk">Add to plan</button><button class="btn sm" data-a="collectionAsk">Add to collection</button><button class="btn sm" data-a="cooked">Mark as cooked</button><button class="btn sm" data-a="shareRecipe">'+svg('share',18)+'Share</button></div>'+
     (ing.length?'<section class="section" style="margin-top:18px"><h2>Ingredients</h2>'+
       '<div class="storeline"><span class="small muted">Products from</span><button class="storebtn" data-a="pickStore" data-scope="meal">'+badge(p.store)+'<span>'+esc(p.store)+'</span><span class="chev">'+svg('chev',18)+'</span></button></div>'+
       '<div class="rlist">'+ing.map(function(r){
@@ -1708,6 +1717,50 @@ function ownRecipePage(p,m){
     (steps.length?'<section class="section"><h2>Instructions</h2><ol class="vsteps">'+steps.map(function(s,i){return '<li><span class="snum" aria-hidden="true">'+(i+1)+'</span><p>'+esc(s)+'</p></li>';}).join('')+'</ol></section>':'')+
     (url?'<section class="section"><h2>Video</h2><a class="btn block watch" href="'+esc(url)+'" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">🎬</span>Watch</a></section>':'')+
     '<div class="savebar"><button class="btn block" data-a="editRecipe" data-id="'+m.id+'">Edit recipe</button></div>';
+}
+/* ---------- Shared recipes ---------- */
+// The whole recipe travels inside the link, so sharing needs no server or account.
+function recipeLink(m){
+  var d={n:m.name,d:m.desc||'',i:m.ing,s:m.steps||[],v:m.video||''};
+  var b=btoa(unescape(encodeURIComponent(JSON.stringify(d)))).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');
+  return location.href.split('#')[0]+'#recipe='+b;
+}
+function readRecipeLink(t){
+  var i=(t||'').indexOf('#recipe='); if(i<0) return null;
+  try{
+    var b=t.slice(i+8).trim().replace(/-/g,'+').replace(/_/g,'/'), d=JSON.parse(decodeURIComponent(escape(atob(b))));
+    var name=String(d.n||'').trim().slice(0,120); if(!name) return null;
+    var ing=(Array.isArray(d.i)?d.i:[]).filter(function(x){return Array.isArray(x)&&ING[x[0]]&&+x[1]>0;}).map(function(x){return [x[0],Math.min(5000,Math.round(+x[1]))];});
+    var steps=(Array.isArray(d.s)?d.s:[]).map(function(x){return String(x).trim().slice(0,1000);}).filter(Boolean);
+    return {name:name,desc:String(d.d||'').trim().slice(0,1000),ing:ing,steps:steps,video:videoUrl(String(d.v||''))};
+  }catch(e){ return null; }
+}
+// Links always open in Safari on iPhone, and Safari keeps its data apart from the home-screen app.
+function inIosSafari(){ return /iP(hone|ad|od)/.test(navigator.userAgent)&&navigator.standalone===false; }
+function sameRecipe(a,b){ return a.name.toLowerCase()===b.name.toLowerCase()&&JSON.stringify(a.ing)===JSON.stringify(b.ing); }
+function sharedPage(p){
+  var r=p.rec, x=macrosOf(r.ing), url=videoUrl(r.video), safari=inIosSafari();
+  var save=safari?
+    (p.copied?'<div class="copied"><b>Link copied</b><p>Open Posiłki from your home screen, go to Library, then Recipes, and tap Paste recipe.</p></div>'+(S.onboarded?'<button class="linkbtn" data-a="saveShared">Save it here in Safari instead</button>':''):
+      '<button class="btn primary block" data-a="copyShared">Save to my Posiłki app</button><p class="small muted note">Don’t have the app yet? Tap Safari’s Share button, then Add to Home Screen.</p>'):
+    '<button class="btn primary block" data-a="saveShared">Save to my recipes</button>';
+  return pageHead('')+
+    mealImage({id:'s-'+r.name,style:'plate',types:[],ing:r.ing,name:r.name})+
+    '<div class="mhead"><span class="pill shared">Shared with you</span><h1 style="margin-top:8px">'+esc(r.name)+'</h1></div>'+
+    (r.desc?'<p class="mdesc">'+esc(r.desc)+'</p>':'')+
+    (r.ing.length?macroTable(x)+'<p class="mmeta" style="margin-top:0">For the whole recipe, about '+nf(x.g)+' g.</p>'+
+      '<section class="section" style="margin-top:18px"><h2>Ingredients</h2><div class="rlist">'+r.ing.map(function(i){
+        return '<div class="ritem">'+emojiDot(i[0])+'<span class="grow"><b>'+esc(plainName(i[0],'en'))+'</b><small>'+nf(i[1])+' '+ING[i[0]].u+'</small></span></div>';
+      }).join('')+'</div></section>':'')+
+    (r.steps.length?'<section class="section"><h2>Instructions</h2><ol class="vsteps">'+r.steps.map(function(s,i){return '<li><span class="snum" aria-hidden="true">'+(i+1)+'</span><p>'+esc(s)+'</p></li>';}).join('')+'</ol></section>':'')+
+    (url?'<section class="section"><h2>Video</h2><a class="btn block watch" href="'+esc(url)+'" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">🎬</span>Watch</a></section>':'')+
+    '<div class="savebar">'+save+'</div>';
+}
+function openShared(rec,link){ pushPage({type:'shared',rec:rec,link:link}); }
+function openPasteSheet(){
+  UI.sheet={type:'paste'};
+  openSheet(sheetHead('Paste shared recipe','Paste the recipe link a friend sent you.')+'<input id="pasteInput" class="field" placeholder="https://…#recipe=…" aria-label="Recipe link">'+
+    '<div class="btnrow"><button class="btn primary" data-a="pasteGo">Open recipe</button><button class="btn" data-a="closeSheet">Cancel</button></div>','#pasteInput');
 }
 function cap(s){ return s.charAt(0).toUpperCase()+s.slice(1); }
 function autosize(t){ t.style.height='auto'; t.style.height=t.scrollHeight+'px'; }
@@ -2012,6 +2065,37 @@ var H={
     S.shopping.entries=mergeArrays(S.shopping.entries,d.shopping.entries);
     save(); UI.pendingImport=null; closeSheet(); render(); toast('Backup merged');
   },
+  shareRecipe:function(){
+    var m=getMeal(top().id), url=recipeLink(m);
+    if(navigator.share){ navigator.share({title:m.name,text:'Here’s my recipe for '+m.name+'. Open it to save it to your Posiłki.',url:url}).catch(function(){}); return; }
+    try{ navigator.clipboard.writeText(url).then(function(){toast('Recipe link copied');},function(){toast('Couldn’t copy the link');}); }catch(e){ toast('Couldn’t copy the link'); }
+  },
+  copyShared:function(){
+    var p=top(), done=function(){ p.copied=true; p.keepScroll=true; renderOverlay(); };
+    try{ navigator.clipboard.writeText(p.link).then(done,function(){toast('Couldn’t copy. Copy the link from your message instead.');}); }catch(e){ toast('Couldn’t copy. Copy the link from your message instead.'); }
+  },
+  saveShared:function(){
+    if(!S.onboarded){ toast('Set up Posiłki first, then open the link again.'); return; }
+    var rec=top().rec, have=S.library.recipes.filter(function(m){return sameRecipe(m,rec);})[0], r=have;
+    if(!r){
+      r={id:'r'+uid(),custom:true,pl:'',types:[],mins:0,tags:[],style:'plate',created:Date.now(),shared:true};
+      ['name','desc','ing','steps','video'].forEach(function(f){r[f]=clone(rec[f]);});
+      S.library.recipes.push(r); save();
+    }
+    if(location.hash) history.replaceState(null,'',location.pathname+location.search);
+    UI.stack[UI.stack.length-1]={type:'meal',id:r.id,store:S.profile.store,grams:r.ing.map(function(x){return x[1];}),open:true};
+    renderOverlay(); $('overlay').scrollTop=0; renderView(); toast(have?'Already in your recipes':'Saved to Recipes');
+  },
+  pasteRecipe:function(){
+    var fail=openPasteSheet;
+    if(!navigator.clipboard||!navigator.clipboard.readText) return fail();
+    navigator.clipboard.readText().then(function(t){ var r=readRecipeLink(t); if(r) openShared(r,t.trim()); else fail(); },fail);
+  },
+  pasteGo:function(){
+    var t=($('pasteInput').value||'').trim(), r=readRecipeLink(t);
+    if(!r){ toast('That doesn’t look like a recipe link.'); return; }
+    closeSheet(); openShared(r,t);
+  },
   addAsRecipe:function(){
     // A copy of the meal goes into Recipes and opens straight away; Edit recipe changes it from there.
     var m=getMeal(top().id), r=clone(m); r.id='r'+uid(); r.custom=true; r.base=m.id; r.video=''; r.created=Date.now();
@@ -2100,6 +2184,7 @@ document.addEventListener('keydown',function(e){
     e.preventDefault(); var p=top(), i=+e.target.dataset.step; p.draft.steps.splice(i+1,0,''); p.keepScroll=true; renderOverlay(); focusStep(i+1); return;
   }
   if(e.key==='Enter'&&e.target&&e.target.id==='nameInput'&&UI.sheet&&UI.sheet.type==='name'){ H.nameSave(); return; }
+  if(e.key==='Enter'&&e.target&&e.target.id==='pasteInput'){ H.pasteGo(); return; }
   if(e.key!=='Escape') return;
   if($('sheetRoot').innerHTML) closeSheet(); else if(UI.panel) closePanel(); else if(UI.stack.length) popPage();
 });
@@ -2107,7 +2192,9 @@ $('importFile').addEventListener('change',function(e){ var f=e.target.files&&e.t
 try{ window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change',function(){ if(S.theme==='system') applyTheme(); }); }catch(e){}
 window.addEventListener('pagehide',save);
 function openFromHash(){
-  var h=location.hash||''; if(!S.onboarded||h.indexOf('#meal-')!==0) return;
+  var h=location.hash||'';
+  if(h.indexOf('#recipe=')===0){ var r=readRecipeLink(h); if(r&&!(top()&&top().type==='shared')) openShared(r,location.href); return; }
+  if(!S.onboarded||h.indexOf('#meal-')!==0) return;
   var id=decodeURIComponent(h.slice(6)); if(MB[id]&&!(top()&&top().type==='meal'&&top().id===id)) openMealPage(id);
 }
 window.addEventListener('hashchange',openFromHash);
