@@ -25,7 +25,7 @@ for (const [k, r] of Object.entries(catalog.ingredients)) ING[k] = { pl: r.pl, e
 // Search words per ingredient where the shelf name differs from the app's name.
 // "must" words all have to appear in the product name; "not" words rule a product out.
 const PL = {
-  pomidor: { q: 'pomidory', not: ['suszon', 'koktajl', 'puszk', 'krojon', 'sok', 'przecier', 'passat'] },
+  pomidor: { q: 'pomidory', not: ['cherry', 'suszon', 'koktajl', 'puszk', 'krojon', 'sok', 'przecier', 'passat'] },
   ogorek: { q: 'ogórek zielony', must: ['ogor'], not: ['kiszon', 'konserw', 'małosol'] },
   papryka: { q: 'papryka czerwona', not: ['słodka', 'mielon', 'konserw', 'grillow', 'chips'] },
   cebula: { q: 'cebula', not: ['czerwon', 'prażon', 'suszon', 'dymk'] },

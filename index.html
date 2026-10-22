@@ -175,8 +175,9 @@ p{margin:0}
 .need small{display:block;color:var(--muted);font-size:12px}
 
 /* Onboarding */
-#onboard{max-width:520px;margin:0 auto;padding:40px 22px calc(40px + env(safe-area-inset-bottom,0px));min-height:100vh;display:flex;flex-direction:column}
-.obhead{margin:28px 0 24px}
+#onboard{max-width:520px;margin:0 auto;padding:calc(12px + env(safe-area-inset-top,0px)) 22px calc(40px + env(safe-area-inset-bottom,0px));min-height:100vh;display:flex;flex-direction:column}
+.obhead{margin:56px 0 24px}
+.pagehead + .obhead{margin-top:0}
 .obhead p{margin-top:10px;color:var(--muted)}
 .obstep{font-size:14px;color:var(--muted)}
 .obbody{display:grid;gap:12px}
@@ -205,10 +206,13 @@ p{margin:0}
 .storedd .grow span{display:block;font-weight:600;line-height:1.25}
 .storedd .chev{display:grid;transform:rotate(90deg);transition:transform .25s ease}
 .storedd[aria-expanded="true"] .chev{transform:rotate(-90deg)}
-.ddwrap{display:grid;grid-template-rows:0fr;transition:grid-template-rows .28s ease}
-.ddwrap.open{grid-template-rows:1fr}
+.dd{position:relative}
+/* Dropdown lists open as a layer on top of the page instead of pushing it down. */
+.ddwrap{position:absolute;left:0;right:0;top:calc(100% + 4px);z-index:30;display:grid;grid-template-rows:0fr;transition:grid-template-rows .22s ease;
+  background:var(--surface);border-radius:14px;box-shadow:0 10px 30px rgba(0,0,0,.18);pointer-events:none}
+.ddwrap.open{grid-template-rows:1fr;pointer-events:auto;border:1px solid var(--line)}
 .ddwrap > div{overflow:hidden;min-height:0}
-.ddlist{display:grid;gap:2px;padding:6px 0 0}
+.ddlist{display:grid;gap:2px;padding:6px}
 .ddlist button{display:flex;align-items:center;gap:10px;width:100%;min-height:44px;padding:4px 10px;border:0;border-radius:10px;background:transparent;text-align:left}
 .ddlist button[aria-checked="true"]{background:var(--tint);font-weight:600}
 .ddlist button .grow{flex:1}
@@ -224,8 +228,11 @@ p{margin:0}
 /* Full-screen pages */
 #overlay{position:fixed;inset:0;z-index:40;background:var(--ground);overflow:auto;padding-top:env(safe-area-inset-top,0px);display:none;-webkit-overflow-scrolling:touch}
 #overlay.open{display:block}
-.pagehead{display:flex;align-items:center;justify-content:space-between;gap:6px;margin:4px 0 14px}
-.back{display:inline-flex;align-items:center;gap:2px;min-height:44px;padding:0 8px 0 0;background:none;border:0;color:var(--beet);font-weight:600}
+/* Page header stays pinned while the page scrolls, so Back is always in reach. */
+.pagehead{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:6px;margin:0 -4px 10px;padding:8px 4px;pointer-events:none}
+.pagehead > *{pointer-events:auto}
+.back{display:grid;place-items:center;width:44px;height:44px;padding:0;border-radius:50%;border:1px solid var(--line);background:var(--surface);color:var(--ink);box-shadow:0 2px 8px rgba(0,0,0,.12)}
+.pagehead .iconbtn{background:var(--surface);border:1px solid var(--line);box-shadow:0 2px 8px rgba(0,0,0,.12)}
 .section{padding:20px 0;border-top:1px solid var(--line)}
 .section:first-of-type{border-top:0;padding-top:4px}
 .section > h2{margin-bottom:12px}
@@ -312,7 +319,7 @@ p{margin:0}
 <script>
 (function(){
 'use strict';
-var APP_VERSION='0.6.0';
+var APP_VERSION='0.6.1';
 var DATA_VERSION=5;
 var KEY='posilki';
 
@@ -359,12 +366,12 @@ var ING_RAW={
   piers:['Filet z piersi kurczaka','Chicken breast fillet','meat','g',23,1.5,0,500,'500 g pack',0,'#E7C9A0','slab'],
   indyk_mielone:['Mięso mielone z indyka','Ground turkey','meat','g',19,7,0,500,'500 g pack',0,'#B9825A','crumble'],
   indyk_filet:['Filet z piersi indyka','Turkey breast fillet','meat','g',22.5,1.5,0,500,'500 g pack',0,'#D8B48A','chunk'],
-  wolowina:['Rostbef wołowy','Beef rump steak','meat','g',21,7,0,400,'400 g pack',0,'#8A4A35','strip'],
+  wolowina:['Rostbef wołowy','Beef sirloin','meat','g',21,7,0,400,'400 g pack',0,'#8A4A35','strip'],
   losos:['Filet z łososia','Salmon fillet','meat','g',20,13,0,250,'250 g pack',0,'#F08A63','slab'],
   dorsz:['Filet z dorsza','Cod fillet','meat','g',17.5,0.7,0,400,'400 g pack',0,'#F3EFE6','slab'],
   szynka:['Szynka z indyka w plastrach','Sliced turkey ham','meat','g',19,2,1.5,100,'100 g pack',0,'#E8A4A4','slice'],
   jajka:['Jajka','Eggs','dairy','g',12.5,10,0.7,500,'10 eggs (≈ 500 g)',50,'#F6D35B','egg'],
-  twarog:['Twaróg półtłusty','Semi-fat quark','dairy','g',18,4.5,3.5,250,'250 g pack',0,'#F7F4EC','mound'],
+  twarog:['Twaróg półtłusty','Semi-skimmed quark','dairy','g',18,4.5,3.5,250,'250 g pack',0,'#F7F4EC','mound'],
   skyr:['Skyr naturalny','Plain skyr','dairy','g',11,0.2,4,150,'150 g cup',0,'#F6F5F0','mound'],
   jogurt:['Jogurt naturalny 2%','Plain yoghurt 2%','dairy','g',4.3,2,6,400,'400 g pot',0,'#F7F7F2','mound'],
   serek:['Serek wiejski','Cottage cheese','dairy','g',11,5,2,200,'200 g pot',0,'#F5F2E8','curd'],
@@ -444,6 +451,14 @@ function product(k,store){
   var b=base.split('|');
   if(own){ var o=own.split('|'); b=[o[0],o.length>1?o[1]:b[1]]; }
   return {brand:b[0],name:b[1],label:b[0]?b[0]+' '+b[1]:b[1]};
+}
+// One line per item: "product label, brand". English uses the English ingredient name with the same brand,
+// since store product names only exist in the store's language.
+function itemLabel(k,store,lang){
+  var pr=product(k,store), name=lang==='en'?ING[k].en:pr.name;
+  name=String(name||'').replace(/[,\s]+\d+(?:[.,]\d+)?\s*(?:g|kg|ml|l)\b\.?\s*$/i,'');
+  var b=pr.brand&&name.toLowerCase().indexOf(pr.brand.toLowerCase())<0?pr.brand:'';
+  return b?name+', '+b:name;
 }
 var ING={};
 Object.keys(ING_RAW).forEach(function(k){var r=ING_RAW[k];
@@ -1008,13 +1023,13 @@ function suggestions(slot,n){
 }
 
 /* ---------- UI state ---------- */
-var UI={tab:'home',ob:{step:1,name:'',country:null},stack:[],pendingImport:null,filter:'all',cats:[],q:'',limit:40,sheet:null,prepDay:todayIdx(),panel:false,storeOpen:false,countryOpen:false,shuffle:0,sugSlot:null};
+var UI={tab:'home',ob:{step:1,name:'',country:null},stack:[],pendingImport:null,filter:'all',cats:[],q:'',limit:40,sheet:null,prepDay:todayIdx(),panel:false,storeOpen:false,countryOpen:false,langOpen:false,shuffle:0,sugSlot:null};
 var TABS=[['home','Home'],['meals','Meals'],['prep','Prep'],['shopping','Shopping']];
 
 /* ---------- Onboarding ---------- */
 function renderOnboarding(){
   var ob=UI.ob, html='', total=4;
-  function head(n,title,sub){ return '<div class="obhead"><p class="obstep">Step '+n+' of '+total+'</p><h1 style="margin-top:8px">'+title+'</h1>'+(sub?'<p>'+sub+'</p>':'')+'</div>'; }
+  function head(n,title,sub){ return (n>1?'<div class="pagehead"><button class="back" data-a="obBack" aria-label="Back">'+svg('back',22)+'</button></div>':'')+'<div class="obhead"><p class="obstep">Step '+n+' of '+total+'</p><h1 style="margin-top:8px">'+title+'</h1>'+(sub?'<p>'+sub+'</p>':'')+'</div>'; }
   if(ob.step===1){
     html=head(1,'What should we call you?','Your name stays on this phone.')+
       '<div class="obbody"><input id="obName" class="field big" autocomplete="given-name" placeholder="Your name" aria-label="Your name" value="'+esc(ob.name)+'"></div>'+
@@ -1023,17 +1038,15 @@ function renderOnboarding(){
     var opts=[['system','System','Match your iPhone’s setting','<span class="swatch"><i></i><i></i></span>'],['light','Light','Always light','<span class="swatch light"></span>'],['dark','Dark','Always dark','<span class="swatch dark"></span>']];
     html=head(2,'How should it look?','You can change this later in Settings.')+
       '<div class="obbody">'+opts.map(function(o){return '<button class="themeopt" data-a="obTheme" data-theme="'+o[0]+'" aria-pressed="'+(S.theme===o[0])+'">'+o[3]+'<span><b>'+o[1]+'</b><small>'+o[2]+'</small></span></button>';}).join('')+'</div>'+
-      '<div class="obfoot"><button class="btn primary block" data-a="obNext">Continue</button><button class="linkbtn" data-a="obBack">Back</button></div>';
+      '<div class="obfoot"><button class="btn primary block" data-a="obNext">Continue</button></div>';
   } else if(ob.step===3){
     html=head(3,'Where do you shop?','This decides which stores and products you see.')+
       '<div class="obbody">'+COUNTRY_ORDER.map(function(cc){var c=COUNTRIES[cc];
-        return '<button class="country" data-a="obCountry" data-cc="'+cc+'" aria-pressed="'+(ob.country===cc)+'"><span class="flag" aria-hidden="true">'+c.flag+'</span>'+c.name+'</button>';}).join('')+'</div>'+
-      '<div class="obfoot"><button class="linkbtn" data-a="obBack">Back</button></div>';
+        return '<button class="country" data-a="obCountry" data-cc="'+cc+'" aria-pressed="'+(ob.country===cc)+'"><span class="flag" aria-hidden="true">'+c.flag+'</span>'+c.name+'</button>';}).join('')+'</div>';
   } else {
     html=head(4,'Pick your usual store','Meals use its products by default. You can change it any time in Settings.')+
       '<div class="obbody">'+storesFor(ob.country).map(function(s){
-        return '<button class="storebtn" data-a="obStore" data-store="'+esc(s)+'">'+badge(s,true)+'<span class="grow">'+esc(s)+'</span><span class="chev">'+svg('chev',20)+'</span></button>';}).join('')+'</div>'+
-      '<div class="obfoot"><button class="linkbtn" data-a="obBack">Back</button></div>';
+        return '<button class="storebtn" data-a="obStore" data-store="'+esc(s)+'">'+badge(s,true)+'<span class="grow">'+esc(s)+'</span><span class="chev">'+svg('chev',20)+'</span></button>';}).join('')+'</div>';
   }
   $('onboard').innerHTML=html;
   if(ob.step===1){ var n=$('obName'); if(n) setTimeout(function(){n.focus();},50); }
@@ -1172,14 +1185,31 @@ function aggregate(){
   return map;
 }
 function itemRow(key,g,checked,act,extra){
-  // Store labels: the product as labelled in the store in bold, the plain ingredient name underneath.
-  // English: the English ingredient name in bold, the store label underneath so it can still be found on the shelf.
-  var pr=product(key,S.profile.store), en=ING[key].en, top, sub;
-  if(S.shopping.lang==='en'){ top=en; sub=pr.brand||pr.live?pr.label:''; }
-  else { top=pr.label; sub=pr.brand||pr.live?ingName(key)+(ingSub(key)?', '+ingSub(key):''):ingSub(key); }
+  var top=itemLabel(key,S.profile.store,S.shopping.lang);
   return '<li class="item'+(checked?' done':'')+'"><button class="itemmain" data-a="'+act+'" data-k="'+key+'"'+(extra||'')+' aria-pressed="'+checked+'"><span class="box">'+svg('check',16)+'</span>'+
-    '<span class="nm"><b>'+esc(top)+'</b>'+(sub?'<small>'+esc(sub)+'</small>':'')+'</span>'+
+    '<span class="nm"><b>'+esc(top)+'</b></span>'+
     '<span class="need">need '+needText(key,g)+'<small>'+packText(key,g)+'</small></span></button></li>';
+}
+var LANGS=[['orig','Store language','Labels as written in the store'],['en','English','Labels translated to English']];
+function langDropdown(){
+  var cur=S.shopping.lang==='en'?LANGS[1]:LANGS[0];
+  return '<div class="dd" style="margin-top:8px"><button class="storedd" id="langBtn" data-a="langToggle" aria-expanded="'+UI.langOpen+'" aria-controls="langDd"><span class="grow"><small>Labels</small><span>'+cur[1]+'</span></span><span class="chev">'+svg('chev',18)+'</span></button>'+
+    '<div class="ddwrap'+(UI.langOpen?' open':'')+'" id="langDd"><div><div class="ddlist" role="radiogroup" aria-label="Label language">'+LANGS.map(function(l){
+      var on=l===cur;
+      return '<button role="radio" data-a="shopLang" data-v="'+l[0]+'" aria-checked="'+on+'"'+(UI.langOpen?'':' tabindex="-1"')+'><span class="grow">'+l[1]+'<small class="muted" style="display:block;font-weight:400">'+l[2]+'</small></span>'+(on?'<span class="check">'+svg('check',18)+'</span>':'')+'</button>';
+    }).join('')+'</div></div></div></div>';
+}
+function setDd(btnId,ddId,open){
+  var b=$(btnId), w=$(ddId); if(!b||!w) return;
+  b.setAttribute('aria-expanded',String(open)); w.classList.toggle('open',open);
+  w.querySelectorAll('button').forEach(function(x){ if(open) x.removeAttribute('tabindex'); else x.setAttribute('tabindex','-1'); });
+}
+function setLangOpen(open){ UI.langOpen=open; setDd('langBtn','langDd',open); }
+// Tapping anywhere outside an open dropdown closes it.
+function closeDropdowns(except){
+  if(UI.storeOpen&&except!=='storeDd') setStoreOpen(false);
+  if(UI.countryOpen&&except!=='countryDd') setCountryOpen(false);
+  if(UI.langOpen&&except!=='langDd') setLangOpen(false);
 }
 function shoppingView(){
   var E=S.shopping.entries;
@@ -1205,7 +1235,7 @@ function shoppingView(){
   }
   var total=0,done=0; E.forEach(function(e){e.items.forEach(function(i){total++; if(i.checked) done++;});});
   return '<div class="seg" role="group" aria-label="View"><button data-a="shopView" data-v="meal" aria-pressed="'+(view==='meal')+'">By meal</button><button data-a="shopView" data-v="all" aria-pressed="'+(view==='all')+'">All ingredients</button></div>'+
-    '<div class="seg" role="group" aria-label="Label language" style="margin-top:8px"><button data-a="shopLang" data-v="orig" aria-pressed="'+(S.shopping.lang!=='en')+'">Store labels</button><button data-a="shopLang" data-v="en" aria-pressed="'+(S.shopping.lang==='en')+'">English</button></div>'+
+    langDropdown()+
     '<p class="small muted" style="margin-top:10px">'+done+' of '+total+' checked. Check off anything you buy or already have. '+(liveStore(S.profile.store)?'Products, pack sizes and prices are from '+esc(S.profile.store)+'’s online shop.':'Products are typical examples for '+esc(S.profile.store)+', with typical pack sizes.')+'</p>'+
     body+
     '<div class="btnrow" style="margin-top:22px"><button class="btn sm" data-a="saveListAsk">Save list to Library</button><button class="btn sm" data-a="clearChecked"'+(done?'':' disabled')+'>Remove checked</button><button class="btn sm danger" data-a="clearListAsk">Clear list</button></div>';
@@ -1217,11 +1247,11 @@ function panelHtml(){
   return '<div class="scrim" data-a="closePanel"></div><aside class="panel" aria-label="Menu">'+
     '<div class="me"><div style="display:flex;justify-content:space-between;align-items:flex-start"><span class="avatar lg" aria-hidden="true">'+esc(initial(S.profile.name))+'</span><button class="iconbtn" data-a="closePanel" aria-label="Close menu">'+svg('x')+'</button></div>'+
       '<h2>'+esc(S.profile.name)+'</h2><div class="line"><span aria-hidden="true">'+c.flag+'</span>'+esc(c.name)+'</div>'+
-      '<button class="storedd" data-a="panelStoreToggle" aria-expanded="'+UI.storeOpen+'" aria-controls="storeDd">'+badge(cur)+'<span class="grow"><small>Default store</small><span>'+esc(cur||'')+'</span></span><span class="chev">'+svg('chev',18)+'</span></button>'+
+      '<div class="dd"><button class="storedd" id="storeBtn" data-a="panelStoreToggle" aria-expanded="'+UI.storeOpen+'" aria-controls="storeDd">'+badge(cur)+'<span class="grow"><small>Default store</small><span>'+esc(cur||'')+'</span></span><span class="chev">'+svg('chev',18)+'</span></button>'+
       '<div class="ddwrap'+(UI.storeOpen?' open':'')+'" id="storeDd"><div><div class="ddlist" role="radiogroup" aria-label="Default store">'+storesFor(S.profile.country).map(function(st){
         var on=st===cur;
         return '<button role="radio" data-a="panelStorePick" data-store="'+esc(st)+'" aria-checked="'+on+'"'+(UI.storeOpen?'':' tabindex="-1"')+'>'+badge(st)+'<span class="grow">'+esc(st)+'</span>'+(on?'<span class="check">'+svg('check',18)+'</span>':'')+'</button>';
-      }).join('')+'</div></div></div></div>'+
+      }).join('')+'</div></div></div></div></div>'+
     '<button class="prow" data-a="openLibrary">'+svg('library')+'<span class="grow">Library</span><span class="chev">'+svg('chev',20)+'</span></button>'+
     '<div class="pthemes"><p>Appearance</p>'+themeSeg()+'</div>'+
     '<button class="prow" data-a="openSettings">'+svg('gear')+'<span class="grow">Settings</span><span class="chev">'+svg('chev',20)+'</span></button>'+
@@ -1246,7 +1276,7 @@ function closePanel(){
 }
 function setStoreOpen(open){
   UI.storeOpen=open;
-  var b=document.querySelector('.storedd'), w=$('storeDd'); if(!b||!w) return;
+  var b=$('storeBtn'), w=$('storeDd'); if(!b||!w) return;
   b.setAttribute('aria-expanded',String(open)); w.classList.toggle('open',open);
   w.querySelectorAll('button').forEach(function(x){ if(open) x.removeAttribute('tabindex'); else x.setAttribute('tabindex','-1'); });
 }
@@ -1261,7 +1291,7 @@ function popPage(){
 function closeAllPages(){ UI.stack=[]; $('overlay').classList.remove('open'); $('overlay').innerHTML=''; document.body.classList.remove('noscroll'); }
 function top(){ return UI.stack[UI.stack.length-1]; }
 function pageHead(title,right){
-  return '<div class="pagehead"><button class="back" data-a="back">'+svg('back',20)+'Back</button>'+(right||'')+'</div>'+(title?'<h1 style="margin-bottom:16px">'+title+'</h1>':'');
+  return '<div class="pagehead"><button class="back" data-a="back" aria-label="Back">'+svg('back',22)+'</button>'+(right||'')+'</div>'+(title?'<h1 style="margin-bottom:16px">'+title+'</h1>':'');
 }
 function renderOverlay(){
   var p=top(); if(!p) return;
@@ -1283,11 +1313,11 @@ function targetBlock(key,t){
 }
 function countryDropdown(cc){
   var c=COUNTRIES[cc]||{flag:'',name:'Choose a country'};
-  return '<button class="storedd" id="countryBtn" data-a="countryToggle" aria-expanded="'+UI.countryOpen+'" aria-controls="countryDd"><span class="flag" aria-hidden="true">'+c.flag+'</span><span class="grow"><span>'+esc(c.name)+'</span></span><span class="chev">'+svg('chev',18)+'</span></button>'+
+  return '<div class="dd"><button class="storedd" id="countryBtn" data-a="countryToggle" aria-expanded="'+UI.countryOpen+'" aria-controls="countryDd"><span class="flag" aria-hidden="true">'+c.flag+'</span><span class="grow"><span>'+esc(c.name)+'</span></span><span class="chev">'+svg('chev',18)+'</span></button>'+
     '<div class="ddwrap'+(UI.countryOpen?' open':'')+'" id="countryDd"><div><div class="ddlist" role="radiogroup" aria-label="Country">'+COUNTRY_ORDER.map(function(k){
       var x=COUNTRIES[k], on=k===cc;
       return '<button role="radio" data-a="setCountry" data-cc="'+k+'" aria-checked="'+on+'"'+(UI.countryOpen?'':' tabindex="-1"')+'><span class="flag" aria-hidden="true">'+x.flag+'</span><span class="grow">'+esc(x.name)+'</span>'+(on?'<span class="check">'+svg('check',18)+'</span>':'')+'</button>';
-    }).join('')+'</div></div></div>';
+    }).join('')+'</div></div></div></div>';
 }
 function setCountryOpen(open){
   UI.countryOpen=open;
@@ -1391,9 +1421,7 @@ function mealPage(p){
       '<p class="note">'+(p.store!==S.profile.store?'Only this page uses '+esc(p.store)+'. Your default store is still '+esc(S.profile.store)+'. ':'')+liveNote(p.store)+'</p>'+
       '<div style="margin-top:6px">'+ing.map(function(x,i){
         var it=ING[x[0]], k=Math.round(4*(it.p+it.c)*x[1]/100+9*it.f*x[1]/100);
-        var pr=product(x[0],p.store);
-        // English name first; the product as it's labelled in the store underneath.
-        return '<div class="ingrow"><span class="grow"><b>'+esc(it.en)+'</b><small>'+esc(pr.brand||pr.live?pr.label:ingName(x[0]))+'</small></span>'+
+        return '<div class="ingrow"><span class="grow"><b>'+esc(itemLabel(x[0],p.store,'en'))+'</b></span>'+
           '<span class="gin"><input type="number" inputmode="decimal" min="0" step="5" data-gi="'+i+'" value="'+x[1]+'" aria-label="Grams of '+esc(it.en)+'"><span>'+it.u+'</span></span>'+
           '<span class="ikcal" id="ik-'+i+'">'+k+' kcal</span></div>';
       }).join('')+'</div>'+
@@ -1545,7 +1573,7 @@ var H={
     toast('Welcome, '+S.profile.name+'. Your first week is planned.');
     openFromHash();
   },
-  tab:function(el){ if(UI.stack.length) closeAllPages(); UI.tab=el.dataset.tab; renderTop(); renderTabs(); renderView(); window.scrollTo(0,0); },
+  tab:function(el){ UI.langOpen=false; if(UI.stack.length) closeAllPages(); UI.tab=el.dataset.tab; renderTop(); renderTabs(); renderView(); window.scrollTo(0,0); },
   openPanel:openPanel, closePanel:closePanel,
   panelStoreToggle:function(){ setStoreOpen(!UI.storeOpen); },
   panelStorePick:function(el){
@@ -1635,7 +1663,8 @@ var H={
   deleteWeek:function(el){ S.library.weeks=S.library.weeks.filter(function(x){return x.id!==el.dataset.id;}); refresh(); },
 
   shopView:function(el){ S.shopping.view=el.dataset.v; save(); renderView(); },
-  shopLang:function(el){ S.shopping.lang=el.dataset.v; save(); renderView(); },
+  langToggle:function(){ setLangOpen(!UI.langOpen); },
+  shopLang:function(el){ UI.langOpen=false; if(S.shopping.lang!==el.dataset.v){ S.shopping.lang=el.dataset.v; save(); } renderView(); },
   shopTog:function(el){ var e=S.shopping.entries.filter(function(x){return x.id===el.dataset.e;})[0]; if(!e) return; var it=e.items.filter(function(x){return x.key===el.dataset.k;})[0]; if(it) it.checked=!it.checked; refresh(); },
   shopTogAll:function(el){ var k=el.dataset.k, all=true; S.shopping.entries.forEach(function(e){e.items.forEach(function(i){if(i.key===k&&!i.checked) all=false;});});
     S.shopping.entries.forEach(function(e){e.items.forEach(function(i){if(i.key===k) i.checked=!all;});}); refresh(); },
@@ -1677,6 +1706,8 @@ var H={
 };
 
 document.addEventListener('click',function(e){
+  var dd=e.target.closest?e.target.closest('.dd'):null;
+  closeDropdowns(dd&&dd.querySelector('.ddwrap')?dd.querySelector('.ddwrap').id:null);
   var el=e.target.closest?e.target.closest('[data-a]'):null;
   if(!el||el.disabled||!H[el.dataset.a]) return;
   H[el.dataset.a](el,e);
