@@ -1,0 +1,29 @@
+name: Update store products
+on:
+  schedule:
+    - cron: '30 4 * * *'   # every day at 04:30 UTC
+  workflow_dispatch:
+  push:
+    branches: [claude/project-thread-1pg94g]
+    paths: [scripts/update-products.mjs, .github/workflows/update-products.yml]
+permissions:
+  contents: write
+concurrency: update-products
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node scripts/update-products.mjs
+      - name: Commit products.json if it changed
+        run: |
+          if git diff --quiet -- products.json && git ls-files --error-unmatch products.json >/dev/null 2>&1; then echo "No changes"; exit 0; fi
+          git config user.name "posilki-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add products.json
+          git commit -m "Update store products ($(date -u +%F))"
+          git push
