@@ -1,6 +1,6 @@
 # Posiłki
 
-Meal suggestions, meal prep and shopping lists for stores in Poland.
+Meal suggestions, meal prep and shopping lists for stores in Poland and Iceland.
 Works as a Home Screen app on iPhone.
 
 ## Files
@@ -24,6 +24,6 @@ Works as a Home Screen app on iPhone.
 
 ## Stores
 
-Only stores whose products the daily job can read are listed: Frisco and Wolt Market in Poland. The `Update store products` workflow runs every morning, searches both for each ingredient, and commits `products.json`. Iceland is hidden until an Icelandic store can be read (Krónan has an API that needs a login token). If a store returns far fewer matches than the day before, the job keeps the previous day's data for it.
+Only stores whose products the daily job can read are listed: Frisco and Wolt Market in Poland, and Krónan in Iceland. The `Update store products` workflow runs every morning, searches each store for each ingredient (Krónan through the public search on its website, with Icelandic search words), and commits `products.json`. If a store returns far fewer matches than the day before, the job keeps the previous day's data for it.
 
 Saved data lives on each phone and is never stored in this repository.

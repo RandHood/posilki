@@ -3,7 +3,7 @@
 // brand, product name, pack size, price and a link. The result is written to products.json,
 // which the app reads. Stores that can't be read keep the typical products built into the app.
 //
-// Usage: node scripts/update-products.mjs [--only=Frisco,'Wolt Market'] [--limit=10]
+// Usage: node scripts/update-products.mjs [--only=Frisco,'Wolt Market',Krónan] [--limit=10]
 import fs from 'node:fs';
 
 const args = Object.fromEntries(process.argv.slice(2).map(a => a.replace(/^--/, '').split('=')));
@@ -162,17 +162,173 @@ function plQuery(k) {
   return { q, must, not };
 }
 
+// Icelandic search words for Krónan. Ingredients without an entry keep the typical product built into the app.
+const IS = {
+  pomidor: { q: 'tómatar', must: ['tomat'], not: ['fotu', 'kirsuberja', 'konfekt', 'piccolo', 'snakk', 'nidursod', 'saxad', 'hakkad', 'purr', 'thurrk', 'solthurrk', 'mauk'] },
+  ogorek: { q: 'agúrka', must: ['agurk|gurk'], not: ['gurkurel', 'edik', 'krakus', 'sur', 'sursad', 'smagurk'] },
+  papryka: { q: 'paprika rauð', must: ['paprik', 'raud'], not: ['duft', 'mauk', 'krydd', 'grillud'] },
+  cebula: { q: 'laukur', must: ['lauk'], not: ['steikt', 'duft', 'surs', 'sultu'] },
+  czosnek: { q: 'hvítlaukur', must: ['hvitlauk'], not: ['hvitlauks', 'duft', 'mauk', 'smjor', 'olia', 'salt', 'braud', 'mulin', 'pressad'] },
+  brokul: { q: 'spergilkál', must: ['spergilkal'], not: ['fros'] },
+  szpinak: { q: 'spínat', must: ['spinat'], not: ['fros'] },
+  marchew: { q: 'gulrætur', must: ['gulr'], not: ['rifn'] },
+  ziemniaki: { q: 'kartöflur', must: ['kartofl'], not: ['franskar', 'mus', 'bata', 'sk' + 'ifur', 'saet', 'fros', 'forsod'] },
+  kapusta: { q: 'hvítkál', must: ['hvitkal'] },
+  cukinia: { q: 'kúrbítur', must: ['kurbit'] },
+  dynia: { q: 'grasker', must: ['grasker'], not: ['skraut', 'halloween', 'fra'] },
+  rzodkiewki: { q: 'radísur', must: ['radis'] },
+  salata: { q: 'salatblanda', must: ['salat|klettasalat|lambhagasalat'], not: ['dressing', 'tunfisk', 'egg', 'raekju', 'kartoflu', 'kjukl', 'pasta'] },
+  rukola: { q: 'klettasalat', must: ['klettasal'] },
+  banan: { q: 'bananar', must: ['banan'], not: ['thurrk', 'skvis', 'bord'] },
+  jablko: { q: 'epli', must: ['epli'], not: ['edik', 'mauk', 'thurrk', 'bit'] },
+  cytryna: { q: 'sítrónur', must: ['sitron'], not: ['pipar', 'gras', 'sodavatn', 'kristal'] },
+  szczypiorek: { q: 'graslaukur', must: ['graslauk'], not: ['ostur', 'smurost', 'thurrk'] },
+  piers: { q: 'kjúklingabringur', must: ['kjuklingabring'], not: ['sous', 'rodizio', 'eldad', 'grillad', 'marin', 'aleg', 'reykt', 'sneid', 'kryddad', 'tikka', 'bbq'] },
+  indyk_mielone: { q: 'kalkúnahakk', must: ['kalkunahakk|kalkunhakk'] },
+  indyk_filet: { q: 'kalkúnabringa', must: ['kalkunabring|kalkunbring'], not: ['silkiskor', 'aleg', 'sneid', 'reykt', 'kryddad'] },
+  wolowina: { q: 'nautalund', must: ['nautalund|nautafille|nautasteik|nautaribeye|ribeye'], not: ['hakk', 'borgar'] },
+  losos: { q: 'laxaflök', must: ['lax'], not: ['limesmj', 'smjori', 'reykt', 'grafin', 'graf', 'hrogn', 'laxaolia', 'roll', 'sushi', 'bit', 'flogur'] },
+  dorsz: { q: 'þorskflök', must: ['thorsk'], not: ['lifur', 'lysi', 'salt', 'hnakk', 'bollur', 'rasp', 'harðfisk', 'hardfisk', 'kinnar', 'bit'] },
+  szynka: { q: 'skinka', must: ['skink'], not: ['pesto', 'pizza', 'salat', 'myrja', 'pasta'] },
+  jajka: { q: 'egg', must: ['egg'], not: ['eggja', 'nudl', 'paska', 'hvit', 'kinder'] },
+  twarog: { q: 'kvarg', must: ['kvarg'] },
+  skyr: { q: 'skyr hreint', must: ['skyr', 'hrein'], not: ['drykk', 'protein'] },
+  jogurt: { q: 'hrein jógúrt', must: ['jogurt', 'hrein'], not: ['grisk', 'drykk', 'kokos'] },
+  serek: { q: 'kotasæla', must: ['kotasael'], not: ['ananas', 'graslauk'] },
+  feta: { q: 'fetaostur', must: ['feta|salatost'] },
+  mleko: { q: 'léttmjólk', must: ['lettmjolk'], not: ['kako', 'laktos', 'fernu', 'skyr', 'drykk'] },
+  kefir: { q: 'ab mjólk', must: ['ab', 'mjolk'], not: ['sudr', 'avoxt', 'perum', 'jardarber', 'bragd', 'vanill', 'perur', 'ferskj'] },
+  maslo: { q: 'smjör', must: ['smjor'], not: ['smjorvi', 'smjorlik', 'kex', 'deig', 'hvitlauk', 'brauð', 'braud', 'kokur', 'sosa', 'popp'] },
+  chleb: { q: 'rúgbrauð', must: ['rugbraud'], not: ['kex', 'flatk'] },
+  tortilla: { q: 'tortillur', must: ['tortill|vefj'], not: ['flogur', 'chips', 'snakk', 'nachos'] },
+  platki: { q: 'haframjöl', must: ['hafr|solgrjon|tröllahafr|trollahafr'], not: ['mjolk', 'drykk', 'kex', 'stykk', 'klatt', 'graut', 'kok'] },
+  ryz: { q: 'hrísgrjón', must: ['hrisgrjon'], not: ['butter', 'matsedil', 'hrisgrjonum', 'med', 'hrisgrjonan', 'hydis', 'brun', 'heilkorna', 'kok', 'mjolk', 'graut', 'nudl', 'risotto', 'sushi', 'villi', 'poki', 'sudupok', 'fljot'] },
+  gryczana: { q: 'bókhveiti', must: ['bokhveit'], not: ['mjol', 'nudl', 'pasta'] },
+  jeczmienna: { q: 'bankabygg', must: ['bygg|bankabygg'], not: ['mjol', 'braud', 'flogur'] },
+  makaron: { q: 'heilhveiti pasta', must: ['heilhveit|heilkorn|fullkorn', 'pasta|penne|spaghetti|fusilli|skrufur'] },
+  soczewica: { q: 'rauðar linsubaunir', must: ['linsubaun', 'raud'] },
+  maka: { q: 'heilhveiti', must: ['heilhveit'], not: ['pasta', 'braud', 'kex', 'tortill', 'penne', 'spaghetti', 'skrufur', 'fusilli', 'vefj', 'pita', 'bollur', 'samloku'] },
+  wloskie: { q: 'valhnetur', must: ['valhnet'] },
+  migdaly: { q: 'möndlur', must: ['mondl'], not: ['mjolk', 'drykk', 'mjol', 'smjor', 'sukkulad', 'flog', 'kok'] },
+  pestki: { q: 'graskersfræ', must: ['graskersfr'] },
+  tunczyk: { q: 'túnfiskur í vatni', must: ['tunfisk'], not: ['oliu', 'olia', 'salat', 'sosa', 'pate', 'mauk', 'chili'] },
+  pomidory_puszka: { q: 'hakkaðir tómatar', must: ['tomat', 'hakkad|saxad|nidursod|chopped'], not: ['basil', 'hvitlauk', 'chili', 'sosa'] },
+  fasola: { q: 'nýrnabaunir', must: ['nyrnabaun|kidney'], not: ['chili'] },
+  hummus: { q: 'hummus', must: ['hummus'], not: ['jalapeno', 'paprik', 'chili', 'rauðr', 'raudr', 'basil', 'pestó', 'pesto'] },
+  soja: { q: 'sojasósa', must: ['sojasos|soy'], not: ['sweet', 'sæt', 'saet', 'teriyaki'] },
+  maliny: { q: 'hindber frosin', must: ['hindber'], not: ['sult', 'skyr', 'jogurt', 'te ', 'drykk', 'safi', 'is '] },
+  warzywa_mr: { q: 'wok blanda', must: ['wok|graenmetisbland|grænmetisbland'], not: ['sosa', 'nudl', 'olia', 'panna', 'pon'] },
+  fasolka: { q: 'strengjabaunir', must: ['strengjabaun|haricot'] },
+  olej: { q: 'repjuolía', must: ['repjuol|rapeseed|canola'] },
+  oliwa: { q: 'ólífuolía extra virgin', must: ['olifuol', 'extra|virgin'], not: ['sprey', 'sprei', 'spray', 'chili', 'hvitlauk', 'basil', 'trufflu'] },
+  ciecierzyca: { q: 'kjúklingabaunir', must: ['kjuklingabaun'], not: ['kjuklingabaunap', 'fusilli', 'mjol', 'snakk', 'hummus', 'pasta', 'ristad'] },
+  fasola_biala: { q: 'hvítar baunir', must: ['baun', 'hvit|smjor|cannellini'], not: ['bakad', 'tomat', 'kaffi'] },
+  kukurydza: { q: 'maískorn', must: ['maiskorn|mais'], not: ['popp', 'flog', 'snakk', 'stong', 'mjol', 'sterkj', 'tortill', 'kex', 'kolf', 'fros', 'vefj', 'flak'] },
+  groszek: { q: 'grænar baunir', must: ['graen', 'baun'], not: ['soja', 'edamame', 'strengja', 'kaffi', 'nidursod'] },
+  szpinak_mr: { q: 'spínat frosið', must: ['spinat', 'fros|frys'] },
+  owoce_lesne: { q: 'berjablanda frosin', must: ['berjabl|skogarber|berjablond|bland'], not: ['sult', 'skyr', 'jogurt', 'drykk', 'safi', 'te ', 'mysli', 'muesli', 'hnetu', 'graenmet'] },
+  mango: { q: 'mangó frosið', must: ['mango', 'fros|bit'], not: ['safi', 'drykk', 'chutney', 'skyr', 'thurrk'] },
+  krewetki: { q: 'rækjur', must: ['raekj'], not: ['salat', 'sosa', 'snakk', 'flog', 'kex', 'chips'] },
+  quinoa: { q: 'kínóa', must: ['kinoa|quinoa'], not: ['rice', 'mexican', 'flog', 'kex', 'mjol'] },
+  kuskus: { q: 'kúskús', must: ['kuskus|couscous'] },
+  bulgur: { q: 'bulgur', must: ['bulgur'] },
+  ryz_brazowy: { q: 'brún hrísgrjón', must: ['hrisgrjon', 'brun|heilkorna|hydis'], not: ['kok', 'graut', 'nudl', 'sudupok'] },
+  jaglana: { q: 'hirsi', must: ['hirsi|hirsigrjon|millet'] },
+  makaron_ryzowy: { q: 'hrísgrjónanúðlur', must: ['hrisgrjonanud|nudl'], not: ['egg', 'ramen', 'instant', 'kjukl', 'nauta', 'bolli', 'kok', 'ediki', 'edik', 'mjolk', 'paper', 'papp'] },
+  spaghetti: { q: 'spaghetti', must: ['spaghett|spagett'], not: ['sosa', 'bolognese', 'heilhveit', 'heilkorn'] },
+  gnocchi: { q: 'gnocchi', must: ['gnocchi'] },
+  bulka_tarta: { q: 'brauðrasp', must: ['braudrasp|rasp|panko'], not: ['fisk', 'thorsk', 'ysu', 'kjukl', 'i raspi'] },
+  odzywka: { q: 'prótein duft vanillu', must: ['whey|protein|mysuprotein', 'vanill'], not: ['stykk', 'bar', 'drykk', 'ponnuk', 'skyr', 'bud', 'kex', 'is '] },
+  maslo_orzechowe: { q: 'hnetusmjör', must: ['hnetusmjor|peanut'] },
+  miod: { q: 'hunang', must: ['hunang|honey'], not: ['ristad', 'cheerios', 'morgunkorn', 'sinnep', 'kjukl', 'hnetur', 'te ', 'skinka', 'gljai'] },
+  kakao: { q: 'kakó', must: ['kako|kakao|cocoa'], not: ['drykk', 'mjolk', 'kul', 'puff', 'smjor', 'nibs'] },
+  czekolada: { q: 'súkkulaði 70%', must: ['sukkulad|chocolate', '70'], not: ['kex', 'drykk', 'is ', 'raesin', 'rusin'] },
+  daktyle: { q: 'döðlur', must: ['dodl'], not: ['stykk', 'bar', 'sirop', 'kul'] },
+  rodzynki: { q: 'rúsínur', must: ['rusin'], not: ['sukkulad', 'braud', 'kok'] },
+  chia: { q: 'chia fræ', must: ['chia'], not: ['graut', 'drykk', 'bar', 'bud'] },
+  sezam: { q: 'sesamfræ', must: ['sesam'], not: ['olia', 'oliu', 'bollur', 'braud', 'kex', 'tahini', 'stang', 'hrokk'] },
+  slonecznik: { q: 'sólblómafræ', must: ['solblomafr'], not: ['hrokkbr', 'olia', 'braud'] },
+  nerkowce: { q: 'kasjúhnetur', must: ['kasju|cashew'], not: ['smjor', 'sukkulad', 'drykk', 'mjolk'] },
+  orzeszki: { q: 'jarðhnetur', must: ['jardhnet|peanuts'], not: ['karamell', 'callowfit', 'chili', 'oliu', 'hunangsrist', 'stokk', 'salsa', 'smjor', 'sukkulad', 'stykk', 'olia', 'snakk'] },
+  wafle: { q: 'hrískökur', must: ['hriskok|hrisgrjonakok|hrisgrjonaskif|ricecake'], not: ['sukkulad', 'jogurt', 'karamell', 'mini'] },
+  pita: { q: 'pítubrauð', must: ['pitubraud|pita'], not: ['sosa', 'krydd', 'flog'] },
+  tost: { q: 'heilhveiti samlokubrauð', must: ['samlokubraud|heilhveitibraud|fjolkornabraud|heilkornabraud|toast'] },
+  flatkaka: { q: 'flatkökur', must: ['flatkak|flatkok'] },
+  batat: { q: 'sætar kartöflur', must: ['saet', 'kartofl'], not: ['franskar', 'fros', 'flog', 'mus', 'bat'] },
+  pieczarki: { q: 'sveppir', must: ['svepp|fludasvepp|kastaniusvepp'], not: ['supa', 'sosa', 'thurrk', 'ostur', 'pate', 'sneid'] },
+  awokado: { q: 'avókadó', must: ['avokado|avocado|lárpera|larper'], not: ['olia', 'mauk', 'guacamole'] },
+  borowki: { q: 'bláber', must: ['blaber'], not: ['eldpipar', 'reaper', 'helvitis', 'bear', 'minis', 'hindber', 'yummies', 'blaberja', 'fros', 'skyr', 'sult', 'safi', 'jogurt', 'muffin', 'te ', 'drykk', 'thurrk'] },
+  truskawki: { q: 'jarðarber', must: ['jardarber'], not: ['fros', 'skyr', 'jogurt', 'sult', 'safi', 'drykk', 'te ', 'thurrk', 'mjolk'] },
+  gruszka: { q: 'perur', must: ['perur|pera'], not: ['safi', 'nidursod', 'mauk'] },
+  pomarancza: { q: 'appelsínur', must: ['appelsin'], not: ['safi', 'djus', 'gos', 'drykk', 'marmelad', 'kex', 'thykkn', 'sukkulad'] },
+  kiwi: { q: 'kiwi', must: ['kiwi'], not: ['safi', 'drykk', 'thurrk'] },
+  burak: { q: 'rauðrófur', must: ['raudrof'], not: ['safi', 'flog', 'duft'] },
+  cebula_czerwona: { q: 'rauðlaukur', must: ['raudlauk'], not: ['sult', 'steikt', 'surs', 'marmelad'] },
+  por: { q: 'blaðlaukur', must: ['bladlauk|purrlauk'], not: ['supa'] },
+  seler: { q: 'sellerí', must: ['selleri'], not: ['salt', 'safi', 'sellerirot'] },
+  kalafior: { q: 'blómkál', must: ['blomkal'], not: ['fros', 'grjon', 'mus', 'hrisgrjon', 'pizza'] },
+  baklazan: { q: 'eggaldin', must: ['eggaldin|eggplant'] },
+  jarmuz: { q: 'grænkál', must: ['graenkal|kale'], not: ['buff', 'strong', 'snakk', 'flog', 'chips', 'safi'] },
+  pomidorki: { q: 'kirsuberjatómatar', must: ['kirsuberjatomat|konfekttomat|snakktomat|piccolo|cherry'], not: ['passata', 'pastasos', 'solthurrk', 'thurrk', 'nidursod', 'sosa'] },
+  limonka: { q: 'límóna', must: ['limon|lime'], not: ['dettol', 'alhreins', 'mintu', 'nocco', 'dos', 'safi', 'gos', 'drykk', 'sodavatn', 'limonad', 'lauf', 'kristal'] },
+  imbir: { q: 'engifer', must: ['engifer'], not: ['skot', 'shot', 'safi', 'drykk', 'ol ', 'te ', 'duft', 'malad', 'krydd', 'surs', 'kex', 'sirop', 'kok', 'mauk', 'sukkulad'] },
+  koperek: { q: 'dill', must: ['dill'], not: ['thurrk', 'krydd', 'sosa', 'gurk', 'graf'] },
+  pietruszka: { q: 'steinselja', must: ['steinselj'], not: ['thurrk', 'krydd', 'rot'] },
+  schab: { q: 'svínahryggur', must: ['svinahrygg|svinakotil|svinakotel|hryggsneid'], not: ['hangi', 'reykt', 'hamborgar', 'birkireykt'] },
+  poledwiczka: { q: 'svínalund', must: ['svinalund'], not: ['fyllt'] },
+  wolowina_mielona: { q: 'nautahakk', must: ['nautahakk|ungnautahakk'], not: ['borgar', 'sosa', 'bolognese', 'lasagna', 'bollur'] },
+  udka: { q: 'úrbeinuð kjúklingalæri', must: ['kjuklingalaer|laeri|læri'], not: ['legg', 'vaeng', 'eldad', 'grillad', 'lamb', 'kryddad', 'bbq', 'tikka', 'marin'] },
+  jagniecina: { q: 'lambalæri sneiðar', must: ['lamb'], not: ['hakk', 'pyls', 'bjugu', 'kraft', 'sod', 'hangikjot', 'svid', 'kaefa', 'lifur', 'hryggur', 'reykt', 'grillkrydd'] },
+  kielbasa: { q: 'pylsur', must: ['pyls|bjugu'], not: ['braud', 'sinnep', 'tomatsos', 'pylsubraud', 'pyslubraud', 'pasta', 'pylsuostur'] },
+  losos_wedz: { q: 'reyktur lax', must: ['reykt', 'lax'], not: ['salat', 'sosa', 'mauk', 'pate'] },
+  makrela: { q: 'reyktur makríll', must: ['makril|makrill'], not: ['salat', 'mauk', 'pate'] },
+  sledz: { q: 'síld', must: ['sild'], not: ['salat', 'lysi', 'olia'] },
+  ysa: { q: 'ýsuflök', must: ['ysa|ysu|ysuflok'], not: ['bollur', 'rasp', 'reykt', 'plokk', 'salt', 'bit', 'hardfisk', 'kinnar'] },
+  bleikja: { q: 'bleikja', must: ['bleikj'], not: ['tadreykt', 'reykt', 'graf'] },
+  tofu: { q: 'tófú', must: ['tofu'], not: ['steikt', 'silken', 'silki', 'reykt', 'kryddad', 'marin'] },
+  twarog_chudy: { q: 'kvarg hreint', must: ['kvarg'] },
+  jogurt_grecki: { q: 'grísk jógúrt', must: ['grisk', 'jogurt'], not: ['hindber', 'jardarber', 'mango', 'blaber', 'ferskj', 'karamell', 'kaffi', 'sukkulad', 'vanill', 'kokos', 'hunang', 'jardarber', 'bragd', 'ferskj'] },
+  mozzarella: { q: 'mozzarella', must: ['mozzarell'], not: ['rifinn', 'rifin', 'pizza', 'stang', 'sticks', 'perl', 'mini'] },
+  parmezan: { q: 'parmesan', must: ['parmesan|parmigiano|grana|parmes'], not: ['violife', 'rifinn', 'julienne', 'sosa', 'flog'] },
+  ser_zolty: { q: 'gouda sneiðar', must: ['gouda|ostur'], not: ['rifinn', 'rifin', 'smurost', 'kex', 'salat', 'raspur', 'mozzarell', 'cheddar', 'braud', 'pizza'] },
+  serek_smietankowy: { q: 'rjómaostur', must: ['rjomaost|philadelph'], not: ['kex', 'sosa', 'kaka', 'kryddad', 'beikon', 'graslauk', 'hvitlauk', 'paprik', 'chili'] },
+  ricotta: { q: 'ricotta', must: ['ricotta'] },
+  halloumi: { q: 'halloumi', must: ['halloumi|grillost'], not: ['burger', 'fros', 'chili'] },
+  smietana: { q: 'sýrður rjómi', must: ['syrdur|syrður|syrd', 'rjom'], not: ['oatly', 'idyfa', 'sosa', 'snakk', 'flog', 'lauk', 'graslauk', 'hvitlauk', 'salsa'] },
+  napoj_sojowy: { q: 'sojadrykkur', must: ['sojadrykk|sojamjolk|soja|soy'], not: ['sosa', 'sosu', 'baun', 'jogurt', 'duft', 'kjot', 'hakk', 'sukkulad', 'kako', 'vanill', 'skyr', 'nudl'] },
+  mleczko_kokosowe: { q: 'kókosmjólk', must: ['kokosmjolk|coconut'], not: ['drykk', 'jogurt', 'is ', 'vatn', 'flog'] },
+  passata: { q: 'passata', must: ['passata'], not: ['basil', 'hvitlauk', 'chili'] },
+  koncentrat: { q: 'tómatpúrra', must: ['tomatpurr|tomatmauk|tomatpaste|tomatpure|tomatthykkni'] },
+  kapusta_kiszona: { q: 'súrkál', must: ['surkal|sauerkraut'] },
+  ogorki_kiszone: { q: 'súrar gúrkur', must: ['gurk|agurk', 'sur|sursad|dill|pickl'], not: ['bread', 'saetsur', 'relish', 'salat', 'saet'] },
+  oliwki: { q: 'grænar ólífur', must: ['olif|oliv', 'graen|green'], not: ['mondl', 'med', 'olia', 'mauk', 'pate', 'tapenade', 'fyllt'] },
+  pesto: { q: 'pestó', must: ['pesto'], not: ['rautt', 'rosso', 'tomat', 'pasta', 'solthurrk', 'raud'] },
+  pasta_curry: { q: 'red curry paste', must: ['curry|karri', 'paste|mauk'], not: ['graen', 'green', 'gult', 'yellow', 'massaman', 'sosa', 'sauce', 'korma', 'tikka'] },
+  ryba_puszka: { q: 'sardínur', must: ['sardin'], not: ['olia', 'oliu'] }
+};
+// Words that mark a processed or non-food product at Krónan; ruled out unless the search itself uses them.
+const IS_PROCESSED = ['snakk', 'flogur', 'nammi', 'sosa ', 'safi ', 'drykkur', 'djus', 'sulta', 'idyfa', 'kex ', 'kaka ', 'kokur ', 'stykki', 'pizza', 'supa ',
+  'barnamatur', 'skvisa', 'krydd ', 'salat ', 'skyrdrykk', 'boost', 'smoothie', 'grautur', 'is ', 'brauðteningar', 'samloka', 'vefja ', 'rettur', 'tilbuin'];
+const IS_NONFOOD = ['andlit', 'maski', 'dettol', 'hreinsi', 'alhreins', 'sjampo', 'sapa', 'krem ', 'harnaer', 'tannkrem', 'hundamatur', 'kattamatur', 'hunda', 'katta', 'gaeludyr', 'sturtu', 'thvottaefni', 'uppthvotta', 'kerti', 'ilm', 'blom ', 'plant', 'fraeposi', 'utsaedi'];
+function isQuery(k) {
+  const o = IS[k]; if (!o) return null;
+  const q = o.q, must = o.must || [q.split(/\s+/)[0]];
+  const not = (o.not || []).concat(IS_PROCESSED.filter(w => !fold(q).includes(fold(w).trim())), IS_NONFOOD);
+  return { q, must, not };
+}
+
 /* ---------- Matching ---------- */
-const fold = s => String(s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/ł/g, 'l');
+const fold = s => String(s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/ł/g, 'l').replace(/æ/g, 'ae').replace(/ð/g, 'd').replace(/þ/g, 'th').replace(/ø/g, 'o');
 // Loose word match that tolerates Polish endings: "kurczaka" matches "kurczak".
 const stem = w => { const f = fold(w); return f.length <= 6 ? f : f.slice(0, Math.max(6, f.length - 2)); };
 // Words must start a word in the name (a "not" word ending in a space must be a whole word), so "łoso" doesn't match "włosów".
 const words = name => ' ' + fold(name).replace(/[^a-z0-9%]+/g, ' ') + ' ';
 const has = (name, w) => w.split('|').some(alt => name.includes(' ' + stem(alt)));
 function sizeOf(name) {
-  const m = fold(name).replace(',', '.').match(/(\d+(?:\.\d+)?)\s*(kg|g|ml|l)\b/);
+  const m = fold(name).replace(',', '.').match(/(\d+(?:\.\d+)?)\s*(kg|gr|g|ml|cl|dl|ltr|l)\b/);
   if (!m) return null;
-  const n = +m[1], u = m[2];
+  const n = +m[1], u = { gr: 'g', ltr: 'l' }[m[2]] || m[2];
+  if (u === 'cl' || u === 'dl') return { size: Math.round(n * (u === 'cl' ? 10 : 100)), unit: 'ml' };
   return u === 'kg' ? { size: n * 1000, unit: 'g' } : u === 'l' ? { size: n * 1000, unit: 'ml' } : { size: n, unit: u };
 }
 // Picks the best candidate: all "must" words present, no "not" words, then the pack size
@@ -254,9 +410,35 @@ const STORES = {
     const items = {};
     for (const k of keys) { const best = pick(cands, plQuery(k), ING[k]); if (best) items[k] = best; }
     return { source: 'wolt.com', items };
+  },
+  async 'Krónan'(keys) {
+    // Krónan's website search (backend.kronan.is) answers without a login.
+    const items = {}; let shown = false;
+    for (const k of keys) {
+      const query = isQuery(k);
+      try {
+        const r = await fetch('https://backend.kronan.is/api/products/raw-search/', { method: 'POST',
+          headers: { 'User-Agent': UA, Accept: 'application/json', 'Content-Type': 'application/json', Origin: 'https://kronan.is', Referer: 'https://kronan.is/' },
+          body: JSON.stringify({ query: query.q }) });
+        if (!r.ok) throw new Error(r.status);
+        const d = await r.json();
+        const hits = (d.results && d.results.hits) || [];
+        if (!shown && hits[0]) { console.log('  Krónan sample hit:', JSON.stringify(hits[0]).slice(0, 900)); shown = true; }
+        const cands = hits.filter(h => h.isPublished !== false && !h.temporaryShortage && h.price).map(h => {
+          const size = sizeOf(String(h.priceInfo || '').split(' - ')[0]) || sizeOf(h.name) || {};
+          return { brand: h.brand ? titleCase(String(h.brand)) : '', name: h.name, ...size, price: h.price, currency: 'ISK',
+            url: h.slug ? 'https://kronan.is/vara/' + h.sku + '-' + h.slug : 'https://kronan.is/vara/' + h.sku };
+        });
+        const best = pick(cands, query, ING[k]);
+        if (best) items[k] = best;
+      } catch (e) { console.log('  Krónan', k, e.message); }
+      await sleep(300);
+    }
+    console.log('  no match:', keys.filter(k => !items[k]).join(', '));
+    return { source: 'kronan.is', items };
   }
 };
-const COUNTRY = { Frisco: 'PL', 'Wolt Market': 'PL' };
+const COUNTRY = { Frisco: 'PL', 'Wolt Market': 'PL', 'Krónan': 'IS' };
 
 function titleCase(s) { return s.toLowerCase().replace(/(^|[\s-])(\p{L})/gu, (m, a, b) => a + b.toUpperCase()); }
 
@@ -270,9 +452,9 @@ for (const [store, fn] of Object.entries(STORES)) {
   if (ONLY && !ONLY.includes(store)) continue;
   console.log('Store:', store);
   try {
-    const res = await fn(keys.filter(k => COUNTRY[store] === 'PL'));
+    const res = await fn(keys.filter(k => COUNTRY[store] === 'PL' || (COUNTRY[store] === 'IS' && IS[k])));
     const n = Object.keys(res.items).length;
-    console.log('  matched', n, 'of', keys.length);
+    console.log('  matched', n, 'of', COUNTRY[store] === 'IS' ? keys.filter(k => IS[k]).length : keys.length);
     // Keep yesterday's data if a store suddenly returns almost nothing (site change or outage).
     const old = out.stores[store];
     if (old && n < Object.keys(old.items || {}).length * 0.5) { console.log('  too few matches, keeping previous data'); continue; }
