@@ -1,10 +1,10 @@
 {
  "version": 1,
- "updated": "2026-10-22",
+ "updated": "2026-10-23",
  "note": "Written by scripts/update-products.mjs. Products are matched by search, so check the label in the store.",
  "stores": {
   "Frisco": {
-   "checked": "2026-10-22",
+   "checked": "2026-10-23",
    "source": "frisco.pl",
    "items": {
     "pomidor": {
@@ -1196,7 +1196,7 @@
    }
   },
   "Wolt Market": {
-   "checked": "2026-10-22",
+   "checked": "2026-10-23",
    "source": "wolt.com",
    "items": {
     "pomidor": {
@@ -1296,28 +1296,28 @@
     },
     "salata": {
      "brand": "",
-     "name": "Mioorto mix sałat fantasia, 150 g",
-     "size": 150,
+     "name": "GRAAL Salatino Tuńczyk z kuskusem perłowym i suszonymi pomidorami, 160 g",
+     "size": 160,
      "unit": "g",
-     "price": 7.99,
+     "price": 14.99,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
     "banan": {
      "brand": "",
-     "name": "Banan 0.5kg",
-     "size": 500,
+     "name": "Mus banan-jabłko bez cukru Sante, 200 g",
+     "size": 200,
      "unit": "g",
-     "price": 5.99,
+     "price": 5.39,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
     "cytryna": {
      "brand": "",
-     "name": "Cytryna 300g",
-     "size": 300,
-     "unit": "g",
-     "price": 6.99,
+     "name": "Żubr cytrynowy 20% 0,2 l",
+     "size": 200,
+     "unit": "ml",
+     "price": 18.99,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -1330,26 +1330,8 @@
     },
     "jajka": {
      "brand": "",
-     "name": "Jaja M, 10 szt.",
-     "price": 14.99,
-     "currency": "PLN",
-     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
-    },
-    "twarog": {
-     "brand": "",
-     "name": "Piątnica Twaróg wiejski półtłusty, 250 g",
-     "size": 250,
-     "unit": "g",
-     "price": 7.79,
-     "currency": "PLN",
-     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
-    },
-    "jogurt": {
-     "brand": "",
-     "name": "Jogurt naturalny sokólski, 400 g",
-     "size": 400,
-     "unit": "g",
-     "price": 4.69,
+     "name": "Krajarka do jajek 11 x 8 cm",
+     "price": 9.99,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -1362,39 +1344,12 @@
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
-    "mleko": {
-     "brand": "",
-     "name": "Mleko zambrowskie UHT 3.2 %, 1 l",
-     "size": 1000,
-     "unit": "ml",
-     "price": 6.29,
-     "currency": "PLN",
-     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
-    },
-    "kefir": {
-     "brand": "",
-     "name": "Robico Kefir 1.5%, 400 g",
-     "size": 400,
-     "unit": "g",
-     "price": 4.89,
-     "currency": "PLN",
-     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
-    },
     "maslo": {
      "brand": "",
-     "name": "Lurpak Masło klasyczne, 200 g",
-     "size": 200,
-     "unit": "g",
-     "price": 15.49,
-     "currency": "PLN",
-     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
-    },
-    "chleb": {
-     "brand": "",
-     "name": "Chleb żytni 100% krojony, 450 g",
-     "size": 450,
-     "unit": "g",
-     "price": 7.29,
+     "name": "Maska do włosów odżywcza awokado i masło shea 300ml",
+     "size": 300,
+     "unit": "ml",
+     "price": 14.99,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -1490,10 +1445,10 @@
     },
     "pestki": {
      "brand": "",
-     "name": "Sante Dynia pestki łuskane 100 g",
-     "size": 100,
+     "name": "Pestki dyni, 180 g",
+     "size": 180,
      "unit": "g",
-     "price": 8.99,
+     "price": 9.99,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -1551,15 +1506,6 @@
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
-    "olej": {
-     "brand": "",
-     "name": "Kujawski Olej rzepakowy z pierwszego tłoczenia, 1 l",
-     "size": 1000,
-     "unit": "ml",
-     "price": 12.99,
-     "currency": "PLN",
-     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
-    },
     "ciecierzyca": {
      "brand": "",
      "name": "Ciecierzyca 500g",
@@ -1569,19 +1515,10 @@
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
-    "fasola_biala": {
-     "brand": "",
-     "name": "Fasola biała konserwowa 400/240 g",
-     "size": 240,
-     "unit": "g",
-     "price": 4.49,
-     "currency": "PLN",
-     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
-    },
     "kukurydza": {
      "brand": "",
-     "name": "Mc Kukurydza konserwowa, 340 g",
-     "size": 340,
+     "name": "Kukurydza crunch z solą morską 100g Dj snack",
+     "size": 100,
      "unit": "g",
      "price": 6.19,
      "currency": "PLN",
@@ -1679,10 +1616,10 @@
     },
     "sezam": {
      "brand": "",
-     "name": "Sante Sezam, 300 g",
-     "size": 300,
+     "name": "E. Wedel Aha! Sezamki, 27.2 g",
+     "size": 27.2,
      "unit": "g",
-     "price": 12.99,
+     "price": 2.99,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -1722,15 +1659,6 @@
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
-    "tost": {
-     "brand": "",
-     "name": "Tost pełnoziarnisty, 500 g",
-     "size": 500,
-     "unit": "g",
-     "price": 5.99,
-     "currency": "PLN",
-     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
-    },
     "batat": {
      "brand": "",
      "name": "Ziemniaki słodkie bataty 400g",
@@ -1742,17 +1670,19 @@
     },
     "awokado": {
      "brand": "",
-     "name": "Awokado sztuka",
-     "price": 8.99,
+     "name": "Maska do włosów odżywcza awokado i masło shea 300ml",
+     "size": 300,
+     "unit": "ml",
+     "price": 14.99,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
     "borowki": {
      "brand": "",
-     "name": "Borówka 250 g",
-     "size": 250,
+     "name": "Łowicz Borówka do mięs i serów, 230 g",
+     "size": 230,
      "unit": "g",
-     "price": 22.99,
+     "price": 11.99,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -1767,26 +1697,28 @@
     },
     "gruszka": {
      "brand": "",
-     "name": "Gruszka konferencja 0.5kg",
+     "name": "Bestbir Gruszka-Melisa Fruit Beer 4.7%, 0.5 L",
      "size": 500,
-     "unit": "g",
-     "price": 8.99,
+     "unit": "ml",
+     "price": 7.99,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
     "pomarancza": {
      "brand": "",
-     "name": "Pomarańcze 300g",
-     "size": 300,
+     "name": "Marmolada pomarańczowa, 370 g",
+     "size": 370,
      "unit": "g",
-     "price": 5.49,
+     "price": 8.49,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
     "kiwi": {
      "brand": "",
-     "name": "Kiwi szt",
-     "price": 3.69,
+     "name": "Dr. Oetker Galaretka o smaku kiwi, 72 g",
+     "size": 72,
+     "unit": "g",
+     "price": 2.99,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -1815,10 +1747,10 @@
     },
     "limonka": {
      "brand": "",
-     "name": "Limonka 250g",
-     "size": 250,
+     "name": "Halls Cukierki o smaku limonki, 33.5 g",
+     "size": 33.5,
      "unit": "g",
-     "price": 8.99,
+     "price": 4.49,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -1872,24 +1804,6 @@
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
-    "twarog_chudy": {
-     "brand": "",
-     "name": "Piątnica Twaróg wiejski chudy, 250 g",
-     "size": 250,
-     "unit": "g",
-     "price": 7.79,
-     "currency": "PLN",
-     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
-    },
-    "jogurt_grecki": {
-     "brand": "",
-     "name": "Bakoma Jogurt typ grecki, 170 g",
-     "size": 170,
-     "unit": "g",
-     "price": 4.59,
-     "currency": "PLN",
-     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
-    },
     "ser_zolty": {
      "brand": "",
      "name": "Mlekpol Ser gouda w plastrach, 150 g",
@@ -1905,24 +1819,6 @@
      "size": 150,
      "unit": "g",
      "price": 6.99,
-     "currency": "PLN",
-     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
-    },
-    "halloumi": {
-     "brand": "",
-     "name": "Dairy Crafters Ser halloumi, 180 g",
-     "size": 180,
-     "unit": "g",
-     "price": 16.99,
-     "currency": "PLN",
-     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
-    },
-    "smietana": {
-     "brand": "",
-     "name": "Piątnica Śmietana 12%, 200 g",
-     "size": 200,
-     "unit": "g",
-     "price": 3.99,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -1953,24 +1849,6 @@
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
-    "oliwki": {
-     "brand": "",
-     "name": "Figaro Hiszpańskie oliwki zielone drylowane, 142 g",
-     "size": 142,
-     "unit": "g",
-     "price": 7.49,
-     "currency": "PLN",
-     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
-    },
-    "pesto": {
-     "brand": "",
-     "name": "Provitus Pesto z bazylią, 160 g",
-     "size": 160,
-     "unit": "g",
-     "price": 8.99,
-     "currency": "PLN",
-     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
-    },
     "pasta_curry": {
      "brand": "",
      "name": "Kanokwan Zielona pasta curry, 50 g",
@@ -1983,7 +1861,7 @@
    }
   },
   "Krónan": {
-   "checked": "2026-10-22",
+   "checked": "2026-10-23",
    "source": "kronan.is",
    "items": {
     "pomidor": {
