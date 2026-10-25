@@ -4,6 +4,7 @@ import type { Meal } from '../services/catalog';
 import { type Macros, mealMacros } from '../services/logic';
 import { mealImage } from '../services/picture';
 import { nf, storeStyle } from '../services/util';
+import { updateNow } from '../app/ui';
 
 const I: Record<string, string> = {
   home: '<path d="M4 11l8-7 8 7v9a1 1 0 0 1-1 1h-4v-6H9v6H5a1 1 0 0 1-1-1z"/>',
@@ -80,10 +81,16 @@ export function Dropdown({ id, open, button, label, wrapClass, children }: {
   );
 }
 
+/** Shown in every header while a new version is waiting, like in Polski B1. Tapping it reloads into the new version. */
+export function UpdateButton() {
+  return updateNow ? <button type="button" class="update-btn" onClick={updateNow}>Update</button> : null;
+}
+
 export function PageHead({ title, right, onBack }: { title?: ComponentChildren; right?: ComponentChildren; onBack: () => void }) {
   return (
     <>
-      <div class="pagehead"><button class="back" onClick={onBack} aria-label="Back"><Icon n="back" size={22} /></button>{right}</div>
+      <div class="pagehead"><button class="back" onClick={onBack} aria-label="Back"><Icon n="back" size={22} /></button>
+        {updateNow || right ? <span class="pheadend"><UpdateButton />{right}</span> : null}</div>
       {title ? <h1 style={{ marginBottom: '16px' }}>{title}</h1> : null}
     </>
   );

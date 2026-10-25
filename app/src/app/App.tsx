@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'preact/hooks';
-import { Icon } from '../components/common';
+import { Icon, UpdateButton } from '../components/common';
 import { openShopCount, ensurePrep, plainName } from '../services/logic';
 import { S } from '../services/state';
 import { initial } from '../services/util';
@@ -16,20 +16,20 @@ import { IngPick, RecipeEdit } from '../pages/Recipes';
 import { Sheets } from '../pages/Sheets';
 import { goTab, handleImportFile } from './actions';
 import { applyTheme } from './theme';
-import { UI, closeNotice, closePanel, closeSheet, openPanel, popPage, rerender, top, useAppRender } from './ui';
+import { UI, closeNotice, closePanel, closeSheet, openPanel, popPage, rerender, setUpdateNow, top, useAppRender } from './ui';
 import { useUpdate } from './useUpdate';
 
 const TABS = [['home', 'Home'], ['meals', 'Meals'], ['prep', 'Prep'], ['library', 'Library'], ['shopping', 'Shopping']];
 const TITLES: Record<string, string> = { home: 'Home', meals: 'Meals', library: 'Library', prep: 'Prep', shopping: 'Shopping' };
 
-function Top({ onUpdate }: { onUpdate: (() => void) | null }) {
+function Top() {
   const day = new Date().toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'short' });
   return (
     <header id="top">
       <div class="top">
         <h1><small class="eyebrow">{day}</small>{TITLES[UI.tab]}</h1>
         <span class="topend">
-          {onUpdate ? <button class="updbtn" onClick={onUpdate}>Update</button> : null}
+          <UpdateButton />
           <button class="avatar" onClick={openPanel} aria-label="Open menu">{initial(S.profile.name)}</button>
         </span>
       </div>
@@ -100,7 +100,7 @@ const DROPDOWNS: [string, 'storeOpen' | 'countryOpen' | 'langOpen' | 'sortOpen']
 
 export function App() {
   useAppRender();
-  const onUpdate = useUpdate();
+  setUpdateNow(useUpdate());
   const file = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -131,7 +131,7 @@ export function App() {
     <>
       {S.onboarded ? (
         <div id="appRoot">
-          <div class="wrap"><Top onUpdate={onUpdate} /><main id="view"><View /></main></div>
+          <div class="wrap"><Top /><main id="view"><View /></main></div>
           <Tabs />
         </div>
       ) : <div id="onboard"><Onboarding /></div>}

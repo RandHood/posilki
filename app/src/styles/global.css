@@ -462,6 +462,9 @@ body::before{content:'';position:fixed;top:0;left:0;right:0;height:env(safe-area
 .nbox p{margin-top:4px;font-size:14px}
 .nbox .linkbtn{color:var(--warnink);font-weight:600;padding:8px 0 2px}
 .nicon{font-size:20px;line-height:1.3}
-/* 0.18: update button next to the avatar when a new version is ready */
+/* 0.18: Update button when a new version is ready, as in Polski B1 */
 .topend{display:flex;align-items:center;gap:10px}
-.updbtn{min-height:36px;padding:0 14px;border:0;border-radius:99px;background:var(--beet-soft);color:var(--beet);font-weight:600;font-size:14px}
+.update-btn{min-height:36px;padding:6px 16px;border-radius:999px;border:0;background:var(--ink);color:var(--ground);font-size:15px;font-weight:500;letter-spacing:.01em;animation:fade-up .32s cubic-bezier(.22,.8,.24,1) both}
+.update-btn:active{transform:scale(.96)}
+.pagehead .pheadend{display:flex;align-items:center;gap:10px;margin-left:auto}
+@keyframes fade-up{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}

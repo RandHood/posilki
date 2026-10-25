@@ -49,6 +49,10 @@ export const UI = {
   noticeShow: false,
 };
 
+/** Set while a new version is waiting; the Update button calls it. */
+export let updateNow: (() => void) | null = null;
+export function setUpdateNow(fn: (() => void) | null): void { updateNow = fn; }
+
 let listener: (() => void) | null = null;
 let after: (() => void)[] = [];
 /** Redraws the app. */
