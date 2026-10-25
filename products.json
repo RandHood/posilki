@@ -1,10 +1,10 @@
 {
  "version": 1,
- "updated": "2026-10-24",
+ "updated": "2026-10-25",
  "note": "Written by scripts/update-products.mjs. Products are matched by search, so check the label in the store.",
  "stores": {
   "Frisco": {
-   "checked": "2026-10-24",
+   "checked": "2026-10-25",
    "source": "frisco.pl",
    "items": {
     "pomidor": {
@@ -1196,7 +1196,7 @@
    }
   },
   "Wolt Market": {
-   "checked": "2026-10-24",
+   "checked": "2026-10-25",
    "source": "wolt.com",
    "items": {
     "pomidor": {
@@ -1262,10 +1262,10 @@
     },
     "marchew": {
      "brand": "",
-     "name": "Marchew 0,5 kg",
-     "size": 500,
+     "name": "Provitus Marchewka zasmażana, 480 g",
+     "size": 480,
      "unit": "g",
-     "price": 2.99,
+     "price": 8.99,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -1418,10 +1418,28 @@
     },
     "ryz": {
      "brand": "",
-     "name": "Flips Ryż chrupiący, 50 g",
-     "size": 50,
+     "name": "Carrefour Simpl Ryż biały długoziarnisty, 1 kg",
+     "size": 1000,
      "unit": "g",
-     "price": 4.49,
+     "price": 7.49,
+     "currency": "PLN",
+     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
+    },
+    "gryczana": {
+     "brand": "",
+     "name": "Sante Kasza gryczana prażona, 350 g",
+     "size": 350,
+     "unit": "g",
+     "price": 7.99,
+     "currency": "PLN",
+     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
+    },
+    "jeczmienna": {
+     "brand": "",
+     "name": "Szczytno Premium Kasza jęczmienna perłowa średnia, 400 g",
+     "size": 400,
+     "unit": "g",
+     "price": 5.49,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -1436,10 +1454,10 @@
     },
     "soczewica": {
      "brand": "",
-     "name": "Carrefour Classic Soczewica czerwona, 500 g",
-     "size": 500,
+     "name": "Cenos Soczewica czerwona, 400 g",
+     "size": 400,
      "unit": "g",
-     "price": 8.49,
+     "price": 10.99,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -1488,12 +1506,39 @@
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
+    "pomidory_puszka": {
+     "brand": "",
+     "name": "Mutti Pomidory drobno krojone, 400 g",
+     "size": 400,
+     "unit": "g",
+     "price": 9.99,
+     "currency": "PLN",
+     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
+    },
+    "fasola": {
+     "brand": "",
+     "name": "Cenos Fasola czerwona, 400 g",
+     "size": 400,
+     "unit": "g",
+     "price": 9.49,
+     "currency": "PLN",
+     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
+    },
     "hummus": {
      "brand": "",
      "name": "Hummus trio mix, 210 g",
      "size": 210,
      "unit": "g",
      "price": 8.99,
+     "currency": "PLN",
+     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
+    },
+    "soja": {
+     "brand": "",
+     "name": "Tao Tao Sos sojowy, 150 ml",
+     "size": 150,
+     "unit": "ml",
+     "price": 12.99,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -1515,21 +1560,48 @@
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
+    "ciecierzyca": {
+     "brand": "",
+     "name": "Ciecierzyca 500g",
+     "size": 500,
+     "unit": "g",
+     "price": 8.09,
+     "currency": "PLN",
+     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
+    },
+    "fasola_biala": {
+     "brand": "",
+     "name": "Fasola biała konserwowa, 400 g",
+     "size": 400,
+     "unit": "g",
+     "price": 4.49,
+     "currency": "PLN",
+     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
+    },
     "kukurydza": {
      "brand": "",
-     "name": "Kukurydza crunch z solą morską 100g Dj snack",
-     "size": 100,
+     "name": "Mc Kukurydza konserwowa, 340 g",
+     "size": 340,
      "unit": "g",
      "price": 6.19,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
+    "pierogi": {
+     "brand": "",
+     "name": "Pierogi ruskie, 370 g",
+     "size": 370,
+     "unit": "g",
+     "price": 16.99,
+     "currency": "PLN",
+     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
+    },
     "kuskus": {
      "brand": "",
-     "name": "GRAAL Salatino Tuńczyk z kuskusem perłowym i suszonymi pomidorami, 160 g",
-     "size": 160,
+     "name": "Mc kasza kuskus, 250 g",
+     "size": 250,
      "unit": "g",
-     "price": 14.99,
+     "price": 4.99,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -1632,6 +1704,15 @@
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
+    "orzeszki": {
+     "brand": "",
+     "name": "M&M's Peanut Orzeszki ziemne oblane czekoladą w kolorowych skorupkach, 45 g",
+     "size": 45,
+     "unit": "g",
+     "price": 5.79,
+     "currency": "PLN",
+     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
+    },
     "wafle": {
      "brand": "",
      "name": "Sonko Wafle ryżowe naturalne 130 g, (14 sztuk)",
@@ -1677,10 +1758,10 @@
     },
     "borowki": {
      "brand": "",
-     "name": "Borówka 250 g",
-     "size": 250,
+     "name": "Borówka 125 g",
+     "size": 125,
      "unit": "g",
-     "price": 22.99,
+     "price": 16.99,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -1704,17 +1785,19 @@
     },
     "pomarancza": {
      "brand": "",
-     "name": "Pomarańcze 300g",
-     "size": 300,
+     "name": "Marmolada pomarańczowa, 370 g",
+     "size": 370,
      "unit": "g",
-     "price": 5.49,
+     "price": 8.49,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
     "kiwi": {
      "brand": "",
-     "name": "Kiwi szt",
-     "price": 3.69,
+     "name": "Dr. Oetker Galaretka o smaku kiwi, 72 g",
+     "size": 72,
+     "unit": "g",
+     "price": 2.99,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -1761,6 +1844,15 @@
      "brand": "",
      "name": "Natka pietruszki pęczek",
      "price": 4.59,
+     "currency": "PLN",
+     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
+    },
+    "kielbasa": {
+     "brand": "",
+     "name": "Kiełbasa śląska grilowa JBB 2szt (ok 250g)",
+     "size": 250,
+     "unit": "g",
+     "price": 10.99,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -1854,12 +1946,39 @@
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
+    "passata": {
+     "brand": "",
+     "name": "Pudliszki Passata przecier pomidorowy, 500 g",
+     "size": 500,
+     "unit": "g",
+     "price": 9.99,
+     "currency": "PLN",
+     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
+    },
+    "koncentrat": {
+     "brand": "",
+     "name": "Łowicz Koncentrat pomidorowy, 190 g",
+     "size": 190,
+     "unit": "g",
+     "price": 7.49,
+     "currency": "PLN",
+     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
+    },
     "oliwki": {
      "brand": "",
      "name": "Figaro Hiszpańskie oliwki zielone drylowane, 142 g",
      "size": 142,
      "unit": "g",
      "price": 7.49,
+     "currency": "PLN",
+     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
+    },
+    "pesto": {
+     "brand": "",
+     "name": "Provitus Pesto z bazylią, 160 g",
+     "size": 160,
+     "unit": "g",
+     "price": 8.99,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -1875,7 +1994,7 @@
    }
   },
   "Krónan": {
-   "checked": "2026-10-24",
+   "checked": "2026-10-25",
    "source": "kronan.is",
    "items": {
     "pomidor": {
