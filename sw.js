@@ -1,5 +1,5 @@
 // Posiłki service worker. Bump VERSION with every release.
-const VERSION = '0.17.1';
+const VERSION = '0.17.2';
 const CACHE = 'posilki-' + VERSION;
 const CORE = ['./', './index.html', './meals.json', './manifest.webmanifest', './icon-192.png', './icon-512.png', './apple-touch-icon.png'];
 
@@ -19,6 +19,8 @@ self.addEventListener('fetch', (e) => {
   const req = e.request;
   if (req.method !== 'GET') return;
   const url = new URL(req.url);
+  // The preview of the next version lives in next/ with its own service worker; leave it alone.
+  if (url.origin === self.location.origin && url.pathname.startsWith(new URL('next/', self.registration.scope).pathname)) return;
 
   // Pages: network first so updates show up as soon as you're online; cached copy when offline.
   if (req.mode === 'navigate') {
