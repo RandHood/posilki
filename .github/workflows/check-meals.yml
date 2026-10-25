@@ -2,10 +2,10 @@ name: Check meals.json
 
 on:
   pull_request:
-    paths: ['meals.json', 'scripts/check-meals.mjs']
+    paths: ['meals.json', 'scripts/check-meals.mjs', 'app/src/data/ingredients.json']
   push:
     branches: [main]
-    paths: ['meals.json', 'scripts/check-meals.mjs']
+    paths: ['meals.json', 'scripts/check-meals.mjs', 'app/src/data/ingredients.json']
 
 jobs:
   check:

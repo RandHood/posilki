@@ -2,9 +2,7 @@
 // Usage: node scripts/check-meals.mjs   (exits with 1 and lists the problems if anything is wrong)
 import fs from 'node:fs';
 
-const html = fs.readFileSync(new URL('../index.html', import.meta.url), 'utf8');
-const i = html.indexOf('var ING_RAW='), j = html.indexOf('\n};', i);
-const ING_RAW = eval('(' + html.slice(i + 12, j + 2) + ')');
+const ING_RAW = JSON.parse(fs.readFileSync(new URL('../app/src/data/ingredients.json', import.meta.url), 'utf8'));
 const cat = JSON.parse(fs.readFileSync(new URL('../meals.json', import.meta.url), 'utf8'));
 
 const SHAPES = 'grain crumble curd round coin stick bit floret leaf chunk shred wedge herb slab strip slice egg mound cube bread wrap pasta nut seed bean berry mix sauce none'.split(' ');

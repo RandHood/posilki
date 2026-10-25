@@ -13,10 +13,8 @@ const TODAY = new Date().toISOString().slice(0, 10);
 const UA = 'Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Mobile/15E148 Safari/604.1';
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 
-/* ---------- Ingredients (from index.html and meals.json) ---------- */
-const html = fs.readFileSync('index.html', 'utf8');
-const rawStart = html.indexOf('var ING_RAW=');
-const ING_RAW = eval('(' + html.slice(rawStart + 12, html.indexOf('\n};', rawStart) + 2) + ')');
+/* ---------- Ingredients (from the app's built-in list and meals.json) ---------- */
+const ING_RAW = JSON.parse(fs.readFileSync('app/src/data/ingredients.json', 'utf8'));
 const ING = {};
 for (const [k, r] of Object.entries(ING_RAW)) ING[k] = { pl: r[0], en: r[1], unit: r[3], pack: r[7] };
 const catalog = JSON.parse(fs.readFileSync('meals.json', 'utf8'));

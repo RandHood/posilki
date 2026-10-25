@@ -31,24 +31,16 @@ jobs:
           node-version: 22
           cache: npm
           cache-dependency-path: app/package-lock.json
-      - name: Test and build the new app (preview)
-        # A broken preview must not hold back the live app or the daily prices.
-        continue-on-error: true
+      - name: Test and build the app
         working-directory: app
         run: |
           npm ci
           npm test
-          PREVIEW=1 npm run build
-      - name: Collect site files
-        run: |
-          mkdir _site
-          cp index.html sw.js manifest.webmanifest meals.json products.json *.png _site/
-          # The new app, for testing before it replaces the current one.
-          if [ -f app/dist/index.html ]; then cp -r app/dist _site/next; fi
+          npm run build
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: _site
+          path: app/dist
 
   deploy:
     needs: build
