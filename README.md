@@ -16,7 +16,7 @@ Works as a Home Screen app on iPhone.
 
 1. Replace the changed files in this repository.
 2. Bump `VERSION` in `sw.js` (the app version is shown in Settings).
-3. GitHub Pages publishes within about a minute. The app picks it up the next time it's opened online.
+3. The `Deploy to GitHub Pages` workflow publishes within about two minutes (Pages uses Source: GitHub Actions). It also runs after the daily store job. The app picks it up the next time it's opened online.
 
 ## Meal catalog
 
