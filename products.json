@@ -1287,13 +1287,6 @@
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
-    "rzodkiewki": {
-     "brand": "",
-     "name": "Rzodkiewka pęczek sztuka",
-     "price": 4.99,
-     "currency": "PLN",
-     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
-    },
     "salata": {
      "brand": "",
      "name": "Mioorto mix sałat fantasia, 150 g",
@@ -1751,17 +1744,19 @@
     },
     "awokado": {
      "brand": "",
-     "name": "Awokado sztuka",
-     "price": 8.99,
+     "name": "Maska do włosów odżywcza awokado i masło shea 300ml",
+     "size": 300,
+     "unit": "ml",
+     "price": 14.99,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
     "borowki": {
      "brand": "",
-     "name": "Borówka 125 g",
-     "size": 125,
+     "name": "Łowicz Borówka do mięs i serów, 230 g",
+     "size": 230,
      "unit": "g",
-     "price": 16.99,
+     "price": 11.99,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
