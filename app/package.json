@@ -1,0 +1,24 @@
+{
+  "name": "posilki",
+  "private": true,
+  "version": "0.18.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@fontsource/bricolage-grotesque": "5.2.10",
+    "@fontsource/instrument-sans": "5.2.8",
+    "preact": "10.29.8"
+  },
+  "devDependencies": {
+    "@preact/preset-vite": "2.10.6",
+    "typescript": "5.9.3",
+    "vite": "6.4.5",
+    "vite-plugin-pwa": "1.3.0",
+    "vitest": "3.2.7"
+  }
+}

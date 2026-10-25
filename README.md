@@ -27,3 +27,17 @@ Works as a Home Screen app on iPhone.
 Only stores whose products the daily job can read are listed: Frisco and Wolt Market in Poland, and Krónan in Iceland. The `Update store products` workflow runs every morning, searches each store for each ingredient (Krónan through the public search on its website, with Icelandic search words), and commits `products.json`. If a store returns far fewer matches than the day before, the job keeps the previous day's data for it.
 
 Saved data lives on each phone and is never stored in this repository.
+
+## New app (in progress)
+
+`app/` holds the next version of Posiłki, rebuilt with Preact, Vite and TypeScript (the same setup as Polski B1). It keeps the same saved data (localStorage key `posilki`, DATA_VERSION 5 and its migrations), the same look, the same `#recipe=` share links, and reads `meals.json` and `products.json` from the repo root.
+
+While it's being tested it's published at https://randhood.github.io/posilki/next/ with its own storage key (`posilki-next`), so it never touches the real app's data. To try it with your data, export a backup in the current app and import it in the preview.
+
+```sh
+cd app
+npm install
+npm run dev        # local server
+npm test           # migration and share-link tests
+npm run build      # production build in app/dist
+```
