@@ -1,10 +1,10 @@
 {
  "version": 1,
- "updated": "2026-10-25",
+ "updated": "2026-10-26",
  "note": "Written by scripts/update-products.mjs. Products are matched by search, so check the label in the store.",
  "stores": {
   "Frisco": {
-   "checked": "2026-10-25",
+   "checked": "2026-10-26",
    "source": "frisco.pl",
    "items": {
     "pomidor": {
@@ -1196,7 +1196,7 @@
    }
   },
   "Wolt Market": {
-   "checked": "2026-10-25",
+   "checked": "2026-10-26",
    "source": "wolt.com",
    "items": {
     "pomidor": {
@@ -1210,10 +1210,10 @@
     },
     "ogorek": {
      "brand": "",
-     "name": "Ogórek krótki 250g",
-     "size": 250,
+     "name": "Simpl Przecier ogórkowy, 300 g",
+     "size": 300,
      "unit": "g",
-     "price": 4.49,
+     "price": 4.39,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -1280,19 +1280,19 @@
     },
     "cukinia": {
      "brand": "",
-     "name": "Cukinia 400g",
-     "size": 400,
+     "name": "Kuchnia Brawaty Placki z cukini, 260 g",
+     "size": 260,
      "unit": "g",
-     "price": 9.99,
+     "price": 19.99,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
     "salata": {
      "brand": "",
-     "name": "Mioorto mix sałat fantasia, 150 g",
-     "size": 150,
+     "name": "GRAAL Salatino Tuńczyk z kuskusem perłowym i suszonymi pomidorami, 160 g",
+     "size": 160,
      "unit": "g",
-     "price": 7.99,
+     "price": 14.99,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -1311,13 +1311,6 @@
      "size": 300,
      "unit": "g",
      "price": 6.99,
-     "currency": "PLN",
-     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
-    },
-    "szczypiorek": {
-     "brand": "",
-     "name": "Szczypior drobny pęczek",
-     "price": 4.99,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -1384,10 +1377,10 @@
     },
     "chleb": {
      "brand": "",
-     "name": "Chleb żytni 100% krojony, 450 g",
-     "size": 450,
+     "name": "Chleb żytni pełnoziarnisty, 400 g",
+     "size": 400,
      "unit": "g",
-     "price": 7.29,
+     "price": 5.99,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -1828,17 +1821,12 @@
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
-    "koperek": {
-     "brand": "",
-     "name": "Koperek pęczek",
-     "price": 4.59,
-     "currency": "PLN",
-     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
-    },
     "pietruszka": {
      "brand": "",
-     "name": "Natka pietruszki pęczek",
-     "price": 4.59,
+     "name": "Kamis Natka pietruszki, 8 g",
+     "size": 8,
+     "unit": "g",
+     "price": 3.99,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -1989,7 +1977,7 @@
    }
   },
   "Krónan": {
-   "checked": "2026-10-25",
+   "checked": "2026-10-26",
    "source": "kronan.is",
    "items": {
     "pomidor": {
