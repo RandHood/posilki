@@ -1,10 +1,10 @@
 {
  "version": 1,
- "updated": "2026-10-26",
+ "updated": "2026-10-27",
  "note": "Written by scripts/update-products.mjs. Products are matched by search, so check the label in the store.",
  "stores": {
   "Frisco": {
-   "checked": "2026-10-26",
+   "checked": "2026-10-27",
    "source": "frisco.pl",
    "items": {
     "pomidor": {
@@ -1196,7 +1196,7 @@
    }
   },
   "Wolt Market": {
-   "checked": "2026-10-26",
+   "checked": "2026-10-27",
    "source": "wolt.com",
    "items": {
     "pomidor": {
@@ -1719,7 +1719,7 @@
     },
     "tost": {
      "brand": "",
-     "name": "Tost pełnoziarnisty, 500 g",
+     "name": "Carrefour Classic Tost maślany, 500 g",
      "size": 500,
      "unit": "g",
      "price": 5.99,
@@ -1977,7 +1977,7 @@
    }
   },
   "Krónan": {
-   "checked": "2026-10-26",
+   "checked": "2026-10-27",
    "source": "kronan.is",
    "items": {
     "pomidor": {
@@ -2022,15 +2022,6 @@
      "price": 219,
      "currency": "ISK",
      "url": "https://kronan.is/vara/100233384"
-    },
-    "brokul": {
-     "brand": "",
-     "name": "spergilkál",
-     "size": 300,
-     "unit": "g",
-     "price": 330,
-     "currency": "ISK",
-     "url": "https://kronan.is/vara/100129471"
     },
     "szpinak": {
      "brand": "",
@@ -2148,9 +2139,9 @@
     "piers": {
      "brand": "",
      "name": "Ódýrt kjúklingabringur",
-     "size": 850,
+     "size": 750,
      "unit": "g",
-     "price": 2354,
+     "price": 2077,
      "currency": "ISK",
      "url": "https://kronan.is/vara/100244878"
     },
@@ -2839,7 +2830,7 @@
      "name": "Blómkál",
      "size": 700,
      "unit": "g",
-     "price": 699,
+     "price": 489,
      "currency": "ISK",
      "url": "https://kronan.is/vara/01000614"
     },
