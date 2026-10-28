@@ -1,10 +1,10 @@
 {
  "version": 1,
- "updated": "2026-10-27",
+ "updated": "2026-10-28",
  "note": "Written by scripts/update-products.mjs. Products are matched by search, so check the label in the store.",
  "stores": {
   "Frisco": {
-   "checked": "2026-10-27",
+   "checked": "2026-10-28",
    "source": "frisco.pl",
    "items": {
     "pomidor": {
@@ -699,13 +699,13 @@
      "url": "https://www.frisco.pl/pid,291/stn,product"
     },
     "czekolada": {
-     "brand": "Merci",
-     "name": "Czekolada gorzka 72% kakao",
+     "brand": "Lindt",
+     "name": "EXCELLENCE Czekolada gorzka z 70% zawartością kakao",
      "size": 100,
      "unit": "g",
-     "price": 10.29,
+     "price": 16.99,
      "currency": "PLN",
-     "url": "https://www.frisco.pl/pid,117189/stn,product"
+     "url": "https://www.frisco.pl/pid,11789/stn,product"
     },
     "daktyle": {
      "brand": "Big Nature",
@@ -1196,7 +1196,7 @@
    }
   },
   "Wolt Market": {
-   "checked": "2026-10-27",
+   "checked": "2026-10-28",
    "source": "wolt.com",
    "items": {
     "pomidor": {
@@ -1210,10 +1210,10 @@
     },
     "ogorek": {
      "brand": "",
-     "name": "Simpl Przecier ogórkowy, 300 g",
-     "size": 300,
+     "name": "Ogórek krótki 250g",
+     "size": 250,
      "unit": "g",
-     "price": 4.39,
+     "price": 4.49,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -1262,10 +1262,10 @@
     },
     "marchew": {
      "brand": "",
-     "name": "Provitus Marchewka zasmażana, 480 g",
-     "size": 480,
+     "name": "Marchew 0,5 kg",
+     "size": 500,
      "unit": "g",
-     "price": 8.99,
+     "price": 2.99,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -1280,19 +1280,26 @@
     },
     "cukinia": {
      "brand": "",
-     "name": "Kuchnia Brawaty Placki z cukini, 260 g",
-     "size": 260,
+     "name": "Cukinia 400g",
+     "size": 400,
      "unit": "g",
-     "price": 19.99,
+     "price": 9.99,
+     "currency": "PLN",
+     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
+    },
+    "rzodkiewki": {
+     "brand": "",
+     "name": "Rzodkiewka pęczek sztuka",
+     "price": 4.99,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
     "salata": {
      "brand": "",
-     "name": "GRAAL Salatino Tuńczyk z kuskusem perłowym i suszonymi pomidorami, 160 g",
-     "size": 160,
+     "name": "Mioorto mix sałat fantasia, 150 g",
+     "size": 150,
      "unit": "g",
-     "price": 14.99,
+     "price": 7.99,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -1377,10 +1384,10 @@
     },
     "chleb": {
      "brand": "",
-     "name": "Chleb żytni pełnoziarnisty, 400 g",
-     "size": 400,
+     "name": "Chleb żytni 100% krojony, 450 g",
+     "size": 450,
      "unit": "g",
-     "price": 5.99,
+     "price": 7.29,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -1737,10 +1744,8 @@
     },
     "awokado": {
      "brand": "",
-     "name": "Maska do włosów odżywcza awokado i masło shea 300ml",
-     "size": 300,
-     "unit": "ml",
-     "price": 14.99,
+     "name": "Awokado sztuka",
+     "price": 8.99,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -1782,10 +1787,8 @@
     },
     "kiwi": {
      "brand": "",
-     "name": "Dr. Oetker Galaretka o smaku kiwi, 72 g",
-     "size": 72,
-     "unit": "g",
-     "price": 2.99,
+     "name": "Kiwi szt",
+     "price": 3.69,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -1821,12 +1824,17 @@
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
+    "koperek": {
+     "brand": "",
+     "name": "Koperek pęczek",
+     "price": 4.59,
+     "currency": "PLN",
+     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
+    },
     "pietruszka": {
      "brand": "",
-     "name": "Kamis Natka pietruszki, 8 g",
-     "size": 8,
-     "unit": "g",
-     "price": 3.99,
+     "name": "Natka pietruszki pęczek",
+     "price": 4.59,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -1977,7 +1985,7 @@
    }
   },
   "Krónan": {
-   "checked": "2026-10-27",
+   "checked": "2026-10-28",
    "source": "kronan.is",
    "items": {
     "pomidor": {
