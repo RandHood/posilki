@@ -1,10 +1,10 @@
 {
  "version": 1,
- "updated": "2026-10-30",
+ "updated": "2026-10-31",
  "note": "Written by scripts/update-products.mjs. Products are matched by search, so check the label in the store.",
  "stores": {
   "Frisco": {
-   "checked": "2026-10-30",
+   "checked": "2026-10-31",
    "source": "frisco.pl",
    "items": {
     "pomidor": {
@@ -21,7 +21,7 @@
      "name": "Ogórki gruntowe (480g-720g)",
      "size": 600,
      "unit": "g",
-     "price": 4.99,
+     "price": 5.99,
      "currency": "PLN",
      "url": "https://www.frisco.pl/pid,4001/stn,product"
     },
@@ -75,7 +75,7 @@
      "name": "Marchew luz (600g-900g)",
      "size": 750,
      "unit": "g",
-     "price": 2.39,
+     "price": 2.29,
      "currency": "PLN",
      "url": "https://www.frisco.pl/pid,4030/stn,product"
     },
@@ -93,7 +93,7 @@
      "name": "Kapusta biała (1920g-2880g)",
      "size": 2400,
      "unit": "g",
-     "price": 5.49,
+     "price": 4.99,
      "currency": "PLN",
      "url": "https://www.frisco.pl/pid,4072/stn,product"
     },
@@ -120,7 +120,7 @@
      "name": "Rzodkiewkę bez naci 125g",
      "size": 125,
      "unit": "g",
-     "price": 2.15,
+     "price": 2.49,
      "currency": "PLN",
      "url": "https://www.frisco.pl/pid,95265/stn,product"
     },
@@ -183,7 +183,7 @@
      "name": "Filet z piersi z kurczaka (400g-600g)",
      "size": 500,
      "unit": "g",
-     "price": 14.99,
+     "price": 15.99,
      "currency": "PLN",
      "url": "https://www.frisco.pl/pid,132948/stn,product"
     },
@@ -237,7 +237,7 @@
      "name": "Szynka z piersi indyka -plastry",
      "size": 120,
      "unit": "g",
-     "price": 8.39,
+     "price": 8.79,
      "currency": "PLN",
      "url": "https://www.frisco.pl/pid,40161/stn,product"
     },
@@ -685,7 +685,7 @@
      "name": "Miód lipowy",
      "size": 400,
      "unit": "g",
-     "price": 16.99,
+     "price": 17.99,
      "currency": "PLN",
      "url": "https://www.frisco.pl/pid,10344/stn,product"
     },
@@ -694,7 +694,7 @@
      "name": "Kakao (extra ciemne)",
      "size": 150,
      "unit": "g",
-     "price": 12.79,
+     "price": 15.99,
      "currency": "PLN",
      "url": "https://www.frisco.pl/pid,291/stn,product"
     },
@@ -811,7 +811,7 @@
      "name": "Ziemniaki bataty słodkie 2-5 szt (800g-1200g)",
      "size": 1000,
      "unit": "g",
-     "price": 9.99,
+     "price": 10.89,
      "currency": "PLN",
      "url": "https://www.frisco.pl/pid,6502/stn,product"
     },
@@ -847,7 +847,7 @@
      "name": "Truskawki",
      "size": 500,
      "unit": "g",
-     "price": 22.99,
+     "price": 24.99,
      "currency": "PLN",
      "url": "https://www.frisco.pl/pid,3415/stn,product"
     },
@@ -865,7 +865,7 @@
      "name": "Pomarańcze deserowe 3-4 szt. (960g-1440g)",
      "size": 1200,
      "unit": "g",
-     "price": 7.99,
+     "price": 9.99,
      "currency": "PLN",
      "url": "https://www.frisco.pl/pid,12075/stn,product"
     },
@@ -901,7 +901,7 @@
      "name": "Por",
      "size": 250,
      "unit": "g",
-     "price": 3.79,
+     "price": 4.39,
      "currency": "PLN",
      "url": "https://www.frisco.pl/pid,10989/stn,product"
     },
@@ -937,7 +937,7 @@
      "name": "Jarmuż pęczek",
      "size": 250,
      "unit": "g",
-     "price": 6.99,
+     "price": 6.49,
      "currency": "PLN",
      "url": "https://www.frisco.pl/pid,87183/stn,product"
     },
@@ -973,7 +973,7 @@
      "name": "Koperek - pęczek",
      "size": 25,
      "unit": "g",
-     "price": 2.49,
+     "price": 2.29,
      "currency": "PLN",
      "url": "https://www.frisco.pl/pid,3865/stn,product"
     },
@@ -991,7 +991,7 @@
      "name": "Schab wieprzowy bez kości",
      "size": 630,
      "unit": "g",
-     "price": 21.99,
+     "price": 22.79,
      "currency": "PLN",
      "url": "https://www.frisco.pl/pid,3380/stn,product"
     },
@@ -1036,7 +1036,7 @@
      "name": "Tofu naturalne",
      "size": 180,
      "unit": "g",
-     "price": 6.19,
+     "price": 5.79,
      "currency": "PLN",
      "url": "https://www.frisco.pl/pid,124035/stn,product"
     },
@@ -1086,13 +1086,13 @@
      "url": "https://www.frisco.pl/pid,7548/stn,product"
     },
     "ricotta": {
-     "brand": "Galbani",
+     "brand": "Formagia",
      "name": "Ser Ricotta",
      "size": 250,
      "unit": "g",
-     "price": 5.89,
+     "price": 5.49,
      "currency": "PLN",
-     "url": "https://www.frisco.pl/pid,4798/stn,product"
+     "url": "https://www.frisco.pl/pid,95089/stn,product"
     },
     "halloumi": {
      "brand": "Papouis",
@@ -1117,7 +1117,7 @@
      "name": "Napój sojowy bez cukru",
      "size": 1000,
      "unit": "ml",
-     "price": 9.49,
+     "price": 9.99,
      "currency": "PLN",
      "url": "https://www.frisco.pl/pid,2530/stn,product"
     },
@@ -1126,7 +1126,7 @@
      "name": "Mleczko kokosowe (tł. 5-7%)",
      "size": 400,
      "unit": "ml",
-     "price": 6.29,
+     "price": 6.79,
      "currency": "PLN",
      "url": "https://www.frisco.pl/pid,15754/stn,product"
     },
@@ -1196,7 +1196,7 @@
    }
   },
   "Wolt Market": {
-   "checked": "2026-10-30",
+   "checked": "2026-10-31",
    "source": "wolt.com",
    "items": {
     "pomidor": {
@@ -1244,10 +1244,8 @@
     },
     "brokul": {
      "brand": "",
-     "name": "Hortex Brokuły różyczki, 450 g",
-     "size": 450,
-     "unit": "g",
-     "price": 12.99,
+     "name": "Brokuły sztuka",
+     "price": 9.99,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -1309,6 +1307,15 @@
      "size": 500,
      "unit": "g",
      "price": 5.99,
+     "currency": "PLN",
+     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
+    },
+    "jablko": {
+     "brand": "",
+     "name": "Jabłka 0.5kg",
+     "size": 500,
+     "unit": "g",
+     "price": 4.39,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -1758,10 +1765,10 @@
     },
     "borowki": {
      "brand": "",
-     "name": "Łowicz Borówka do mięs i serów, 230 g",
-     "size": 230,
+     "name": "Borówka 125 g",
+     "size": 125,
      "unit": "g",
-     "price": 11.99,
+     "price": 16.99,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -1785,10 +1792,10 @@
     },
     "pomarancza": {
      "brand": "",
-     "name": "Marmolada pomarańczowa, 370 g",
-     "size": 370,
+     "name": "Pomarańcze 300g",
+     "size": 300,
      "unit": "g",
-     "price": 8.49,
+     "price": 5.49,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -1851,8 +1858,10 @@
     },
     "pietruszka": {
      "brand": "",
-     "name": "Natka pietruszki pęczek",
-     "price": 4.59,
+     "name": "Kamis Natka pietruszki, 8 g",
+     "size": 8,
+     "unit": "g",
+     "price": 3.99,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -2003,7 +2012,7 @@
    }
   },
   "Krónan": {
-   "checked": "2026-10-30",
+   "checked": "2026-10-31",
    "source": "kronan.is",
    "items": {
     "pomidor": {
@@ -2042,7 +2051,7 @@
     },
     "czosnek": {
      "brand": "",
-     "name": "Grön Balance hvítlaukur",
+     "name": "hvítlaukur lífrænn",
      "size": 80,
      "unit": "g",
      "price": 219,
@@ -2201,7 +2210,7 @@
     "losos": {
      "brand": "",
      "name": "Landlax laxabitar með roði",
-     "size": 530,
+     "size": 480,
      "unit": "g",
      "price": 2083,
      "currency": "ISK",
