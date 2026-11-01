@@ -1,10 +1,10 @@
 {
  "version": 1,
- "updated": "2026-10-31",
+ "updated": "2026-11-01",
  "note": "Written by scripts/update-products.mjs. Products are matched by search, so check the label in the store.",
  "stores": {
   "Frisco": {
-   "checked": "2026-10-31",
+   "checked": "2026-11-01",
    "source": "frisco.pl",
    "items": {
     "pomidor": {
@@ -192,7 +192,7 @@
      "name": "Mięso mielone na kotlety z indyka",
      "size": 500,
      "unit": "g",
-     "price": 12.99,
+     "price": 13.99,
      "currency": "PLN",
      "url": "https://www.frisco.pl/pid,8546/stn,product"
     },
@@ -492,13 +492,13 @@
      "url": "https://www.frisco.pl/pid,46055/stn,product"
     },
     "olej": {
-     "brand": "Niezbędny",
-     "name": "Olej rzepakowy",
+     "brand": "Olej Kaszubski",
+     "name": "Olej rzepakowy rafinowany",
      "size": 1000,
      "unit": "ml",
-     "price": 10.69,
+     "price": 11.49,
      "currency": "PLN",
-     "url": "https://www.frisco.pl/pid,149824/stn,product"
+     "url": "https://www.frisco.pl/pid,136348/stn,product"
     },
     "oliwa": {
      "brand": "Borges",
@@ -1000,7 +1000,7 @@
      "name": "Polędwiczka wieprzowa (400g-600g)",
      "size": 500,
      "unit": "g",
-     "price": 18.99,
+     "price": 20.49,
      "currency": "PLN",
      "url": "https://www.frisco.pl/pid,141014/stn,product"
     },
@@ -1196,7 +1196,7 @@
    }
   },
   "Wolt Market": {
-   "checked": "2026-10-31",
+   "checked": "2026-11-01",
    "source": "wolt.com",
    "items": {
     "pomidor": {
@@ -1260,10 +1260,10 @@
     },
     "marchew": {
      "brand": "",
-     "name": "Marchew 0,5 kg",
-     "size": 500,
+     "name": "Provitus Marchewka zasmażana, 480 g",
+     "size": 480,
      "unit": "g",
-     "price": 2.99,
+     "price": 8.99,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -1603,6 +1603,15 @@
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
+    "krewetki": {
+     "brand": "",
+     "name": "Krewetki w oleju czosnkowym 150g Connoisseur",
+     "size": 150,
+     "unit": "g",
+     "price": 25.49,
+     "currency": "PLN",
+     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
+    },
     "kuskus": {
      "brand": "",
      "name": "Mc kasza kuskus, 250 g",
@@ -1801,10 +1810,8 @@
     },
     "kiwi": {
      "brand": "",
-     "name": "Dr. Oetker Galaretka o smaku kiwi, 72 g",
-     "size": 72,
-     "unit": "g",
-     "price": 2.99,
+     "name": "Kiwi szt",
+     "price": 3.69,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -1858,10 +1865,8 @@
     },
     "pietruszka": {
      "brand": "",
-     "name": "Kamis Natka pietruszki, 8 g",
-     "size": 8,
-     "unit": "g",
-     "price": 3.99,
+     "name": "Natka pietruszki pęczek",
+     "price": 4.59,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -1885,7 +1890,7 @@
     },
     "sledz": {
      "brand": "",
-     "name": "Filety śledziowe od serca z żurawina 300g",
+     "name": "Filety śledziowe od serca ze śliwką 300g",
      "size": 300,
      "unit": "g",
      "price": 16.99,
@@ -2012,7 +2017,7 @@
    }
   },
   "Krónan": {
-   "checked": "2026-10-31",
+   "checked": "2026-11-01",
    "source": "kronan.is",
    "items": {
     "pomidor": {
