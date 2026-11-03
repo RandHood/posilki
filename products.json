@@ -1,10 +1,10 @@
 {
  "version": 1,
- "updated": "2026-11-02",
+ "updated": "2026-11-03",
  "note": "Written by scripts/update-products.mjs. Products are matched by search, so check the label in the store.",
  "stores": {
   "Frisco": {
-   "checked": "2026-11-02",
+   "checked": "2026-11-03",
    "source": "frisco.pl",
    "items": {
     "pomidor": {
@@ -1196,7 +1196,7 @@
    }
   },
   "Wolt Market": {
-   "checked": "2026-11-02",
+   "checked": "2026-11-03",
    "source": "wolt.com",
    "items": {
     "pomidor": {
@@ -1244,28 +1244,26 @@
     },
     "brokul": {
      "brand": "",
-     "name": "FRoSTA Burgery z kalafiora i brokuła 200 g, (2 sztuki)",
-     "size": 200,
-     "unit": "g",
-     "price": 10.49,
+     "name": "Brokuły sztuka",
+     "price": 9.99,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
     "szpinak": {
      "brand": "",
-     "name": "Kuchnia Brawaty Pierogi ze szpinakiem chłodzone, 300 g",
-     "size": 300,
+     "name": "Hortex Szpinak liście, 450 g",
+     "size": 450,
      "unit": "g",
-     "price": 19.99,
+     "price": 11.99,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
     "marchew": {
      "brand": "",
-     "name": "Provitus Marchewka zasmażana, 480 g",
-     "size": 480,
+     "name": "Marchew 0,5 kg",
+     "size": 500,
      "unit": "g",
-     "price": 8.99,
+     "price": 2.99,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -1526,11 +1524,29 @@
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
+    "hummus": {
+     "brand": "",
+     "name": "Hummus trio mix, 210 g",
+     "size": 210,
+     "unit": "g",
+     "price": 8.99,
+     "currency": "PLN",
+     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
+    },
     "soja": {
      "brand": "",
      "name": "Tao Tao Sos sojowy, 150 ml",
      "size": 150,
      "unit": "ml",
+     "price": 12.99,
+     "currency": "PLN",
+     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
+    },
+    "warzywa_mr": {
+     "brand": "",
+     "name": "Hortex Warzywa na patelnię z suszonymi pomidorami, 400 g",
+     "size": 400,
+     "unit": "g",
      "price": 12.99,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
@@ -1697,6 +1713,15 @@
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
+    "orzeszki": {
+     "brand": "",
+     "name": "M&M's Peanut Orzeszki ziemne oblane czekoladą w kolorowych skorupkach, 45 g",
+     "size": 45,
+     "unit": "g",
+     "price": 5.79,
+     "currency": "PLN",
+     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
+    },
     "wafle": {
      "brand": "",
      "name": "Sonko Wafle ryżowe naturalne 130 g, (14 sztuk)",
@@ -1751,8 +1776,8 @@
     },
     "truskawki": {
      "brand": "",
-     "name": "Sante Fit Granola truskawka & wiśnia, 300 g",
-     "size": 300,
+     "name": "Hortex Truskawki, 450 g",
+     "size": 450,
      "unit": "g",
      "price": 13.99,
      "currency": "PLN",
@@ -1806,15 +1831,6 @@
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
-    "pomidorki": {
-     "brand": "",
-     "name": "Pomidor daktylowy /cherry 250 g",
-     "size": 250,
-     "unit": "g",
-     "price": 10.99,
-     "currency": "PLN",
-     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
-    },
     "limonka": {
      "brand": "",
      "name": "Limonka 250g",
@@ -1833,10 +1849,8 @@
     },
     "pietruszka": {
      "brand": "",
-     "name": "Kamis Natka pietruszki, 8 g",
-     "size": 8,
-     "unit": "g",
-     "price": 3.99,
+     "name": "Natka pietruszki pęczek",
+     "price": 4.59,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -1864,6 +1878,15 @@
      "size": 300,
      "unit": "g",
      "price": 16.99,
+     "currency": "PLN",
+     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
+    },
+    "tofu": {
+     "brand": "",
+     "name": "Tofu naturalne, 200 g",
+     "size": 200,
+     "unit": "g",
+     "price": 5.99,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -1923,10 +1946,10 @@
     },
     "napoj_sojowy": {
      "brand": "",
-     "name": "Sante Kotlety sojowe a la schabowe, 100 g",
-     "size": 100,
-     "unit": "g",
-     "price": 5.89,
+     "name": "Alpro Napój sojowy 1 l",
+     "size": 1000,
+     "unit": "ml",
+     "price": 15.99,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -1978,7 +2001,7 @@
    }
   },
   "Krónan": {
-   "checked": "2026-11-02",
+   "checked": "2026-11-03",
    "source": "kronan.is",
    "items": {
     "pomidor": {
@@ -2139,12 +2162,12 @@
     },
     "piers": {
      "brand": "",
-     "name": "Ódýrt kjúklingabringur",
-     "size": 750,
+     "name": "Holta kjúklingabringur 100%",
+     "size": 640,
      "unit": "g",
-     "price": 2077,
+     "price": 2207,
      "currency": "ISK",
-     "url": "https://kronan.is/vara/100244878"
+     "url": "https://kronan.is/vara/100201209"
     },
     "indyk_mielone": {
      "brand": "",
@@ -2890,9 +2913,9 @@
     "udka": {
      "brand": "",
      "name": "Holta kjúklingalæri úrbeinuð 100%",
-     "size": 750,
+     "size": 700,
      "unit": "g",
-     "price": 3149,
+     "price": 2939,
      "currency": "ISK",
      "url": "https://kronan.is/vara/100045469"
     },
