@@ -1,10 +1,10 @@
 {
  "version": 1,
- "updated": "2026-11-03",
+ "updated": "2026-11-04",
  "note": "Written by scripts/update-products.mjs. Products are matched by search, so check the label in the store.",
  "stores": {
   "Frisco": {
-   "checked": "2026-11-03",
+   "checked": "2026-11-04",
    "source": "frisco.pl",
    "items": {
     "pomidor": {
@@ -322,12 +322,12 @@
     },
     "tortilla": {
      "brand": "Tortilove",
-     "name": "Tortilla pełnoziarnista - 25 cm (4 szt.)",
+     "name": "Tortilla wieloziarnista - 25 cm (4 szt.)",
      "size": 240,
      "unit": "g",
      "price": 4.29,
      "currency": "PLN",
-     "url": "https://www.frisco.pl/pid,142192/stn,product"
+     "url": "https://www.frisco.pl/pid,142193/stn,product"
     },
     "platki": {
      "brand": "Melvit",
@@ -1196,7 +1196,7 @@
    }
   },
   "Wolt Market": {
-   "checked": "2026-11-03",
+   "checked": "2026-11-04",
    "source": "wolt.com",
    "items": {
     "pomidor": {
@@ -2001,7 +2001,7 @@
    }
   },
   "Krónan": {
-   "checked": "2026-11-03",
+   "checked": "2026-11-04",
    "source": "kronan.is",
    "items": {
     "pomidor": {
@@ -2023,9 +2023,9 @@
     "papryka": {
      "brand": "",
      "name": "paprika rauð",
-     "size": 195,
+     "size": 220,
      "unit": "g",
-     "price": 179,
+     "price": 198,
      "currency": "ISK",
      "url": "https://kronan.is/vara/100253122"
     },
@@ -2145,9 +2145,9 @@
     "cytryna": {
      "brand": "",
      "name": "sítrónur",
-     "size": 170,
+     "size": 165,
      "unit": "g",
-     "price": 98,
+     "price": 79,
      "currency": "ISK",
      "url": "https://kronan.is/vara/100253498"
     },
@@ -2766,7 +2766,7 @@
     "awokado": {
      "brand": "",
      "name": "Avókadó í lausu",
-     "price": 329,
+     "price": 304,
      "currency": "ISK",
      "url": "https://kronan.is/vara/00900316"
     },
@@ -2809,7 +2809,7 @@
      "name": "kiwi",
      "size": 90,
      "unit": "g",
-     "price": 92,
+     "price": 81,
      "currency": "ISK",
      "url": "https://kronan.is/vara/100253634"
     },
