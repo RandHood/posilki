@@ -1,7 +1,8 @@
 import { CAT_LABEL, SLOT_LABEL } from '../data/fixed';
 import { Badge, EmojiDot, Icon, MacroTable, MealImg, PageHead } from '../components/common';
 import { ING, type IngLine, type Meal } from '../services/catalog';
-import { getMeal, ingEmoji, isFav, itemLabel, liveNote, macrosOf, mealCats, mealSub, plainName, videoUrl } from '../services/logic';
+import { getMeal, ingEmoji, isFav, itemLabel, liveNote, macrosOf, mealCats, mealSub, plainName, qtyText, variantsOf, videoUrl } from '../services/logic';
+import { VariantPick } from './Recipes';
 import { inIosSafari } from '../services/share';
 import { S } from '../services/state';
 import { nf, todayIdx } from '../services/util';
@@ -10,7 +11,8 @@ import { openSheet, popPage, pushPage, rerender, toast, topOf } from '../app/ui'
 import { draftFrom } from '../services/logic';
 
 type MealP = ReturnType<typeof topOf<'meal'>>;
-function pageIng(p: MealP, m: Meal): IngLine[] { return m.ing.map((x, i) => [x[0], p.grams[i]] as IngLine); }
+// The meal's ingredients as shown on this page: its amounts, with any cream or pasta swapped here.
+function pageIng(p: MealP, m: Meal): IngLine[] { return m.ing.map((x, i) => [p.keys && p.keys[i] && ING[p.keys[i]] ? p.keys[i] : x[0], p.grams[i]] as IngLine); }
 
 function FavButton({ id }: { id: string }) {
   const fav = isFav(id);
@@ -23,10 +25,11 @@ function StoreLine({ store }: { store: string }) {
     </div>
   );
 }
-function IngList({ ing, label }: { ing: IngLine[]; label: (k: string) => string }) {
+function IngList({ ing, label, onSwap }: { ing: IngLine[]; label: (k: string) => string; onSwap?: (i: number, to: string) => void }) {
   return (
     <div class="rlist">{ing.map((r, i) => (
-      <div class="ritem" key={i}><EmojiDot e={ingEmoji(r[0])} /><span class="grow"><b>{label(r[0])}</b><small>{nf(r[1])} {ING[r[0]].u}</small></span></div>
+      <div class="ritem" key={i}><EmojiDot e={ingEmoji(r[0])} /><span class="grow"><b>{label(r[0])}</b><small>{qtyText(r[0], r[1])}</small>
+        {onSwap ? <VariantPick k={r[0]} onPick={(to) => onSwap(i, to)} /> : null}</span></div>
     ))}</div>
   );
 }
@@ -90,12 +93,12 @@ export function MealPage() {
       <div id="mMacros"><MacroTable x={x} /></div>
       <button class="btn primary block" style={{ marginTop: '10px' }} onClick={() => mealToList(m, ing)}>Add ingredients to shopping list</button>
       <PlanButtons share={<button class="btn sm" onClick={() => shareMeal(m)}>Share</button>} />
-      <button class="btn block addrecipe" onClick={() => addAsRecipe(m, p.store)}><Icon n="plus" size={18} />Add as recipe</button>
+      <button class="btn block addrecipe" onClick={() => addAsRecipe(m, p.store, ing)}><Icon n="plus" size={18} />Add as recipe</button>
       <section class="section" style={{ marginTop: '18px' }}><h2>Ingredients</h2>
         <StoreLine store={p.store} />
         <p class="note">{p.store !== S.profile.store ? 'Only this page uses ' + p.store + '. Your default store is still ' + S.profile.store + '. ' : ''}{liveNote(p.store)}</p>
-        <IngList ing={ing} label={(k) => itemLabel(k, p.store, 'en')} />
-        <p class="note">Want different amounts? Add it as a recipe and edit it.</p>
+        <IngList ing={ing} label={(k) => itemLabel(k, p.store, 'en')} onSwap={(i, to) => { p.keys = ing.map((x) => x[0]); p.keys[i] = to; rerender(); }} />
+        <p class="note">{ing.some((x) => variantsOf(x[0])) ? 'Pick the cream or pasta you like above; the shopping list gets that one. ' : ''}Want different amounts? Add it as a recipe and type the exact grams.</p>
       </section>
       <section class="section">
         <button class="recipebtn" aria-expanded={p.open} onClick={() => { p.open = !p.open; rerender(); }}>

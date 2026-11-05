@@ -4,7 +4,7 @@ import { COUNTRIES, DAYS } from '../data/fixed';
 import { KEY } from './catalog';
 import { clone, isObj, storesFor } from './util';
 
-export const DATA_VERSION = 5;
+export const DATA_VERSION = 6;
 
 export interface Target { p: number; f: number; c: number }
 export interface PlanItem { id: string; slot: string; serv: number }
@@ -90,6 +90,17 @@ const MIGRATIONS: Record<number, (s: any) => any> = {
     }
     if (isObj(s.shopping) && s.shopping.lang !== 'en') s.shopping.lang = 'orig';
     s.v = 5; return s;
+  },
+  5: function (s) {
+    // Garlic is now counted in cloves (5 g each). Round saved garlic amounts to whole cloves so they read cleanly.
+    const clove = (g: any) => Math.max(5, Math.round((+g || 0) / 5) * 5);
+    if (isObj(s.library) && Array.isArray(s.library.recipes)) s.library.recipes.forEach((r: any) => {
+      if (isObj(r) && Array.isArray(r.ing)) r.ing.forEach((x: any) => { if (Array.isArray(x) && x[0] === 'czosnek') x[1] = clove(x[1]); });
+    });
+    if (isObj(s.shopping) && Array.isArray(s.shopping.entries)) s.shopping.entries.forEach((e: any) => {
+      if (isObj(e) && Array.isArray(e.items)) e.items.forEach((i: any) => { if (isObj(i) && i.key === 'czosnek') i.g = clove(i.g); });
+    });
+    s.v = 6; return s;
   },
 };
 export function migrate(s: any): State {

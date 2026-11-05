@@ -1,5 +1,5 @@
 // Meals, macros, categories, planning, suggestions and product labels. Ported from the single-file app.
-import { AISLE_EMOJI, CAT_LABEL, CATS, DAYS, ING_EMOJI, PROD, SLOT_SHARE, SLOTS, STEP_G } from '../data/fixed';
+import { AISLE_EMOJI, CAT_LABEL, CATS, COUNT_UNIT, DAYS, ING_EMOJI, PROD, SLOT_SHARE, SLOTS, STEP_G, VARIANTS } from '../data/fixed';
 import { CATALOG, DIET, ING, type IngLine, LIVE, MB, MEALS, type Meal, catalogRev, liveItem, liveStore } from './catalog';
 import { type PlanItem, S, type Target } from './state';
 import { fmtDate, isoDate, mondayIso, money, nf, parseIso, rng, todayIdx } from './util';
@@ -29,10 +29,17 @@ export function sumMacros(list: Macros[]): Macros { let p = 0, f = 0, c = 0; lis
 export function mealMacros(m: Meal, serv?: number) { return macrosOf(m.ing, serv); }
 export function isFav(id: string): boolean { return S.library.favorites.indexOf(id) > -1; }
 export function mealSub(m: Meal): string { return country() === 'PL' && m.pl ? m.pl : ''; }
-function round5(g: number): number { return g < 5 ? Math.round(g * 10) / 10 : Math.round(g / 5) * 5; }
+/* ---------- Amounts ----------
+   Amounts are saved in grams (or ml). Garlic and other counted foods show as a count, like 2 cloves. */
+export function countUnit(k: string): { one: string; many: string; g: number } | null { return COUNT_UNIT[k] || null; }
+export function countOf(k: string, g: number): number { const cu = countUnit(k)!; return g > 0 ? Math.max(1, Math.round(g / cu.g)) : 0; }
+function countText(k: string, g: number): string { const cu = countUnit(k)!, n = countOf(k, g); return n + ' ' + (n === 1 ? cu.one : cu.many); }
+function exact(g: number): number { return g < 10 ? Math.round(g * 10) / 10 : Math.round(g); }
+/** "150 g", "200 ml" or "2 cloves": the exact amount the recipe needs. */
+export function qtyText(k: string, g: number): string { return countUnit(k) ? countText(k, g) : nf(exact(g)) + ' ' + ING[k].u; }
 export function needText(k: string, g: number): string {
-  const x = ING[k]; let t = round5(g) + ' ' + x.u;
-  if (x.piece) { const n = Math.max(1, Math.round(g / x.piece)); t += ' (≈ ' + n + (n === 1 ? ' pc)' : ' pcs)'); }
+  const x = ING[k]; let t = qtyText(k, g);
+  if (x.piece && !countUnit(k)) { const n = Math.max(1, Math.round(g / x.piece)); t += ' (≈ ' + n + (n === 1 ? ' pc)' : ' pcs)'); }
   return t;
 }
 export function packText(k: string, g: number, store?: string): string {
@@ -195,12 +202,37 @@ export function dayName(i: number): string { return DAYS[i]; }
 /* ---------- Ingredients in your own recipes ---------- */
 export function ingEmoji(k: string): string { return ING_EMOJI[k] || AISLE_EMOJI[(ING[k] || ({} as any)).a] || '🍽️'; }
 // One tap of + adds one piece where the food comes in pieces, otherwise a usual kitchen amount.
-export function ingStep(k: string): number { const x = ING[k]; return x.piece || STEP_G[k] || 100; }
-export function stepText(k: string): string { const x = ING[k]; return x.piece ? '1 piece ≈ ' + x.piece + ' ' + x.u : 'Each + adds ' + ingStep(k) + ' ' + x.u; }
+export function ingStep(k: string): number { const x = ING[k], cu = countUnit(k); return cu ? cu.g : x.piece || STEP_G[k] || 100; }
+export function stepText(k: string): string {
+  const x = ING[k], cu = countUnit(k); if (cu) return 'Each + adds 1 ' + cu.one + ' (≈ ' + cu.g + ' ' + x.u + ')';
+  return x.piece ? '1 piece ≈ ' + x.piece + ' ' + x.u : 'Each + adds ' + ingStep(k) + ' ' + x.u; }
 export function amountText(k: string, g: number): string {
-  const x = ING[k];
-  return x.piece ? '≈ ' + Math.max(1, Math.round(g / x.piece)) + (Math.round(g / x.piece) > 1 ? ' pieces' : ' piece') + ', ' + nf(g) + ' ' + x.u : nf(g) + ' ' + x.u;
+  // The box beside it already shows the amount, so this only adds the weight of a count or the pieces it makes.
+  const x = ING[k]; if (countUnit(k)) return '≈ ' + nf(g) + ' ' + x.u;
+  return x.piece ? '≈ ' + Math.max(1, Math.round(g / x.piece)) + (Math.round(g / x.piece) > 1 ? ' pieces' : ' piece') : '';
 }
+/* ---------- Variants (cream fat, pasta shape) ---------- */
+/** The kinds this ingredient can be swapped for, with their labels, or null when it has none. */
+export function variantsOf(k: string): { label: string; opts: [string, string][] } | null {
+  for (const v of VARIANTS) {
+    if (!v.opts.some((o) => o[0] === k)) continue;
+    const opts = v.opts.filter((o) => ING[o[0]]);
+    return opts.length > 1 ? { label: v.label, opts } : null;
+  }
+  return null;
+}
+/** Swaps an ingredient in a recipe draft for another kind, keeping its place and amount. */
+export function swapInDraft(d: Draft, from: string, to: string): void {
+  if (from === to) return;
+  const g = d.g[from] || 0; delete d.g[from];
+  if (d.g[to] > 0) { d.g[to] += g; d.order = d.order.filter((k) => k !== from); }
+  else { d.g[to] = g; const i = d.order.indexOf(from); if (i > -1) d.order[i] = to; else d.order.push(to); d.order = d.order.filter((k, j) => d.order.indexOf(k) === j); }
+}
+/** Typed amount (grams, or a count for garlic) to grams. */
+export function gramsFromInput(k: string, n: number): number { const cu = countUnit(k); return Math.min(5000, Math.round(cu ? n * cu.g : n)); }
+export function inputValue(k: string, g: number): number { return countUnit(k) ? countOf(k, g) : Math.round(g); }
+export function inputUnit(k: string, g: number): string { const cu = countUnit(k); return cu ? (countOf(k, g) === 1 ? cu.one : cu.many) : ING[k].u; }
+
 export interface Draft { id?: string; name: string; desc: string; g: Record<string, number>; order: string[]; steps: string[]; video: string }
 export function newDraft(): Draft { return { name: '', desc: '', g: {}, order: [], steps: [''], video: '' }; }
 export function draftFrom(m: Meal): Draft {
@@ -210,7 +242,6 @@ export function draftFrom(m: Meal): Draft {
 }
 export function draftItems(d: Draft): string[] { return d.order.filter((k) => d.g[k] > 0 && ING[k]); }
 // Amounts are kept in grams, so a recipe made from a meal keeps its exact amounts; the counter shows them in steps.
-export function cntOf(d: Draft, k: string): number { const g = d.g[k] || 0; return g > 0 ? Math.max(1, Math.round(g / ingStep(k))) : 0; }
 export function videoUrl(v: string): string {
   v = (v || '').trim(); if (!v) return '';
   if (!/^https?:\/\//i.test(v)) v = 'https://' + v;

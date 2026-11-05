@@ -204,7 +204,8 @@ export const ING_EMOJI: any ={pomidor:'🍅',ogorek:'🥒',papryka:'🫑',cebula
   imbir:'🫚',koperek:'🌿',pietruszka:'🌿',schab:'🥩',poledwiczka:'🥩',wolowina_mielona:'🥩',udka:'🍗',jagniecina:'🍖',kielbasa:'🌭',losos_wedz:'🐟',
   makrela:'🐟',sledz:'🐟',ysa:'🐟',bleikja:'🐟',tofu:'🧊',twarog_chudy:'🧀',jogurt_grecki:'🥛',mozzarella:'🧀',parmezan:'🧀',ser_zolty:'🧀',
   serek_smietankowy:'🧀',ricotta:'🧀',halloumi:'🧀',smietana:'🥛',napoj_sojowy:'🥛',mleczko_kokosowe:'🥥',passata:'🥫',koncentrat:'🥫',
-  kapusta_kiszona:'🥬',ogorki_kiszone:'🥒',oliwki:'🫒',pesto:'🌿',pasta_curry:'🌶️',ryba_puszka:'🐟'};
+  kapusta_kiszona:'🥬',ogorki_kiszone:'🥒',oliwki:'🫒',pesto:'🌿',pasta_curry:'🌶️',ryba_puszka:'🐟',
+  smietana_18:'🥛',smietanka_30:'🥛',penne:'🍝',fusilli:'🍝',farfalle:'🍝',tagliatelle:'🍝'};
 // Anything not listed above falls back to its aisle's emoji.
 export const AISLE_EMOJI: any ={produce:'🥬',meat:'🥩',dairy:'🧀',bread:'🍞',dry:'🌾',cans:'🥫',frozen:'❄️',fats:'🫒'};
 // Each aisle's picture: a tinted tile with three of its foods.
@@ -217,3 +218,17 @@ export const STEP_G: any ={pietruszka:10,koperek:10,imbir:10,parmezan:20,pesto:2
 export const MIXCOLS: any =['#EE8A2B','#4E8A3A','#E8542F','#F4D77A','#9CC87A'];
 export const SHAPE_COUNT: any ={grain:80,crumble:34,curd:46,round:5,coin:6,stick:9,bit:9,floret:6,leaf:9,chunk:7,shred:18,wedge:1,herb:12,slab:1,strip:8,slice:2,egg:5,mound:1,cube:8,bread:2,wrap:1,pasta:24,nut:5,seed:14,sauce:0,bean:14,berry:9,mix:16,none:0};
 
+
+/* ---------- Counted ingredients ----------
+   Shown and typed as a count instead of grams. Amounts are still saved in grams, so macros stay exact. */
+export const COUNT_UNIT: Record<string, { one: string; many: string; g: number }> = {
+  czosnek: { one: 'clove', many: 'cloves', g: 5 },
+};
+
+/* ---------- Variants ----------
+   The same food in different kinds. Each kind is its own ingredient (own macros and store product),
+   and a recipe or meal page can swap between them. */
+export const VARIANTS: { id: string; label: string; opts: [string, string][] }[] = [
+  { id: 'cream', label: 'Fat', opts: [['smietana', '12% sour cream'], ['smietana_18', '18% sour cream'], ['smietanka_30', '30% cream']] },
+  { id: 'pasta', label: 'Shape', opts: [['makaron', 'Wholegrain'], ['penne', 'Penne'], ['spaghetti', 'Spaghetti'], ['fusilli', 'Fusilli'], ['farfalle', 'Farfalle'], ['tagliatelle', 'Tagliatelle']] },
+];

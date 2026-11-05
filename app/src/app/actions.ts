@@ -12,8 +12,8 @@ export function openMealPage(id: string): void {
   UI.sheet = null;
   pushPage({ type: 'meal', id, store: S.profile.store!, grams: m.ing.map((x) => x[1]), open: false });
 }
-export function mealPageOf(m: Meal, store: string): { type: 'meal'; id: string; store: string; grams: number[]; open: boolean } {
-  return { type: 'meal', id: m.id, store, grams: m.ing.map((x) => x[1]), open: true };
+export function mealPageOf(m: Meal, store: string): { type: 'meal'; id: string; store: string; grams: number[]; keys: string[]; open: boolean } {
+  return { type: 'meal', id: m.id, store, grams: m.ing.map((x) => x[1]), keys: m.ing.map((x) => x[0]), open: true };
 }
 export function openShared(rec: SharedRecipe, link: string): void { pushPage({ type: 'shared', rec, link }); }
 export function goTab(tab: string): void {
@@ -63,9 +63,10 @@ export function deleteCollection(id: string): void {
   S.library.collections = S.library.collections.filter((c) => c.id !== id);
   save(); leavePages((p) => p.type === 'lib' && p.cid === id); toast('Collection deleted');
 }
-export function addAsRecipe(m: Meal, store: string): void {
-  // A copy of the meal goes into Recipes and opens straight away; Edit recipe changes it from there.
-  const r: Meal = clone(m); r.id = 'r' + uid(); r.custom = true; r.base = m.id; r.video = ''; r.created = Date.now();
+export function addAsRecipe(m: Meal, store: string, ing?: IngLine[]): void {
+  // A copy of the meal (with any cream or pasta swapped on its page) goes into Recipes and opens straight away;
+  // Edit recipe changes it from there.
+  const r: Meal = clone(m); if (ing) r.ing = clone(ing); r.id = 'r' + uid(); r.custom = true; r.base = m.id; r.video = ''; r.created = Date.now();
   S.library.recipes.push(r); save();
   replaceTop(mealPageOf(r, store), true); toast('Added to Recipes');
 }

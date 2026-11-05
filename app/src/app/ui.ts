@@ -9,7 +9,7 @@ import { todayIdx } from '../services/util';
 export type Page =
   | { type: 'settings' }
   | { type: 'lib'; sec: string; cid?: string }
-  | { type: 'meal'; id: string; store: string; grams: number[]; open: boolean }
+  | { type: 'meal'; id: string; store: string; grams: number[]; keys?: string[]; open: boolean }
   | { type: 'recipeEdit'; draft: Draft }
   | { type: 'ingPick'; draft: Draft; cat?: string; q: string }
   | { type: 'shared'; rec: SharedRecipe; link: string; copied?: boolean };

@@ -3,7 +3,7 @@ import { useLayoutEffect, useRef } from 'preact/hooks';
 import { AISLE_ART, AISLES } from '../data/fixed';
 import { EmojiDot, Icon, PageHead } from '../components/common';
 import { ING, type IngLine, type Meal } from '../services/catalog';
-import { type Draft, amountText, cntOf, draftItems, getMeal, ingEmoji, ingStep, stepText } from '../services/logic';
+import { type Draft, amountText, draftItems, getMeal, gramsFromInput, ingEmoji, ingStep, inputUnit, inputValue, stepText, swapInDraft, variantsOf } from '../services/logic';
 import { S, save } from '../services/state';
 import { cap, uid } from '../services/util';
 import { mealPageOf } from '../app/actions';
@@ -12,18 +12,44 @@ import { UI, openSheet, popPage, pushPage, replaceTop, rerender, toast, top } fr
 function autosize(t: HTMLTextAreaElement): void { t.style.height = 'auto'; t.style.height = t.scrollHeight + 'px'; }
 function focusStep(i: number): void { setTimeout(() => { const t = document.querySelector<HTMLTextAreaElement>('textarea[data-step="' + i + '"]'); if (t) t.focus(); }, 30); }
 
-function Counter({ d, k, n }: { d: Draft; k: string; n: number }) {
+// − and + move by a usual kitchen step; the box in the middle takes the exact amount (grams, or cloves for garlic).
+function Counter({ d, k }: { d: Draft; k: string }) {
+  const g = d.g[k] || 0, unit = inputUnit(k, g);
+  const set = (next: number) => { d.g[k] = next; if (next && d.order.indexOf(k) < 0) d.order.push(k); rerender(); };
   const change = (dir: number) => {
-    const st = ingStep(k); let g = d.g[k] || 0;
-    g = dir > 0 ? Math.min(99 * st, g + st) : (g - st < st / 2 ? 0 : g - st);
-    d.g[k] = g; if (g && d.order.indexOf(k) < 0) d.order.push(k);
-    rerender();
+    const st = ingStep(k);
+    set(dir > 0 ? Math.min(5000, g + st) : (g - st < st / 2 ? 0 : g - st));
   };
   return (
     <span class="ctr">
-      <button aria-label={'Remove one ' + ING[k].en} disabled={!(n > 0)} onClick={() => change(-1)}><Icon n="minus" size={18} /></button>
-      <b class="num" aria-live="polite">{n}</b>
-      <button aria-label={'Add one ' + ING[k].en} onClick={() => change(1)}><Icon n="plus" size={18} /></button>
+      <button aria-label={'Less ' + ING[k].en} disabled={!(g > 0)} onClick={() => change(-1)}><Icon n="minus" size={18} /></button>
+      <label class="amt">
+        <input class="num" type="text" inputMode="numeric" pattern="[0-9]*" autocomplete="off" placeholder="0" value={g > 0 ? String(inputValue(k, g)) : ''}
+          aria-label={'Amount of ' + ING[k].en + ' in ' + unit}
+          onFocus={(e) => (e.currentTarget as HTMLInputElement).select()}
+          onInput={(e) => {
+            const el = e.currentTarget as HTMLInputElement, v = el.value.replace(/\D/g, '').slice(0, 4);
+            if (v !== el.value) el.value = v;
+            // An empty box while typing keeps the old amount; it is only removed when you leave the box empty.
+            if (+v > 0) set(gramsFromInput(k, +v));
+          }}
+          onBlur={(e) => { if (!(+(e.currentTarget as HTMLInputElement).value > 0) && g > 0) set(0); }} />
+        <small aria-hidden="true">{unit}</small>
+      </label>
+      <button aria-label={'More ' + ING[k].en} onClick={() => change(1)}><Icon n="plus" size={18} /></button>
+    </span>
+  );
+}
+
+// Cream fat, pasta shape and other kinds of the same food.
+export function VariantPick({ k, onPick }: { k: string; onPick: (to: string) => void }) {
+  const v = variantsOf(k); if (!v) return null;
+  return (
+    <span class="varpick">
+      <select aria-label={v.label + ' of ' + ING[k].en} value={k} onChange={(e) => onPick((e.currentTarget as HTMLSelectElement).value)}>
+        {v.opts.map((o) => <option key={o[0]} value={o[0]}>{o[1]}</option>)}
+      </select>
+      <span class="chev" aria-hidden="true"><Icon n="chev" size={14} /></span>
     </span>
   );
 }
@@ -34,7 +60,7 @@ function saveRecipe(d: Draft): void {
   const fields = { name, desc: d.desc.trim(), ing, steps: d.steps.map((s) => s.trim()).filter(Boolean), video: d.video.trim() };
   if (d.id) {
     const m = getMeal(d.id)!; Object.assign(m, fields); save();
-    const below = UI.stack[UI.stack.length - 2]; if (below && below.type === 'meal' && below.id === m.id) below.grams = ing.map((x) => x[1]);
+    const below = UI.stack[UI.stack.length - 2]; if (below && below.type === 'meal' && below.id === m.id) { below.grams = ing.map((x) => x[1]); below.keys = ing.map((x) => x[0]); }
     popPage(); toast('Recipe saved');
   } else {
     const r: Meal = { id: 'r' + uid(), custom: true, pl: '', types: [], mins: 0, tags: [], style: 'plate', created: Date.now(), ...fields };
@@ -62,7 +88,8 @@ export function RecipeEdit() {
         <div class="blockhead"><h2>Ingredients</h2>{items.length ? <span class="small muted">{items.length}{items.length === 1 ? ' item' : ' items'}</span> : null}</div>
         {items.length ? (
           <div class="rlist">{items.map((k) => (
-            <div class="ritem" key={k}><EmojiDot e={ingEmoji(k)} /><span class="grow"><b>{cap(ING[k].en)}</b><small>{amountText(k, d.g[k])}</small></span><Counter d={d} k={k} n={cntOf(d, k)} /></div>
+            <div class="ritem" key={k}><EmojiDot e={ingEmoji(k)} /><span class="grow"><b>{cap(ING[k].en)}</b>{amountText(k, d.g[k]) ? <small>{amountText(k, d.g[k])}</small> : null}
+              <VariantPick k={k} onPick={(to) => { swapInDraft(d, k, to); rerender(); }} /></span><Counter d={d} k={k} /></div>
           ))}</div>
         ) : <p class="note" style={{ marginTop: '4px' }}>Search or browse by category to add what goes in.</p>}
         <button class="btn block" style={{ marginTop: '12px' }} onClick={() => pushPage({ type: 'ingPick', draft: d, q: '' })}><Icon n="plus" size={18} />Add ingredients</button>
@@ -107,8 +134,8 @@ export function IngPick() {
   const a = p.cat ? AISLES.filter((x: string[]) => x[0] === p.cat)[0] : null;
   const rows = (keys: string[]) => keys.length ? (
     <div class="rlist">{keys.map((k) => {
-      const n = cntOf(d, k);
-      return <div class={'ritem' + (n ? ' on' : '')} key={k}><EmojiDot e={ingEmoji(k)} /><span class="grow"><b>{cap(ING[k].en)}</b><small>{n ? amountText(k, d.g[k]) : stepText(k)}</small></span><Counter d={d} k={k} n={n} /></div>;
+      const n = d.g[k] > 0;
+      return <div class={'ritem' + (n ? ' on' : '')} key={k}><EmojiDot e={ingEmoji(k)} /><span class="grow"><b>{cap(ING[k].en)}</b>{n && !amountText(k, d.g[k]) ? null : <small>{n ? amountText(k, d.g[k]) : stepText(k)}</small>}</span><Counter d={d} k={k} /></div>;
     })}</div>
   ) : <p class="empty">Nothing matches “{p.q}”. Try another word, like rice or chicken.</p>;
   let results;

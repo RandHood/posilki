@@ -16,6 +16,12 @@ describe('saved data migrations', () => {
     expect(gone.profile).toEqual({ name: 'A', country: 'PL', store: 'Frisco' });
     expect(gone.shopping.lang).toBe('orig');
   });
+  it('rounds saved garlic to whole cloves', () => {
+    const s = migrate({ v: 5, library: { recipes: [{ id: 'r1', ing: [['czosnek', 8], ['makaron', 73]] }] },
+      shopping: { view: 'meal', lang: 'orig', entries: [{ id: 'e', items: [{ key: 'czosnek', g: 2.5, checked: false }] }] } });
+    expect(s.library.recipes[0].ing).toEqual([['czosnek', 10], ['makaron', 73]]);
+    expect(s.shopping.entries[0].items[0].g).toBe(5);
+  });
   it('keeps current data as it is and fills in anything missing', () => {
     const cur = { ...defaults(), onboarded: true, profile: { name: 'Rand', country: 'IS', store: 'Krónan' }, extra: 1 };
     const s = migrate(JSON.parse(JSON.stringify(cur)));
