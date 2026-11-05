@@ -348,13 +348,13 @@
      "url": "https://www.frisco.pl/pid,145050/stn,product"
     },
     "gryczana": {
-     "brand": "Sarita",
-     "name": "Kasza gryczana (4x100g)",
+     "brand": "Kupiec",
+     "name": "Kasza gryczana prażona",
      "size": 400,
      "unit": "g",
-     "price": 3.19,
+     "price": 5.99,
      "currency": "PLN",
-     "url": "https://www.frisco.pl/pid,140565/stn,product"
+     "url": "https://www.frisco.pl/pid,792/stn,product"
     },
     "jeczmienna": {
      "brand": "Kupiec",
@@ -670,15 +670,6 @@
      "price": 109.99,
      "currency": "PLN",
      "url": "https://www.frisco.pl/pid,153999/stn,product"
-    },
-    "maslo_orzechowe": {
-     "brand": "Deseo",
-     "name": "Masło z orzechów arachidowych (100% orzechów arachidowych)",
-     "size": 200,
-     "unit": "g",
-     "price": 23.99,
-     "currency": "PLN",
-     "url": "https://www.frisco.pl/pid,152309/stn,product"
     },
     "miod": {
      "brand": "Pszczelarz Kozacki",
@@ -1111,6 +1102,60 @@
      "price": 3.19,
      "currency": "PLN",
      "url": "https://www.frisco.pl/pid,3171/stn,product"
+    },
+    "smietana_18": {
+     "brand": "Piątnica",
+     "name": "Śmietana 18%",
+     "size": 200,
+     "unit": "g",
+     "price": 2.79,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,1276/stn,product"
+    },
+    "smietanka_30": {
+     "brand": "Bakoma",
+     "name": "Śmietanka kremówka 30%",
+     "size": 200,
+     "unit": "g",
+     "price": 4.89,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,124137/stn,product"
+    },
+    "penne": {
+     "brand": "Barilla",
+     "name": "Makaron penne rigate (pióra nacinane)",
+     "size": 500,
+     "unit": "g",
+     "price": 4.99,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,3/stn,product"
+    },
+    "fusilli": {
+     "brand": "Barilla",
+     "name": "Makaron fusili (świderki)",
+     "size": 500,
+     "unit": "g",
+     "price": 4.99,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,2/stn,product"
+    },
+    "farfalle": {
+     "brand": "Lubella",
+     "name": "Makaron kokardki (farfalle)",
+     "size": 400,
+     "unit": "g",
+     "price": 5.09,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,364/stn,product"
+    },
+    "tagliatelle": {
+     "brand": "Lubella",
+     "name": "Makaron fale (tagliatelle mosse)",
+     "size": 400,
+     "unit": "g",
+     "price": 5.29,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,4288/stn,product"
     },
     "napoj_sojowy": {
      "brand": "Alpro",
@@ -1960,6 +2005,60 @@
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
+    "smietana_18": {
+     "brand": "",
+     "name": "Piątnica Śmietana 18 %, 200 g",
+     "size": 200,
+     "unit": "g",
+     "price": 3.99,
+     "currency": "PLN",
+     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
+    },
+    "smietanka_30": {
+     "brand": "",
+     "name": "Łaciata Śmietanka 30%, 250 ml",
+     "size": 250,
+     "unit": "ml",
+     "price": 7.19,
+     "currency": "PLN",
+     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
+    },
+    "penne": {
+     "brand": "",
+     "name": "Makaron ekologiczny penne rigate, 500 g",
+     "size": 500,
+     "unit": "g",
+     "price": 7.79,
+     "currency": "PLN",
+     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
+    },
+    "fusilli": {
+     "brand": "",
+     "name": "Lubella Makaron świderki, 400 g",
+     "size": 400,
+     "unit": "g",
+     "price": 7.49,
+     "currency": "PLN",
+     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
+    },
+    "farfalle": {
+     "brand": "",
+     "name": "Lubella Makaron kokardki, 400 g",
+     "size": 400,
+     "unit": "g",
+     "price": 7.49,
+     "currency": "PLN",
+     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
+    },
+    "tagliatelle": {
+     "brand": "",
+     "name": "Lubella Makaron wstążki, 400 g",
+     "size": 400,
+     "unit": "g",
+     "price": 7.49,
+     "currency": "PLN",
+     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
+    },
     "napoj_sojowy": {
      "brand": "",
      "name": "Alpro Napój sojowy 1 l",
@@ -2138,7 +2237,7 @@
      "name": "Klettasalat Naturmed",
      "size": 75,
      "unit": "g",
-     "price": 329,
+     "price": 339,
      "currency": "ISK",
      "url": "https://kronan.is/vara/100247270"
     },
@@ -2179,9 +2278,9 @@
     "piers": {
      "brand": "",
      "name": "Holta kjúklingabringur 100%",
-     "size": 640,
+     "size": 700,
      "unit": "g",
-     "price": 2207,
+     "price": 2414,
      "currency": "ISK",
      "url": "https://kronan.is/vara/100201209"
     },
@@ -3069,6 +3168,60 @@
      "price": 350,
      "currency": "ISK",
      "url": "https://kronan.is/vara/100269401"
+    },
+    "smietana_18": {
+     "brand": "",
+     "name": "Mjólka sýrður rjómi 18%",
+     "size": 180,
+     "unit": "g",
+     "price": 360,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/100141786"
+    },
+    "smietanka_30": {
+     "brand": "",
+     "name": "MS rjómi 250 ml",
+     "size": 250,
+     "unit": "ml",
+     "price": 423,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/02500091"
+    },
+    "penne": {
+     "brand": "",
+     "name": "Rummo penne",
+     "size": 500,
+     "unit": "g",
+     "price": 475,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/100243657"
+    },
+    "fusilli": {
+     "brand": "",
+     "name": "Rummo fusilli",
+     "size": 500,
+     "unit": "g",
+     "price": 475,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/100243656"
+    },
+    "farfalle": {
+     "brand": "",
+     "name": "Rummo farfalle n.85",
+     "size": 500,
+     "unit": "g",
+     "price": 475,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/100263617"
+    },
+    "tagliatelle": {
+     "brand": "",
+     "name": "Rummo tagliatelle",
+     "size": 500,
+     "unit": "g",
+     "price": 475,
+     "currency": "ISK",
+     "url": "https://kronan.is/vara/100247049"
     },
     "mleczko_kokosowe": {
      "brand": "",
