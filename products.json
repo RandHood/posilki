@@ -1,10 +1,10 @@
 {
  "version": 1,
- "updated": "2026-11-05",
+ "updated": "2026-11-06",
  "note": "Written by scripts/update-products.mjs. Products are matched by search, so check the label in the store.",
  "stores": {
   "Frisco": {
-   "checked": "2026-11-05",
+   "checked": "2026-11-06",
    "source": "frisco.pl",
    "items": {
     "pomidor": {
@@ -18,7 +18,7 @@
     },
     "ogorek": {
      "brand": "Frisco Fresh",
-     "name": "Ogórek długi import 1 szt.",
+     "name": "Ogórek długi 1szt.",
      "size": 250,
      "unit": "g",
      "price": 3.69,
@@ -671,6 +671,15 @@
      "currency": "PLN",
      "url": "https://www.frisco.pl/pid,153999/stn,product"
     },
+    "maslo_orzechowe": {
+     "brand": "Deseo",
+     "name": "Masło z orzechów arachidowych (100% orzechów arachidowych)",
+     "size": 200,
+     "unit": "g",
+     "price": 23.99,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,152309/stn,product"
+    },
     "miod": {
      "brand": "Pszczelarz Kozacki",
      "name": "Miód lipowy",
@@ -1241,7 +1250,7 @@
    }
   },
   "Wolt Market": {
-   "checked": "2026-11-05",
+   "checked": "2026-11-06",
    "source": "wolt.com",
    "items": {
     "pomidor": {
@@ -1305,10 +1314,10 @@
     },
     "marchew": {
      "brand": "",
-     "name": "Marchew 0,5 kg",
-     "size": 500,
+     "name": "Provitus Marchewka zasmażana, 480 g",
+     "size": 480,
      "unit": "g",
-     "price": 2.99,
+     "price": 8.99,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -2116,7 +2125,7 @@
    }
   },
   "Krónan": {
-   "checked": "2026-11-05",
+   "checked": "2026-11-06",
    "source": "kronan.is",
    "items": {
     "pomidor": {
