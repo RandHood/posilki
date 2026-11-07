@@ -1,10 +1,10 @@
 {
  "version": 1,
- "updated": "2026-11-06",
+ "updated": "2026-11-07",
  "note": "Written by scripts/update-products.mjs. Products are matched by search, so check the label in the store.",
  "stores": {
   "Frisco": {
-   "checked": "2026-11-06",
+   "checked": "2026-11-07",
    "source": "frisco.pl",
    "items": {
     "pomidor": {
@@ -111,7 +111,7 @@
      "name": "Dynia Hokkaido",
      "size": 800,
      "unit": "g",
-     "price": 5.29,
+     "price": 4.29,
      "currency": "PLN",
      "url": "https://www.frisco.pl/pid,39135/stn,product"
     },
@@ -138,7 +138,7 @@
      "name": "Rukola",
      "size": 100,
      "unit": "g",
-     "price": 4.99,
+     "price": 5.29,
      "currency": "PLN",
      "url": "https://www.frisco.pl/pid,47699/stn,product"
     },
@@ -183,7 +183,7 @@
      "name": "Filet z piersi z kurczaka (400g-600g)",
      "size": 500,
      "unit": "g",
-     "price": 15.99,
+     "price": 14.99,
      "currency": "PLN",
      "url": "https://www.frisco.pl/pid,132948/stn,product"
     },
@@ -192,7 +192,7 @@
      "name": "Mięso mielone na kotlety z indyka",
      "size": 500,
      "unit": "g",
-     "price": 13.99,
+     "price": 13.49,
      "currency": "PLN",
      "url": "https://www.frisco.pl/pid,8546/stn,product"
     },
@@ -237,16 +237,16 @@
      "name": "Szynka z piersi indyka -plastry",
      "size": 120,
      "unit": "g",
-     "price": 8.79,
+     "price": 8.39,
      "currency": "PLN",
      "url": "https://www.frisco.pl/pid,40161/stn,product"
     },
     "jajka": {
-     "brand": "Wybiegane Kury",
-     "name": "Jaja wiejskie od zielonej nóżki - 10 szt.",
-     "price": 16.99,
+     "brand": "Kotlina Natury",
+     "name": "Jaja od kury zielononóżki - 10 szt.",
+     "price": 14.69,
      "currency": "PLN",
-     "url": "https://www.frisco.pl/pid,102471/stn,product"
+     "url": "https://www.frisco.pl/pid,149254/stn,product"
     },
     "twarog": {
      "brand": "Kanka",
@@ -847,7 +847,7 @@
      "name": "Truskawki",
      "size": 500,
      "unit": "g",
-     "price": 24.99,
+     "price": 28.99,
      "currency": "PLN",
      "url": "https://www.frisco.pl/pid,3415/stn,product"
     },
@@ -856,7 +856,7 @@
      "name": "Gruszka Lukasówka 3-4 szt. (800g-1200g)",
      "size": 1000,
      "unit": "g",
-     "price": 8.69,
+     "price": 8.89,
      "currency": "PLN",
      "url": "https://www.frisco.pl/pid,39672/stn,product"
     },
@@ -865,7 +865,7 @@
      "name": "Pomarańcze deserowe 3-4 szt. (960g-1440g)",
      "size": 1200,
      "unit": "g",
-     "price": 11.99,
+     "price": 9.59,
      "currency": "PLN",
      "url": "https://www.frisco.pl/pid,12075/stn,product"
     },
@@ -874,7 +874,7 @@
      "name": "Kiwi sztuka",
      "size": 80,
      "unit": "g",
-     "price": 2.19,
+     "price": 1.99,
      "currency": "PLN",
      "url": "https://www.frisco.pl/pid,147225/stn,product"
     },
@@ -937,7 +937,7 @@
      "name": "Jarmuż pęczek",
      "size": 250,
      "unit": "g",
-     "price": 6.49,
+     "price": 7.09,
      "currency": "PLN",
      "url": "https://www.frisco.pl/pid,87183/stn,product"
     },
@@ -955,7 +955,7 @@
      "name": "Limonka 1szt.",
      "size": 70,
      "unit": "g",
-     "price": 2.39,
+     "price": 2.49,
      "currency": "PLN",
      "url": "https://www.frisco.pl/pid,121523/stn,product"
     },
@@ -964,7 +964,7 @@
      "name": "Imbir świeży kłącze 1 szt. (160g-240g)",
      "size": 200,
      "unit": "g",
-     "price": 3.99,
+     "price": 4.29,
      "currency": "PLN",
      "url": "https://www.frisco.pl/pid,4078/stn,product"
     },
@@ -991,7 +991,7 @@
      "name": "Schab wieprzowy bez kości",
      "size": 630,
      "unit": "g",
-     "price": 22.79,
+     "price": 20.99,
      "currency": "PLN",
      "url": "https://www.frisco.pl/pid,3380/stn,product"
     },
@@ -1000,7 +1000,7 @@
      "name": "Polędwiczka wieprzowa (400g-600g)",
      "size": 500,
      "unit": "g",
-     "price": 20.49,
+     "price": 22.49,
      "currency": "PLN",
      "url": "https://www.frisco.pl/pid,141014/stn,product"
     },
@@ -1250,7 +1250,7 @@
    }
   },
   "Wolt Market": {
-   "checked": "2026-11-06",
+   "checked": "2026-11-07",
    "source": "wolt.com",
    "items": {
     "pomidor": {
@@ -1314,10 +1314,10 @@
     },
     "marchew": {
      "brand": "",
-     "name": "Provitus Marchewka zasmażana, 480 g",
-     "size": 480,
+     "name": "Marchew 0,5 kg",
+     "size": 500,
      "unit": "g",
-     "price": 8.99,
+     "price": 2.99,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -1366,10 +1366,10 @@
     },
     "jablko": {
      "brand": "",
-     "name": "Jabłka 0.5kg",
-     "size": 500,
+     "name": "Krasnystaw Owsianka na jogurcie z jabłkiem, 250 g",
+     "size": 250,
      "unit": "g",
-     "price": 4.39,
+     "price": 4.99,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -1821,8 +1821,10 @@
     },
     "awokado": {
      "brand": "",
-     "name": "Awokado sztuka",
-     "price": 8.99,
+     "name": "Maska do włosów odżywcza awokado i masło shea 300ml",
+     "size": 300,
+     "unit": "ml",
+     "price": 14.99,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -2125,7 +2127,7 @@
    }
   },
   "Krónan": {
-   "checked": "2026-11-06",
+   "checked": "2026-11-07",
    "source": "kronan.is",
    "items": {
     "pomidor": {
