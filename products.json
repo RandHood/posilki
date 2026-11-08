@@ -1,10 +1,10 @@
 {
  "version": 1,
- "updated": "2026-11-07",
+ "updated": "2026-11-08",
  "note": "Written by scripts/update-products.mjs. Products are matched by search, so check the label in the store.",
  "stores": {
   "Frisco": {
-   "checked": "2026-11-07",
+   "checked": "2026-11-08",
    "source": "frisco.pl",
    "items": {
     "pomidor": {
@@ -1250,7 +1250,7 @@
    }
   },
   "Wolt Market": {
-   "checked": "2026-11-07",
+   "checked": "2026-11-08",
    "source": "wolt.com",
    "items": {
     "pomidor": {
@@ -1366,10 +1366,10 @@
     },
     "jablko": {
      "brand": "",
-     "name": "Krasnystaw Owsianka na jogurcie z jabłkiem, 250 g",
-     "size": 250,
+     "name": "Jabłka 0.5kg",
+     "size": 500,
      "unit": "g",
-     "price": 4.99,
+     "price": 4.39,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -1573,15 +1573,6 @@
      "size": 400,
      "unit": "g",
      "price": 9.99,
-     "currency": "PLN",
-     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
-    },
-    "fasola": {
-     "brand": "",
-     "name": "Cenos Fasola czerwona, 400 g",
-     "size": 400,
-     "unit": "g",
-     "price": 9.49,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -1821,10 +1812,8 @@
     },
     "awokado": {
      "brand": "",
-     "name": "Maska do włosów odżywcza awokado i masło shea 300ml",
-     "size": 300,
-     "unit": "ml",
-     "price": 14.99,
+     "name": "Awokado sztuka",
+     "price": 8.99,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -2127,7 +2116,7 @@
    }
   },
   "Krónan": {
-   "checked": "2026-11-07",
+   "checked": "2026-11-08",
    "source": "kronan.is",
    "items": {
     "pomidor": {
