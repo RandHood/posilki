@@ -1,10 +1,10 @@
 {
  "version": 1,
- "updated": "2026-11-08",
+ "updated": "2026-11-09",
  "note": "Written by scripts/update-products.mjs. Products are matched by search, so check the label in the store.",
  "stores": {
   "Frisco": {
-   "checked": "2026-11-08",
+   "checked": "2026-11-09",
    "source": "frisco.pl",
    "items": {
     "pomidor": {
@@ -1131,13 +1131,13 @@
      "url": "https://www.frisco.pl/pid,124137/stn,product"
     },
     "penne": {
-     "brand": "Barilla",
-     "name": "Makaron penne rigate (pióra nacinane)",
+     "brand": "Rummo",
+     "name": "Makaron penne rigate (rurki skośne)",
      "size": 500,
      "unit": "g",
-     "price": 4.99,
+     "price": 9.99,
      "currency": "PLN",
-     "url": "https://www.frisco.pl/pid,3/stn,product"
+     "url": "https://www.frisco.pl/pid,141103/stn,product"
     },
     "fusilli": {
      "brand": "Barilla",
@@ -1250,7 +1250,7 @@
    }
   },
   "Wolt Market": {
-   "checked": "2026-11-08",
+   "checked": "2026-11-09",
    "source": "wolt.com",
    "items": {
     "pomidor": {
@@ -1339,13 +1339,6 @@
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
-    "rzodkiewki": {
-     "brand": "",
-     "name": "Rzodkiewka pęczek sztuka",
-     "price": 4.99,
-     "currency": "PLN",
-     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
-    },
     "salata": {
      "brand": "",
      "name": "Mioorto mix sałat fantasia, 150 g",
@@ -1379,13 +1372,6 @@
      "size": 300,
      "unit": "g",
      "price": 6.99,
-     "currency": "PLN",
-     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
-    },
-    "szczypiorek": {
-     "brand": "",
-     "name": "Szczypior drobny pęczek",
-     "price": 4.99,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -1794,7 +1780,7 @@
     },
     "tost": {
      "brand": "",
-     "name": "Tost pełnoziarnisty, 500 g",
+     "name": "Carrefour Chleb tostowy pszenny, 500 g",
      "size": 500,
      "unit": "g",
      "price": 5.99,
@@ -1871,8 +1857,10 @@
     },
     "por": {
      "brand": "",
-     "name": "Por sztuka",
-     "price": 5.99,
+     "name": "Porzeczki w czekoladzie, 80 g",
+     "size": 80,
+     "unit": "g",
+     "price": 6.99,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -1883,35 +1871,21 @@
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
-    "pomidorki": {
-     "brand": "",
-     "name": "Pomidor daktylowy /cherry 250 g",
-     "size": 250,
-     "unit": "g",
-     "price": 10.99,
-     "currency": "PLN",
-     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
-    },
     "limonka": {
      "brand": "",
-     "name": "Limonka 250g",
-     "size": 250,
+     "name": "Halls Cukierki o smaku limonki, 33.5 g",
+     "size": 33.5,
      "unit": "g",
-     "price": 8.99,
-     "currency": "PLN",
-     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
-    },
-    "koperek": {
-     "brand": "",
-     "name": "Koperek pęczek",
-     "price": 4.59,
+     "price": 4.49,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
     "pietruszka": {
      "brand": "",
-     "name": "Natka pietruszki pęczek",
-     "price": 4.59,
+     "name": "Kamis Natka pietruszki, 8 g",
+     "size": 8,
+     "unit": "g",
+     "price": 3.99,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -2116,7 +2090,7 @@
    }
   },
   "Krónan": {
-   "checked": "2026-11-08",
+   "checked": "2026-11-09",
    "source": "kronan.is",
    "items": {
     "pomidor": {
