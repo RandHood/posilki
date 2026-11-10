@@ -1,10 +1,10 @@
 {
  "version": 1,
- "updated": "2026-11-09",
+ "updated": "2026-11-10",
  "note": "Written by scripts/update-products.mjs. Products are matched by search, so check the label in the store.",
  "stores": {
   "Frisco": {
-   "checked": "2026-11-09",
+   "checked": "2026-11-10",
    "source": "frisco.pl",
    "items": {
     "pomidor": {
@@ -487,7 +487,7 @@
      "name": "Fasolka zielona szparagowa mrożona",
      "size": 450,
      "unit": "g",
-     "price": 6.39,
+     "price": 5.75,
      "currency": "PLN",
      "url": "https://www.frisco.pl/pid,46055/stn,product"
     },
@@ -1250,7 +1250,7 @@
    }
   },
   "Wolt Market": {
-   "checked": "2026-11-09",
+   "checked": "2026-11-10",
    "source": "wolt.com",
    "items": {
     "pomidor": {
@@ -1341,10 +1341,10 @@
     },
     "salata": {
      "brand": "",
-     "name": "Mioorto mix sałat fantasia, 150 g",
-     "size": 150,
+     "name": "GRAAL Salatino Tuńczyk z kuskusem perłowym i suszonymi pomidorami, 160 g",
+     "size": 160,
      "unit": "g",
-     "price": 7.99,
+     "price": 14.99,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -1841,8 +1841,10 @@
     },
     "kiwi": {
      "brand": "",
-     "name": "Kiwi szt",
-     "price": 3.69,
+     "name": "Dr. Oetker Galaretka o smaku kiwi, 72 g",
+     "size": 72,
+     "unit": "g",
+     "price": 2.99,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -2090,7 +2092,7 @@
    }
   },
   "Krónan": {
-   "checked": "2026-11-09",
+   "checked": "2026-11-10",
    "source": "kronan.is",
    "items": {
     "pomidor": {
@@ -2270,9 +2272,9 @@
     "indyk_filet": {
      "brand": "",
      "name": "Gourmet Quality kalkúnabringa án skinns",
-     "size": 1370,
+     "size": 1300,
      "unit": "g",
-     "price": 3835,
+     "price": 3639,
      "currency": "ISK",
      "url": "https://kronan.is/vara/100260264"
     },
@@ -2326,7 +2328,7 @@
      "name": "KEA skyr hreint 200gr",
      "size": 200,
      "unit": "g",
-     "price": 250,
+     "price": 241,
      "currency": "ISK",
      "url": "https://kronan.is/vara/02500190"
     },
@@ -2371,7 +2373,7 @@
      "name": "MS ab mjólk",
      "size": 1000,
      "unit": "ml",
-     "price": 534,
+     "price": 540,
      "currency": "ISK",
      "url": "https://kronan.is/vara/02500059"
     },
@@ -2380,7 +2382,7 @@
      "name": "MS smjör 250gr",
      "size": 250,
      "unit": "g",
-     "price": 478,
+     "price": 486,
      "currency": "ISK",
      "url": "https://kronan.is/vara/02400002"
     },
@@ -2767,7 +2769,7 @@
      "name": "Krónu chia fræ",
      "size": 200,
      "unit": "g",
-     "price": 289,
+     "price": 279,
      "currency": "ISK",
      "url": "https://kronan.is/vara/100262531"
     },
