@@ -1,10 +1,10 @@
 {
  "version": 1,
- "updated": "2026-11-10",
+ "updated": "2026-11-11",
  "note": "Written by scripts/update-products.mjs. Products are matched by search, so check the label in the store.",
  "stores": {
   "Frisco": {
-   "checked": "2026-11-10",
+   "checked": "2026-11-11",
    "source": "frisco.pl",
    "items": {
     "pomidor": {
@@ -671,15 +671,6 @@
      "currency": "PLN",
      "url": "https://www.frisco.pl/pid,153999/stn,product"
     },
-    "maslo_orzechowe": {
-     "brand": "Deseo",
-     "name": "Masło z orzechów arachidowych (100% orzechów arachidowych)",
-     "size": 200,
-     "unit": "g",
-     "price": 23.99,
-     "currency": "PLN",
-     "url": "https://www.frisco.pl/pid,152309/stn,product"
-    },
     "miod": {
      "brand": "Pszczelarz Kozacki",
      "name": "Miód lipowy",
@@ -1131,13 +1122,13 @@
      "url": "https://www.frisco.pl/pid,124137/stn,product"
     },
     "penne": {
-     "brand": "Rummo",
-     "name": "Makaron penne rigate (rurki skośne)",
+     "brand": "Barilla",
+     "name": "Makaron penne rigate (pióra nacinane)",
      "size": 500,
      "unit": "g",
-     "price": 9.99,
+     "price": 4.99,
      "currency": "PLN",
-     "url": "https://www.frisco.pl/pid,141103/stn,product"
+     "url": "https://www.frisco.pl/pid,3/stn,product"
     },
     "fusilli": {
      "brand": "Barilla",
@@ -1250,7 +1241,7 @@
    }
   },
   "Wolt Market": {
-   "checked": "2026-11-10",
+   "checked": "2026-11-11",
    "source": "wolt.com",
    "items": {
     "pomidor": {
@@ -1267,7 +1258,7 @@
      "name": "Ogórek krótki 250g",
      "size": 250,
      "unit": "g",
-     "price": 4.49,
+     "price": 6.49,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -1276,7 +1267,7 @@
      "name": "Papryka czerwona 300g",
      "size": 300,
      "unit": "g",
-     "price": 9.99,
+     "price": 12.99,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -1359,10 +1350,10 @@
     },
     "jablko": {
      "brand": "",
-     "name": "Jabłka 0.5kg",
-     "size": 500,
+     "name": "Krasnystaw Owsianka na jogurcie z jabłkiem, 250 g",
+     "size": 250,
      "unit": "g",
-     "price": 4.39,
+     "price": 4.99,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -1562,6 +1553,15 @@
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
+    "fasola": {
+     "brand": "",
+     "name": "Rolnik Urodzaj smaku Fasola czerwona, 400 g",
+     "size": 400,
+     "unit": "g",
+     "price": 4.99,
+     "currency": "PLN",
+     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
+    },
     "hummus": {
      "brand": "",
      "name": "Hummus trio mix, 210 g",
@@ -1582,8 +1582,8 @@
     },
     "warzywa_mr": {
      "brand": "",
-     "name": "Hortex Warzywa na patelnię z suszonymi pomidorami, 400 g",
-     "size": 400,
+     "name": "Hortex Warzywa na patelnię, 450 g",
+     "size": 450,
      "unit": "g",
      "price": 12.99,
      "currency": "PLN",
@@ -1780,7 +1780,7 @@
     },
     "tost": {
      "brand": "",
-     "name": "Carrefour Chleb tostowy pszenny, 500 g",
+     "name": "Tost pełnoziarnisty, 500 g",
      "size": 500,
      "unit": "g",
      "price": 5.99,
@@ -1841,10 +1841,8 @@
     },
     "kiwi": {
      "brand": "",
-     "name": "Dr. Oetker Galaretka o smaku kiwi, 72 g",
-     "size": 72,
-     "unit": "g",
-     "price": 2.99,
+     "name": "Kiwi szt",
+     "price": 3.69,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -1859,10 +1857,8 @@
     },
     "por": {
      "brand": "",
-     "name": "Porzeczki w czekoladzie, 80 g",
-     "size": 80,
-     "unit": "g",
-     "price": 6.99,
+     "name": "Por sztuka",
+     "price": 5.99,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -1873,21 +1869,35 @@
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
+    "pomidorki": {
+     "brand": "",
+     "name": "Pomidor daktylowy /cherry 250 g",
+     "size": 250,
+     "unit": "g",
+     "price": 10.99,
+     "currency": "PLN",
+     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
+    },
     "limonka": {
      "brand": "",
-     "name": "Halls Cukierki o smaku limonki, 33.5 g",
-     "size": 33.5,
+     "name": "Limonka 250g",
+     "size": 250,
      "unit": "g",
-     "price": 4.49,
+     "price": 8.99,
+     "currency": "PLN",
+     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
+    },
+    "koperek": {
+     "brand": "",
+     "name": "Koperek pęczek",
+     "price": 4.59,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
     "pietruszka": {
      "brand": "",
-     "name": "Kamis Natka pietruszki, 8 g",
-     "size": 8,
-     "unit": "g",
-     "price": 3.99,
+     "name": "Natka pietruszki pęczek",
+     "price": 4.59,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -2092,7 +2102,7 @@
    }
   },
   "Krónan": {
-   "checked": "2026-11-10",
+   "checked": "2026-11-11",
    "source": "kronan.is",
    "items": {
     "pomidor": {
@@ -2882,7 +2892,7 @@
     "gruszka": {
      "brand": "",
      "name": "perur conference",
-     "price": 105,
+     "price": 109,
      "currency": "ISK",
      "url": "https://kronan.is/vara/100253617"
     },
@@ -2925,9 +2935,9 @@
     "por": {
      "brand": "",
      "name": "Blaðlaukur",
-     "size": 210,
+     "size": 350,
      "unit": "g",
-     "price": 99,
+     "price": 159,
      "currency": "ISK",
      "url": "https://kronan.is/vara/01000593"
     },
