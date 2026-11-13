@@ -1,10 +1,10 @@
 {
  "version": 1,
- "updated": "2026-11-12",
+ "updated": "2026-11-13",
  "note": "Written by scripts/update-products.mjs. Products are matched by search, so check the label in the store.",
  "stores": {
   "Frisco": {
-   "checked": "2026-11-12",
+   "checked": "2026-11-13",
    "source": "frisco.pl",
    "items": {
     "pomidor": {
@@ -322,12 +322,12 @@
     },
     "tortilla": {
      "brand": "Tortilove",
-     "name": "Tortilla wieloziarnista - 25 cm (4 szt.)",
+     "name": "Tortilla pełnoziarnista - 25 cm (4 szt.)",
      "size": 240,
      "unit": "g",
      "price": 4.29,
      "currency": "PLN",
-     "url": "https://www.frisco.pl/pid,142193/stn,product"
+     "url": "https://www.frisco.pl/pid,142192/stn,product"
     },
     "platki": {
      "brand": "Melvit",
@@ -834,13 +834,13 @@
      "url": "https://www.frisco.pl/pid,12037/stn,product"
     },
     "truskawki": {
-     "brand": "Frisco Fresh",
-     "name": "Truskawki",
+     "brand": "Żołądkowa Gorzka",
+     "name": "Truskawka & Rabarbar",
      "size": 500,
-     "unit": "g",
-     "price": 28.99,
+     "unit": "ml",
+     "price": 32.99,
      "currency": "PLN",
-     "url": "https://www.frisco.pl/pid,3415/stn,product"
+     "url": "https://www.frisco.pl/pid,151099/stn,product"
     },
     "gruszka": {
      "brand": "Frisco Fresh",
@@ -1122,13 +1122,13 @@
      "url": "https://www.frisco.pl/pid,124137/stn,product"
     },
     "penne": {
-     "brand": "Barilla",
-     "name": "Makaron penne rigate (pióra nacinane)",
+     "brand": "Rummo",
+     "name": "Makaron penne rigate (rurki skośne)",
      "size": 500,
      "unit": "g",
-     "price": 4.99,
+     "price": 9.99,
      "currency": "PLN",
-     "url": "https://www.frisco.pl/pid,3/stn,product"
+     "url": "https://www.frisco.pl/pid,141103/stn,product"
     },
     "fusilli": {
      "brand": "Barilla",
@@ -1241,7 +1241,7 @@
    }
   },
   "Wolt Market": {
-   "checked": "2026-11-12",
+   "checked": "2026-11-13",
    "source": "wolt.com",
    "items": {
     "pomidor": {
@@ -1465,10 +1465,10 @@
     },
     "gryczana": {
      "brand": "",
-     "name": "Sante Kasza gryczana prażona, 350 g",
-     "size": 350,
+     "name": "Cenos Kasza gryczana prażona (4 x 100 g), 400 g",
+     "size": 100,
      "unit": "g",
-     "price": 7.99,
+     "price": 9.99,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -2079,7 +2079,7 @@
    }
   },
   "Krónan": {
-   "checked": "2026-11-12",
+   "checked": "2026-11-13",
    "source": "kronan.is",
    "items": {
     "pomidor": {
@@ -2200,7 +2200,7 @@
      "name": "Klettasalat Naturmed",
      "size": 75,
      "unit": "g",
-     "price": 339,
+     "price": 329,
      "currency": "ISK",
      "url": "https://kronan.is/vara/100247270"
     },
@@ -2369,7 +2369,7 @@
      "name": "MS smjör 250gr",
      "size": 250,
      "unit": "g",
-     "price": 486,
+     "price": 478,
      "currency": "ISK",
      "url": "https://kronan.is/vara/02400002"
     },
@@ -2862,7 +2862,7 @@
      "name": "BelOrta jarðarber 500g",
      "size": 500,
      "unit": "g",
-     "price": 1398,
+     "price": 1479,
      "currency": "ISK",
      "url": "https://kronan.is/vara/100254313"
     },
@@ -3074,7 +3074,7 @@
      "name": "Ambrosi mozzarella",
      "size": 125,
      "unit": "g",
-     "price": 499,
+     "price": 539,
      "currency": "ISK",
      "url": "https://kronan.is/vara/100246180"
     },
@@ -3110,7 +3110,7 @@
      "name": "Ambrosi ricotta",
      "size": 250,
      "unit": "g",
-     "price": 599,
+     "price": 639,
      "currency": "ISK",
      "url": "https://kronan.is/vara/100253509"
     },
