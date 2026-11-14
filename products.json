@@ -1,10 +1,10 @@
 {
  "version": 1,
- "updated": "2026-11-13",
+ "updated": "2026-11-14",
  "note": "Written by scripts/update-products.mjs. Products are matched by search, so check the label in the store.",
  "stores": {
   "Frisco": {
-   "checked": "2026-11-13",
+   "checked": "2026-11-14",
    "source": "frisco.pl",
    "items": {
     "pomidor": {
@@ -102,7 +102,7 @@
      "name": "Cukinia zielona 2-3 szt. (680g-1020g)",
      "size": 850,
      "unit": "g",
-     "price": 6.79,
+     "price": 6.49,
      "currency": "PLN",
      "url": "https://www.frisco.pl/pid,4116/stn,product"
     },
@@ -111,7 +111,7 @@
      "name": "Dynia Hokkaido",
      "size": 800,
      "unit": "g",
-     "price": 4.29,
+     "price": 4.49,
      "currency": "PLN",
      "url": "https://www.frisco.pl/pid,39135/stn,product"
     },
@@ -138,7 +138,7 @@
      "name": "Rukola",
      "size": 100,
      "unit": "g",
-     "price": 5.29,
+     "price": 4.99,
      "currency": "PLN",
      "url": "https://www.frisco.pl/pid,47699/stn,product"
     },
@@ -192,7 +192,7 @@
      "name": "Mięso mielone na kotlety z indyka",
      "size": 500,
      "unit": "g",
-     "price": 13.49,
+     "price": 13.99,
      "currency": "PLN",
      "url": "https://www.frisco.pl/pid,8546/stn,product"
     },
@@ -201,7 +201,7 @@
      "name": "Filet z piersi indyka mrożony BIO",
      "size": 400,
      "unit": "g",
-     "price": 65.99,
+     "price": 72.49,
      "currency": "PLN",
      "url": "https://www.frisco.pl/pid,151942/stn,product"
     },
@@ -237,7 +237,7 @@
      "name": "Szynka z piersi indyka -plastry",
      "size": 120,
      "unit": "g",
-     "price": 8.39,
+     "price": 8.79,
      "currency": "PLN",
      "url": "https://www.frisco.pl/pid,40161/stn,product"
     },
@@ -671,6 +671,15 @@
      "currency": "PLN",
      "url": "https://www.frisco.pl/pid,153999/stn,product"
     },
+    "maslo_orzechowe": {
+     "brand": "Deseo",
+     "name": "Masło z orzechów arachidowych (100% orzechów arachidowych)",
+     "size": 200,
+     "unit": "g",
+     "price": 23.99,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,152309/stn,product"
+    },
     "miod": {
      "brand": "Pszczelarz Kozacki",
      "name": "Miód lipowy",
@@ -685,7 +694,7 @@
      "name": "Kakao (extra ciemne)",
      "size": 150,
      "unit": "g",
-     "price": 12.99,
+     "price": 15.99,
      "currency": "PLN",
      "url": "https://www.frisco.pl/pid,291/stn,product"
     },
@@ -816,13 +825,13 @@
      "url": "https://www.frisco.pl/pid,3433/stn,product"
     },
     "awokado": {
-     "brand": "Frisco Organic",
-     "name": "Awokado świeże BIO 5-6szt.",
-     "size": 650,
+     "brand": "Mowi",
+     "name": "Wrap łosoś i awokado",
+     "size": 210,
      "unit": "g",
-     "price": 29.99,
+     "price": 17.99,
      "currency": "PLN",
-     "url": "https://www.frisco.pl/pid,146347/stn,product"
+     "url": "https://www.frisco.pl/pid,157611/stn,product"
     },
     "borowki": {
      "brand": "Frisco Fresh",
@@ -847,7 +856,7 @@
      "name": "Gruszka Lukasówka 3-4 szt. (800g-1200g)",
      "size": 1000,
      "unit": "g",
-     "price": 8.89,
+     "price": 7.69,
      "currency": "PLN",
      "url": "https://www.frisco.pl/pid,39672/stn,product"
     },
@@ -919,7 +928,7 @@
      "name": "Bakłażan 1-2 szt. (320g-480g)",
      "size": 400,
      "unit": "g",
-     "price": 4.99,
+     "price": 4.49,
      "currency": "PLN",
      "url": "https://www.frisco.pl/pid,4095/stn,product"
     },
@@ -928,7 +937,7 @@
      "name": "Jarmuż pęczek",
      "size": 250,
      "unit": "g",
-     "price": 7.09,
+     "price": 6.09,
      "currency": "PLN",
      "url": "https://www.frisco.pl/pid,87183/stn,product"
     },
@@ -946,7 +955,7 @@
      "name": "Limonka 1szt.",
      "size": 70,
      "unit": "g",
-     "price": 2.49,
+     "price": 1.99,
      "currency": "PLN",
      "url": "https://www.frisco.pl/pid,121523/stn,product"
     },
@@ -955,7 +964,7 @@
      "name": "Imbir świeży kłącze 1 szt. (160g-240g)",
      "size": 200,
      "unit": "g",
-     "price": 4.29,
+     "price": 4.89,
      "currency": "PLN",
      "url": "https://www.frisco.pl/pid,4078/stn,product"
     },
@@ -982,7 +991,7 @@
      "name": "Schab wieprzowy bez kości",
      "size": 630,
      "unit": "g",
-     "price": 20.99,
+     "price": 22.79,
      "currency": "PLN",
      "url": "https://www.frisco.pl/pid,3380/stn,product"
     },
@@ -1207,7 +1216,7 @@
      "name": "Ogórki kiszone krajowe",
      "size": 400,
      "unit": "g",
-     "price": 6.79,
+     "price": 6.49,
      "currency": "PLN",
      "url": "https://www.frisco.pl/pid,12041/stn,product"
     },
@@ -1241,7 +1250,7 @@
    }
   },
   "Wolt Market": {
-   "checked": "2026-11-13",
+   "checked": "2026-11-14",
    "source": "wolt.com",
    "items": {
     "pomidor": {
@@ -1255,10 +1264,10 @@
     },
     "ogorek": {
      "brand": "",
-     "name": "Ogórek krótki 250g",
+     "name": "Ogórek gruntowy 0,25kg",
      "size": 250,
      "unit": "g",
-     "price": 6.49,
+     "price": 6.79,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -1314,10 +1323,10 @@
     },
     "ziemniaki": {
      "brand": "",
-     "name": "Ziemniak jadalny do gotowania, 2 kg",
-     "size": 2000,
+     "name": "Ziemniaki 1kg",
+     "size": 1000,
      "unit": "g",
-     "price": 11.99,
+     "price": 3.99,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -1330,12 +1339,19 @@
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
+    "rzodkiewki": {
+     "brand": "",
+     "name": "Rzodkiewka pęczek sztuka",
+     "price": 4.99,
+     "currency": "PLN",
+     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
+    },
     "salata": {
      "brand": "",
-     "name": "GRAAL Salatino Tuńczyk z kuskusem perłowym i suszonymi pomidorami, 160 g",
-     "size": 160,
+     "name": "Mioorto mix sałat fantasia, 150 g",
+     "size": 150,
      "unit": "g",
-     "price": 14.99,
+     "price": 7.99,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -1363,6 +1379,13 @@
      "size": 300,
      "unit": "g",
      "price": 6.99,
+     "currency": "PLN",
+     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
+    },
+    "szczypiorek": {
+     "brand": "",
+     "name": "Szczypior drobny pęczek",
+     "price": 4.99,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -1846,6 +1869,15 @@
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
+    "cebula_czerwona": {
+     "brand": "",
+     "name": "Cebula czerwona obierana 0,5 kg",
+     "size": 500,
+     "unit": "g",
+     "price": 7.49,
+     "currency": "PLN",
+     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
+    },
     "por": {
      "brand": "",
      "name": "Por sztuka",
@@ -1860,6 +1892,15 @@
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
+    "pomidorki": {
+     "brand": "",
+     "name": "Pomidor daktylowy /cherry 250 g",
+     "size": 250,
+     "unit": "g",
+     "price": 10.99,
+     "currency": "PLN",
+     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
+    },
     "limonka": {
      "brand": "",
      "name": "Limonka 250g",
@@ -1869,12 +1910,17 @@
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
+    "koperek": {
+     "brand": "",
+     "name": "Koperek pęczek",
+     "price": 4.59,
+     "currency": "PLN",
+     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
+    },
     "pietruszka": {
      "brand": "",
-     "name": "Kamis Natka pietruszki, 8 g",
-     "size": 8,
-     "unit": "g",
-     "price": 3.99,
+     "name": "Natka pietruszki pęczek",
+     "price": 4.59,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -2079,7 +2125,7 @@
    }
   },
   "Krónan": {
-   "checked": "2026-11-13",
+   "checked": "2026-11-14",
    "source": "kronan.is",
    "items": {
     "pomidor": {
@@ -2261,7 +2307,7 @@
      "name": "Ísfugl Kalkúnabringa elduð salvía",
      "size": 450,
      "unit": "g",
-     "price": 3240,
+     "price": 3352,
      "currency": "ISK",
      "url": "https://kronan.is/vara/00301278"
     },
@@ -2522,7 +2568,7 @@
      "name": "Kikkoman sojasósa",
      "size": 150,
      "unit": "ml",
-     "price": 465,
+     "price": 470,
      "currency": "ISK",
      "url": "https://kronan.is/vara/03701064"
     },
@@ -3083,7 +3129,7 @@
      "name": "Ambrosi parmigiano reggiano",
      "size": 150,
      "unit": "g",
-     "price": 899,
+     "price": 999,
      "currency": "ISK",
      "url": "https://kronan.is/vara/100237727"
     },
