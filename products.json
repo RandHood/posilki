@@ -1,10 +1,10 @@
 {
  "version": 1,
- "updated": "2026-11-16",
+ "updated": "2026-11-17",
  "note": "Written by scripts/update-products.mjs. Products are matched by search, so check the label in the store.",
  "stores": {
   "Frisco": {
-   "checked": "2026-11-16",
+   "checked": "2026-11-17",
    "source": "frisco.pl",
    "items": {
     "pomidor": {
@@ -258,13 +258,13 @@
      "url": "https://www.frisco.pl/pid,142601/stn,product"
     },
     "jogurt": {
-     "brand": "Bieluch",
+     "brand": "Kanka",
      "name": "Jogurt naturalny",
      "size": 400,
      "unit": "g",
-     "price": 6.39,
+     "price": 2.99,
      "currency": "PLN",
-     "url": "https://www.frisco.pl/pid,4236/stn,product"
+     "url": "https://www.frisco.pl/pid,142614/stn,product"
     },
     "serek": {
      "brand": "Kanka",
@@ -303,13 +303,13 @@
      "url": "https://www.frisco.pl/pid,129541/stn,product"
     },
     "maslo": {
-     "brand": "Polmlek",
+     "brand": "Osm Łowicz",
      "name": "Masło extra",
      "size": 200,
      "unit": "g",
      "price": 5.99,
      "currency": "PLN",
-     "url": "https://www.frisco.pl/pid,11515/stn,product"
+     "url": "https://www.frisco.pl/pid,125853/stn,product"
     },
     "chleb": {
      "brand": "Biopiekarnia",
@@ -670,6 +670,15 @@
      "price": 109.99,
      "currency": "PLN",
      "url": "https://www.frisco.pl/pid,153999/stn,product"
+    },
+    "maslo_orzechowe": {
+     "brand": "Deseo",
+     "name": "Masło z orzechów arachidowych (100% orzechów arachidowych)",
+     "size": 200,
+     "unit": "g",
+     "price": 23.99,
+     "currency": "PLN",
+     "url": "https://www.frisco.pl/pid,152309/stn,product"
     },
     "miod": {
      "brand": "Pszczelarz Kozacki",
@@ -1241,7 +1250,7 @@
    }
   },
   "Wolt Market": {
-   "checked": "2026-11-16",
+   "checked": "2026-11-17",
    "source": "wolt.com",
    "items": {
     "pomidor": {
@@ -1264,10 +1273,10 @@
     },
     "papryka": {
      "brand": "",
-     "name": "Papryka czerwona nadziewana serem, 150 g",
-     "size": 150,
+     "name": "Papryka czerwona 300g",
+     "size": 300,
      "unit": "g",
-     "price": 8.99,
+     "price": 12.99,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -1330,13 +1339,6 @@
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
-    "rzodkiewki": {
-     "brand": "",
-     "name": "Rzodkiewka pęczek sztuka",
-     "price": 4.99,
-     "currency": "PLN",
-     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
-    },
     "salata": {
      "brand": "",
      "name": "Mioorto mix sałat fantasia, 150 g",
@@ -1370,13 +1372,6 @@
      "size": 300,
      "unit": "g",
      "price": 6.99,
-     "currency": "PLN",
-     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
-    },
-    "szczypiorek": {
-     "brand": "",
-     "name": "Szczypior drobny pęczek",
-     "price": 4.99,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -1443,10 +1438,10 @@
     },
     "chleb": {
      "brand": "",
-     "name": "Chleb żytni pełnoziarnisty, 400 g",
-     "size": 400,
+     "name": "Chleb żytni 100% krojony, 450 g",
+     "size": 450,
      "unit": "g",
-     "price": 5.99,
+     "price": 7.29,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -1641,10 +1636,10 @@
     },
     "pierogi": {
      "brand": "",
-     "name": "Pierogi ruskie, 370 g",
-     "size": 370,
+     "name": "Karczma Bukówka Pierogi ruskie, 500 g",
+     "size": 500,
      "unit": "g",
-     "price": 16.99,
+     "price": 10.99,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -1883,19 +1878,21 @@
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
+    "pomidorki": {
+     "brand": "",
+     "name": "Pomidor daktylowy /cherry 250 g",
+     "size": 250,
+     "unit": "g",
+     "price": 10.99,
+     "currency": "PLN",
+     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
+    },
     "limonka": {
      "brand": "",
      "name": "Limonka 250g",
      "size": 250,
      "unit": "g",
      "price": 8.99,
-     "currency": "PLN",
-     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
-    },
-    "koperek": {
-     "brand": "",
-     "name": "Koperek pęczek",
-     "price": 4.59,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -1948,15 +1945,6 @@
      "size": 250,
      "unit": "g",
      "price": 7.79,
-     "currency": "PLN",
-     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
-    },
-    "jogurt_grecki": {
-     "brand": "",
-     "name": "Bakoma Jogurt typ grecki, 170 g",
-     "size": 170,
-     "unit": "g",
-     "price": 4.59,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -2107,7 +2095,7 @@
    }
   },
   "Krónan": {
-   "checked": "2026-11-16",
+   "checked": "2026-11-17",
    "source": "kronan.is",
    "items": {
     "pomidor": {
@@ -2331,12 +2319,12 @@
     },
     "jajka": {
      "brand": "",
-     "name": "Grænegg stór egg frelsi 6stk",
-     "size": 405,
+     "name": "Gæðaegg meðalstór egg",
+     "size": 580,
      "unit": "g",
-     "price": 495,
+     "price": 619,
      "currency": "ISK",
-     "url": "https://kronan.is/vara/100265916"
+     "url": "https://kronan.is/vara/100244462"
     },
     "skyr": {
      "brand": "",
