@@ -1,10 +1,10 @@
 {
  "version": 1,
- "updated": "2026-11-17",
+ "updated": "2026-11-18",
  "note": "Written by scripts/update-products.mjs. Products are matched by search, so check the label in the store.",
  "stores": {
   "Frisco": {
-   "checked": "2026-11-17",
+   "checked": "2026-11-18",
    "source": "frisco.pl",
    "items": {
     "pomidor": {
@@ -321,13 +321,13 @@
      "url": "https://www.frisco.pl/pid,148101/stn,product"
     },
     "tortilla": {
-     "brand": "Tortilove",
-     "name": "Tortilla pełnoziarnista - 25 cm (4 szt.)",
+     "brand": "Casa Del Sur",
+     "name": "Tortilla wieloziarnista - 25 cm (4 szt.)",
      "size": 240,
      "unit": "g",
-     "price": 4.29,
+     "price": 9.29,
      "currency": "PLN",
-     "url": "https://www.frisco.pl/pid,142192/stn,product"
+     "url": "https://www.frisco.pl/pid,149852/stn,product"
     },
     "platki": {
      "brand": "Melvit",
@@ -670,15 +670,6 @@
      "price": 109.99,
      "currency": "PLN",
      "url": "https://www.frisco.pl/pid,153999/stn,product"
-    },
-    "maslo_orzechowe": {
-     "brand": "Deseo",
-     "name": "Masło z orzechów arachidowych (100% orzechów arachidowych)",
-     "size": 200,
-     "unit": "g",
-     "price": 23.99,
-     "currency": "PLN",
-     "url": "https://www.frisco.pl/pid,152309/stn,product"
     },
     "miod": {
      "brand": "Pszczelarz Kozacki",
@@ -1250,7 +1241,7 @@
    }
   },
   "Wolt Market": {
-   "checked": "2026-11-17",
+   "checked": "2026-11-18",
    "source": "wolt.com",
    "items": {
     "pomidor": {
@@ -1314,10 +1305,10 @@
     },
     "marchew": {
      "brand": "",
-     "name": "Marchew 0,5 kg",
-     "size": 500,
+     "name": "Provitus Marchewka zasmażana, 480 g",
+     "size": 480,
      "unit": "g",
-     "price": 2.99,
+     "price": 8.99,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -1357,15 +1348,6 @@
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
-    "jablko": {
-     "brand": "",
-     "name": "Jabłka 0.5kg",
-     "size": 500,
-     "unit": "g",
-     "price": 4.39,
-     "currency": "PLN",
-     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
-    },
     "cytryna": {
      "brand": "",
      "name": "Cytryna 300g",
@@ -1375,64 +1357,12 @@
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
-    "jajka": {
-     "brand": "",
-     "name": "Jaja M, 10 sztuk",
-     "price": 14.99,
-     "currency": "PLN",
-     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
-    },
-    "twarog": {
-     "brand": "",
-     "name": "Piątnica Twaróg wiejski półtłusty, 250 g",
-     "size": 250,
-     "unit": "g",
-     "price": 7.79,
-     "currency": "PLN",
-     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
-    },
-    "jogurt": {
-     "brand": "",
-     "name": "Jogurt naturalny sokólski, 400 g",
-     "size": 400,
-     "unit": "g",
-     "price": 4.69,
-     "currency": "PLN",
-     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
-    },
     "serek": {
      "brand": "",
-     "name": "Piątnica Serek wiejski naturalny, 200 g",
+     "name": "Piątnica Serek wiejski wysokobiałkowy, 200 g",
      "size": 200,
      "unit": "g",
-     "price": 4.39,
-     "currency": "PLN",
-     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
-    },
-    "mleko": {
-     "brand": "",
-     "name": "Mleko zambrowskie UHT 3.2 %, 1 l",
-     "size": 1000,
-     "unit": "ml",
-     "price": 6.29,
-     "currency": "PLN",
-     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
-    },
-    "kefir": {
-     "brand": "",
-     "name": "Robico Kefir 1.5%, 400 g",
-     "size": 400,
-     "unit": "g",
-     "price": 4.89,
-     "currency": "PLN",
-     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
-    },
-    "maslo": {
-     "brand": "",
-     "name": "Lurpak Masło klasyczne, 200 g",
-     "size": 200,
-     "unit": "g",
-     "price": 15.49,
+     "price": 4.99,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -1456,10 +1386,10 @@
     },
     "platki": {
      "brand": "",
-     "name": "Młyny Stoisław Płatki owsiane górskie ekstra, 500 g",
-     "size": 500,
+     "name": "Activlab Super protein płatki owsiane i ryżowe z bananami, 300 g",
+     "size": 300,
      "unit": "g",
-     "price": 5.49,
+     "price": 12.49,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -1472,66 +1402,30 @@
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
-    "gryczana": {
+    "maka": {
      "brand": "",
-     "name": "Cenos Kasza gryczana prażona (4 x 100 g), 400 g",
-     "size": 100,
-     "unit": "g",
-     "price": 9.99,
-     "currency": "PLN",
-     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
-    },
-    "jeczmienna": {
-     "brand": "",
-     "name": "Szczytno Premium Kasza jęczmienna perłowa średnia, 400 g",
-     "size": 400,
-     "unit": "g",
-     "price": 5.49,
-     "currency": "PLN",
-     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
-    },
-    "makaron": {
-     "brand": "",
-     "name": "Carrefour Extra Makaron Spaghetti Pełnoziarnisty, 500 g",
+     "name": "Mąka ryżowa 500g Naura",
      "size": 500,
-     "unit": "g",
-     "price": 6.49,
-     "currency": "PLN",
-     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
-    },
-    "soczewica": {
-     "brand": "",
-     "name": "Cenos Soczewica czerwona, 400 g",
-     "size": 400,
      "unit": "g",
      "price": 10.99,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
-    "maka": {
-     "brand": "",
-     "name": "Basia Mąka poznańska typ 500, 1 kg",
-     "size": 1000,
-     "unit": "g",
-     "price": 7.99,
-     "currency": "PLN",
-     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
-    },
     "wloskie": {
      "brand": "",
-     "name": "Simpl Orzech włoski, 100 g",
-     "size": 100,
-     "unit": "g",
-     "price": 7.99,
+     "name": "Olej z orzechów włoskich, 250 ml",
+     "size": 250,
+     "unit": "ml",
+     "price": 21.59,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
     "migdaly": {
      "brand": "",
-     "name": "Simpl Migdały łuskane, 100 g",
-     "size": 100,
+     "name": "Sante Go On Granola proteinowa orzech laskowy migdał czekolada 300 g",
+     "size": 300,
      "unit": "g",
-     "price": 7.99,
+     "price": 16.99,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -1544,33 +1438,6 @@
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
-    "tunczyk": {
-     "brand": "",
-     "name": "Graal Tuńczyk kawałki w sosie własnym, 170 g",
-     "size": 170,
-     "unit": "g",
-     "price": 11.99,
-     "currency": "PLN",
-     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
-    },
-    "pomidory_puszka": {
-     "brand": "",
-     "name": "Mutti Pomidory drobno krojone, 400 g",
-     "size": 400,
-     "unit": "g",
-     "price": 9.99,
-     "currency": "PLN",
-     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
-    },
-    "fasola": {
-     "brand": "",
-     "name": "Rolnik Urodzaj smaku Fasola czerwona, 400 g",
-     "size": 400,
-     "unit": "g",
-     "price": 4.99,
-     "currency": "PLN",
-     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
-    },
     "hummus": {
      "brand": "",
      "name": "Hummus trio mix, 210 g",
@@ -1580,102 +1447,12 @@
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
-    "soja": {
-     "brand": "",
-     "name": "Tao Tao Sos sojowo-grzybowy, 150 ml",
-     "size": 150,
-     "unit": "ml",
-     "price": 11.99,
-     "currency": "PLN",
-     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
-    },
-    "warzywa_mr": {
-     "brand": "",
-     "name": "Hortex Warzywa na patelnię, 450 g",
-     "size": 450,
-     "unit": "g",
-     "price": 12.99,
-     "currency": "PLN",
-     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
-    },
-    "olej": {
-     "brand": "",
-     "name": "Kujawski Olej rzepakowy z pierwszego tłoczenia, 1 l",
-     "size": 1000,
-     "unit": "ml",
-     "price": 12.99,
-     "currency": "PLN",
-     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
-    },
-    "ciecierzyca": {
-     "brand": "",
-     "name": "Ciecierzyca 500g",
-     "size": 500,
-     "unit": "g",
-     "price": 8.09,
-     "currency": "PLN",
-     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
-    },
-    "fasola_biala": {
-     "brand": "",
-     "name": "Fasola biała konserwowa, 400 g",
-     "size": 400,
-     "unit": "g",
-     "price": 4.49,
-     "currency": "PLN",
-     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
-    },
     "kukurydza": {
      "brand": "",
-     "name": "Mc Kukurydza konserwowa, 340 g",
-     "size": 340,
+     "name": "Kwidzyn Kukurydza konserwowa, 400 g",
+     "size": 400,
      "unit": "g",
-     "price": 6.19,
-     "currency": "PLN",
-     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
-    },
-    "pierogi": {
-     "brand": "",
-     "name": "Karczma Bukówka Pierogi ruskie, 500 g",
-     "size": 500,
-     "unit": "g",
-     "price": 10.99,
-     "currency": "PLN",
-     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
-    },
-    "krewetki": {
-     "brand": "",
-     "name": "Krewetki w oleju czosnkowym 150g Connoisseur",
-     "size": 150,
-     "unit": "g",
-     "price": 25.49,
-     "currency": "PLN",
-     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
-    },
-    "kuskus": {
-     "brand": "",
-     "name": "Mc kasza kuskus, 250 g",
-     "size": 250,
-     "unit": "g",
-     "price": 4.99,
-     "currency": "PLN",
-     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
-    },
-    "makaron_ryzowy": {
-     "brand": "",
-     "name": "Tao Tao Makaron ryżowy wstążki, 200 g",
-     "size": 200,
-     "unit": "g",
-     "price": 13.99,
-     "currency": "PLN",
-     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
-    },
-    "spaghetti": {
-     "brand": "",
-     "name": "Carrefour Extra Makaron Spaghetti Pełnoziarnisty, 500 g",
-     "size": 500,
-     "unit": "g",
-     "price": 6.49,
+     "price": 5.99,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -1690,82 +1467,46 @@
     },
     "miod": {
      "brand": "",
-     "name": "Miód lipowy, 470 g",
-     "size": 470,
-     "unit": "g",
-     "price": 21.49,
+     "name": "Łomża piwo miodowe 5.7%, 0.5 l",
+     "size": 500,
+     "unit": "ml",
+     "price": 5.99,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
     "kakao": {
      "brand": "",
-     "name": "Gellwe Kakao extra ciemne, 80 g",
-     "size": 80,
+     "name": "Roshen Wafers Milk kakaowe, 72 g",
+     "size": 72,
      "unit": "g",
-     "price": 9.99,
+     "price": 3.99,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
     "daktyle": {
      "brand": "",
-     "name": "Daktyle suszone Deglet Nour, 180 g",
-     "size": 180,
+     "name": "Pomidor daktylowy /cherry 250 g",
+     "size": 250,
      "unit": "g",
-     "price": 7.99,
+     "price": 10.99,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
     "rodzynki": {
      "brand": "",
-     "name": "Simpl Rodzynki, 100 g",
-     "size": 100,
+     "name": "Sante Bakalie Rodzynki sułtańskie, 125 g",
+     "size": 125,
      "unit": "g",
-     "price": 2.49,
-     "currency": "PLN",
-     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
-    },
-    "chia": {
-     "brand": "",
-     "name": "Sante Skarby Ziemi Chia nasiona szałwii hiszpańskiej, 250 g",
-     "size": 250,
-     "unit": "g",
-     "price": 15.49,
+     "price": 9.99,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
     "sezam": {
      "brand": "",
-     "name": "Sante Sezam, 300 g",
-     "size": 300,
+     "name": "E. Wedel Aha! Sezamki, 27.2 g",
+     "size": 27.2,
      "unit": "g",
-     "price": 12.99,
-     "currency": "PLN",
-     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
-    },
-    "slonecznik": {
-     "brand": "",
-     "name": "Mc Słonecznik łuskany 180 g",
-     "size": 180,
-     "unit": "g",
-     "price": 6.99,
-     "currency": "PLN",
-     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
-    },
-    "nerkowce": {
-     "brand": "",
-     "name": "Simpl Orzechy nerkowca, 100 g",
-     "size": 100,
-     "unit": "g",
-     "price": 7.99,
-     "currency": "PLN",
-     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
-    },
-    "orzeszki": {
-     "brand": "",
-     "name": "M&M's Peanut Orzeszki ziemne oblane czekoladą w kolorowych skorupkach, 45 g",
-     "size": 45,
-     "unit": "g",
-     "price": 5.79,
+     "price": 2.99,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -1814,19 +1555,19 @@
     },
     "borowki": {
      "brand": "",
-     "name": "Borówka 125 g",
-     "size": 125,
+     "name": "Kresto Borówka amerykańska 15 g",
+     "size": 15,
      "unit": "g",
-     "price": 16.99,
+     "price": 9.99,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
     "truskawki": {
      "brand": "",
-     "name": "Hortex Truskawki, 450 g",
-     "size": 450,
+     "name": "Rogaliki z nadzieniem truskawkowym 250g",
+     "size": 250,
      "unit": "g",
-     "price": 13.99,
+     "price": 12.99,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -1845,13 +1586,6 @@
      "size": 300,
      "unit": "g",
      "price": 5.49,
-     "currency": "PLN",
-     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
-    },
-    "kiwi": {
-     "brand": "",
-     "name": "Kiwi szt",
-     "price": 3.69,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -1903,138 +1637,30 @@
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
-    "kielbasa": {
+    "ser_zolty": {
      "brand": "",
-     "name": "Kiełbasa śląska grilowa JBB 2szt (ok 250g)",
-     "size": 250,
+     "name": "Bio Ekologiczne krakersy solone z serem gouda, 75 g",
+     "size": 75,
      "unit": "g",
      "price": 10.99,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
-    "losos_wedz": {
-     "brand": "",
-     "name": "Łosoś atlantycki wędzony na zimno plastrowany, 100 g",
-     "size": 100,
-     "unit": "g",
-     "price": 15.29,
-     "currency": "PLN",
-     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
-    },
-    "sledz": {
-     "brand": "",
-     "name": "Filety śledziowe od serca ze śliwką 300g",
-     "size": 300,
-     "unit": "g",
-     "price": 16.99,
-     "currency": "PLN",
-     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
-    },
-    "tofu": {
-     "brand": "",
-     "name": "Tofu naturalne, 200 g",
-     "size": 200,
-     "unit": "g",
-     "price": 5.99,
-     "currency": "PLN",
-     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
-    },
-    "twarog_chudy": {
-     "brand": "",
-     "name": "Piątnica Twaróg wiejski chudy, 250 g",
-     "size": 250,
-     "unit": "g",
-     "price": 7.79,
-     "currency": "PLN",
-     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
-    },
-    "ser_zolty": {
-     "brand": "",
-     "name": "Mlekpol Ser gouda w plastrach, 150 g",
-     "size": 150,
-     "unit": "g",
-     "price": 7.79,
-     "currency": "PLN",
-     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
-    },
     "serek_smietankowy": {
      "brand": "",
-     "name": "Polmlek Serek śmietankowy, 150 g",
-     "size": 150,
+     "name": "Łaciaty Serek śmietankowy naturalny, 135 g",
+     "size": 135,
      "unit": "g",
-     "price": 6.99,
-     "currency": "PLN",
-     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
-    },
-    "halloumi": {
-     "brand": "",
-     "name": "Dairy Crafters Ser halloumi, 180 g",
-     "size": 180,
-     "unit": "g",
-     "price": 16.99,
-     "currency": "PLN",
-     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
-    },
-    "smietana": {
-     "brand": "",
-     "name": "Piątnica Śmietana 12%, 200 g",
-     "size": 200,
-     "unit": "g",
-     "price": 3.99,
-     "currency": "PLN",
-     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
-    },
-    "smietana_18": {
-     "brand": "",
-     "name": "Piątnica Śmietana 18 %, 200 g",
-     "size": 200,
-     "unit": "g",
-     "price": 3.99,
-     "currency": "PLN",
-     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
-    },
-    "smietanka_30": {
-     "brand": "",
-     "name": "Łaciata Śmietanka 30%, 250 ml",
-     "size": 250,
-     "unit": "ml",
-     "price": 7.19,
+     "price": 5.19,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
     "penne": {
      "brand": "",
-     "name": "Makaron ekologiczny penne rigate, 500 g",
-     "size": 500,
+     "name": "Makaron penne niski indeks glikemiczny Pol-Mak, 250 g",
+     "size": 250,
      "unit": "g",
-     "price": 7.79,
-     "currency": "PLN",
-     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
-    },
-    "fusilli": {
-     "brand": "",
-     "name": "Lubella Makaron świderki, 400 g",
-     "size": 400,
-     "unit": "g",
-     "price": 7.49,
-     "currency": "PLN",
-     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
-    },
-    "farfalle": {
-     "brand": "",
-     "name": "Lubella Makaron kokardki, 400 g",
-     "size": 400,
-     "unit": "g",
-     "price": 7.49,
-     "currency": "PLN",
-     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
-    },
-    "tagliatelle": {
-     "brand": "",
-     "name": "Lubella Makaron wstążki, 400 g",
-     "size": 400,
-     "unit": "g",
-     "price": 7.49,
+     "price": 10.99,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -2046,56 +1672,11 @@
      "price": 15.99,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
-    },
-    "passata": {
-     "brand": "",
-     "name": "Pudliszki Passata przecier pomidorowy, 500 g",
-     "size": 500,
-     "unit": "g",
-     "price": 9.99,
-     "currency": "PLN",
-     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
-    },
-    "koncentrat": {
-     "brand": "",
-     "name": "Łowicz Koncentrat pomidorowy, 190 g",
-     "size": 190,
-     "unit": "g",
-     "price": 7.49,
-     "currency": "PLN",
-     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
-    },
-    "oliwki": {
-     "brand": "",
-     "name": "Figaro Hiszpańskie oliwki zielone drylowane, 142 g",
-     "size": 142,
-     "unit": "g",
-     "price": 7.49,
-     "currency": "PLN",
-     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
-    },
-    "pesto": {
-     "brand": "",
-     "name": "Provitus Pesto z bazylią, 160 g",
-     "size": 160,
-     "unit": "g",
-     "price": 8.99,
-     "currency": "PLN",
-     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
-    },
-    "pasta_curry": {
-     "brand": "",
-     "name": "Kanokwan Zielona pasta curry, 50 g",
-     "size": 50,
-     "unit": "g",
-     "price": 9.99,
-     "currency": "PLN",
-     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     }
    }
   },
   "Krónan": {
-   "checked": "2026-11-17",
+   "checked": "2026-11-18",
    "source": "kronan.is",
    "items": {
     "pomidor": {
@@ -2117,9 +1698,9 @@
     "papryka": {
      "brand": "",
      "name": "paprika rauð",
-     "size": 220,
+     "size": 230,
      "unit": "g",
-     "price": 198,
+     "price": 207,
      "currency": "ISK",
      "url": "https://kronan.is/vara/100253122"
     },
@@ -2146,7 +1727,7 @@
      "name": "Ódýrt spínat",
      "size": 200,
      "unit": "g",
-     "price": 399,
+     "price": 439,
      "currency": "ISK",
      "url": "https://kronan.is/vara/100224172"
     },
@@ -2241,7 +1822,7 @@
      "name": "sítrónur",
      "size": 165,
      "unit": "g",
-     "price": 79,
+     "price": 88,
      "currency": "ISK",
      "url": "https://kronan.is/vara/100253498"
     },
@@ -2331,7 +1912,7 @@
      "name": "KEA skyr hreint 200gr",
      "size": 200,
      "unit": "g",
-     "price": 241,
+     "price": 250,
      "currency": "ISK",
      "url": "https://kronan.is/vara/02500190"
     },
@@ -2619,7 +2200,7 @@
      "name": "Ódýrt berjablanda frosin 1kg",
      "size": 1000,
      "unit": "g",
-     "price": 780,
+     "price": 764,
      "currency": "ISK",
      "url": "https://kronan.is/vara/100265371"
     },
@@ -2844,7 +2425,7 @@
      "name": "Sætar kartöflur",
      "size": 300,
      "unit": "g",
-     "price": 162,
+     "price": 161,
      "currency": "ISK",
      "url": "https://kronan.is/vara/01000672"
     },
@@ -2878,7 +2459,7 @@
      "name": "BelOrta jarðarber 500g",
      "size": 500,
      "unit": "g",
-     "price": 1479,
+     "price": 1396,
      "currency": "ISK",
      "url": "https://kronan.is/vara/100254313"
     },
@@ -2894,7 +2475,7 @@
      "name": "Appelsínur",
      "size": 245,
      "unit": "g",
-     "price": 89,
+     "price": 99,
      "currency": "ISK",
      "url": "https://kronan.is/vara/100253496"
     },
@@ -2930,7 +2511,7 @@
      "name": "Blaðlaukur",
      "size": 350,
      "unit": "g",
-     "price": 159,
+     "price": 165,
      "currency": "ISK",
      "url": "https://kronan.is/vara/01000593"
     },
@@ -3081,7 +2662,7 @@
      "name": "Gott í matinn grísk jógúrt",
      "size": 350,
      "unit": "g",
-     "price": 527,
+     "price": 526,
      "currency": "ISK",
      "url": "https://kronan.is/vara/02500276"
     },
