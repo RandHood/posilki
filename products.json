@@ -1,10 +1,10 @@
 {
  "version": 1,
- "updated": "2026-11-19",
+ "updated": "2026-11-20",
  "note": "Written by scripts/update-products.mjs. Products are matched by search, so check the label in the store.",
  "stores": {
   "Frisco": {
-   "checked": "2026-11-19",
+   "checked": "2026-11-20",
    "source": "frisco.pl",
    "items": {
     "pomidor": {
@@ -2118,7 +2118,7 @@
    }
   },
   "Krónan": {
-   "checked": "2026-11-19",
+   "checked": "2026-11-20",
    "source": "kronan.is",
    "items": {
     "pomidor": {
@@ -2889,12 +2889,12 @@
     },
     "borowki": {
      "brand": "",
-     "name": "Bláber 500g",
-     "size": 500,
+     "name": "Chillberry bláber í mjólkursúkkulaði",
+     "size": 150,
      "unit": "g",
-     "price": 1370,
+     "price": 799,
      "currency": "ISK",
-     "url": "https://kronan.is/vara/100225252"
+     "url": "https://kronan.is/vara/100274217"
     },
     "truskawki": {
      "brand": "",
