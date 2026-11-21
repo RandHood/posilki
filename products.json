@@ -1,10 +1,10 @@
 {
  "version": 1,
- "updated": "2026-11-20",
+ "updated": "2026-11-21",
  "note": "Written by scripts/update-products.mjs. Products are matched by search, so check the label in the store.",
  "stores": {
   "Frisco": {
-   "checked": "2026-11-20",
+   "checked": "2026-11-21",
    "source": "frisco.pl",
    "items": {
     "pomidor": {
@@ -75,7 +75,7 @@
      "name": "Marchew luz (600g-900g)",
      "size": 750,
      "unit": "g",
-     "price": 2.29,
+     "price": 2.49,
      "currency": "PLN",
      "url": "https://www.frisco.pl/pid,4030/stn,product"
     },
@@ -93,7 +93,7 @@
      "name": "Kapusta biała (1920g-2880g)",
      "size": 2400,
      "unit": "g",
-     "price": 4.99,
+     "price": 7.29,
      "currency": "PLN",
      "url": "https://www.frisco.pl/pid,4072/stn,product"
     },
@@ -102,7 +102,7 @@
      "name": "Cukinia zielona 2-3 szt. (680g-1020g)",
      "size": 850,
      "unit": "g",
-     "price": 6.49,
+     "price": 6.99,
      "currency": "PLN",
      "url": "https://www.frisco.pl/pid,4116/stn,product"
     },
@@ -111,7 +111,7 @@
      "name": "Dynia Hokkaido",
      "size": 800,
      "unit": "g",
-     "price": 4.49,
+     "price": 4.69,
      "currency": "PLN",
      "url": "https://www.frisco.pl/pid,39135/stn,product"
     },
@@ -147,7 +147,7 @@
      "name": "Banan MNIAM",
      "size": 1000,
      "unit": "g",
-     "price": 7.99,
+     "price": 8.69,
      "currency": "PLN",
      "url": "https://www.frisco.pl/pid,143402/stn,product"
     },
@@ -174,7 +174,7 @@
      "name": "Szczypiorek - pęczek",
      "size": 25,
      "unit": "g",
-     "price": 2.49,
+     "price": 2.79,
      "currency": "PLN",
      "url": "https://www.frisco.pl/pid,2999/stn,product"
     },
@@ -201,7 +201,7 @@
      "name": "Filet z piersi indyka mrożony BIO",
      "size": 400,
      "unit": "g",
-     "price": 72.49,
+     "price": 79.99,
      "currency": "PLN",
      "url": "https://www.frisco.pl/pid,151942/stn,product"
     },
@@ -210,7 +210,7 @@
      "name": "Rostbef wołowy stek standaryzowany 2x250g",
      "size": 500,
      "unit": "g",
-     "price": 49.99,
+     "price": 54.49,
      "currency": "PLN",
      "url": "https://www.frisco.pl/pid,9004/stn,product"
     },
@@ -237,7 +237,7 @@
      "name": "Szynka z piersi indyka -plastry",
      "size": 120,
      "unit": "g",
-     "price": 8.79,
+     "price": 9.99,
      "currency": "PLN",
      "url": "https://www.frisco.pl/pid,40161/stn,product"
     },
@@ -460,7 +460,7 @@
      "name": "Sos sojowy",
      "size": 150,
      "unit": "ml",
-     "price": 7.49,
+     "price": 7.99,
      "currency": "PLN",
      "url": "https://www.frisco.pl/pid,14007/stn,product"
     },
@@ -469,7 +469,7 @@
      "name": "Maliny mrożone",
      "size": 280,
      "unit": "g",
-     "price": 19.99,
+     "price": 20.99,
      "currency": "PLN",
      "url": "https://www.frisco.pl/pid,98189/stn,product"
     },
@@ -487,7 +487,7 @@
      "name": "Fasolka szparagowa żółta cała mrożona",
      "size": 400,
      "unit": "g",
-     "price": 7.19,
+     "price": 7.99,
      "currency": "PLN",
      "url": "https://www.frisco.pl/pid,92447/stn,product"
     },
@@ -559,7 +559,7 @@
      "name": "Mango mrożone BIO",
      "size": 300,
      "unit": "g",
-     "price": 16.69,
+     "price": 16.99,
      "currency": "PLN",
      "url": "https://www.frisco.pl/pid,111311/stn,product"
     },
@@ -631,7 +631,7 @@
      "name": "Makaron ryżowy (5 mm) bezglutenowy",
      "size": 200,
      "unit": "g",
-     "price": 7.39,
+     "price": 7.59,
      "currency": "PLN",
      "url": "https://www.frisco.pl/pid,145424/stn,product"
     },
@@ -730,7 +730,7 @@
      "name": "Sezam",
      "size": 200,
      "unit": "g",
-     "price": 7.99,
+     "price": 7.29,
      "currency": "PLN",
      "url": "https://www.frisco.pl/pid,98741/stn,product"
     },
@@ -829,7 +829,7 @@
      "name": "Borówka amerykańska",
      "size": 125,
      "unit": "g",
-     "price": 9.99,
+     "price": 10.79,
      "currency": "PLN",
      "url": "https://www.frisco.pl/pid,12037/stn,product"
     },
@@ -847,7 +847,7 @@
      "name": "Gruszka Lukasówka 3-4 szt. (800g-1200g)",
      "size": 1000,
      "unit": "g",
-     "price": 7.69,
+     "price": 8.19,
      "currency": "PLN",
      "url": "https://www.frisco.pl/pid,39672/stn,product"
     },
@@ -892,7 +892,7 @@
      "name": "Por",
      "size": 250,
      "unit": "g",
-     "price": 4.39,
+     "price": 4.99,
      "currency": "PLN",
      "url": "https://www.frisco.pl/pid,10989/stn,product"
     },
@@ -901,7 +901,7 @@
      "name": "Seler naciowy",
      "size": 300,
      "unit": "g",
-     "price": 5.99,
+     "price": 5.39,
      "currency": "PLN",
      "url": "https://www.frisco.pl/pid,3137/stn,product"
     },
@@ -910,7 +910,7 @@
      "name": "Kalafior",
      "size": 600,
      "unit": "g",
-     "price": 7.29,
+     "price": 7.99,
      "currency": "PLN",
      "url": "https://www.frisco.pl/pid,4085/stn,product"
     },
@@ -919,7 +919,7 @@
      "name": "Bakłażan 1-2 szt. (320g-480g)",
      "size": 400,
      "unit": "g",
-     "price": 4.49,
+     "price": 4.29,
      "currency": "PLN",
      "url": "https://www.frisco.pl/pid,4095/stn,product"
     },
@@ -964,7 +964,7 @@
      "name": "Koperek - pęczek",
      "size": 25,
      "unit": "g",
-     "price": 2.29,
+     "price": 2.09,
      "currency": "PLN",
      "url": "https://www.frisco.pl/pid,3865/stn,product"
     },
@@ -973,7 +973,7 @@
      "name": "Natka pietruszki - pęczek",
      "size": 25,
      "unit": "g",
-     "price": 2.49,
+     "price": 2.09,
      "currency": "PLN",
      "url": "https://www.frisco.pl/pid,3617/stn,product"
     },
@@ -982,7 +982,7 @@
      "name": "Schab wieprzowy bez kości",
      "size": 630,
      "unit": "g",
-     "price": 22.79,
+     "price": 24.69,
      "currency": "PLN",
      "url": "https://www.frisco.pl/pid,3380/stn,product"
     },
@@ -1000,7 +1000,7 @@
      "name": "Kiełbasa śląska z szynki Zero - E",
      "size": 350,
      "unit": "g",
-     "price": 21.19,
+     "price": 19.09,
      "currency": "PLN",
      "url": "https://www.frisco.pl/pid,155573/stn,product"
     },
@@ -1072,7 +1072,7 @@
      "name": "PHILADELPHIA Serek śmietankowy light",
      "size": 125,
      "unit": "g",
-     "price": 7.39,
+     "price": 7.69,
      "currency": "PLN",
      "url": "https://www.frisco.pl/pid,7548/stn,product"
     },
@@ -1090,7 +1090,7 @@
      "name": "Ser Halloumi",
      "size": 225,
      "unit": "g",
-     "price": 16.39,
+     "price": 16.99,
      "currency": "PLN",
      "url": "https://www.frisco.pl/pid,142754/stn,product"
     },
@@ -1144,7 +1144,7 @@
      "name": "Makaron kokardki (farfalle)",
      "size": 400,
      "unit": "g",
-     "price": 5.09,
+     "price": 5.29,
      "currency": "PLN",
      "url": "https://www.frisco.pl/pid,364/stn,product"
     },
@@ -1225,7 +1225,7 @@
      "name": "Pasta curry czerwona bezglutenowa",
      "size": 50,
      "unit": "g",
-     "price": 5.99,
+     "price": 6.29,
      "currency": "PLN",
      "url": "https://www.frisco.pl/pid,41429/stn,product"
     },
@@ -1241,7 +1241,7 @@
    }
   },
   "Wolt Market": {
-   "checked": "2026-11-19",
+   "checked": "2026-11-21",
    "source": "wolt.com",
    "items": {
     "pomidor": {
@@ -1264,10 +1264,10 @@
     },
     "papryka": {
      "brand": "",
-     "name": "Papryka czerwona 300g",
-     "size": 300,
+     "name": "Papryka czerwona nadziewana serem, 150 g",
+     "size": 150,
      "unit": "g",
-     "price": 12.99,
+     "price": 8.99,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -1330,12 +1330,19 @@
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
+    "rzodkiewki": {
+     "brand": "",
+     "name": "Rzodkiewka pęczek sztuka",
+     "price": 4.99,
+     "currency": "PLN",
+     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
+    },
     "salata": {
      "brand": "",
-     "name": "Mix sałat, 150 g",
-     "size": 150,
+     "name": "GRAAL Salatino Tuńczyk z kuskusem perłowym i suszonymi pomidorami, 160 g",
+     "size": 160,
      "unit": "g",
-     "price": 7.99,
+     "price": 14.99,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -1359,10 +1366,10 @@
     },
     "cytryna": {
      "brand": "",
-     "name": "Cytryna 300g",
-     "size": 300,
-     "unit": "g",
-     "price": 6.99,
+     "name": "Żubr cytrynowy 20% 0,2 l",
+     "size": 200,
+     "unit": "ml",
+     "price": 18.99,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -1857,8 +1864,10 @@
     },
     "kiwi": {
      "brand": "",
-     "name": "Kiwi szt",
-     "price": 3.69,
+     "name": "Dr. Oetker Galaretka o smaku kiwi, 72 g",
+     "size": 72,
+     "unit": "g",
+     "price": 2.99,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -2118,7 +2127,7 @@
    }
   },
   "Krónan": {
-   "checked": "2026-11-20",
+   "checked": "2026-11-21",
    "source": "kronan.is",
    "items": {
     "pomidor": {
@@ -2892,7 +2901,7 @@
      "name": "Chillberry bláber í mjólkursúkkulaði",
      "size": 150,
      "unit": "g",
-     "price": 799,
+     "price": 699,
      "currency": "ISK",
      "url": "https://kronan.is/vara/100274217"
     },
