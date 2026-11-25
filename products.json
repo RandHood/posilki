@@ -1,10 +1,10 @@
 {
  "version": 1,
- "updated": "2026-11-24",
+ "updated": "2026-11-25",
  "note": "Written by scripts/update-products.mjs. Products are matched by search, so check the label in the store.",
  "stores": {
   "Frisco": {
-   "checked": "2026-11-24",
+   "checked": "2026-11-25",
    "source": "frisco.pl",
    "items": {
     "pomidor": {
@@ -1241,7 +1241,7 @@
    }
   },
   "Wolt Market": {
-   "checked": "2026-11-24",
+   "checked": "2026-11-25",
    "source": "wolt.com",
    "items": {
     "pomidor": {
@@ -1264,10 +1264,10 @@
     },
     "papryka": {
      "brand": "",
-     "name": "Papryka czerwona 300g",
-     "size": 300,
+     "name": "Papryka czerwona nadziewana serem, 150 g",
+     "size": 150,
      "unit": "g",
-     "price": 12.99,
+     "price": 8.99,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -1289,8 +1289,10 @@
     },
     "brokul": {
      "brand": "",
-     "name": "Brokuły sztuka",
-     "price": 9.99,
+     "name": "Hortex Brokuły różyczki, 450 g",
+     "size": 450,
+     "unit": "g",
+     "price": 12.99,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -1305,10 +1307,10 @@
     },
     "marchew": {
      "brand": "",
-     "name": "Provitus Marchewka zasmażana, 480 g",
-     "size": 480,
+     "name": "Marchew 0,5 kg",
+     "size": 500,
      "unit": "g",
-     "price": 8.99,
+     "price": 2.99,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -1327,6 +1329,13 @@
      "size": 400,
      "unit": "g",
      "price": 9.99,
+     "currency": "PLN",
+     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
+    },
+    "rzodkiewki": {
+     "brand": "",
+     "name": "Rzodkiewka pęczek sztuka",
+     "price": 4.99,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -1363,6 +1372,13 @@
      "size": 200,
      "unit": "ml",
      "price": 18.99,
+     "currency": "PLN",
+     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
+    },
+    "szczypiorek": {
+     "brand": "",
+     "name": "Szczypior drobny pęczek",
+     "price": 4.99,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -1796,6 +1812,15 @@
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
+    "batat": {
+     "brand": "",
+     "name": "Ziemniaki słodkie bataty 400g",
+     "size": 400,
+     "unit": "g",
+     "price": 10.99,
+     "currency": "PLN",
+     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
+    },
     "awokado": {
      "brand": "",
      "name": "Maska do włosów odżywcza awokado i masło shea 300ml",
@@ -1843,10 +1868,8 @@
     },
     "kiwi": {
      "brand": "",
-     "name": "Dr. Oetker Galaretka o smaku kiwi, 72 g",
-     "size": 72,
-     "unit": "g",
-     "price": 2.99,
+     "name": "Kiwi szt",
+     "price": 3.69,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -1861,10 +1884,8 @@
     },
     "por": {
      "brand": "",
-     "name": "Porzeczki w czekoladzie, 80 g",
-     "size": 80,
-     "unit": "g",
-     "price": 6.99,
+     "name": "Por sztuka",
+     "price": 5.99,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -1877,10 +1898,10 @@
     },
     "limonka": {
      "brand": "",
-     "name": "Halls cukierki limonkowe, 33.5 g",
-     "size": 33.5,
+     "name": "Limonka 250g",
+     "size": 250,
      "unit": "g",
-     "price": 4.49,
+     "price": 8.99,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -1934,15 +1955,6 @@
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
-    "tofu": {
-     "brand": "",
-     "name": "Tofu naturalne, 200 g",
-     "size": 200,
-     "unit": "g",
-     "price": 5.99,
-     "currency": "PLN",
-     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
-    },
     "twarog_chudy": {
      "brand": "",
      "name": "Piątnica twaróg chudy, 250 g",
@@ -1963,7 +1975,7 @@
     },
     "ser_zolty": {
      "brand": "",
-     "name": "Mlekpol ser gouda wędzony, 150 g",
+     "name": "Mlekpol ser Gouda, 150 g",
      "size": 150,
      "unit": "g",
      "price": 7.79,
@@ -2108,7 +2120,7 @@
    }
   },
   "Krónan": {
-   "checked": "2026-11-24",
+   "checked": "2026-11-25",
    "source": "kronan.is",
    "items": {
     "pomidor": {
@@ -2855,9 +2867,9 @@
     "batat": {
      "brand": "",
      "name": "Sætar kartöflur",
-     "size": 300,
+     "size": 600,
      "unit": "g",
-     "price": 161,
+     "price": 322,
      "currency": "ISK",
      "url": "https://kronan.is/vara/01000672"
     },
