@@ -1,10 +1,10 @@
 {
  "version": 1,
- "updated": "2026-11-27",
+ "updated": "2026-11-28",
  "note": "Written by scripts/update-products.mjs. Products are matched by search, so check the label in the store.",
  "stores": {
   "Frisco": {
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "source": "frisco.pl",
    "items": {
     "pomidor": {
@@ -48,7 +48,7 @@
      "name": "Czosnek 1 główka Polski",
      "size": 30,
      "unit": "g",
-     "price": 2.99,
+     "price": 3.49,
      "currency": "PLN",
      "url": "https://www.frisco.pl/pid,4073/stn,product"
     },
@@ -93,7 +93,7 @@
      "name": "Kapusta biała (1920g-2880g)",
      "size": 2400,
      "unit": "g",
-     "price": 7.29,
+     "price": 5.99,
      "currency": "PLN",
      "url": "https://www.frisco.pl/pid,4072/stn,product"
     },
@@ -174,7 +174,7 @@
      "name": "Szczypiorek - pęczek",
      "size": 25,
      "unit": "g",
-     "price": 2.79,
+     "price": 2.99,
      "currency": "PLN",
      "url": "https://www.frisco.pl/pid,2999/stn,product"
     },
@@ -237,7 +237,7 @@
      "name": "Szynka z piersi indyka -plastry",
      "size": 120,
      "unit": "g",
-     "price": 9.99,
+     "price": 10.19,
      "currency": "PLN",
      "url": "https://www.frisco.pl/pid,40161/stn,product"
     },
@@ -658,7 +658,7 @@
      "name": "Bułka tarta",
      "size": 400,
      "unit": "g",
-     "price": 3.99,
+     "price": 4.79,
      "currency": "PLN",
      "url": "https://www.frisco.pl/pid,136376/stn,product"
     },
@@ -811,7 +811,7 @@
      "name": "Pieczarki białe - opakowanie",
      "size": 500,
      "unit": "g",
-     "price": 7.59,
+     "price": 7.99,
      "currency": "PLN",
      "url": "https://www.frisco.pl/pid,3433/stn,product"
     },
@@ -829,7 +829,7 @@
      "name": "Borówka amerykańska",
      "size": 125,
      "unit": "g",
-     "price": 10.79,
+     "price": 10.99,
      "currency": "PLN",
      "url": "https://www.frisco.pl/pid,12037/stn,product"
     },
@@ -901,7 +901,7 @@
      "name": "Seler naciowy",
      "size": 300,
      "unit": "g",
-     "price": 5.39,
+     "price": 4.99,
      "currency": "PLN",
      "url": "https://www.frisco.pl/pid,3137/stn,product"
     },
@@ -910,7 +910,7 @@
      "name": "Kalafior",
      "size": 600,
      "unit": "g",
-     "price": 7.99,
+     "price": 9.99,
      "currency": "PLN",
      "url": "https://www.frisco.pl/pid,4085/stn,product"
     },
@@ -919,7 +919,7 @@
      "name": "Bakłażan 1-2 szt. (320g-480g)",
      "size": 400,
      "unit": "g",
-     "price": 4.29,
+     "price": 5.09,
      "currency": "PLN",
      "url": "https://www.frisco.pl/pid,4095/stn,product"
     },
@@ -928,7 +928,7 @@
      "name": "Jarmuż pęczek",
      "size": 250,
      "unit": "g",
-     "price": 6.09,
+     "price": 5.99,
      "currency": "PLN",
      "url": "https://www.frisco.pl/pid,87183/stn,product"
     },
@@ -946,7 +946,7 @@
      "name": "Limonka 1szt.",
      "size": 70,
      "unit": "g",
-     "price": 1.99,
+     "price": 2.19,
      "currency": "PLN",
      "url": "https://www.frisco.pl/pid,121523/stn,product"
     },
@@ -964,7 +964,7 @@
      "name": "Koperek - pęczek",
      "size": 25,
      "unit": "g",
-     "price": 2.09,
+     "price": 2.69,
      "currency": "PLN",
      "url": "https://www.frisco.pl/pid,3865/stn,product"
     },
@@ -973,7 +973,7 @@
      "name": "Natka pietruszki - pęczek",
      "size": 25,
      "unit": "g",
-     "price": 2.09,
+     "price": 2.69,
      "currency": "PLN",
      "url": "https://www.frisco.pl/pid,3617/stn,product"
     },
@@ -1171,7 +1171,7 @@
      "name": "Mleczko kokosowe (tł. 5-7%)",
      "size": 400,
      "unit": "ml",
-     "price": 6.99,
+     "price": 6.09,
      "currency": "PLN",
      "url": "https://www.frisco.pl/pid,15754/stn,product"
     },
@@ -1241,7 +1241,7 @@
    }
   },
   "Wolt Market": {
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "source": "wolt.com",
    "items": {
     "pomidor": {
@@ -1329,13 +1329,6 @@
      "size": 400,
      "unit": "g",
      "price": 9.99,
-     "currency": "PLN",
-     "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
-    },
-    "rzodkiewki": {
-     "brand": "",
-     "name": "Rzodkiewka pęczek sztuka",
-     "price": 4.99,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -1857,10 +1850,8 @@
     },
     "kiwi": {
      "brand": "",
-     "name": "Dr. Oetker Galaretka o smaku kiwi, 72 g",
-     "size": 72,
-     "unit": "g",
-     "price": 2.99,
+     "name": "Kiwi szt",
+     "price": 3.69,
      "currency": "PLN",
      "url": "https://wolt.com/pl/pol/warsaw/venue/wolt-market-centrum-2"
     },
@@ -2120,7 +2111,7 @@
    }
   },
   "Krónan": {
-   "checked": "2026-11-27",
+   "checked": "2026-11-28",
    "source": "kronan.is",
    "items": {
     "pomidor": {
@@ -2144,7 +2135,7 @@
      "name": "paprika rauð",
      "size": 230,
      "unit": "g",
-     "price": 229,
+     "price": 199,
      "currency": "ISK",
      "url": "https://kronan.is/vara/100253122"
     },
@@ -2207,7 +2198,7 @@
      "name": "kúrbítur",
      "size": 350,
      "unit": "g",
-     "price": 217,
+     "price": 209,
      "currency": "ISK",
      "url": "https://kronan.is/vara/100253056"
     },
